@@ -4396,13 +4396,16 @@
     <!-- Cell Broadcast settings description [CHAR LIMIT=100] -->
     <string name="cell_broadcast_settings_summary">Select the types of emergency alerts to display.</string>
 
-    <!-- **** LIQUIDSMOOTH ADDITIONS START **** -->
+    <!-- **** CYANOGENMOD ADDITIONS START **** -->
     
     <!-- Themes Settings  -->
     <string name="themes_settings_title">Themes</string>
 
+    <!-- Hostname setting -->
+    <string name="device_hostname">Device hostname</string>
+
     <!-- Liquidsmooth Category  -->
     <string name="liquidsmooth_category_title">LIQUIDSMOOTH</string>
 
-    <!-- **** LIQIUDSMOOTH ADDITIONS END **** -->
+    <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>
