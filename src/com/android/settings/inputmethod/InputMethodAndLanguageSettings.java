@@ -72,6 +72,7 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
     private static final String SHOW_ENTER_KEY = "show_enter_key";
     private static final String TAG = "AdvancedInputSettings";
     private static final String KEY_STYLUS_GESTURES = "stylus_gestures";
+    private static final String KEY_STYLUS_ICON_ENABLED = "stylus_icon_enabled";
 
     // false: on ICS or later
     private static final boolean SHOW_INPUT_METHOD_SWITCHER_SETTINGS = false;
@@ -86,6 +87,7 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         "auto_replace", "auto_caps", "auto_punctuate",
     };
 
+    private CheckBoxPreference mStylusIconEnabled;
     private int mDefaultInputMethodSelectorVisibility = 0;
     private ListPreference mShowInputMethodSelectorPref;
     private PreferenceCategory mKeyboardSettingsCategory;
@@ -194,6 +196,8 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
             getPreferenceScreen().removePreference(findPreference(KEY_STYLUS_GESTURES));
             //mStylusIconEnabled = null;
         }
+
+        mStylusIconEnabled = (CheckBoxPreference) findPreference(KEY_STYLUS_ICON_ENABLED);
 
         // Spell Checker
         final Intent intent = new Intent(Intent.ACTION_MAIN);
@@ -339,6 +343,11 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
                     Settings.System.STATUS_BAR_IME_SWITCHER, 1) != 0);
         }
 
+        if (mStylusIconEnabled != null) {
+            mStylusIconEnabled.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
+                    Settings.System.STYLUS_ICON_ENABLED, 0) == 1);
+        }
+
         // Hard keyboard
         if (!mHardKeyboardPreferenceList.isEmpty()) {
             for (int i = 0; i < sHardKeyboardKeys.length; ++i) {
@@ -424,6 +433,9 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
             Settings.System.putInt(getActivity().getContentResolver(),
                 Settings.System.FORMAL_TEXT_INPUT, mShowEnterKey.isChecked() ? 1 : 0);
             return true;
+        } else if (preference == mStylusIconEnabled) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.STYLUS_ICON_ENABLED, mStylusIconEnabled.isChecked() ? 1 : 0);
         } else if (preference instanceof PreferenceScreen) {
             if (preference.getFragment() != null) {
                 // Fragment will be handled correctly by the super class.
