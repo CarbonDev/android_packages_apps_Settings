@@ -72,6 +72,7 @@
     <!-- TRDS -->
     <header
         android:id="@+id/trds_settings"
+        android:fragment="com.android.settings.carbon.TRDSEnabler"
         android:icon="@drawable/ic_carbon_trds"
         android:title="@string/trds_settings_title" />
 
