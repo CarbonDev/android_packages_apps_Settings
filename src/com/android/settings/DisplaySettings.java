@@ -145,11 +145,19 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
         mDisplayRotationPreference = (PreferenceScreen) findPreference(KEY_DISPLAY_ROTATION);
 
+        final CheckBoxPreference lockScreenRotation =
+                (CheckBoxPreference) findPreference(KEY_LOCKSCREEN_ROTATION);
+        if (lockScreenRotation != null) {
+            if (!res.getBoolean(com.android.internal.R.bool.config_enableLockScreenRotation)) {
+                getPreferenceScreen().removePreference(lockScreenRotation);
+            }
+        }
+
         mScreenSaverPreference = findPreference(KEY_SCREEN_SAVER);
-        if (mScreenSaverPreference != null
-                && getResources().getBoolean(
-                        com.android.internal.R.bool.config_dreamsSupported) == false) {
-            getPreferenceScreen().removePreference(mScreenSaverPreference);
+        if (mScreenSaverPreference != null) {
+            if (!res.getBoolean(com.android.internal.R.bool.config_dreamsSupported)) {
+                getPreferenceScreen().removePreference(mScreenSaverPreference);
+            }
         }
 
         // respect device default configuration
