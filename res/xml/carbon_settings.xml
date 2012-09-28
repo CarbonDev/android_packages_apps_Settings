@@ -86,14 +86,6 @@
         android:icon="@drawable/ic_carbon_quicksettings"
         android:fragment="com.android.settings.carbon.StatusBarToggles" />
 
-    <!-- Xposed -->
-    <PreferenceScreen
-        android:id="@+id/xposed_settings"
-        android:title="@string/xposed_settings_title"
-        android:fragment="com.android.settings.carbon.XposedSettings"
-        android:icon="@drawable/ic_carbon_xposed" />
-
-
     </PreferenceCategory>
 
 </PreferenceScreen>
