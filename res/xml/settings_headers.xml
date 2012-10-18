@@ -68,6 +68,13 @@
         android:fragment="com.android.settings.liquid.LockscreenInterface"
         android:icon="@drawable/ic_liquid_lockscreen" />
 
+    <!-- Navigation Bar-->
+    <header
+        android:id="@+id/navbar"
+        android:title="@string/navbar_title"
+        android:fragment="com.android.settings.liquid.Navbar"
+        android:icon="@drawable/ic_liquid_navbar" />
+
     <!-- Performance -->
     <header
         android:id="@+id/performance_settings"

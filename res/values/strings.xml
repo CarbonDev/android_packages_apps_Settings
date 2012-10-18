@@ -4468,6 +4468,7 @@
 
     <!-- LIQUIDSMOOTH Settings -->
     <string name="lock_screen_title">Lockscreen</string>
+    <string name="navbar_title">Navigation</string>
     <string name="performance_title">Performance</string>
     <string name="power_menu_title">Powermenu</string>
     <string name="power_widget_title">Powerwidget</string>
