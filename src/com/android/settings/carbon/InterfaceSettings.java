@@ -80,9 +80,7 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     private static final String KEY_DUAL_PANE = "dual_pane";
     private static final String PREF_WAKEUP_WHEN_PLUGGED_UNPLUGGED = "wakeup_when_plugged_unplugged";
     private static final String PREF_NOTIFICATION_SHOW_WIFI_SSID = "notification_show_wifi_ssid";
-    private static final String PREF_NOTIFICATION_OPTIONS = "options";
 
-    PreferenceCategory mAdditionalOptions;    
     Preference mCustomLabel;
     Preference mRamBar;
     Preference mLcdDensity;
@@ -143,8 +141,6 @@ public class InterfaceSettings extends SettingsPreferenceFragment
         mShowWifiName = (CheckBoxPreference) findPreference(PREF_NOTIFICATION_SHOW_WIFI_SSID);
         mShowWifiName.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.NOTIFICATION_SHOW_WIFI_SSID, 0) == 1);
-
-        mAdditionalOptions = (PreferenceCategory) getPreferenceScreen().findPreference(PREF_NOTIFICATION_OPTIONS);
 
         PackageManager pm = getPackageManager();
         boolean isMobileData = pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY);

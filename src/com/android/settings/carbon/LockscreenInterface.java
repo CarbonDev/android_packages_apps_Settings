@@ -187,7 +187,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
             mLockscreenShortcutsLongpress.setEnabled(!mLockscreenEightTargets.isChecked());
             Settings.System.putString(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.LOCKSCREEN_TARGETS, GlowPadView.EMPTY_TARGET);
-            for (File pic : mActivity.getFilesDir().listFiles()) {
+            for (File pic : getActivity().getFilesDir().listFiles()) {
                 if (pic.getName().startsWith("lockscreen_")) {
                     pic.delete();
                 }
