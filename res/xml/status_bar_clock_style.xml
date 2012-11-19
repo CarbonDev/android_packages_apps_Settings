@@ -66,4 +66,22 @@
             android:entryValues="@array/clock_date_format_values"
             android:dependency="status_bar_show_clock" />
 
+        <ListPreference
+            android:entries="@array/notification_action_entries"
+            android:entryValues="@array/notification_action_values"
+            android:key="clock_shortclick"
+            android:title="@string/title_clock_shortclick" />
+
+        <ListPreference
+            android:entries="@array/notification_action_entries"
+            android:entryValues="@array/notification_action_values"
+            android:key="clock_longclick"
+            android:title="@string/title_clock_longclick" />
+
+        <ListPreference
+            android:entries="@array/notification_action_entries"
+            android:entryValues="@array/notification_action_values"
+            android:key="clock_doubleclick"
+            ndroid:title="@string/title_clock_doubleclick" />
+
 </PreferenceScreen>
