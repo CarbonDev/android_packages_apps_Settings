@@ -91,6 +91,13 @@
         <com.android.settings.RegulatoryInfoPreference android:key="regulatory_info"
                 android:title="@string/regulatory_information" />
 
+	<!-- Change Log -->
+        <PreferenceScreen android:key="changelog"
+                android:title="@string/changelog_title"
+                android:summary="@string/changelog_summary"
+                android:fragment="com.android.settings.carbon.ChangeLog" >
+        </PreferenceScreen>
+
         <!-- Device hardware model -->
         <Preference android:key="device_model" 
                 style="?android:preferenceInformationStyle"
