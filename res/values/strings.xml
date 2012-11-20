@@ -4929,5 +4929,11 @@
     <string name="mem_info">Memory</string>
     <!-- About phone screen, status item label -->
 
-    <!-- **** CARBON ADDITIONS END **** -->
+    <!-- CARBON Settings  -->
+    <!-- Settings main menu category heading. Interface (Launcher, Themes, System). [CHAR LIMIT=40] -->
+    <string name="header_category_carbon">CARBON</string>
+
+    <!-- Themes settings  -->
+    <string name="themes_settings_title">Themes</string>
+
 </resources>
