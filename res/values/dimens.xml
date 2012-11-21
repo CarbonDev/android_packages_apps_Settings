@@ -69,4 +69,7 @@
     <!-- Minimum width for the popup for updating a user's photo. -->
     <dimen name="update_user_photo_popup_min_width">300dip</dimen>
 
+    <!-- Light settings dialog -->
+    <dimen name="dialog_light_settings_width">400dip</dimen>
+
 </resources>
