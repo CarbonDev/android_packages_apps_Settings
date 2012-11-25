@@ -61,6 +61,13 @@
     <!-- CARBON -->
     <header android:title="@string/header_category_carbon" />
 
+    <!-- Performance -->
+    <header
+        android:id="@+id/performance_settings"
+        android:fragment="com.android.settings.carbon.PerformanceSettings"
+        android:icon="@drawable/ic_settings_performance"
+        android:title="@string/performance_settings_title" />
+
     <!-- Themes -->
     <header
         android:id="@+id/themes_settings"
