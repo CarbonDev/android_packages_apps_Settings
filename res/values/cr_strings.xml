@@ -650,4 +650,8 @@ equiring confirmation</string>
     <!-- Stylus gestures -->
     <string name="stylus_app_not_installed">%s is not installed</string>
 
+    <!-- IME switcher notifcation -->
+    <string name="ime_switcher_notify">Selector notification</string>
+    <string name="ime_switcher_notify_summary">Display input method selector notification</string>
+
 </resources>
