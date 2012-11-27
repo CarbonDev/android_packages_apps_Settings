@@ -122,6 +122,12 @@
             android:summary="@string/volume_adjust_sounds_enable_summary"
             android:persistent="true" />
 
+    <CheckBoxPreference
+            android:key="volbtn_music_controls"
+            android:title="@string/volbtn_music_controls_title"
+            android:summary="@string/volbtn_music_controls_summary"
+            android:persistent="false" />
+
     <ListPreference
             android:key="less_notification_sounds"
             android:title="@string/less_notification_sounds_title"
