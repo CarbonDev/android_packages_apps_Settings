@@ -92,12 +92,22 @@
             android:entryValues="@array/values_system_power_crt_mode"
             android:dependency="system_power_crt_screen_off" />
 
-       <CheckBoxPreference
+    </PreferenceCategory>
+
+        <PreferenceCategory
+            android:key="category_wakeup_options"
+            android:title="@string/display_category_wakeup_options_title"/>
+
+        <CheckBoxPreference
+            android:key="pref_volume_wake"
+            android:title="@string/pref_volume_wake_title"
+            android:summary="@string/pref_volume_wake_summary"
+            android:defaultValue="false" />
+
+        <CheckBoxPreference
             android:key="wake_when_plugged_or_unplugged"
             android:title="@string/wake_when_plugged_or_unplugged_title"
             android:summary="@string/wake_when_plugged_or_unplugged_summary"
             android:defaultValue="false" />
-
-    </PreferenceCategory>
 
 </PreferenceScreen>
