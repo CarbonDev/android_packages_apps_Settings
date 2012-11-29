@@ -58,6 +58,10 @@
         android:fragment="com.android.settings.WirelessSettings"
         android:icon="@drawable/empty_icon" />
 
+
+    <!-- LIQUIDSMOOTH -->
+    <header android:title="@string/liquidsmooth_category_title" />
+
     <!-- Themes -->
     <header
         android:id="@+id/themes_settings"
