@@ -27,6 +27,7 @@ import java.util.Random;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -48,6 +49,7 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
+import android.preference.Preference.OnPreferenceChangeListener;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
@@ -84,6 +86,8 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     private static final String PREF_NOTIFICATION_SHOW_WIFI_SSID = "notification_show_wifi_ssid";
     private static final String PREF_POWER_CRT_SCREEN_ON = "system_power_crt_screen_on";
     private static final String PREF_POWER_CRT_SCREEN_OFF = "system_power_crt_screen_off";
+    private static final String PREF_USER_MODE_UI = "user_mode_ui";
+    private static final String PREF_HIDE_EXTRAS = "hide_extras";
 
     Preference mCustomLabel;
     Preference mRamBar;
@@ -113,6 +117,7 @@ public class InterfaceSettings extends SettingsPreferenceFragment
         // Load the preferences from an XML resource
         addPreferencesFromResource(R.xml.interface_settings);
         PreferenceScreen prefSet = getPreferenceScreen();
+        ContentResolver cr = mContext.getContentResolver();
 
        // respect device default configuration
         // true fades while false animates
@@ -122,7 +127,7 @@ public class InterfaceSettings extends SettingsPreferenceFragment
         // use this to enable/disable crt on feature
         // crt only works if crt off is enabled
         // total system failure if only crt on is enabled
-        isCrtOffChecked = Settings.System.getInt(getActivity().getContentResolver(),
+        isCrtOffChecked = Settings.System.getInt(cr,
                 Settings.System.SYSTEM_POWER_ENABLE_CRT_OFF,
                 electronBeamFadesConfig ? 0 : 1) == 1;
 
@@ -131,7 +136,7 @@ public class InterfaceSettings extends SettingsPreferenceFragment
         mCrtOff.setOnPreferenceChangeListener(this);
 
         mCrtOn = (CheckBoxPreference) findPreference(PREF_POWER_CRT_SCREEN_ON);
-        mCrtOn.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
+        mCrtOn.setChecked(Settings.System.getInt(cr,
                 Settings.System.SYSTEM_POWER_ENABLE_CRT_ON, 0) == 1);
         mCrtOn.setEnabled(isCrtOffChecked);
         mCrtOn.setOnPreferenceChangeListener(this);
@@ -152,15 +157,26 @@ public class InterfaceSettings extends SettingsPreferenceFragment
         mRamBar = findPreference(KEY_RECENTS_RAM_BAR);
         updateRamBar();
 
+        mHideExtras = (CheckBoxPreference) findPreference(PREF_HIDE_EXTRAS);
+        mHideExtras.setChecked(Settings.System.getBoolean(cr,
+                        Settings.System.HIDE_EXTRAS_SYSTEM_BAR, false));
+
+        mUserModeUI = (ListPreference) findPreference(PREF_USER_MODE_UI);
+        int uiMode = Settings.System.getInt(cr,
+                Settings.System.CURRENT_UI_MODE, 0);
+        mUserModeUI.setValue(Integer.toString(Settings.System.getInt(cr,
+                Settings.System.USER_UI_MODE, uiMode)));
+        mUserModeUI.setOnPreferenceChangeListener(this);
+
         mDualPane = (CheckBoxPreference) findPreference(KEY_DUAL_PANE);
         boolean preferDualPane = getResources().getBoolean(
                 com.android.internal.R.bool.preferences_prefer_dual_pane);
-        boolean dualPaneMode = Settings.System.getInt(getActivity().getContentResolver(),
+        boolean dualPaneMode = Settings.System.getInt(cr,
                 Settings.System.DUAL_PANE_PREFS, (preferDualPane ? 1 : 0)) == 1;
         mDualPane.setChecked(dualPaneMode);
 
         mWakeUpWhenPluggedOrUnplugged = (CheckBoxPreference) findPreference(PREF_WAKEUP_WHEN_PLUGGED_UNPLUGGED);
-        mWakeUpWhenPluggedOrUnplugged.setChecked(Settings.System.getBoolean(mContext.getContentResolver(),
+        mWakeUpWhenPluggedOrUnplugged.setChecked(Settings.System.getBoolean(cr,
                         Settings.System.WAKEUP_WHEN_PLUGGED_UNPLUGGED, true));
 
         // hide option if device is already set to never wake up
@@ -170,7 +186,7 @@ public class InterfaceSettings extends SettingsPreferenceFragment
         }
 
         mShowWifiName = (CheckBoxPreference) findPreference(PREF_NOTIFICATION_SHOW_WIFI_SSID);
-        mShowWifiName.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
+        mShowWifiName.setChecked(Settings.System.getInt(cr,
                 Settings.System.NOTIFICATION_SHOW_WIFI_SSID, 0) == 1);
 
         PackageManager pm = getPackageManager();
@@ -185,7 +201,7 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     }
 
     private void updateCustomLabelTextSummary() {
-        mCustomLabelText = Settings.System.getString(mContext.getContentResolver(),
+        mCustomLabelText = Settings.System.getString(cr,
                 Settings.System.CUSTOM_CARRIER_LABEL);
         if (mCustomLabelText == null || mCustomLabelText.length() == 0) {
             mCustomLabel.setSummary(R.string.custom_carrier_label_notset);
@@ -243,6 +259,11 @@ public class InterfaceSettings extends SettingsPreferenceFragment
                     Settings.System.DUAL_PANE_PREFS,
                     ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
             return true;
+        } else if (preference == mHideExtras) {
+            Settings.System.putBoolean(mContext.getContentResolver(),
+                    Settings.System.HIDE_EXTRAS_SYSTEM_BAR,
+                    ((CheckBoxPreference) preference).isChecked());
+            return true;
         } else if (preference.getKey().equals("transparency_dialog")) {
             // getFragmentManager().beginTransaction().add(new
             // TransparencyDialog(), null).commit();
@@ -295,6 +316,11 @@ public class InterfaceSettings extends SettingsPreferenceFragment
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.SYSTEM_POWER_ENABLE_CRT_ON,
                     ((Boolean) newValue).booleanValue() ? 1 : 0);
+            return true;
+        } else if (preference == mUserModeUI) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.USER_UI_MODE, Integer.parseInt((String) newValue));
+            Helpers.restartSystemUI();
             return true;
         }
         return false;

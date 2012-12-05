@@ -4536,6 +4536,13 @@
     <string name="notification_drawer_custom_background_dialog_title">Choose color</string>
     <string name="notif_wallpaper_alpha_title">Notification background transparency</string>
 
+    <!-- UI Mode -->
+    <string name="user_mode_ui">UI Mode</string>
+    <string name="user_mode_ui_summary">What style to display NavBar and Statusbar\nChanges will force SystemUI Restart</string>
+    <string name="phone_mode_ui">Phone - NavBar to side in landscape</string>
+    <string name="tablet_mode_ui">Tablet - Combined NavBar and SystemBar</string>
+    <string name="phablet_mode_ui">Phablet - NavBar stays at bottom in landscape</string>
+
     <!-- Menu Strings -->
     <string name="menu_nav_bar_reset">Reset nav bar</string>
 
