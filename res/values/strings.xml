@@ -4407,6 +4407,17 @@
     <!-- Liquidsmooth Category  -->
     <string name="liquidsmooth_category_title">LIQUIDSMOOTH</string>
 
+    <string name="ok">OK</string>
+
+    <!-- Reset Profiles -->
+    <string name="profile_reset_title">Reset</string>
+    <string name="profile_reset_message">Delete all user created profiles and application groups and restore them to default?</string>
+
+    <string name="profiles_add">Add</string>
+
+    <!-- Add application dialog box title -->
+    <string name="profile_choose_app">Choose application</string>
+
     <!-- Display settings screen, notification light settings -->
     <string name="notification_light_general_title">General</string>
     <string name="notification_light_applist_title">Applications</string>
