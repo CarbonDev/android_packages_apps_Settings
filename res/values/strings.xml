@@ -4539,6 +4539,9 @@
     <string name="battery_light_low_color_title">Battery low</string>
     <string name="battery_light_medium_color_title">Charging</string>
     <string name="battery_light_full_color_title">Fully charged</string>
+    
+    <!-- Lock screen settings  -->
+    <string name="lock_screen_title">Lock screen settings</string>
 
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>
