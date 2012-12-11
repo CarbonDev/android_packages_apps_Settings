@@ -32,8 +32,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.PowerManager;
-import android.os.RemoteException;
-import android.os.ServiceManager;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -47,7 +45,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.util.StateSet;
 import android.util.TypedValue;
-import android.view.IWindowManager;
 import android.view.HapticFeedbackConstants;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -96,7 +93,6 @@ public class Navbar extends SettingsPreferenceFragment implements
     private static final String NAVIGATION_BAR_HEIGHT_LANDSCAPE = "navigation_bar_height_landscape";
     private static final String NAVIGATION_BAR_WIDTH = "navigation_bar_width";
     private static final String NAVIGATION_BAR_WIDGETS = "navigation_bar_widgets";
-    private static final String KEY_HARDWARE_KEYS = "hardware_keys";
     private static final String PREF_MENU_ARROWS = "navigation_bar_menu_arrow_keys";
     private static final String NAVBAR_HIDE_ENABLE = "navbar_hide_enable";
     private static final String NAVBAR_HIDE_TIMEOUT = "navbar_hide_timeout";
@@ -287,15 +283,6 @@ public class Navbar extends SettingsPreferenceFragment implements
 
         if (Integer.parseInt(menuDisplayLocation.getValue()) == 4) {
             mNavBarMenuDisplay.setEnabled(false);
-        }
-
-        // Only show the hardware keys config on a device that does not have a navbar 	
-        IWindowManager windowManager = IWindowManager.Stub.asInterface(
-                ServiceManager.getService(Context.WINDOW_SERVICE));
-
-        if (hasNavBarByDefault) {
-            // Let's assume they don't have hardware keys
-            getPreferenceScreen().removePreference(findPreference(KEY_HARDWARE_KEYS));
         }
         refreshSettings();
         setHasOptionsMenu(true);

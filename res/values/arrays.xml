@@ -1772,6 +1772,7 @@
         <item>13</item>
     </string-array>
 
+    <!-- Lockscreen longpress actions -->
     <string-array name="lockscreen_long_key_press_entries" translatable="false">
         <item>@string/lockscreen_buttons_no_action</item>
         <item>@string/lockscreen_buttons_next</item>
@@ -1781,7 +1782,6 @@
         <item>@string/lockscreen_buttons_camera</item>
         <item>@string/lockscreen_buttons_power_off</item>
     </string-array>
-
     <string-array name="lockscreen_long_key_press_values" translatable="false">
         <item></item>
         <item>NEXT</item>

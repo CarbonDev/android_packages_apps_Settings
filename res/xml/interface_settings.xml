@@ -77,8 +77,32 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="kardware_keys_options"
+        android:title="@string/hardware_keys_options_title">
+
+        <PreferenceScreen
+            android:key="hardware_keys"
+            android:title="@string/hardware_keys_title"
+            android:fragment="com.android.settings.carbon.HardwareKeys" />
+
+        <PreferenceScreen
+            android:key="lockscreen_buttons"
+            android:title="@string/lockscreen_buttons_title"
+            android:summary="@string/lockscreen_buttons_summary"
+            android:fragment="com.android.settings.carbon.LockscreenButtons" />
+
+        <CheckBoxPreference
+            android:key="power_button_torch"
+            android:title="@string/power_button_torch_title"
+            android:summary="@string/power_button_torch_summary"
+            android:persistent="false"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="options"
-        android:title="@string/additional_options_title">
+        android:title="@string/miscellaneous_options_title">
 
         <CheckBoxPreference
             android:key="system_power_crt_screen_off"
@@ -102,13 +126,6 @@
             android:key="notification_show_wifi_ssid"
             android:title="@string/notification_show_wifi_ssid_title"
             android:summary="@string/notification_show_wifi_ssid_summary"
-            android:defaultValue="false" />
-
-        <CheckBoxPreference
-            android:key="power_button_torch"
-            android:title="@string/power_button_torch_title"
-            android:summary="@string/power_button_torch_summary"
-            android:persistent="false"
             android:defaultValue="false" />
 
         <CheckBoxPreference

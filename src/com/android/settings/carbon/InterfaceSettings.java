@@ -42,6 +42,8 @@ import android.graphics.drawable.Drawable;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.RemoteException;
+import android.os.ServiceManager;
 import android.os.SystemProperties;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
@@ -57,6 +59,7 @@ import android.provider.Settings.SettingNotFoundException;
 import android.text.Spannable;
 import android.util.TypedValue;
 import android.view.Display;
+import android.view.IWindowManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -100,6 +103,7 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     private static final String PREF_USE_ALT_RESOLVER = "use_alt_resolver";
     private static final String KEY_POWER_BUTTON_TORCH = "power_button_torch";
     private static final String KEY_BACKGROUND_PREF = "lockscreen_background";
+    private static final String KEY_HARDWARE_KEYS = "hardware_keys";
 
     Preference mCustomLabel;
     Preference mRamBar;
@@ -231,6 +235,18 @@ public class InterfaceSettings extends SettingsPreferenceFragment
         mShowWifiName = (CheckBoxPreference) findPreference(PREF_NOTIFICATION_SHOW_WIFI_SSID);
         mShowWifiName.setChecked(Settings.System.getInt(cr,
                 Settings.System.NOTIFICATION_SHOW_WIFI_SSID, 0) == 1);
+
+        // Only show the hardware keys config on a device that does not have a navbar 	
+        IWindowManager windowManager = IWindowManager.Stub.asInterface(
+                ServiceManager.getService(Context.WINDOW_SERVICE));
+
+        boolean hasNavBarByDefault = mContext.getResources().getBoolean(
+                com.android.internal.R.bool.config_showNavigationBar);
+
+        if (hasNavBarByDefault) {
+            // Let's assume they don't have hardware keys
+            getPreferenceScreen().removePreference(findPreference(KEY_HARDWARE_KEYS));
+        }
 
         PackageManager pm = getPackageManager();
         boolean isMobileData = pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY);

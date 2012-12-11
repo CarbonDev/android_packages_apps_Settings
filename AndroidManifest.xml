@@ -1537,6 +1537,7 @@
         <activity android:name=".carbon.About" />
         <activity android:name=".carbon.InterfaceSettings" />
         <activity android:name=".carbon.Lockscreens" />
+        <activity android:name=".carbon.LockscreenButtons" />
         <activity android:name=".carbon.Navbar" />
         <activity android:name=".carbon.NavRingTargets" />
         <activity android:name=".carbon.NotificationDrawerStyle" />
