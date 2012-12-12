@@ -86,6 +86,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private static final String KEY_QUIET_HOURS = "quiet_hours";
     private static final String KEY_HEADSET_CONNECT_PLAYER = "headset_connect_player";
     private static final String KEY_SAFE_HEADSET_VOLUME = "safe_headset_volume";
+    private static final String KEY_VOLUME_ADJUST_SOUNDS = "volume_adjust_sounds";
 
     private static final String RING_MODE_NORMAL = "normal";
     private static final String RING_MODE_VIBRATE = "vibrate";
@@ -112,6 +113,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private PreferenceScreen mQuietHours;
     private CheckBoxPreference mHeadsetConnectPlayer;
     private CheckBoxPreference mSafeHeadsetVolume;
+    private CheckBoxPreference mVolumeAdjustSounds;
 
     private Runnable mRingtoneLookupRunnable;
 
@@ -226,6 +228,11 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         mLockSounds.setPersistent(false);
         mLockSounds.setChecked(Settings.System.getInt(resolver,
                 Settings.System.LOCKSCREEN_SOUNDS_ENABLED, 1) != 0);
+
+        mVolumeAdjustSounds = (CheckBoxPreference) findPreference(KEY_VOLUME_ADJUST_SOUNDS);
+        mVolumeAdjustSounds.setPersistent(false);
+        mVolumeAdjustSounds.setChecked(Settings.System.getInt(resolver,
+                Settings.System.VOLUME_ADJUST_SOUNDS_ENABLED, 1) != 0);
 
         mHeadsetConnectPlayer = (CheckBoxPreference) findPreference(KEY_HEADSET_CONNECT_PLAYER);
         mHeadsetConnectPlayer.setChecked(Settings.System.getInt(resolver,
@@ -461,6 +468,9 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         } else if (preference == mDockAudioMediaEnabled) {
             Settings.Global.putInt(getContentResolver(), Settings.Global.DOCK_AUDIO_MEDIA_ENABLED,
                     mDockAudioMediaEnabled.isChecked() ? 1 : 0);
+        } else if (preference == mVolumeAdjustSounds) {
+            Settings.System.putInt(getContentResolver(), Settings.System.VOLUME_ADJUST_SOUNDS_ENABLED,
+                    mVolumeAdjustSounds.isChecked() ? 1 : 0);
         } else {
             // If we didn't handle it, let preferences handle it.
             return super.onPreferenceTreeClick(preferenceScreen, preference);
