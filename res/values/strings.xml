@@ -4561,6 +4561,58 @@
     <string name="battery_light_low_color_title">Battery low</string>
     <string name="battery_light_medium_color_title">Charging</string>
     <string name="battery_light_full_color_title">Fully charged</string>
-    
+
+    <!-- Statusbar | Toggles -->
+    <string name="title_statusbar_toggles">QuickToggles</string>
+    <string name="toggle_style_title">Toggle style</string>
+    <string name="toggle_style_summary">Whether to show icons or text on your toggles.</string>
+    <string name="toggles_layout_title">Toggle Layout</string>
+    <string name="enabled_toggles_title">Enabled toggles</string>
+    <string name="enabled_toggles_summary">Choose toggles to display</string>
+    <string name="toggles_display_dialog">Choose which toggles to use</string>
+    <string name="toggles_per_row_title">Toggles per row</string>
+    <string name="toggles_per_row_summary">Choose how many toggles to show per row</string>
+    <string name="toggles_display_close">Close</string>
+    <string name="toggles_order_title">Toggle order</string>
+    <string name="toggles_order_summary">Choose the order which your toggles are displayed</string>
+    <string name="title_settings_behavior">Use default settings behavior</string>
+    <string name="summary_settings_behavior_default">Short press for Settings, Long press for Toggles</string>
+    <string name="summary_settings_behavior_reverse">Short press for Toggles, Long press for Settings</string>
+    <string name="title_toggles_autohide">Auto hide toggles</string>
+    <string name="summary_toggles_autohide">Hide toggles after drawer closes.</string>
+    <string name="brightness_location_title">Brightness location</string>
+    <string name="reset_toggles_title">Reset toggles</string>
+    <string name="reset_toggles_summary">Reset all toggles and their order</string>
+    <string name="toggle_button_alpha_title">Toggle indicator alpha</string>
+    <string name="toggle_btn_enabled_color_title">Enabled indicator color</string>
+    <string name="toggle_btn_disabled_color_title">Disabled indicator color</string>
+    <string name="toggle_btn_background_title">Toggle background alpha</string>
+    <string name="toggle_text_color_title">Toggle text color</string>
+
+    <!-- Toggle Strings to be called from device overlays -->
+    <string name="toggle_airplane_mode">Airplane Mode</string>
+    <string name="toggle_auto_rotate">Auto Rotate</string>
+    <string name="toggle_bluetooth">Bluetooth</string>
+    <string name="toggle_fcharge">Fast Charge</string>
+    <string name="toggle_gps">GPS</string>
+    <string name="toggle_lte">LTE</string>
+    <string name="toggle_data">Data</string>
+    <string name="toggle_nfc">NFC</string>
+    <string name="toggle_silent">Silent</string>
+    <string name="toggle_sync">Sync</string>
+    <string name="toggle_torch">Torch</string>
+    <string name="toggle_2g">2G</string>
+    <string name="toggle_usb_tether">USB Tether</string>
+    <string name="toggle_vibrate">Vibrate</string>
+    <string name="toggle_wifi_tether">Wifi Tether</string>
+    <string name="toggle_wifi">Wi-Fi</string>
+    <string name="toggle_user">User</string>
+    <string name="toggle_settings">Settings</string>
+    <string name="toggle_signal">Signal</string>
+    <string name="toggle_clock">Clock</string>
+    <string name="toggle_ime">IME</string>
+    <string name="toggle_battery">Battery</string>
+    <string name="toggle_brightness">Brightness</string> 
+
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>

@@ -69,6 +69,13 @@
         android:title="@string/lock_screen_title"
         android:icon="@drawable/ic_settings_lockscreen" />
 
+    <!-- Statusbar Toggles -->
+    <header
+        android:id="@+id/statusbar_toggles"
+        android:title="@string/title_statusbar_toggles"
+        android:fragment="com.android.settings.liquid.StatusBarToggles"
+        android:icon="@drawable/ic_settings_lockscreen" />
+
     <!-- Power Menu -->
     <header
         android:id="@+id/power_menu_settings"
