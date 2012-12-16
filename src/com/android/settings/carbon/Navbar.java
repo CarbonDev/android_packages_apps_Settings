@@ -85,6 +85,7 @@ public class Navbar extends SettingsPreferenceFragment implements
     private static final String ENABLE_NAVRING_LONG = "enable_navring_long";
     private static final String NAVIGATION_BAR_WIDGETS = "navigation_bar_widgets";
     private static final String KEY_HARDWARE_KEYS = "hardware_keys";
+    private static final String PREF_MENU_ARROWS = "navigation_bar_menu_arrow_keys";
 
     public static final int REQUEST_PICK_CUSTOM_ICON = 200;
     public static final int REQUEST_PICK_LANDSCAPE_ICON = 201;
@@ -113,6 +114,7 @@ public class Navbar extends SettingsPreferenceFragment implements
     SeekBarPreference mWidthPort;
     SeekBarPreference mWidthLand;
     CheckBoxPreference mEnableNavringLong;
+    CheckBoxPreference mMenuArrowKeysCheckBox;
     Preference mConfigureWidgets;
 
     private int mPendingIconIndex = -1;
@@ -225,6 +227,19 @@ public class Navbar extends SettingsPreferenceFragment implements
         mNavigationBarWidth.setOnPreferenceChangeListener(this);
         mConfigureWidgets = findPreference(NAVIGATION_BAR_WIDGETS);
 
+		if (isTablet(mContext)) {
+            prefs.removePreference(mNavBarMenuDisplay);
+            prefs.removePreference(menuDisplayLocation);
+        } else {
+            ((PreferenceGroup) findPreference("advanced_cat")).removePreference(mWidthHelp);
+            ((PreferenceGroup) findPreference("advanced_cat")).removePreference(mWidthLand);
+            ((PreferenceGroup) findPreference("advanced_cat")).removePreference(mWidthPort);
+        }
+
+        mMenuArrowKeysCheckBox = (CheckBoxPreference) findPreference(PREF_MENU_ARROWS);
+        mMenuArrowKeysCheckBox.setChecked(Settings.System.getBoolean(getContentResolver(),
+                Settings.System.NAVIGATION_BAR_MENU_ARROW_KEYS, true));
+
         // Only show the hardware keys config on a device that does not have a navbar 	
         IWindowManager windowManager = IWindowManager.Stub.asInterface(
                 ServiceManager.getService(Context.WINDOW_SERVICE));
@@ -234,15 +249,6 @@ public class Navbar extends SettingsPreferenceFragment implements
             }
         } catch (RemoteException e) {
             // Do nothing
-        }
-
-		if (isTablet(mContext)) {
-            prefs.removePreference(mNavBarMenuDisplay);
-            prefs.removePreference(menuDisplayLocation);
-        } else {
-            ((PreferenceGroup) findPreference("advanced_cat")).removePreference(mWidthHelp);
-            ((PreferenceGroup) findPreference("advanced_cat")).removePreference(mWidthLand);
-            ((PreferenceGroup) findPreference("advanced_cat")).removePreference(mWidthPort);
         }
         refreshSettings();
         setHasOptionsMenu(true);
@@ -325,6 +331,11 @@ public class Navbar extends SettingsPreferenceFragment implements
             ft.addToBackStack("config_widgets");
             ft.replace(this.getId(), fragment);
             ft.commit();
+            return true;
+        } else if (preference == mMenuArrowKeysCheckBox) {
+            Settings.System.putBoolean(getActivity().getContentResolver(),
+                    Settings.System.NAVIGATION_BAR_MENU_ARROW_KEYS,
+                    ((CheckBoxPreference) preference).isChecked() ? true : false);
             return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
