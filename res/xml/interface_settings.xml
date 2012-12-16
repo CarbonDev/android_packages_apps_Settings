@@ -40,6 +40,18 @@
             android:title="@string/dual_pane"
             android:summary="@string/dual_pane_summary" />
 
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="options"
+        android:title="@string/additional_options_title">
+
+        <CheckBoxPreference
+            android:key="notification_show_wifi_ssid"
+            android:title="@string/notification_show_wifi_ssid_title"
+            android:summary="@string/notification_show_wifi_ssid_summary"
+            android:defaultValue="false" />
+
         <CheckBoxPreference
             android:key="wakeup_when_plugged_unplugged"
             android:title="@string/wakeup_when_plugged_unplugged_title"

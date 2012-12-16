@@ -33,6 +33,7 @@ import android.app.DialogFragment;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -78,12 +79,16 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     private static final String KEY_RECENTS_RAM_BAR = "recents_ram_bar";
     private static final String KEY_DUAL_PANE = "dual_pane";
     private static final String PREF_WAKEUP_WHEN_PLUGGED_UNPLUGGED = "wakeup_when_plugged_unplugged";
+    private static final String PREF_NOTIFICATION_SHOW_WIFI_SSID = "notification_show_wifi_ssid";
+    private static final String PREF_NOTIFICATION_OPTIONS = "options";
 
+    PreferenceCategory mAdditionalOptions;    
     Preference mCustomLabel;
     Preference mRamBar;
     Preference mLcdDensity;
     CheckBoxPreference mDualPane;
     CheckBoxPreference mWakeUpWhenPluggedOrUnplugged;
+    CheckBoxPreference mShowWifiName;
 
     Random randomGenerator = new Random();
 
@@ -134,7 +139,21 @@ public class InterfaceSettings extends SettingsPreferenceFragment
                 com.android.internal.R.bool.config_unplugTurnsOnScreen)) {
             ((PreferenceGroup) findPreference("misc")).removePreference(mWakeUpWhenPluggedOrUnplugged);
         }
-        
+
+        mShowWifiName = (CheckBoxPreference) findPreference(PREF_NOTIFICATION_SHOW_WIFI_SSID);
+        mShowWifiName.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.NOTIFICATION_SHOW_WIFI_SSID, 0) == 1);
+
+        mAdditionalOptions = (PreferenceCategory) prefs.findPreference(PREF_NOTIFICATION_OPTIONS);
+
+        PackageManager pm = getPackageManager();
+        boolean isMobileData = pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY);
+
+        if (!Utils.isPhone(getActivity()) || !isMobileData) {
+            // Nothing for tablets, large screen devices and non Wifi devices remove options
+            prefs.removePreference(mAdditionalOptions);
+        }
+
         setHasOptionsMenu(true);
     }
 
@@ -206,6 +225,11 @@ public class InterfaceSettings extends SettingsPreferenceFragment
             Settings.System.putBoolean(getActivity().getContentResolver(),
                     Settings.System.WAKEUP_WHEN_PLUGGED_UNPLUGGED,
                     ((CheckBoxPreference) preference).isChecked());
+            return true;
+        } else if (preference == mShowWifiName) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.NOTIFICATION_SHOW_WIFI_SSID,
+                    mShowWifiName.isChecked() ? 1 : 0);
             return true;
         }
 

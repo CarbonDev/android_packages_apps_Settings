@@ -4498,6 +4498,8 @@
     <string name="notification_drawer_title">Notification drawer</string>
     <string name="notification_style_title">Notification drawer style</string>
     <string name="notification_style_summary">Change your notification drawer style</string>
+    <string name="notification_show_wifi_ssid_title">Show Wifi network name</string>
+    <string name="notification_show_wifi_ssid_summary">Display the name of the currently connected Wifi network</string>
 
     <!-- Notification drawer background -->
     <string name="notification_wallpaper_title">Notification drawer background</string>
@@ -5191,6 +5193,7 @@
     <!-- Shortcut Picker -->
     <string name="group_applications">Applications</string>
 
+<<<<<<< HEAD
     <!-- Powerwidget  -->
     <string name="title_expanded_widget">Powerwidget</string>
     <string name="power_widget_buttons">Widget Buttons</string>
