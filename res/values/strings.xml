@@ -4880,8 +4880,11 @@
 
     <!-- Sound settings screen -->
     <string name="volume_overlay_title">Volume panel style</string>
-    <string name="silent_mode_title">Silent mode</string>
     <string name="volume_ring_only_description">Ringtone</string>
+    <string name="ring_mode_title">Ring mode</string>
+    <string name="ring_mode_normal">Normal</string>
+    <string name="ring_mode_vibrate">Vibrate</string>
+    <string name="ring_mode_mute">Mute</string>
 
     <!-- Power Widget  -->
     <string name="power_widget_title">Power widget</string>
