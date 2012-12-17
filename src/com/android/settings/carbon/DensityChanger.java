@@ -51,6 +51,7 @@ public class DensityChanger extends SettingsPreferenceFragment
     ListPreference mStockDensity;
     Preference mReboot;
     Preference mClearMarketData;
+    Preference mRebootClearData;
     Preference mOpenMarket;
     ListPreference mCustomDensity;
 
@@ -84,6 +85,7 @@ public class DensityChanger extends SettingsPreferenceFragment
 
         mReboot = findPreference("reboot");
         mClearMarketData = findPreference("clear_market_data");
+        mRebootClearData = findPreference("reboot_cleardata");
         mOpenMarket = findPreference("open_market");
 
         mCustomDensity = (ListPreference) findPreference("lcd_density");
@@ -93,8 +95,6 @@ public class DensityChanger extends SettingsPreferenceFragment
     @Override
     public void onResume() {
         super.onResume();
-
-        mClearMarketData.setSummary("");
     }
 
     @Override
@@ -111,6 +111,11 @@ public class DensityChanger extends SettingsPreferenceFragment
             return true;
         } else if (preference == mClearMarketData) {
             new ClearMarketDataTask().execute("");
+            return true;
+        } else if (preference == mRebootClearData) {
+            PowerManager pm = (PowerManager) getActivity()
+                    .getSystemService(Context.POWER_SERVICE);
+            pm.reboot("Clear market data");
             return true;
         } else if (preference == mOpenMarket) {
             Intent openMarket = new Intent(Intent.ACTION_MAIN)
@@ -231,15 +236,38 @@ public class DensityChanger extends SettingsPreferenceFragment
     private class ClearMarketDataTask extends AsyncTask<String, Void, Boolean> {
         protected Boolean doInBackground(String... stuff) {
             String vending = "/data/data/com.android.vending/";
-            CommandResult cr = new CMDProcessor().su.runWaitFor("ls " + vending);
+            String gms = "/data/data/com.google.android.gms/";
+            String gsf = "/data/data/com.google.android.gsf/";
 
-            if (cr.stdout == null)
+            CommandResult cr = new CMDProcessor().su.runWaitFor("ls " + vending);
+            CommandResult cr_gms = new CMDProcessor().su.runWaitFor("ls " + gms);
+            CommandResult cr_gsf = new CMDProcessor().su.runWaitFor("ls " + gsf);
+
+            if (cr.stdout == null || cr_gms.stdout == null || cr_gsf.stdout == null)
                 return false;
 
             for (String dir : cr.stdout.split("\n")) {
                 if (!dir.equals("lib")) {
                     String c = "rm -r " + vending + dir;
                     if (!new CMDProcessor().su.runWaitFor(c).success())
+                        return false;
+                }
+            }
+
+            for (String dir_gms : cr_gms.stdout.split("\n")) {
+                if (!dir_gms.equals("lib")) {
+                    String c_gms = "rm -r " + gms + dir_gms;
+                    // Log.i(TAG, c);
+                    if (!new CMDProcessor().su.runWaitFor(c_gms).success())
+                        return false;
+                }
+            }
+
+            for (String dir_gsf : cr_gsf.stdout.split("\n")) {
+                if (!dir_gsf.equals("lib")) {
+                    String c_gsf = "rm -r " + gsf + dir_gsf;
+                    // Log.i(TAG, c);
+                    if (!new CMDProcessor().su.runWaitFor(c_gsf).success())
                         return false;
                 }
             }
