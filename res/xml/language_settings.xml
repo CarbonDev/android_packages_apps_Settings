@@ -67,38 +67,41 @@
                 android:persistent="false"/>
     </PreferenceCategory>
 
-    <CheckBoxPreference
-            android:key="status_bar_ime_switcher"
-            android:title="@string/ime_switcher_notify"
-            android:summary="@string/ime_switcher_notify_summary"
-            android:defaultValue="true"
-            android:persistent="false" />
-    <ListPreference
-            android:key="volume_key_cursor_control"
-            android:persistent="false"
-            android:dialogTitle="@string/volume_key_cursor_control_title"
-            android:title="@string/volume_key_cursor_control_title"
-            android:entries="@array/volume_key_cursor_control_entries"
-            android:entryValues="@array/volume_key_cursor_control_values" />
+        <CheckBoxPreference
+                android:key="disable_fullscreen_keyboard"
+                android:title="@string/disable_fullscreen_keyboard_title"
+                android:summary="@string/disable_fullscreen_keyboard_summary"
+                android:defaultValue="false" />
+        <CheckBoxPreference
+                android:key="status_bar_ime_switcher"
+                android:title="@string/ime_switcher_notify"
+                android:summary="@string/ime_switcher_notify_summary"
+                android:defaultValue="true"
+                android:persistent="false" />
+        <ListPreference
+                android:key="volume_key_cursor_control"
+                android:persistent="false"
+                android:dialogTitle="@string/volume_key_cursor_control_title"
+                android:title="@string/volume_key_cursor_control_title"
+                android:entries="@array/volume_key_cursor_control_entries"
+                android:entryValues="@array/volume_key_cursor_control_values" />
+        <CheckBoxPreference
+                android:key="keyboard_rotation_toggle"
+                android:title="@string/keyboard_rotation_toggle_title"
+                android:summary="@string/keyboard_rotation_toggle_summary"
+                android:defaultValue="false"
+                android:persistent="false" />
+        <ListPreference
+                android:key="keyboard_rotation_timeout"
+                android:persistent="false"
+                android:dialogTitle="@string/keyboard_rotation_timeout_title"
+                android:title="@string/keyboard_rotation_timeout_title"
+                android:entries="@array/keyboard_rotation_timeout_entries"
+                android:entryValues="@array/keyboard_rotation_timeout_values"
+                android:dependency="keyboard_rotation_toggle" />
 
-    <CheckBoxPreference
-            android:key="keyboard_rotation_toggle"
-            android:title="@string/keyboard_rotation_toggle_title"
-            android:summary="@string/keyboard_rotation_toggle_summary"
-            android:defaultValue="false"
-            android:persistent="false" />
-
-    <ListPreference
-            android:key="keyboard_rotation_timeout"
-            android:persistent="false"
-            android:dialogTitle="@string/keyboard_rotation_timeout_title"
-            android:title="@string/keyboard_rotation_timeout_title"
-            android:entries="@array/keyboard_rotation_timeout_entries"
-            android:entryValues="@array/keyboard_rotation_timeout_values"
-            android:dependency="keyboard_rotation_toggle" />
-
-    <PreferenceCategory android:key="voice_category"
-            android:title="@string/voice_category" >
+        <PreferenceCategory android:key="voice_category"
+                android:title="@string/voice_category" >
 
         <!-- entries, entryValues, and defaultValue will be populated programmatically. -->
         <ListPreference
@@ -117,15 +120,15 @@
 
     <PreferenceCategory android:key="pointer_settings_category"
             android:title="@string/pointer_settings_category">
-        <PreferenceScreen
-                android:fragment="com.android.settings.inputmethod.StylusGestures"
-                android:key="stylus_gestures"
-                android:title="@string/gestures_settings_title" />
-
         <com.android.settings.PointerSpeedPreference
                 android:key="pointer_speed"
                 android:title="@string/pointer_speed"
                 android:dialogTitle="@string/pointer_speed" />
+
+        <PreferenceScreen
+                android:fragment="com.android.settings.inputmethod.StylusGestures"
+                android:key="stylus_gestures"
+                android:title="@string/gestures_settings_title" />
 
         <CheckBoxPreference android:key="stylus_icon_enabled"
                 android:title="@string/stylus_icon_enabled_title"
