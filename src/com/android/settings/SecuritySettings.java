@@ -82,7 +82,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private static final String KEY_CREDENTIALS_MANAGER = "credentials_management";
     private static final String PACKAGE_MIME_TYPE = "application/vnd.android.package-archive";
 
-    // Cyanogenmod Additions
+    // Additions
     private static final String SLIDE_LOCK_DELAY_TOGGLE = "slide_lock_delay_toggle";
     private static final String SLIDE_LOCK_TIMEOUT_DELAY = "slide_lock_timeout_delay";
     private static final String SLIDE_LOCK_SCREENOFF_DELAY = "slide_lock_screenoff_delay";
@@ -90,6 +90,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private static final String HOME_UNLOCK_PREF = "home_unlock";
     private static final String LOCKSCREEN_QUICK_UNLOCK_CONTROL = "quick_unlock_control";
     private static final String KEY_VIBRATE_PREF = "lockscreen_vibrate";
+    private static final String KEY_SMS_SECURITY_CHECK_PREF = "sms_security_check_limit";
 
     DevicePolicyManager mDPM;
 
@@ -111,7 +112,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
 
     private boolean mIsPrimary;
 
-    // Cyanogenmod Additions
+    // Additions
     private CheckBoxPreference mSlideLockDelayToggle;
     private ListPreference mSlideLockTimeoutDelay;
     private ListPreference mSlideLockScreenOffDelay;
@@ -119,6 +120,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private CheckBoxPreference mMenuUnlock;
     private CheckBoxPreference mHomeUnlock;
     private CheckBoxPreference mQuickUnlockScreen;
+    private ListPreference mSmsSecurityCheck;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -139,13 +141,16 @@ public class SecuritySettings extends SettingsPreferenceFragment
         addPreferencesFromResource(R.xml.security_settings);
         root = getPreferenceScreen();
 
-        // CM - allows for calling the settings screen with stock or cm view
-        boolean isCmSecurity = false;
+        // allows for calling the settings screen with stock or liquid view
+        boolean isLsSecurity = false;
         Bundle args = getArguments();
         if (args != null) {
-            isCmSecurity = args.getBoolean("cm_security");
+            isLsSecurity = args.getBoolean("liquid_security");
         }
         ContentResolver resolver = getActivity().getApplicationContext().getContentResolver();
+
+        // Add package manager to check if features are available
+        PackageManager pm = getPackageManager();
 
         // Add options for lock/unlock screen
         int resid = 0;
@@ -195,7 +200,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
             }
         }
 
-        if (mIsPrimary && !isCmSecurity) {
+        if (mIsPrimary && !isLsSecurity) {
             switch (dpm.getStorageEncryptionStatus()) {
             case DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE:
                 // The device is currently encrypted.
@@ -213,8 +218,8 @@ public class SecuritySettings extends SettingsPreferenceFragment
         if (mLockAfter != null) {
             setupLockAfterPreference();
             updateLockAfterPreferenceSummary();
-        } else if (!mLockPatternUtils.isLockScreenDisabled() && isCmSecurity) {
-            addPreferencesFromResource(R.xml.security_settings_slide_delay_cyanogenmod);
+        } else if (!mLockPatternUtils.isLockScreenDisabled() && isLsSecurity) {
+            addPreferencesFromResource(R.xml.security_settings_slide_delay_liquid);
 
             mSlideLockDelayToggle = (CheckBoxPreference) root
                     .findPreference(SLIDE_LOCK_DELAY_TOGGLE);
@@ -238,7 +243,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
             mSlideLockScreenOffDelay.setOnPreferenceChangeListener(this);
         }
 
-        if (isCmSecurity) {
+        if (isLsSecurity) {
             // visible pattern
             mVisiblePattern = (CheckBoxPreference) root.findPreference(KEY_VISIBLE_PATTERN);
 
@@ -247,8 +252,8 @@ public class SecuritySettings extends SettingsPreferenceFragment
                     KEY_POWER_INSTANTLY_LOCKS);
             checkPowerInstantLockDependency();
 
-            // Add the additional CyanogenMod settings
-            addPreferencesFromResource(R.xml.security_settings_cyanogenmod);
+            // Add the additional LiquidSmooth settings
+            addPreferencesFromResource(R.xml.security_settings_liquid);
 
             // Quick Unlock Screen Control
             mQuickUnlockScreen = (CheckBoxPreference) root
@@ -328,7 +333,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
         }
 
         // Append the rest of the settings
-        if (!isCmSecurity) {
+        if (!isLsSecurity) {
             addPreferencesFromResource(R.xml.security_settings_misc);
 
             // Do not display SIM lock for devices without an Icc card
@@ -378,6 +383,15 @@ public class SecuritySettings extends SettingsPreferenceFragment
                 }
             }
         }
+
+        boolean isTelephony = pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY);
+        if (isTelephony) {
+            addPreferencesFromResource(R.xml.security_settings_app_liquid);
+            mSmsSecurityCheck = (ListPreference) root.findPreference(KEY_SMS_SECURITY_CHECK_PREF);
+            mSmsSecurityCheck.setOnPreferenceChangeListener(this);
+            int smsSecurityCheck = Integer.valueOf(mSmsSecurityCheck.getValue());
+            updateSmsSecuritySummary(smsSecurityCheck);
+         }
 
         return root;
     }
@@ -455,6 +469,11 @@ public class SecuritySettings extends SettingsPreferenceFragment
             }
         }
         mSlideLockTimeoutDelay.setSummary(entries[best]);
+    }
+
+    private void updateSmsSecuritySummary(int i) {
+        String message = getString(R.string.sms_security_check_limit_summary, i);
+        mSmsSecurityCheck.setSummary(message);
     }
 
     private void updateSlideAfterScreenOffSummary() {
@@ -708,6 +727,11 @@ public class SecuritySettings extends SettingsPreferenceFragment
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.SCREEN_LOCK_SLIDE_SCREENOFF_DELAY, slideScreenOffDelay);
             updateSlideAfterScreenOffSummary();
+        } else if (preference == mSmsSecurityCheck) {
+            int smsSecurityCheck = Integer.valueOf((String) value);
+            Settings.Secure.putInt(getContentResolver(), Settings.Global.SMS_OUTGOING_CHECK_MAX_COUNT,
+                     smsSecurityCheck);
+            updateSmsSecuritySummary(smsSecurityCheck);
         }
         return true;
     }

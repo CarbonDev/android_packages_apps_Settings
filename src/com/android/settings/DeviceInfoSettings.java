@@ -19,6 +19,7 @@ package com.android.settings;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.SELinux;
@@ -32,10 +33,8 @@ import android.util.Log;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -73,7 +72,6 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
     private static final String KEY_DEVICE_MEMORY = "device_memory";
 
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
-
     long[] mHits = new long[3];
     int mDevHitCountdown;
     Toast mDevHitToast;
@@ -93,7 +91,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
         setStringSummary(KEY_BUILD_NUMBER, Build.DISPLAY);
         findPreference(KEY_BUILD_NUMBER).setEnabled(true);
         findPreference(KEY_KERNEL_VERSION).setSummary(getFormattedKernelVersion());
-        setValueSummary(KEY_MOD_VERSION, "ro.modversion");
+        setValueSummary(KEY_MOD_VERSION, "ro.liquid.version");
         setValueSummary(KEY_MOD_BUILD_DATE, "ro.build.date");
 
         if (!SELinux.isSELinuxEnabled()) {
@@ -108,7 +106,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
         removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_SELINUX_STATUS,
                 PROPERTY_SELINUX_STATUS);
 
-	String cpuInfo = getCPUInfo();
+        String cpuInfo = getCPUInfo();
         String memInfo = getMemInfo();
 
         if (cpuInfo != null) {
@@ -199,35 +197,38 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
                 }
             }
         } else if (preference.getKey().equals(KEY_BUILD_NUMBER)) {
-            if (mDevHitCountdown > 0) {
-                mDevHitCountdown--;
-                if (mDevHitCountdown == 0) {
-                    getActivity().getSharedPreferences(DevelopmentSettings.PREF_FILE,
-                            Context.MODE_PRIVATE).edit().putBoolean(
-                                    DevelopmentSettings.PREF_SHOW, true).apply();
+            // Only allow the owner of the device to turn on dev and performance options
+            if (UserHandle.myUserId() == UserHandle.USER_OWNER) {
+                if (mDevHitCountdown > 0) {
+                    mDevHitCountdown--;
+                    if (mDevHitCountdown == 0) {
+                        getActivity().getSharedPreferences(DevelopmentSettings.PREF_FILE,
+                                Context.MODE_PRIVATE).edit().putBoolean(
+                                        DevelopmentSettings.PREF_SHOW, true).apply();
+                        if (mDevHitToast != null) {
+                            mDevHitToast.cancel();
+                        }
+                        mDevHitToast = Toast.makeText(getActivity(), R.string.show_dev_on,
+                                Toast.LENGTH_LONG);
+                        mDevHitToast.show();
+                    } else if (mDevHitCountdown > 0
+                            && mDevHitCountdown < (TAPS_TO_BE_A_DEVELOPER-2)) {
+                        if (mDevHitToast != null) {
+                            mDevHitToast.cancel();
+                        }
+                        mDevHitToast = Toast.makeText(getActivity(), getResources().getString(
+                                R.string.show_dev_countdown, mDevHitCountdown),
+                                Toast.LENGTH_SHORT);
+                        mDevHitToast.show();
+                    }
+                } else if (mDevHitCountdown < 0) {
                     if (mDevHitToast != null) {
                         mDevHitToast.cancel();
                     }
-                    mDevHitToast = Toast.makeText(getActivity(), R.string.show_dev_on,
+                    mDevHitToast = Toast.makeText(getActivity(), R.string.show_dev_already,
                             Toast.LENGTH_LONG);
                     mDevHitToast.show();
-                } else if (mDevHitCountdown > 0
-                        && mDevHitCountdown < (TAPS_TO_BE_A_DEVELOPER-2)) {
-                    if (mDevHitToast != null) {
-                        mDevHitToast.cancel();
-                    }
-                    mDevHitToast = Toast.makeText(getActivity(), getResources().getString(
-                            R.string.show_dev_countdown, mDevHitCountdown),
-                            Toast.LENGTH_SHORT);
-                    mDevHitToast.show();
                 }
-            } else if (mDevHitCountdown < 0) {
-                if (mDevHitToast != null) {
-                    mDevHitToast.cancel();
-                }
-                mDevHitToast = Toast.makeText(getActivity(), R.string.show_dev_already,
-                        Toast.LENGTH_LONG);
-                mDevHitToast.show();
             }
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
@@ -389,5 +390,23 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
         } catch (IOException e) {}
 
         return result;
+    }
+
+    private boolean removePreferenceIfPackageNotInstalled(Preference preference) {
+        String intentUri=((PreferenceScreen) preference).getIntent().toUri(1);
+        Pattern pattern = Pattern.compile("component=([^/]+)/");
+        Matcher matcher = pattern.matcher(intentUri);
+
+        String packageName=matcher.find()?matcher.group(1):null;
+        if(packageName != null) {
+            try {
+                getPackageManager().getPackageInfo(packageName, 0);
+            } catch (NameNotFoundException e) {
+                Log.e(LOG_TAG,"package "+packageName+" not installed, hiding preference.");
+                getPreferenceScreen().removePreference(preference);
+                return true;
+            }
+        }
+        return false;
     }
 }
