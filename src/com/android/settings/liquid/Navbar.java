@@ -58,7 +58,7 @@ import com.android.settings.SettingsActivity;
 import com.android.settings.util.ShortcutPickerHelper;
 import com.android.settings.widgets.NavBarItemPreference;
 import com.android.settings.widgets.SeekBarPreference;
-import com.android.settings.fragments.NavRingTargets;
+import com.android.settings.liquid.NavRingTargets;
 
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
@@ -122,7 +122,7 @@ public class Navbar extends SettingsPreferenceFragment implements
         super.onCreate(savedInstanceState);
         setTitle(R.string.title_navbar);
         // Load the preferences from an XML resource
-        addPreferencesFromResource(R.xml.prefs_navbar);
+        addPreferencesFromResource(R.xml.navbar_settings);
 
         PreferenceScreen prefs = getPreferenceScreen();
 

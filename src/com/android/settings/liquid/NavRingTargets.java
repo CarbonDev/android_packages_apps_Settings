@@ -1,5 +1,5 @@
 
-package com.android.settings.fragments;
+package com.android.settings.liquid;
 
 import android.app.Activity;
 import android.content.ComponentName;

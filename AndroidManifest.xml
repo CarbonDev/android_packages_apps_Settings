@@ -1494,6 +1494,10 @@
 
         <activity android:name=".liquid.LockscreenButtons" />
 
+        <activity android:name=".liquid.Navbar" />
+
+        <activity android:name=".liquid.NavRingTargets" />
+
         <activity android:name=".liquid.PowerMenu" />
 
         <activity android:name=".liquid.QuickSettings" />

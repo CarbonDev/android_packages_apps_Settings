@@ -981,6 +981,18 @@
         <item>24</item>
         <item>0</item>
     </string-array>
+    <string-array name="glow_times_entries" translatable="false">
+        <item>@string/glow_times_off</item>
+        <item>@string/glow_times_superquick</item>
+        <item>@string/glow_times_quick</item>
+        <item>@string/glow_times_normal</item>
+    </string-array>
+    <string-array name="glow_times_values" translatable="false">
+        <item>0|0</item>
+        <item>100|10</item>
+        <item>250|25</item>
+        <item>500|50</item>
+    </string-array>
 
     <!-- Ring mode options. -->
     <string-array name="ring_mode_entries" translatable="false">
