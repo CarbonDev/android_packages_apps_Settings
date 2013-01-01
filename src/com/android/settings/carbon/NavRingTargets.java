@@ -376,7 +376,7 @@ public class NavRingTargets extends SettingsPreferenceFragment implements
         } else if (uri.equals("**kill**")) {
                 return getResources().getString(R.string.kill_app);
         } else if (uri.equals("**lastapp**")) {
-                    return getResources().getString(R.string.lastapp);
+                return getResources().getString(R.string.lastapp);
         } else if (uri.equals("**power**")) {
                 return getResources().getString(R.string.screen_off);
         } else if (uri.equals("**assist**")) {
@@ -420,7 +420,7 @@ public class NavRingTargets extends SettingsPreferenceFragment implements
             } else if (uri.equals("**kill**")) {
                 return getResources().getDrawable(R.drawable.ic_navbar_killtask);
             } else if (uri.equals("**lastapp**")) {
-                return = getResources().getDrawable(R.drawable.ic_navbar_lastapp);
+                return getResources().getDrawable(R.drawable.ic_sysbar_lastapp);
             } else if (uri.equals("**power**")) {
                 return getResources().getDrawable(R.drawable.ic_navbar_power);
             } else if (uri.equals("**assist**")) {

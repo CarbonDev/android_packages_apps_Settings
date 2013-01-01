@@ -714,7 +714,7 @@ public class Navbar extends SettingsPreferenceFragment implements
             } else if (uri.equals("**notifications**")) {
                 return getResources().getDrawable(R.drawable.ic_sysbar_notifications);
             } else if (uri.equals("**lastapp**")) {
-                return = getResources().getDrawable(R.drawable.ic_navbar_lastapp);
+                return getResources().getDrawable(R.drawable.ic_sysbar_lastapp);
             }
 
         } else {

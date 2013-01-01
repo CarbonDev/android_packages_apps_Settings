@@ -67,7 +67,7 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     public static final String TAG = "InterfaceSettings";
     private static final String PREF_CUSTOM_CARRIER_LABEL = "custom_carrier_label";
     private static final String KEY_RECENTS_RAM_BAR = "recents_ram_bar";
-    private static final String KEY_DUAL_PANE = "dual_pane"
+    private static final String KEY_DUAL_PANE = "dual_pane";
 
     Preference mCustomLabel;
     Preference mRamBar;

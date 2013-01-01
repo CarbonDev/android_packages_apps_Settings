@@ -247,6 +247,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
                     mNoNotificationsPulldown.isChecked() ? 1 : 0);
             return true;
         }
+        return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
     private class MultiSelectListPreferenceComparator implements Comparator<String> {

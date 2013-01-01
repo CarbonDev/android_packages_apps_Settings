@@ -5133,6 +5133,11 @@
     <string name="cm_sound_mode_soundVibrate">Sound &amp; Vibrate</string>
     <string name="pref_flash_mode_title">Flash Mode</string>
     <string name="expanded_haptic_feedback_title">Haptic Feedback</string>
+    <string name="power_widget_additional_options_cat">Additional options</string>
+    <string name="brightness_location_title">Brightness slider location</string>
+    <string name="brightness_slider_top">On top</string>
+    <string name="brightness_slider_bottom">On the bottom</string>
+    <string name="brightness_slider_none">Don\'t Show</string>
 
     <!-- Kill app long-press back -->
     <string name="kill_app_longpress_back">Kill app back button</string>
