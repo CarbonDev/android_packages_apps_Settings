@@ -42,7 +42,7 @@
                 android:summary="@string/navigation_bar_glow_tint_summary"
                 android:defaultValue="#FFFFFF" />
 
-        <com.andriod.settings.widgets.SeekBarPreference
+        <com.android.settings.widgets.SeekBarPreference
             android:key="navigation_bar_alpha"
             android:title="@string/navigation_bar_alpha_title" />
 
