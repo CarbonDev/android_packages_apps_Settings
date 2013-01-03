@@ -28,8 +28,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.PowerManager;
-import android.os.RemoteException;
-import android.os.ServiceManager;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -41,7 +39,6 @@ import android.provider.MediaStore;
 import android.provider.Settings;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.IWindowManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -82,12 +79,12 @@ public class Navbar extends SettingsPreferenceFragment implements
     private static final String PREF_NAVRING_AMOUNT = "pref_navring_amount";
     private static final String ENABLE_NAVRING_LONG = "enable_navring_long";
     private static final String NAVIGATION_BAR_WIDGETS = "navigation_bar_widgets";
-    private static final String KEY_HARDWARE_KEYS = "hardware_keys";
 
     public static final int REQUEST_PICK_CUSTOM_ICON = 200;
     public static final int REQUEST_PICK_LANDSCAPE_ICON = 201;
     private static final int DIALOG_NAVBAR_ENABLE = 203;
     private static final int DIALOG_NAVBAR_HEIGHT_REBOOT = 204;
+
     public static final String PREFS_NAV_BAR = "navbar";
 
     Preference mNavRingTargets;
@@ -105,6 +102,8 @@ public class Navbar extends SettingsPreferenceFragment implements
     ListPreference mNavigationBarHeightLandscape;
     ListPreference mNavigationBarWidth;
     SeekBarPreference mButtonAlpha;
+    SeekBarPreference mNavBarAlpha;
+
     CheckBoxPreference mEnableNavringLong;
     Preference mConfigureWidgets;
 
@@ -119,6 +118,7 @@ public class Navbar extends SettingsPreferenceFragment implements
 
     Preference mPendingPreference;
     private ShortcutPickerHelper mPicker;
+
     private static final String TAG = "NavBar";
 
     @Override
@@ -177,12 +177,15 @@ public class Navbar extends SettingsPreferenceFragment implements
         mGlowTimes = (ListPreference) findPreference(PREF_GLOW_TIMES);
         mGlowTimes.setOnPreferenceChangeListener(this);
 
-        float defaultAlpha = Settings.System.getFloat(getActivity()
+        final float defaultButtonAlpha = Settings.System.getFloat(getActivity()
                 .getContentResolver(), Settings.System.NAVIGATION_BAR_BUTTON_ALPHA,
                 0.6f);
         mButtonAlpha = (SeekBarPreference) findPreference("button_transparency");
-        mButtonAlpha.setInitValue((int) (defaultAlpha * 100));
+        mButtonAlpha.setInitValue((int) (defaultButtonAlpha * 100));
         mButtonAlpha.setOnPreferenceChangeListener(this);
+
+	    mNavBarAlpha = (SeekBarPreference) findPreference("navigation_bar_alpha");
+        mNavBarAlpha.setOnPreferenceChangeListener(this);
 
         // don't allow devices that must use a navigation bar to disable it
         if (hasNavBarByDefault) {
@@ -198,17 +201,6 @@ public class Navbar extends SettingsPreferenceFragment implements
         mNavigationBarWidth = (ListPreference) findPreference("navigation_bar_width");
         mNavigationBarWidth.setOnPreferenceChangeListener(this);
         mConfigureWidgets = findPreference(NAVIGATION_BAR_WIDGETS);
-
-        // Only show the hardware keys config on a device that does not have a navbar
-        IWindowManager windowManager = IWindowManager.Stub.asInterface(
-                ServiceManager.getService(Context.WINDOW_SERVICE));
-        try {
-            if (windowManager.hasNavigationBar()) {
-                getPreferenceScreen().removePreference(findPreference(KEY_HARDWARE_KEYS));
-            }
-        } catch (RemoteException e) {
-            // Do nothing
-        }
 
         refreshSettings();
         setHasOptionsMenu(true);
@@ -408,10 +400,15 @@ public class Navbar extends SettingsPreferenceFragment implements
             return true;
         } else if (preference == mButtonAlpha) {
             float val = Float.parseFloat((String) newValue);
-            Log.e("R", "value: " + val * 0.01f);
             Settings.System.putFloat(getActivity().getContentResolver(),
                     Settings.System.NAVIGATION_BAR_BUTTON_ALPHA,
                     val * 0.01f);
+            return true;
+	     } else if (preference == mNavBarAlpha) {
+	         float val = (float) (Integer.parseInt((String)newValue) * 0.01);
+	         Settings.System.putFloat(getActivity().getContentResolver(),
+	                 Settings.System.NAVIGATION_BAR_ALPHA,
+	                 val);
             return true;
         }
         return false;
@@ -654,6 +651,13 @@ public class Navbar extends SettingsPreferenceFragment implements
                 // ok use default icons here
                 pAction.setIcon(resize(getNavbarIconImage(i, false)));
             }
+        }
+
+	     if(mNavBarAlpha != null) {
+	         final float defaultNavAlpha = Settings.System.getFloat(getActivity()
+	                 .getContentResolver(), Settings.System.NAVIGATION_BAR_ALPHA,
+	                 0.8f);
+	         mNavBarAlpha.setInitValue(Math.round(defaultNavAlpha * 100));
         }
     }
 

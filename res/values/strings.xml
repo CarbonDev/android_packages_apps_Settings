@@ -869,12 +869,6 @@
     <!-- Summary for "Configure lockscreen" when security password is enabled [CHAR LIMIT=45] -->
     <string name="unlock_set_unlock_mode_password">Password</string>
 
-    <!-- Sizes for pattern lockscreen -->
-    <string name="lock_pattern_size_3">3x3</string>
-    <string name="lock_pattern_size_4">4x4</string>
-    <string name="lock_pattern_size_5">5x5</string>
-    <string name="lock_pattern_size_6">6x6</string>
-
     <!-- Title for option to turn of password/pin/pattern unlock. [CHAR LIMIT=22] -->
     <string name="unlock_disable_lock_title">Turn off screen lock</string>
 
@@ -4964,6 +4958,7 @@
     <string name="size_3_dp">3 dp</string>
     <string name="size_4_dp">4 dp</string>
     <string name="custom_app_icon_successfully">"'s icon set successfully!"</string>
+    <string name="navigation_bar_alpha_title">Statusbar and navigation bar opacity</string>
 
     <!-- Nav Ring Targets -->
     <string name="navbar_ring_cat">Navigation Bar Ring Targets</string>
@@ -5162,6 +5157,7 @@
     <string name="title_tile_profile">Profile</string>
     <string name="title_tile_autorotate">Orientation</string>
     <string name="title_tile_settings">Settings</string>
+    <string name="title_tile_screentimeout">Screen Timeout</string>
     <string name="title_tile_sound">Sound</string>
     <string name="title_tile_sync">Sync</string>
     <string name="title_tile_wifiap">Wi-Fi AP</string>
@@ -5211,9 +5207,9 @@
     <string name="sms_security_check_limit_summary">Display an alert dialog to prevent applications from sending SMS messages too frequently. Current limit: %d messages in 15 minutes</string>
     <string name="sms_security_check_limit_default">30 (Default)</string>
 
-    <!--- Clock Widget -->
-    <string name="lock_clock_title">Clock Widget</string>
-    <string name="lock_clock_summary">View or change how the widget will display</string>
+    <!--- Lock clock -->
+    <string name="lock_clock_title">Lock clock widget</string>
+    <string name="lock_clock_summary">View or change how the Lock clock widgets will display</string>
 
     <!-- **** LIQUIDSMOOTH ADDITIONS END **** -->
 </resources>
