@@ -122,8 +122,7 @@ public class Navbar extends SettingsPreferenceFragment implements
 
     Preference mPendingPreference;
     private ShortcutPickerHelper mPicker;
-
-    private static final String TAG = "NavBar";
+    private static final String TAG = "Navbar";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -846,5 +845,4 @@ public class Navbar extends SettingsPreferenceFragment implements
             super.onResume();
         }
     }
-
 }
