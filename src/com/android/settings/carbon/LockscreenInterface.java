@@ -41,9 +41,11 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private static final String KEY_LOCKSCREEN_BUTTONS = "lockscreen_buttons";
     private static final String KEY_LOCK_CLOCK = "lock_clock";
     private static final String KEY_LOCKSCREEN_MAXIMIZE_WIDGETS = "lockscreen_maximize_widgets";
+    private static final String PREF_LOCKSCREEN_HIDE_INITIAL_PAGE_HINTS = "lockscreen_hide_initial_page_hints";
 
     private ListPreference mBatteryStatus;
     private CheckBoxPreference mMaximizeWidgets;
+    private CheckBoxPreference mLockscreenHideInitialPageHints;
 
     public boolean hasButtons() {
         return !getResources().getBoolean(com.android.internal.R.bool.config_showNavigationBar);
@@ -68,6 +70,10 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
             mMaximizeWidgets.setOnPreferenceChangeListener(this);
         }
 
+        mLockscreenHideInitialPageHints = (CheckBoxPreference)findPreference(PREF_LOCKSCREEN_HIDE_INITIAL_PAGE_HINTS);
+        mLockscreenHideInitialPageHints.setChecked(Settings.System.getBoolean(getActivity().getContentResolver(),
+                Settings.System.LOCKSCREEN_HIDE_INITIAL_PAGE_HINTS, false));
+
         PreferenceScreen lockscreenButtons = (PreferenceScreen) findPreference(KEY_LOCKSCREEN_BUTTONS);
         if (!hasButtons()) {
             getPreferenceScreen().removePreference(lockscreenButtons);
@@ -75,6 +81,18 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
 
         // Dont display the lock clock preference if its not installed
         removePreferenceIfPackageNotInstalled(findPreference(KEY_LOCK_CLOCK));
+    }
+
+    @Override
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        if (preference == mLockscreenHideInitialPageHints) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.LOCKSCREEN_HIDE_INITIAL_PAGE_HINTS,
+                    ((CheckBoxPreference)preference).isChecked() ? 1 : 0);
+            return true;
+        }
+
+        return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
     @Override

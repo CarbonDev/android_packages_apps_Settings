@@ -4540,6 +4540,9 @@
     <string name="lockscreen_battery_status_charging">Only When Charging</string>
     <string name="lockscreen_battery_status_alwayson">Always On</string>
 
+    <string name="lockscreen_hide_initial_page_hints_title">Hide initial page hints</string>
+    <string name="lockscreen_hide_initial_page_hints_summary">Set wether the hints for the left and right widgets are shown when the screen is turned on.</string>
+
     <!-- Profiles Settings  -->
     <string name="profiles_settings_title">Profiles</string>
     <string name="profiles_general_title">General</string>
