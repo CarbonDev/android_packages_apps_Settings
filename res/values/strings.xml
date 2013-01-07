@@ -5225,8 +5225,8 @@
     <string name="stylus_icon_enabled_title">Show icon when using stylus</string>
     <string name="stylus_icon_enabled_summary">Show the pointer icon when hovering or drawing with the stylus</string>
 
-    <!-- Maximize Widgets -->
     <string name="lockscreen_maximize_widgets_title">Maximize Widgets</string>
-    <string name="lockscreen_maximize_widgets_summary">Show widgets maximized and the unlock mimimized</string>
+    <string name="lockscreen_maximize_widgets_summary">Show widgets maximized and the unlock minimized</string>
+
     <!-- **** LIQUIDSMOOTH ADDITIONS END **** -->
 </resources>
