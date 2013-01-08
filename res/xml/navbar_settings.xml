@@ -8,7 +8,7 @@
 
         <PreferenceCategory
             android:key="navbar_options"
-            android:title="@string/navbar_options_cat">
+            android:title="@string/navbar_option_cat">
 
             <CheckBoxPreference
                 android:key="enable_nav_bar"
@@ -59,7 +59,7 @@
 
         <PreferenceCategory
             android:key="navbar_rings"
-            android:title="@string/navbar_rings_cat">
+            android:title="@string/navbar_ring_cat">
 
             <ListPreference
                 android:entries="@array/pref_navring_amount_entries"
