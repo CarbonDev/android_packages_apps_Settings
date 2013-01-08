@@ -34,8 +34,6 @@
         android:entryValues="@array/lockscreen_battery_status_values"
         android:defaultValue="0" />
 
-<<<<<<< HEAD
-=======
      <CheckBoxPreference
         android:key="lockscreen_maximize_widgets"
         android:persistent="false"
@@ -48,7 +46,6 @@
         android:summary="@string/lockscreen_target_summary"
         android:title="@string/lockscreen_target_title" />
 
->>>>>>> 2955261... Settings: Option to start lock screen widgets maximized
      <PreferenceScreen
         android:fragment="com.android.settings.liquid.LockscreenButtons"
         android:key="lockscreen_buttons"
