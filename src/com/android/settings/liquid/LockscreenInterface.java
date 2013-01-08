@@ -16,11 +16,8 @@
 
 package com.android.settings.liquid;
 
-<<<<<<< HEAD:src/com/android/settings/liquid/LockscreenInterface.java
 import android.content.pm.PackageManager.NameNotFoundException;
-=======
 import android.content.ContentResolver;
->>>>>>> 2955261... Settings: Option to start lock screen widgets maximized:src/com/android/settings/cyanogenmod/LockscreenInterface.java
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
@@ -42,11 +39,8 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private static final String TAG = "LockscreenInterface";
     private static final String KEY_ALWAYS_BATTERY_PREF = "lockscreen_battery_status";
     private static final String KEY_LOCKSCREEN_BUTTONS = "lockscreen_buttons";
-<<<<<<< HEAD:src/com/android/settings/liquid/LockscreenInterface.java
     private static final String KEY_LOCK_CLOCK = "lock_clock";
-=======
     private static final String KEY_LOCKSCREEN_MAXIMIZE_WIDGETS = "lockscreen_maximize_widgets";
->>>>>>> 2955261... Settings: Option to start lock screen widgets maximized:src/com/android/settings/cyanogenmod/LockscreenInterface.java
 
     private ListPreference mBatteryStatus;
     private CheckBoxPreference mMaximizeWidgets;
