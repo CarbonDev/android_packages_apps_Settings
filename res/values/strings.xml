@@ -5184,6 +5184,7 @@
     <string name="title_tile_networkmode">Network Mode</string>
     <string name="title_tile_nfc">NFC</string>
     <string name="title_tile_screen_timeout">Screen Timeout</string>
+    <string name="title_tile_usb_tether">USB Tether</string>
 
     <string name="title_dynamic_tiles">Dynamic Tiles</string>
     <string name="dynamic_tiles_note_title">Note</string>
@@ -5191,6 +5192,7 @@
     <string name="title_dynamic_alarm">Alarm Clock</string>
     <string name="title_dynamic_bugreport">Bug Report</string>
     <string name="title_dynamic_ime">IME Changer</string>
+    <string name="title_dynamic_usbtether">USB Tether</string>
     <string name="title_dynamic_wifi">Wi-Fi Display</string>
 
     <string name="title_general">General</string>
