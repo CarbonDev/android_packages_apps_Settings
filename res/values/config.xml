@@ -51,5 +51,8 @@
     <!-- GPS support. Some devices does not have GPS. -->
     <bool name="has_location_gps">true</bool>
 
+    <!-- TouchKey Duration Pref -->
+    <bool name="config_show_touchKeyDur">false</bool>
+
     <!-- **** CARBON ADDITIONS END **** -->
 </resources>

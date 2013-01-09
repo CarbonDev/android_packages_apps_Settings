@@ -65,6 +65,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_VOLUME_WAKE = "pref_volume_wake";
     private static final String KEY_NOTIFICATION_PULSE = "notification_pulse";
     private static final String KEY_BATTERY_LIGHT = "battery_light";
+    private static final String KEY_TOUCHKEY_LIGHT = "touchkey_light_timeout";
+
 
     // Strings used for building the summary
     private static final String ROTATION_ANGLE_0 = "0";
@@ -82,6 +84,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private WarnedListPreference mFontSizePref;
     private PreferenceScreen mNotificationPulse;
     private PreferenceScreen mBatteryPulse;
+    private ListPreference mTouchKeyLights;
+
 
     private final Configuration mCurConfig = new Configuration();
 
@@ -152,6 +156,19 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             } else {
                 updateBatteryPulseDescription();
             }
+        }
+
+        mTouchKeyLights = (ListPreference) getPreferenceScreen().findPreference(KEY_TOUCHKEY_LIGHT);
+        if (getResources().getBoolean(R.bool.config_show_touchKeyDur) == false) {
+            if (mTouchKeyLights != null) {
+                getPreferenceScreen().removePreference(mTouchKeyLights);
+            }
+        } else {
+            int touchKeyLights = Settings.System.getInt(getActivity().getContentResolver(),
+                    Settings.System.TOUCHKEY_LIGHT_DUR, 5000);
+            mTouchKeyLights.setValue(String.valueOf(touchKeyLights));
+            mTouchKeyLights.setSummary(mTouchKeyLights.getEntry());
+            mTouchKeyLights.setOnPreferenceChangeListener(this);
         }
 
         mDisplayManager = (DisplayManager)getActivity().getSystemService(
@@ -459,6 +476,13 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             } catch (NumberFormatException e) {
                 Log.e(TAG, "could not persist screen timeout setting", e);
             }
+        } else if (preference == mTouchKeyLights) {
+            int touchKeyLights = Integer.valueOf((String) objValue);
+            int index = mTouchKeyLights.findIndexOfValue((String) objValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.TOUCHKEY_LIGHT_DUR, touchKeyLights);
+            mTouchKeyLights.setSummary(mTouchKeyLights.getEntries()[index]);
+            return true;
         }
         if (KEY_FONT_SIZE.equals(key)) {
             writeFontSizePreference(objValue);

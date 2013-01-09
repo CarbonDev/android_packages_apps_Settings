@@ -6151,5 +6151,14 @@ a or the internal GPS antenna as location provider</string>
     <string name="location_gps_source_notification">The GPS source has been switched!\n\nGPS will be
 disabled. Please re-enable before use.</string>
 
+    <!-- Touckey Light Timeout -->
+    <string name="touchkey_timeout_title">TouchKey Light Timeout</string>
+    <string name="touchkey_timeout_1s">1 second</string>
+    <string name="touchkey_timeout_2s">2 seconds</string>
+    <string name="touchkey_timeout_5s">5 seconds</string>
+    <string name="touchkey_timeout_10s">10 seconds</string>
+    <string name="touchkey_timeout_alwayson">Always On</string>
+    <string name="touchkey_timeout_alwaysoff">Always Off</string>
+
     <!-- **** CARBON ADDITIONS END **** -->
 </resources>
