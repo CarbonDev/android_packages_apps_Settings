@@ -4540,8 +4540,13 @@
     <string name="lockscreen_battery_status_charging">Only When Charging</string>
     <string name="lockscreen_battery_status_alwayson">Always On</string>
 
+    <!-- Lockscreen Customization -->
+    <string name="lockscreen_maximize_widgets_title">Maximize Widgets</string>
+    <string name="lockscreen_maximize_widgets_summary">Show widgets maximized and the unlock minimized</string>
     <string name="lockscreen_hide_initial_page_hints_title">Hide initial page hints</string>
     <string name="lockscreen_hide_initial_page_hints_summary">Set wether the hints for the left and right widgets are shown when the screen is turned on.</string>
+    <string name="lockscreen_use_widget_container_carousel_title">Use widget carousel</string>
+    <string name="lockscreen_use_widget_container_carousel_summary">Use a carousel animation when switching between lockscreen widgets.</string>
 
     <!-- Profiles Settings  -->
     <string name="profiles_settings_title">Profiles</string>
@@ -5315,9 +5320,6 @@
     <!-- Stylus Icon -->
     <string name="stylus_icon_enabled_title">Show icon when using stylus</string>
     <string name="stylus_icon_enabled_summary">Show the pointer icon when hovering or drawing with the stylus</string>
-
-    <string name="lockscreen_maximize_widgets_title">Maximize Widgets</string>
-    <string name="lockscreen_maximize_widgets_summary">Show widgets maximized and the unlock minimized</string>
 
     <!-- Recents Ram Bar -->
     <string name="ram_bar">Recents RAM bar</string>
