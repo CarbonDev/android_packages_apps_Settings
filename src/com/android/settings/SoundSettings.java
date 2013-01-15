@@ -93,6 +93,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private static final String PROP_CAMERA_SOUND = "persist.sys.camera-sound";
     private static final String PREF_LESS_NOTIFICATION_SOUNDS = "less_notification_sounds";
     private static final String KEY_VOLBTN_MUSIC_CTRL = "volbtn_music_controls";
+    private static final String KEY_CONVERT_SOUND_TO_VIBRATE = "notification_convert_sound_to_vibration";
 
     private static final String RING_MODE_NORMAL = "normal";
     private static final String RING_MODE_VIBRATE = "vibrate";
@@ -114,6 +115,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private CheckBoxPreference mSoundEffects;
     private CheckBoxPreference mHapticFeedback;
     private Preference mMusicFx;
+    private CheckBoxPreference mConvertSoundToVibration;
     private CheckBoxPreference mLockSounds;
     private CheckBoxPreference mVolBtnMusicCtrl;
     private Preference mRingtonePreference;
@@ -269,6 +271,12 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         mVolBtnMusicCtrl = (CheckBoxPreference) findPreference(KEY_VOLBTN_MUSIC_CTRL);
         mVolBtnMusicCtrl.setChecked(Settings.System.getInt(resolver,
                 Settings.System.VOLBTN_MUSIC_CONTROLS, 1) != 0);
+
+        mConvertSoundToVibration = (CheckBoxPreference) findPreference(KEY_CONVERT_SOUND_TO_VIBRATE);
+
+        mConvertSoundToVibration.setPersistent(false);
+        mConvertSoundToVibration.setChecked(Settings.System.getInt(resolver,
+                Settings.System.NOTIFICATION_CONVERT_SOUND_TO_VIBRATION, 1) != 0);
 
         mRingtonePreference = findPreference(KEY_RINGTONE);
         mNotificationPreference = findPreference(KEY_NOTIFICATION_SOUND);
@@ -443,6 +451,9 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         } else if (preference == mLockSounds) {
             Settings.System.putInt(getContentResolver(), Settings.System.LOCKSCREEN_SOUNDS_ENABLED,
                     mLockSounds.isChecked() ? 1 : 0);
+        } else if (preference == mConvertSoundToVibration) {
+            Settings.System.putInt(getContentResolver(), Settings.System.NOTIFICATION_CONVERT_SOUND_TO_VIBRATION,
+                    mConvertSoundToVibration.isChecked() ? 1 : 0);
         } else if (preference == mMusicFx) {
             // let the framework fire off the intent
             return false;
