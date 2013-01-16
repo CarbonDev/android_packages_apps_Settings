@@ -97,6 +97,8 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     CheckBoxPreference mShowWifiName;
     CheckBoxPreference mCrtOff;
     CheckBoxPreference mCrtOn;
+    CheckBoxPreference mHideExtras;
+    ListPreference mUserModeUI;
     Context mContext;
 
     Random randomGenerator = new Random();
@@ -201,7 +203,7 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     }
 
     private void updateCustomLabelTextSummary() {
-        mCustomLabelText = Settings.System.getString(cr,
+        mCustomLabelText = Settings.System.getString(getActivity().getContentResolver(),
                 Settings.System.CUSTOM_CARRIER_LABEL);
         if (mCustomLabelText == null || mCustomLabelText.length() == 0) {
             mCustomLabel.setSummary(R.string.custom_carrier_label_notset);

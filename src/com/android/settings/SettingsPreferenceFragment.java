@@ -29,6 +29,7 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -82,6 +83,7 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements Di
      */
     protected int getHelpResource() {
         return 0;
+    }
 
     public static boolean isTablet(Context context) {
         return Settings.System.getInt(context.getContentResolver(),

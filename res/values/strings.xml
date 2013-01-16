@@ -4542,6 +4542,8 @@
     <string name="phone_mode_ui">Phone - NavBar to side in landscape</string>
     <string name="tablet_mode_ui">Tablet - Combined NavBar and SystemBar</string>
     <string name="phablet_mode_ui">Phablet - NavBar stays at bottom in landscape</string>
+    <string name="hide_extras">Hide Extras</string>
+    <string name="hide_extras_summary">Hide some systembar stuff i.e. the compat. mode button(requires UI restart)</string>
 
     <!-- Menu Strings -->
     <string name="menu_nav_bar_reset">Reset nav bar</string>
