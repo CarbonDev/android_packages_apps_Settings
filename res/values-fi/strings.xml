@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--  Copyright (C) 2007 The Android Open Source Project
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2007 The Android Open Source Project
+     Copyright (C) 2013 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -2292,5 +2293,33 @@
     <string name="volume_key_cursor_control_off">Pois käytöstä</string>
     <string name="volume_key_cursor_control_on">Äänenvoimakkuus ylös/alas ohjaa osoitinta vasemmalle/oikealle</string>
     <string name="volume_key_cursor_control_on_reverse">Äänenvoimakkuus ylös/alas ohjaa osoitinta oikealle/vasemmalle</string>
+
+    <string name="wifi_setting_countrycode_title">Wi-Fi aluekoodi</string>
+    <string name="wifi_setting_countrycode_summary">Aseta Wi-Fin aluekoodi</string>
+    <string name="wifi_setting_countrycode_error">Ongelma asetettaessa aluekoodia.</string>
+    <string name="accessibility_home_button_answers_call_prerefence_title">Vastaa puheluun kotinäppäimellä</string>
+    <string name="headset_category_title">Kuulokkeet</string>
+    <string name="headset_connect_player_title">Käynnistä musiikkisovellus kytkettäessäLaunch music app on connect</string>
+    <string name="navigation_bar_title">Navigointipalkki</string>
+    <string name="navigation_bar_help_text">1. Aloittaaksesi muokkaamisen, paina lukkoa\n\n2. Paina mitä tahansa painiketta valitaksesi tai muokataksesi toimintoa\n\n3. Pidä painiketta pohjassa siirtääksesi sitä\n\n4. Tallentaaksesi paina lukkoa uudelleen\n\n5. Palauttaaksesi oletusasetukset, paina "Reset" painiketta\n\n</string>
+        <string name="navigation_bar_tips">&#8226; Tehtäviä voi asettaa vain yhdelle painikkelle kerralla\n\n&#8226; Koti-painiketta ei voi muokata\n\n&#8226; Sivunäppäimiä ei voi siirtää</string>
+    <string name="navigation_bar_tips_title">Vinkit</string>
+    <string name="navigation_bar_reset_message">Poista nykyiset asetukset ja palauta oletukset?</string>
+    <string name="navigation_bar_save_message">Navigointipalkin asetukset tallennettu</string>
+    <string name="navigation_bar_reset_toast">Navigointipalkki palautettu nollattu</string>
+    <string name="navigation_bar_menu_editable">Muokattava</string>
+    <string name="navigation_bar_menu_locked">Lukittu</string>
+    <string name="pref_wifi_disable_hdcp_title">Ohita HDCP-selvitys</string>
+    <string name="pref_wifi_disable_hdcp_summary">Kokeile tätä asetusta jos yhdistäminen onnistuu mutta ei näytä mitään</string>
+    <string name="app_security_title">Sovellusten turvallisuus</string>
+    <string name="sms_security_check_limit_title">Tekstiviestirajoitus</string>
+    <string name="sms_security_check_limit_summary">Näyttää ilmoitusvalikon estääkseen sovelluksia lähettämästä tekstiviestejä liian nopeasti. Nykyinen raja: %d viestiä 15 minuutissa</string>
+    <string name="sms_security_check_limit_default">30 (Oletus)</string>
+    <string name="lock_clock_title">Kellowidget</string>
+    <string name="lock_clock_summary">Katso tai muuta \'Chronus\' koti- ja lukitusnäyttöwidgetit näkyvät</string>
+    <string name="stylus_icon_enabled_title">Näytä kuvake stylus-kynää käyttäessä</string>
+    <string name="stylus_icon_enabled_summary">Näytä osoitinkuvake liikuttaessa kynää näytöllä tai näytön yläpuolella</string>
+    <string name="lockscreen_maximize_widgets_title">Suurenna widgetit</string>
+    <string name="lockscreen_maximize_widgets_summary">Näytä widgetit suurennettuna ja lukituksen poisto pienennettynä näyttöä avatessa</string>
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>
