@@ -67,10 +67,12 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     public static final String TAG = "InterfaceSettings";
     private static final String PREF_CUSTOM_CARRIER_LABEL = "custom_carrier_label";
     private static final String KEY_RECENTS_RAM_BAR = "recents_ram_bar";
+    private static final String KEY_DUAL_PANE = "dual_pane"
 
     Preference mCustomLabel;
     Preference mRamBar;
     Preference mLcdDensity;
+    CheckBoxPreference mDualPane;
 
     Random randomGenerator = new Random();
 
@@ -104,6 +106,13 @@ public class InterfaceSettings extends SettingsPreferenceFragment
 
         mRamBar = findPreference(KEY_RECENTS_RAM_BAR);
         updateRamBar();
+
+        mDualPane = (CheckBoxPreference) findPreference(KEY_DUAL_PANE);
+        boolean preferDualPane = getResources().getBoolean(
+                com.android.internal.R.bool.preferences_prefer_dual_pane);
+        boolean dualPaneMode = Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.DUAL_PANE_PREFS, (preferDualPane ? 1 : 0)) == 1;
+        mDualPane.setChecked(dualPaneMode);
         
         setHasOptionsMenu(true);
     }
@@ -156,6 +165,11 @@ public class InterfaceSettings extends SettingsPreferenceFragment
         } else if (preference == mLcdDensity) {
             ((PreferenceActivity) getActivity())
             .startPreferenceFragment(new DensityChanger(), true);
+            return true;
+        } else if (preference == mDualPane) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.DUAL_PANE_PREFS,
+                    ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
             return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);

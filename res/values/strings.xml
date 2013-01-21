@@ -4866,6 +4866,8 @@
     <string name="custom_carrier_label_notset">Custom label currently not set</string>
     <string name="lcd_density_title">LCD Density</string>
     <string name="lcd_density_summary">unknown</string>
+    <string name="dual_pane">Dual panel mode</string>
+    <string name="dual_pane_summary">Restart settings to take effect</string>
 
     <!-- LCD Density -->
     <string name="dpi">DPI</string>
