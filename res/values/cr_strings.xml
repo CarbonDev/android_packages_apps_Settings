@@ -687,4 +687,12 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     multiple font sizes in a limited amount of space. -->
     <string name="font_size_sample">Sample</string>
 
+    <!-- Show 4G icon instead of LTE -->
+    <string name="show_lte_or_fourgee_title">Show 4G icon</string>
+    <string name="show_lte_or_fourgee_summary">Use 4G network icon instead of LTE</string>
+
+    <!-- USB Mass Storage -->
+    <string name="usb_mass_storage_title">Mass storage</string>
+    <string name="usb_mass_storage_summary">Enable USB mass storage</string>
+
 </resources>
