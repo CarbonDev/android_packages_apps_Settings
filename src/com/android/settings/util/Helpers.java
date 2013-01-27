@@ -1,14 +1,15 @@
-
 package com.android.settings.util;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Date;
+import java.util.Properties;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -312,5 +313,78 @@ public class Helpers {
         } else {
             return null;
         }
+    }
+
+    /*
+     * Mount System partition
+     *
+     * @param read_value ro for ReadOnly and rw for Read/Write
+     *
+     * @returns true for successful mount
+     */
+    public static boolean mountSystem(String read_value) {
+        String REMOUNT_CMD = "busybox mount -o %s,remount -t yaffs2 /dev/block/mtdblock1 /system";
+        final CMDProcessor cmd = new CMDProcessor();
+        Log.d(TAG, "Remounting /system " + read_value);
+        return cmd.su.runWaitFor(String.format(REMOUNT_CMD, read_value)).success();
+    }
+    
+    /*
+     * Find value of build.prop item (/system can be ro or rw)
+     *
+     * @param prop /system/build.prop property name to find value of
+     *
+     * @returns String value of @param:prop
+     */
+    public static String findBuildPropValueOf(String prop) {
+        String mBuildPath = "/system/build.prop";
+        String DISABLE = "disable";
+        String value = null;
+        try {
+            //create properties construct and load build.prop
+            Properties mProps = new Properties();
+            mProps.load(new FileInputStream(mBuildPath));
+            //get the property
+            value = mProps.getProperty(prop, DISABLE);
+            Log.d(TAG, String.format("Helpers:findBuildPropValueOf found {%s} with the value (%s)", prop, value));
+        } catch (IOException ioe) {
+            Log.d(TAG, "failed to load input stream");
+        } catch (NullPointerException npe) {
+            //swallowed thrown by ill formatted requests
+        }
+        
+        if (value != null) {
+            return value;
+        } else {
+            return DISABLE;
+        }
+    }
+    
+    // find value of /sys/kernel/fast_charge/force_fast_charge
+    public static int isFastCharge() {
+        int onOff = 0;
+        String line = "";
+        final String filename = "/sys/kernel/fast_charge/force_fast_charge";
+        final File f = new File(filename);
+        
+        if (f.exists() && f.canRead()) {
+            try {
+                final BufferedReader br = new BufferedReader(new FileReader(f), 256);
+                String buffer = null;
+                while ((buffer = br.readLine()) != null) {
+                    line += buffer + "\n";
+                    try {
+                        onOff = Integer.parseInt(buffer);
+                    } catch (NumberFormatException nfe) {
+                        onOff = 0;
+                    }
+                }
+                br.close();
+            } catch (final Exception e) {
+                Log.e(TAG, "Error reading file: " + filename, e);
+                onOff = 0;
+            }
+        }
+        return onOff;
     }
 }

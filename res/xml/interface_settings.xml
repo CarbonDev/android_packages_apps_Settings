@@ -46,6 +46,12 @@
             android:defaultValue="false" />
 
         <PreferenceScreen
+            android:key="pie_control"
+            android:fragment="com.android.settings.paranoid.Pie"
+            android:title="@string/pie_controls_title"
+            android:summary="@string/pie_controls_summary" />
+
+        <PreferenceScreen
             android:key="recents_ram_bar"
             android:fragment="com.android.settings.carbon.RamBar"
             android:title="@string/ram_bar" />

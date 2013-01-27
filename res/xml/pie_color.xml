@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <ListPreference
+            android:key="pie_color_style"
+            android:layout="?android:attr/preferenceLayoutChild"
+            android:persistent="true"
+            android:entries="@array/all_color_style_entries"
+            android:entryValues="@array/all_color_style_values"
+            android:title="@string/pie_color_style_title" />
+
+	<net.margaritov.preference.colorpicker.ColorPickerPreference
+		android:key="pie_background"
+		android:title="@string/pie_background_title"
+		android:defaultValue="#aaff005e"
+                alphaSlider="true" />
+
+	<net.margaritov.preference.colorpicker.ColorPickerPreference
+		android:key="pie_select"
+		android:title="@string/pie_select_title"
+		android:defaultValue="#aadbff00"
+                alphaSlider="true" />
+
+	<net.margaritov.preference.colorpicker.ColorPickerPreference
+		android:key="pie_outlines"
+		android:title="@string/pie_outlines_title"
+		android:defaultValue="#55ffffff"
+                alphaSlider="true" />
+
+	<net.margaritov.preference.colorpicker.ColorPickerPreference
+		android:key="pie_status_clock"
+		android:title="@string/pie_status_clock_title"
+		android:defaultValue="#ffffff" />
+
+	<net.margaritov.preference.colorpicker.ColorPickerPreference
+		android:key="pie_status"
+		android:title="@string/pie_status_title"
+		android:defaultValue="#ffffff" />
+
+	<net.margaritov.preference.colorpicker.ColorPickerPreference
+		android:key="pie_chevron_left"
+		android:title="@string/pie_chevron_left_title"
+		android:defaultValue="#0999cc" />
+
+	<net.margaritov.preference.colorpicker.ColorPickerPreference
+		android:key="pie_chevron_right"
+		android:title="@string/pie_chevron_left_title"
+		android:defaultValue="#33b5e5" />
+
+</PreferenceScreen>

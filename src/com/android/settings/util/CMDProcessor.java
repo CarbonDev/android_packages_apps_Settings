@@ -1,4 +1,3 @@
-
 package com.android.settings.util;
 
 import android.util.Log;
@@ -6,6 +5,7 @@ import android.util.Log;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.InputStream;
+
 
 import com.android.settings.objects.EasyPair;
 
@@ -71,6 +71,7 @@ public class CMDProcessor {
             String out = null;
             StringBuffer buffer = null;
             final DataInputStream dis = new DataInputStream(is);
+
             try {
                 if (dis.available() > 0) {
                     buffer = new StringBuffer(dis.readLine());
@@ -113,8 +114,10 @@ public class CMDProcessor {
             if (process != null) {
                 try {
                     exit_value = process.waitFor();
+
                     stdout = getStreamLines(process.getInputStream());
                     stderr = getStreamLines(process.getErrorStream());
+
                 } catch (final InterruptedException e) {
                     Log.e(TAG, "runWaitFor " + e.toString());
                 } catch (final NullPointerException e) {
@@ -129,12 +132,14 @@ public class CMDProcessor {
         if (can_su == null || force_check) {
             final CommandResult r = su.runWaitFor("id");
             final StringBuilder out = new StringBuilder();
+
             if (r.stdout != null) {
                 out.append(r.stdout).append(" ; ");
             }
             if (r.stderr != null) {
                 out.append(r.stderr);
             }
+
             Log.d(TAG, "canSU() su[" + r.exit_value + "]: " + out);
             can_su = r.success();
         }

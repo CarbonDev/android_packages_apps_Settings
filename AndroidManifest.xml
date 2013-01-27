@@ -1464,6 +1464,10 @@
 
         <activity android:name=".carbon.PerformanceSettings" />
 
+        <activity android:name=".paranoid.Pie" />
+
+        <activity android:name=".paranoid.PieColor" />
+
         <activity android:name=".profiles.ProfilesSettings" />
         <activity android:name="Settings$ProfilesSettingsActivity"
                 android:label="@string/profile_settings"
