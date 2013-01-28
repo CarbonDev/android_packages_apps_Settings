@@ -108,7 +108,6 @@ public class Navbar extends SettingsPreferenceFragment implements
     ListPreference mNavigationBarHeightLandscape;
     ListPreference mNavigationBarWidth;
     SeekBarPreference mButtonAlpha;
-    SeekBarPreference mNavBarAlpha;
 
     CheckBoxPreference mEnableNavringLong;
     Preference mConfigureWidgets;
@@ -191,9 +190,6 @@ public class Navbar extends SettingsPreferenceFragment implements
         mButtonAlpha = (SeekBarPreference) findPreference("button_transparency");
         mButtonAlpha.setInitValue((int) (defaultButtonAlpha * 100));
         mButtonAlpha.setOnPreferenceChangeListener(this);
-
-	    mNavBarAlpha = (SeekBarPreference) findPreference("navigation_bar_alpha");
-        mNavBarAlpha.setOnPreferenceChangeListener(this);
 
         // don't allow devices that must use a navigation bar to disable it
         if (hasNavBarByDefault) {
@@ -432,12 +428,6 @@ public class Navbar extends SettingsPreferenceFragment implements
             Settings.System.putFloat(getActivity().getContentResolver(),
                     Settings.System.NAVIGATION_BAR_BUTTON_ALPHA,
                     val * 0.01f);
-            return true;
-	     } else if (preference == mNavBarAlpha) {
-	         float val = (float) (Integer.parseInt((String)newValue) * 0.01);
-	         Settings.System.putFloat(getActivity().getContentResolver(),
-	                 Settings.System.NAVIGATION_BAR_ALPHA,
-	                 val);
             return true;
         }
         return false;
@@ -680,13 +670,6 @@ public class Navbar extends SettingsPreferenceFragment implements
                 // ok use default icons here
                 pAction.setIcon(resize(getNavbarIconImage(i, false)));
             }
-        }
-
-	     if(mNavBarAlpha != null) {
-	         final float defaultNavAlpha = Settings.System.getFloat(getActivity()
-	                 .getContentResolver(), Settings.System.NAVIGATION_BAR_ALPHA,
-	                 1.0f);
-	         mNavBarAlpha.setInitValue(Math.round(defaultNavAlpha * 100));
         }
     }
 

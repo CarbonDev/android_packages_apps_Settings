@@ -15,6 +15,10 @@
             android:title="@string/notification_style_title"
             android:summary="@string/notification_style_summary" />
 
+        <Preference
+            android:key="transparency_dialog"
+            android:title="@string/transparency_dialog_title" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

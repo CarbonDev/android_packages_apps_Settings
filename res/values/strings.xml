@@ -4436,6 +4436,7 @@
     <!-- **** CARBON ADDITIONS START **** -->
 
     <string name="ok">OK</string>
+    <string name="save">Save</string>
 
     <!-- Activity titles defined in AndroidManifest.xml -->
     <string name="title_navbar">Navigation</string>
@@ -4534,6 +4535,16 @@
     <!-- Lockscreen Vibrate -->
     <string name="lockscreen_vibrate_enabled_title">Vibrate</string>
     <string name="lockscreen_vibrate_enabled_head">Vibrate when unlocking device</string>
+
+    <!-- Transparency -->
+    <string name="transparency_dialog_title">Transparency settings</string>
+    <string name="transparency_dialog_linked_transparency">Link statusbar &amp; navbar alpha</string>
+    <string name="transparency_dialog_transparency_sb_and_nv">Statusbar and navigation bar</string>
+    <string name="transparency_dialog_statusbar">Statusbar</string>
+    <string name="transparency_dialog_navbar">Navigation bar</string>
+    <string name="transparency_dialog_match_keyguard_alpha">Match lockscreen alpha</string>
+    <string name="transparency_dialog_transparency">Homescreen alpha</string>
+    <string name="transparency_dialog_transparency_keyguard">Lockscreen alpha</string>
 
     <!-- Lockscreen Battery -->
     <string name="lockscreen_battery_status_title">Battery Status</string>

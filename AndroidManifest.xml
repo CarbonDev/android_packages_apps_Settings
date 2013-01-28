@@ -152,6 +152,17 @@
                 android:resource="@id/wifi_settings" />
         </activity-alias>
 
+        <activity
+            android:name=".carbon.TransparencyDialog"
+            android:theme="@android:style/Theme.Dialog"
+            android:label="@string/interface_title" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.android.settings.SHORTCUT" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".wifi.WifiPickerActivity"
                 android:taskAffinity="com.android.settings"
                 android:parentActivityName="Settings">
