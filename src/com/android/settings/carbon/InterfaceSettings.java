@@ -68,11 +68,13 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     private static final String PREF_CUSTOM_CARRIER_LABEL = "custom_carrier_label";
     private static final String KEY_RECENTS_RAM_BAR = "recents_ram_bar";
     private static final String KEY_DUAL_PANE = "dual_pane";
+    private static final String PREF_WAKEUP_WHEN_PLUGGED_UNPLUGGED = "wakeup_when_plugged_unplugged";
 
     Preference mCustomLabel;
     Preference mRamBar;
     Preference mLcdDensity;
     CheckBoxPreference mDualPane;
+    CheckBoxPreference mWakeUpWhenPluggedOrUnplugged;
 
     Random randomGenerator = new Random();
 
@@ -113,6 +115,16 @@ public class InterfaceSettings extends SettingsPreferenceFragment
         boolean dualPaneMode = Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.DUAL_PANE_PREFS, (preferDualPane ? 1 : 0)) == 1;
         mDualPane.setChecked(dualPaneMode);
+
+        mWakeUpWhenPluggedOrUnplugged = (CheckBoxPreference) findPreference(PREF_WAKEUP_WHEN_PLUGGED_UNPLUGGED);
+        mWakeUpWhenPluggedOrUnplugged.setChecked(Settings.System.getBoolean(mContext.getContentResolver(),
+                        Settings.System.WAKEUP_WHEN_PLUGGED_UNPLUGGED, true));
+
+        // hide option if device is already set to never wake up
+        if(!mContext.getResources().getBoolean(
+                com.android.internal.R.bool.config_unplugTurnsOnScreen)) {
+            ((PreferenceGroup) findPreference("misc")).removePreference(mWakeUpWhenPluggedOrUnplugged);
+        }
         
         setHasOptionsMenu(true);
     }
@@ -170,6 +182,11 @@ public class InterfaceSettings extends SettingsPreferenceFragment
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.DUAL_PANE_PREFS,
                     ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
+            return true;
+        } else if (preference == mWakeUpWhenPluggedOrUnplugged) {
+            Settings.System.putBoolean(getActivity().getContentResolver(),
+                    Settings.System.WAKEUP_WHEN_PLUGGED_UNPLUGGED,
+                    ((CheckBoxPreference) preference).isChecked());
             return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
