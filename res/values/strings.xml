@@ -5266,6 +5266,8 @@
     <string name="quick_pulldown_right">Right</string>
     <string name="title_collapse_panel">Autoclose Panel</string>
     <string name="summary_collapse_panel">Close quick settings panel upon toggle</string>
+    <string name="title_no_notifications_pulldown">Quick pulldown without notifications</string>
+    <string name="summary_no_notifications_pulldown">Pulldown quick settings if no notifications are present</string>
 
     <!-- Reset tiles -->
     <string name="tiles_reset_title">Reset</string>

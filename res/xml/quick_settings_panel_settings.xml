@@ -30,6 +30,11 @@
             android:persistent="false" />
 
         <CheckBoxPreference
+            android:key="no_notifications_pulldown"
+            android:title="@string/title_no_notifications_pulldown"
+            android:summary="@string/summary_no_notifications_pulldown" />
+
+        <CheckBoxPreference
             android:key="collapse_panel"
             android:title="@string/title_collapse_panel"
             android:summary="@string/summary_collapse_panel" />
