@@ -62,7 +62,7 @@
     <dimen name="keyguard_appwidget_picker_margin_right">6dip</dimen>
     <integer name="keyguard_appwidget_picker_cols">1</integer>
 
-    <!-- **** LIQUIDSMOOTH ADDITIONS START **** -->
+    <!-- **** CARBON ADDITIONS START **** -->
 
     <!-- Light settings dialog -->
     <dimen name="dialog_light_settings_width">400dip</dimen>
@@ -81,5 +81,5 @@
     <dimen name="navigation_bar_24">24.0dip</dimen>
     <dimen name="navigation_bar_0">0.0dip</dimen>
 
-    <!-- **** LIQUIDSMOOTH ADDITIONS END **** -->
+    <!-- **** CARBON ADDITIONS END **** -->
 </resources>

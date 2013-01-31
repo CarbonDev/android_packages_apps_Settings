@@ -30,7 +30,7 @@
 
         <PreferenceScreen
             android:key="display_rotation"
-            android:fragment="com.android.settings.liquid.DisplayRotation"
+            android:fragment="com.android.settings.carbon.DisplayRotation"
             android:title="@string/display_rotation_title" />
 
         <ListPreference

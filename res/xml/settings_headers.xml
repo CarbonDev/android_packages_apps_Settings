@@ -66,21 +66,21 @@
     <header
         android:id="@+id/lock_screen_settings"
         android:title="@string/lock_screen_title"
-        android:fragment="com.android.settings.liquid.LockscreenInterface"
-        android:icon="@drawable/ic_liquid_lockscreen" />
+        android:fragment="com.android.settings.carbon.LockscreenInterface"
+        android:icon="@drawable/ic_carbon_lockscreen" />
 
     <!-- Navigation -->
     <header
         android:id="@+id/nav_bar"
         android:title="@string/navbar_title"
-        android:fragment="com.android.settings.liquid.Navbar"
-        android:icon="@drawable/ic_liquid_navbar" />
+        android:fragment="com.android.settings.carbon.Navbar"
+        android:icon="@drawable/ic_carbon_navbar" />
 
     <!-- Performance -->
     <header
         android:id="@+id/performance_settings"
         android:title="@string/performance_title"
-        android:icon="@drawable/ic_liquid_performance" >
+        android:icon="@drawable/ic_carbon_performance" >
         <intent
                 android:action="android.intent.action.MAIN"
                 android:targetPackage="com.brewcrewfoo.performance"
@@ -91,29 +91,29 @@
     <header
         android:id="@+id/power_menu_settings"
         android:title="@string/power_menu_title"
-        android:fragment="com.android.settings.liquid.PowerMenu"
-        android:icon="@drawable/ic_liquid_powermenu" />
+        android:fragment="com.android.settings.carbon.PowerMenu"
+        android:icon="@drawable/ic_carbon_powermenu" />
 
     <!-- Powerwidget -->
     <header
         android:id="@+id/power_widget_settings"
         android:title="@string/power_widget_title"
-        android:fragment="com.android.settings.liquid.PowerWidget"
-        android:icon="@drawable/ic_liquid_powerwidget" />
+        android:fragment="com.android.settings.carbon.PowerWidget"
+        android:icon="@drawable/ic_carbon_powerwidget" />
 
     <!-- Quicksettings-->
     <header
         android:id="@+id/quick_settings"
         android:title="@string/quick_settings_title"
-        android:fragment="com.android.settings.liquid.QuickSettings"
-        android:icon="@drawable/ic_liquid_quicksettings" />
+        android:fragment="com.android.settings.carbon.QuickSettings"
+        android:icon="@drawable/ic_carbon_quicksettings" />
 
     <!-- Statusbar -->
     <header
         android:id="@+id/status_bar_settings"
         android:title="@string/status_bar_title"
-        android:fragment="com.android.settings.liquid.StatusBar"
-        android:icon="@drawable/ic_liquid_statusbar" />
+        android:fragment="com.android.settings.carbon.StatusBar"
+        android:icon="@drawable/ic_carbon_statusbar" />
 
     <!-- Themes -->
     <header

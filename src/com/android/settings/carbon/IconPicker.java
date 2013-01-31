@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.liquid;
+package com.android.settings.carbon;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -48,7 +48,7 @@ public class IconPicker {
     private Activity mParent;
     private Resources mResources;
     private OnIconPickListener mIconListener;
-    private static final String ICON_ACTION = "com.liquid.ACTION_PICK_ICON";
+    private static final String ICON_ACTION = "com.carbon.ACTION_PICK_ICON";
     public static final String RESOURCE_NAME = "resource_name";
     public static final String PACKAGE_NAME = "package_name";
     public static final int REQUEST_PICK_SYSTEM = 0;

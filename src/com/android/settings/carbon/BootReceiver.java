@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.liquid;
+package com.android.settings.carbon;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

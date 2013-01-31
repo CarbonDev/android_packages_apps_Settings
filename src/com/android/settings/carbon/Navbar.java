@@ -1,4 +1,4 @@
-package com.android.settings.liquid;
+package com.android.settings.carbon;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -61,7 +61,7 @@ import com.android.settings.SettingsActivity;
 import com.android.settings.util.ShortcutPickerHelper;
 import com.android.settings.widgets.NavBarItemPreference;
 import com.android.settings.widgets.SeekBarPreference;
-import com.android.settings.liquid.NavRingTargets;
+import com.android.settings.carbon.NavRingTargets;
 
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 

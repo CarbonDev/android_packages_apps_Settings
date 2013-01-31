@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.liquid;
+package com.android.settings.carbon;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -37,7 +37,7 @@ import android.widget.TextView;
 
 import com.android.settings.R;
 import com.android.settings.Utils;
-import com.android.settings.liquid.QuickSettingsUtil.TileInfo;
+import com.android.settings.carbon.QuickSettingsUtil.TileInfo;
 
 import java.util.ArrayList;
 public class QuickSettingsTiles extends Fragment {

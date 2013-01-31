@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.android.settings.liquid;
+package com.android.settings.carbon;
 
 import java.util.Collections;
 import java.util.ArrayList;
@@ -41,7 +41,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.settings.R;
-import com.android.settings.liquid.QuickSettingsTiles.OnRearrangeListener;
+import com.android.settings.carbon.QuickSettingsTiles.OnRearrangeListener;
 
 public class DraggableGridView extends ViewGroup implements
         View.OnTouchListener, View.OnClickListener, View.OnLongClickListener {

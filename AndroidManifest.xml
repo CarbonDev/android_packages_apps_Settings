@@ -1441,12 +1441,12 @@
             android:theme="@style/CryptKeeperBlankTheme"
         />
 
-        <!-- LiquidSmooth Activities Start -->
-        <activity android:name=".liquid.PowerWidget" />
+        <!-- Carbon Activities Start -->
+        <activity android:name=".carbon.PowerWidget" />
 
-        <activity android:name=".liquid.StatusBar" />
+        <activity android:name=".carbon.StatusBar" />
 
-        <activity android:name=".liquid.PerformanceSettings" />
+        <activity android:name=".carbon.PerformanceSettings" />
 
         <activity android:name=".profiles.ProfilesSettings" />
         <activity android:name="Settings$ProfilesSettingsActivity"
@@ -1490,26 +1490,26 @@
 
         <activity android:name=".profiles.NFCProfileSelect" />
 
-        <activity android:name=".liquid.LockscreenTargets" />
+        <activity android:name=".carbon.LockscreenTargets" />
 
-        <activity android:name=".liquid.LockscreenInterface" />
+        <activity android:name=".carbon.LockscreenInterface" />
 
-        <activity android:name=".liquid.LockscreenButtons" />
+        <activity android:name=".carbon.LockscreenButtons" />
 
-        <activity android:name=".liquid.Navbar" />
+        <activity android:name=".carbon.Navbar" />
 
-        <activity android:name=".liquid.NavRingTargets" />
+        <activity android:name=".carbon.NavRingTargets" />
 
-        <activity android:name=".liquid.PowerMenu" />
+        <activity android:name=".carbon.PowerMenu" />
 
-        <activity android:name=".liquid.QuickSettings" />
+        <activity android:name=".carbon.QuickSettings" />
 
         <activity android:name=".profiles.NFCProfile"
                 android:theme="@android:style/Theme.NoDisplay">
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
                 <category android:name="android.intent.category.DEFAULT"/>
-                <data android:mimeType="liquid/profile" />
+                <data android:mimeType="carbon/profile" />
             </intent-filter>
         </activity>
 
@@ -1519,7 +1519,7 @@
 
         <activity android:name=".ApnEditor" />
 
-        <!-- LiquidSmooth Activities End -->
+        <!-- Carbon Activities End -->
 
         <!-- Pseudo-activity used to provide an intent-filter entry point to encryption settings -->
         <activity android:name="Settings$CryptKeeperSettingsActivity"
@@ -1527,7 +1527,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.app.action.START_ENCRYPTION" />
-                <category android:name="android.intent.category.DEFAULT" /> />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="com.android.settings.CryptKeeperSettings" />
@@ -1574,7 +1574,7 @@
             </intent-filter>
         </receiver>
 
-        <receiver android:name=".liquid.BootReceiver" android:enabled="true">
+        <receiver android:name=".carbon.BootReceiver" android:enabled="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>

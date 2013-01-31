@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.liquid;
+package com.android.settings.carbon;
 
 import android.database.ContentObserver;
 import android.os.Bundle;

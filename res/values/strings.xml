@@ -4433,7 +4433,7 @@
     <!-- Cell Broadcast settings description [CHAR LIMIT=100] -->
     <string name="cell_broadcast_settings_summary">Select the types of emergency alerts to display.</string>
 
-    <!-- **** LIQUIDSMOOTH ADDITIONS START **** -->
+    <!-- **** CARBON ADDITIONS START **** -->
 
     <string name="ok">OK</string>
 
@@ -4476,7 +4476,7 @@
     <string name="device_hostname">Device hostname</string>
 
     <!-- About phone screen,  setting option name-->
-    <string name="mod_version">LiquidSmooth version</string>
+    <string name="mod_version">Carbon version</string>
     <string name="mod_version_default">Unknown</string>
     <!-- About phone screen, build date of ROM -->
     <string name="build_date">Build date</string>
@@ -4489,9 +4489,9 @@
 
     <!-- INTERFACE Settings  -->
     <!-- Settings main menu category heading. Interface (Launcher, Themes, System). [CHAR LIMIT=40] -->
-    <string name="header_category_interface">LIQUID SPLASHER</string>
+    <string name="header_category_interface">CARBON SETTINGS</string>
 
-    <!-- LIQUID SPLASHER Settings -->
+    <!-- CARBON Settings -->
     <string name="lock_screen_title">Lockscreen</string>
     <string name="navbar_title">Navigation</string>
     <string name="performance_title">Performance</string>
@@ -5244,5 +5244,5 @@
     <string name="lockscreen_maximize_widgets_title">Maximize Widgets</string>
     <string name="lockscreen_maximize_widgets_summary">Show widgets maximized and the unlock minimized</string>
 
-    <!-- **** LIQUIDSMOOTH ADDITIONS END **** -->
+    <!-- **** CARBON ADDITIONS END **** -->
 </resources>

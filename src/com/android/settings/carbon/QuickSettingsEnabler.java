@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package com.android.settings.liquid;
+package com.android.settings.carbon;
 
 import android.provider.Settings;
 import android.content.Context;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
-import com.android.settings.liquid.SwitchWidget;
+import com.android.settings.carbon.SwitchWidget;
 
 public class QuickSettingsEnabler extends SwitchWidget {
     public QuickSettingsEnabler(Context context, Switch switch_) {

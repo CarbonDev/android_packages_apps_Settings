@@ -4,7 +4,7 @@
         <PreferenceScreen
             android:key="hardware_keys"
             android:title="@string/hardware_keys_title"
-            android:fragment="com.android.settings.liquid.HardwareKeys" />
+            android:fragment="com.android.settings.carbon.HardwareKeys" />
 
         <PreferenceCategory
             android:key="navbar_options"

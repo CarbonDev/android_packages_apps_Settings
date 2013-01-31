@@ -800,7 +800,7 @@
         <item>Always allow</item>
     </string-array>
 
-    <!-- **** LIQUIDSMOOTH EDITS START **** -->
+    <!-- **** CARBON EDITS START **** -->
 
     <!-- Volume Overlay options. -->
     <string-array name="volume_overlay_entries">
@@ -1434,5 +1434,5 @@
         <item>500</item>
     </string-array>
 
-    <!-- **** LIQUIDSMOOTH EDITS END **** -->
+    <!-- **** CARBON EDITS END **** -->
 </resources>

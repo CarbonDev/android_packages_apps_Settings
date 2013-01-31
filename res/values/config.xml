@@ -29,7 +29,7 @@
          very long strings too. -->
     <integer name="maximum_user_dictionary_word_length" translatable="false">48</integer>
 
-    <!-- **** LIQUIDSMOOTH ADDITIONS START **** -->
+    <!-- **** CARBON ADDITIONS START **** -->
     <!-- LED Flashlight -->
     <bool name="has_led_flash">false</bool>
 
@@ -40,5 +40,5 @@
     <!-- Show Expanded Desktop preference -->
     <bool name="config_show_expandedDesktop">false</bool>
 
-    <!-- **** LIQUIDSMOOTH ADDITIONS END **** -->
+    <!-- **** CARBON ADDITIONS END **** -->
 </resources>

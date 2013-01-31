@@ -1,5 +1,5 @@
 
-package com.android.settings.liquid;
+package com.android.settings.carbon;
 
 import android.app.Activity;
 import android.content.ComponentName;
