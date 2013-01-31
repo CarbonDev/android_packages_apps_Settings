@@ -1490,6 +1490,16 @@
 
         <activity android:name=".profiles.NFCProfileSelect" />
 
+        <activity
+            android:name=".liquid.DensityChanger"
+            android:label="@string/lcd_density_wizard" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".liquid.InterfaceSettings" />
+
         <activity android:name=".liquid.LockscreenTargets" />
 
         <activity android:name=".liquid.LockscreenInterface" />
@@ -1501,8 +1511,22 @@
         <activity android:name=".liquid.NavRingTargets" />
 
         <activity android:name=".liquid.PowerMenu" />
+        
+        <activity android:name=".liquid.NotificationDrawerStyle" />
+
+	    <activity android:name=".liquid.RamBar" />
 
         <activity android:name=".liquid.QuickSettings" />
+
+        <activity android:name="Settings$ASSRamBarActivity"
+                android:label="@string/ram_bar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.slim.RamBar" />
+        </activity>
 
         <activity android:name=".profiles.NFCProfile"
                 android:theme="@android:style/Theme.NoDisplay">
@@ -1527,7 +1551,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.app.action.START_ENCRYPTION" />
-                <category android:name="android.intent.category.DEFAULT" /> />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="com.android.settings.CryptKeeperSettings" />

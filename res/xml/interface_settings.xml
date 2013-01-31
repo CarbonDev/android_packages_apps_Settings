@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:key="general_options"
+        android:title="@string/profiles_general_title">
+
+        <Preference
+            android:key="custom_carrier_label"
+            android:title="@string/custom_carrier_label_title" />
+
+        <Preference
+            android:fragment="com.android.settings.liquid.NotificationDrawerStyle"
+            android:key="notification_style"
+            android:title="@string/notification_style_title"
+            android:summary="@string/notification_style_summary" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="advanced_options"
+        android:title="@string/advanced_settings_title" >
+
+        <PreferenceScreen
+            android:key="recents_ram_bar"
+            android:fragment="com.android.settings.liquid.RamBar"
+            android:title="@string/ram_bar" />
+
+        <Preference
+            android:key="lcd_density_setup"
+            android:title="@string/lcd_density_title"
+            android:summary="@string/lcd_density_summary" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
