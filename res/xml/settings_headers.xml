@@ -62,6 +62,13 @@
     <header android:id="@+id/interface_section"
         android:title="@string/header_category_interface" /> 
 
+    <!-- Interface -->
+    <header
+        android:id="@+id/interface_settings"
+        android:title="@string/interface_title"
+        android:fragment="com.android.settings.carbon.InterfaceSettings"
+        android:icon="@drawable/ic_carbon_interface" />
+
     <!-- Lockscreen -->
     <header
         android:id="@+id/lock_screen_settings"

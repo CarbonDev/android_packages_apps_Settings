@@ -1490,6 +1490,16 @@
 
         <activity android:name=".profiles.NFCProfileSelect" />
 
+        <activity
+            android:name=".carbon.DensityChanger"
+            android:label="@string/lcd_density_wizard" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".carbon.InterfaceSettings" />
+
         <activity android:name=".carbon.LockscreenTargets" />
 
         <activity android:name=".carbon.LockscreenInterface" />
@@ -1501,8 +1511,22 @@
         <activity android:name=".carbon.NavRingTargets" />
 
         <activity android:name=".carbon.PowerMenu" />
+        
+        <activity android:name=".carbon.NotificationDrawerStyle" />
+
+	    <activity android:name=".carbon.RamBar" />
 
         <activity android:name=".carbon.QuickSettings" />
+
+        <activity android:name="Settings$ASSRamBarActivity"
+                android:label="@string/ram_bar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.slim.RamBar" />
+        </activity>
 
         <activity android:name=".profiles.NFCProfile"
                 android:theme="@android:style/Theme.NoDisplay">
