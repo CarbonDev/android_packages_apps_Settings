@@ -9,6 +9,11 @@
             android:entryValues="@array/all_color_style_values"
             android:title="@string/pie_color_style_title" />
 
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+                android:key="pie_button_color"
+                android:title="@string/navigation_bar_tint_title"
+                android:defaultValue="#ffffff" />
+
 	<net.margaritov.preference.colorpicker.ColorPickerPreference
 		android:key="pie_background"
 		android:title="@string/pie_background_title"
@@ -44,7 +49,12 @@
 
 	<net.margaritov.preference.colorpicker.ColorPickerPreference
 		android:key="pie_chevron_right"
-		android:title="@string/pie_chevron_left_title"
+		android:title="@string/pie_chevron_right_title"
 		android:defaultValue="#33b5e5" />
+
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+                android:key="pie_juice"
+                android:title="@string/pie_juice_title"
+                android:defaultValue="#33b5e5" />
 
 </PreferenceScreen>

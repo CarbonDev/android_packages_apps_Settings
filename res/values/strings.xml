@@ -4742,6 +4742,20 @@
     <string name="pie_status_title">Status color</string>
     <string name="pie_chevron_left_title">Left chevron color</string>
     <string name="pie_chevron_right_title">Right chevron color</string>
+    <string name="pie_juice_title">Battery juice color</string>
+    <string name="pie_gap_title">Pie gap</string>
+    <string name="pie_gap_summary">Adjust the gap in between pie elements</string>
+    <string name="pie_gap_closed">Closed</string>
+    <string name="pie_gap_small">Small (default)</string>
+    <string name="pie_gap_big">Big</string>
+    <string name="pie_gap_huge">Huge</string>
+    <string name="pie_trigger_title">Trigger size</string>
+    <string name="pie_trigger_summary">Determine the size of the triggering area that will start pie controls</string>
+    <string name="pie_trigger_small">@string/pie_gap_small</string>
+    <string name="pie_trigger_big">@string/pie_gap_big</string>
+    <string name="pie_trigger_huge">@string/pie_gap_huge</string>
+    <string name="pie_notifications_title">Enable Chevron Targets</string>
+    <string name="pie_notifications_summary">Enabling, will let the Notification panels and QuickSettings active when swipe.</string>
     <string name="all_color">Custom Colors</string>
     <string name="stock_color">Default Colors</string>
 
