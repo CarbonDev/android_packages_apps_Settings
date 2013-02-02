@@ -19,7 +19,7 @@
     android:title="@string/status_bar_title">
 
     <!-- Status bar tweaks -->
-    <Preference
+    <PreferenceScreen
         android:id="@+id/statusbar_clock"
         android:title="@string/clock_options"
         android:fragment="com.android.settings.carbon.StatusBarClock" />
