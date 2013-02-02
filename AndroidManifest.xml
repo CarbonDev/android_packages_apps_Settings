@@ -1446,16 +1446,6 @@
 
         <activity android:name=".carbon.StatusBar" />
 
-        <activity
-            android:name=".carbon.StatusBarClock"
-            android:label="Statusbar Clock" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="com.android.settings.SHORTCUT" />
-            </intent-filter>
-        </activity>
-
         <activity android:name=".carbon.PerformanceSettings" />
 
         <activity android:name=".profiles.ProfilesSettings" />
@@ -1535,7 +1525,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.android.settings.carbon.RamBar" />
+                android:value="com.android.settings.slim.RamBar" />
         </activity>
 
         <activity android:name=".profiles.NFCProfile"
