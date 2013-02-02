@@ -73,6 +73,16 @@
             android:summary="@string/pie_notifications_summary"
             android:defaultValue="false" />
 
+        <CheckBoxPreference
+            android:key="pie_menu"
+            android:title="@string/pie_menu_title"
+            android:summary="@string/pie_menu_summary" />
+
+        <CheckBoxPreference
+            android:key="pie_search"
+            android:title="@string/pie_search_title"
+            android:summary="@string/pie_search_summary" />
+
         <PreferenceScreen
             android:key="pie_color"
             android:title="@string/pie_color_title"
