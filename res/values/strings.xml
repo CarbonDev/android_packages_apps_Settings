@@ -5909,5 +5909,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="auto_hide_statusbar">Auto Hide statusbar</string>
     <string name="auto_hide_statusbar_summary">Statusbar hides itself when there are no notifications</string>
 
+    <!-- Safe headset volume restore checkbox -->
+    <string name="safe_headset_volume_title">Safe headset volume</string>
+    <string name="safe_headset_volume_summary">Prevent loud volume levels when headset is first plugged in</string>
+
     <!-- **** CARBON ADDITIONS END **** -->
 </resources>
