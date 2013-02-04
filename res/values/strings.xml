@@ -5272,6 +5272,9 @@
     <string name="hardware_keys_action_search">Search Assistant</string>
     <string name="hardware_keys_action_voice_search">Voice Search</string>
     <string name="hardware_keys_action_in_app_search">In-app Search</string>
+    <string name="hardware_keys_action_last_app">Switch to last app</string>
+    <string name="hardware_keys_action_power">Power Button</string>
+    <string name="hardware_keys_action_custom_app">Custom App</string>
 
     <!-- Navigation Bar -->
     <string name="navigation_bar">Navigation Bar</string>
