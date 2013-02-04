@@ -5199,6 +5199,12 @@
     <string name="power_menu_airplane_title">Airplane Mode</string>
     <string name="power_menu_user_title">User Switcher</string>
     <string name="power_menu_sound_title">Sound Panel</string>
+    <string name="summary_expanded_desktop">%1$s</string>
+    <string name="expanded_desktop_summary">Show or change expanded desktop mode</string>
+    <string name="expanded_desktop_disabled">Off</string>
+    <string name="expanded_desktop_only_nav_bar">Hide navigation bar</string>
+    <string name="expanded_desktop_only_status_bar">Hide status bar</string>
+    <string name="expanded_desktop_both_hidden">Hide navigation and status bar</string>
 
     <!-- Advanced, Device specific (DeviceParts) settings  -->
     <string name="advanced_settings_title">Advanced</string>

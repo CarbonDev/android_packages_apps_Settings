@@ -38,7 +38,7 @@
     <bool name="config_show_volumeRockerWake">true</bool>
 
     <!-- Show Expanded Desktop preference -->
-    <bool name="config_show_expandedDesktop">false</bool>
+    <bool name="config_show_expandedDesktop">true</bool>
 
     <!-- **** CARBON ADDITIONS END **** -->
 </resources>
