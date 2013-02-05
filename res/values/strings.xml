@@ -5183,7 +5183,6 @@
 
     <!-- Statusbar  -->
     <string name="status_bar_general_title">General</string>
-    <string name="status_bar_clock_title">Clock</string>
     <string name="status_bar_battery_title">Battery Style</string>
     <string name="status_bar_toggle_brightness">Brightness Control</string>
     <string name="status_bar_toggle_brightness_summary">Adjust brightness by sliding across status bar</string>
