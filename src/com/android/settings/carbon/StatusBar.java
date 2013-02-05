@@ -58,7 +58,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         PreferenceScreen prefSet = getPreferenceScreen();
 
         mStatusBarBrightnessControl = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_BRIGHTNESS_CONTROL);
-        mStatusBarAmPm = (ListPreference) prefSet.findPreference(STATUS_BAR_AM_PM);
         mStatusBarBattery = (ListPreference) prefSet.findPreference(STATUS_BAR_BATTERY);
         mStatusBarCmSignal = (ListPreference) prefSet.findPreference(STATUS_BAR_SIGNAL);
 
@@ -73,9 +72,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             }
         } catch (SettingNotFoundException e) {
         }
-
-        mStatusBarBattery = (ListPreference) prefSet.findPreference(STATUS_BAR_BATTERY);
-        mStatusBarCmSignal = (ListPreference) prefSet.findPreference(STATUS_BAR_SIGNAL);
 
         int statusBarBattery = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
                 Settings.System.STATUS_BAR_BATTERY, 0);
@@ -139,7 +135,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
                     Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL, value ? 1 : 0);
             return true;
         } else if (preference == mStatusBarNotifCount) {
-        if (preference == mStatusBarNotifCount) {
             value = mStatusBarNotifCount.isChecked();
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.STATUS_BAR_NOTIF_COUNT, value ? 1 : 0);
@@ -150,7 +145,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
 
     private void updateClockStyleDescription() {
         if (Settings.System.getInt(getActivity().getContentResolver(),
-               Settings.System.STATUS_BAR_CLOCK, 0) == 1) {
+               Settings.System.STATUS_BAR_CLOCK, 1) == 1) {
             mClockStyle.setSummary(getString(R.string.clock_enabled));
         } else {
             mClockStyle.setSummary(getString(R.string.clock_disabled));
@@ -162,5 +157,4 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         super.onResume();
         updateClockStyleDescription();
     }
-
 }
