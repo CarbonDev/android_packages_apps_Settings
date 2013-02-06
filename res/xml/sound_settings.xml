@@ -48,7 +48,7 @@
     <!-- Quiet hours -->
     <PreferenceScreen
             android:key="quiet_hours"
-            android:fragment="com.android.settings.liquid.QuietHours"
+            android:fragment="com.android.settings.carbon.QuietHours"
             android:title="@string/quiet_hours_title" />
 
     <PreferenceCategory
