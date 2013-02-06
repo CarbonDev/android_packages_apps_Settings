@@ -144,14 +144,14 @@ public class InterfaceSettings extends SettingsPreferenceFragment
         mShowWifiName.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.NOTIFICATION_SHOW_WIFI_SSID, 0) == 1);
 
-        mAdditionalOptions = (PreferenceCategory) prefs.findPreference(PREF_NOTIFICATION_OPTIONS);
+        mAdditionalOptions = (PreferenceCategory) getPreferenceScreen().findPreference(PREF_NOTIFICATION_OPTIONS);
 
         PackageManager pm = getPackageManager();
         boolean isMobileData = pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY);
 
         if (!Utils.isPhone(getActivity()) || !isMobileData) {
             // Nothing for tablets, large screen devices and non Wifi devices remove options
-            prefs.removePreference(mAdditionalOptions);
+            getPreferenceScreen().removePreference(mShowWifiName);
         }
 
         setHasOptionsMenu(true);

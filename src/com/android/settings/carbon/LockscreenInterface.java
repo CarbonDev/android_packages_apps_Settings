@@ -42,6 +42,7 @@ import android.view.Display;
 import android.view.Window;
 import android.widget.Toast;
 
+import com.android.internal.widget.multiwaveview.GlowPadView;
 import com.android.settings.R;
 import com.android.settings.Utils;
 import com.android.settings.SettingsPreferenceFragment;
@@ -68,12 +69,18 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private static final String PREF_LOCKSCREEN_USE_CAROUSEL = "lockscreen_use_widget_container_carousel";
     private static final String PREF_LOCKSCREEN_HIDE_INITIAL_PAGE_HINTS = "lockscreen_hide_initial_page_hints";
     private static final String KEY_BACKGROUND_PREF = "lockscreen_background";
+    private static final String PREF_LOCKSCREEN_EIGHT_TARGETS = "lockscreen_eight_targets";
+    private static final String PREF_LOCKSCREEN_SHORTCUTS = "lockscreen_shortcuts";
+    private static final String PREF_LOCKSCREEN_SHORTCUTS_LONGPRESS = "lockscreen_shortcuts_longpress";
 
     private ListPreference mCustomBackground;
     private ListPreference mBatteryStatus;
     private CheckBoxPreference mMaximizeWidgets;
     private CheckBoxPreference mLockscreenUseCarousel;
     private CheckBoxPreference mLockscreenHideInitialPageHints;
+    private CheckBoxPreference mLockscreenEightTargets;
+    private Preference mShortcuts;	
+    private CheckBoxPreference mLockscreenShortcutsLongpress;
 
     private File mWallpaperImage;
     private File mWallpaperTemporary;
@@ -123,6 +130,25 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
 
         mWallpaperImage = new File(getActivity().getFilesDir() + "/lockwallpaper");
         mWallpaperTemporary = new File(getActivity().getCacheDir() + "/lockwallpaper.tmp");
+
+        mLockscreenEightTargets = (CheckBoxPreference) findPreference(PREF_LOCKSCREEN_EIGHT_TARGETS);
+        mLockscreenEightTargets.setChecked(Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.LOCKSCREEN_EIGHT_TARGETS, 0) == 1);
+
+        mLockscreenShortcutsLongpress = (CheckBoxPreference) findPreference(PREF_LOCKSCREEN_SHORTCUTS_LONGPRESS);
+        mLockscreenShortcutsLongpress.setChecked(Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.LOCKSCREEN_SHORTCUTS_LONGPRESS, 0) == 1);
+        mLockscreenShortcutsLongpress.setEnabled(!mLockscreenEightTargets.isChecked());
+
+        mShortcuts = (Preference) findPreference(PREF_LOCKSCREEN_SHORTCUTS);
+        mShortcuts.setEnabled(!mLockscreenEightTargets.isChecked());
+
+        if (!Utils.isPhone(getActivity())) {
+             // Nothing for tablets and large screen devices
+             getPreferenceScreen().removePreference(mShortcuts);
+             getPreferenceScreen().removePreference(mLockscreenShortcutsLongpress);
+             getPreferenceScreen().removePreference(mLockscreenEightTargets);
+        }
     }
 
     private void updateCustomBackgroundSummary() {
@@ -154,8 +180,24 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
                     Settings.System.LOCKSCREEN_USE_WIDGET_CONTAINER_CAROUSEL,
                     ((CheckBoxPreference)preference).isChecked() ? 1 : 0);
             return true;
+        } else if (preference == mLockscreenEightTargets) {
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.LOCKSCREEN_EIGHT_TARGETS, mLockscreenEightTargets.isChecked() ? 1 : 0);
+            mShortcuts.setEnabled(!mLockscreenEightTargets.isChecked());
+            mLockscreenShortcutsLongpress.setEnabled(!mLockscreenEightTargets.isChecked());
+            Settings.System.putString(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.LOCKSCREEN_TARGETS, GlowPadView.EMPTY_TARGET);
+            for (File pic : mActivity.getFilesDir().listFiles()) {
+                if (pic.getName().startsWith("lockscreen_")) {
+                    pic.delete();
+                }
+            }
+            return true;
+        } else if (preference == mLockscreenShortcutsLongpress) {
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.LOCKSCREEN_SHORTCUTS_LONGPRESS, mLockscreenShortcutsLongpress.isChecked() ? 1 : 0);
+            return true;
         }
-
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 

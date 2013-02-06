@@ -1452,6 +1452,7 @@
             android:theme="@style/CryptKeeperBlankTheme"
         />
 
+<<<<<<< HEAD
         <!-- Carbon Activities Start -->
         <activity android:name=".carbon.PowerWidget" />
 
@@ -1518,6 +1519,8 @@
         <activity android:name=".carbon.LockscreenInterface" />
 
         <activity android:name=".carbon.LockscreenButtons" />
+
+        <activity android:name=".carbon.LockscreenShortcuts" />
 
         <activity android:name=".carbon.Navbar" />
 
