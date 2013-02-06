@@ -4440,6 +4440,7 @@
     <!-- **** CARBON ADDITIONS START **** -->
 
     <string name="ok">OK</string>
+    <string name="save">Save</string>
 
     <!-- Activity titles defined in AndroidManifest.xml -->
     <string name="title_navbar">Navigation</string>
@@ -4539,10 +4540,28 @@
     <string name="lockscreen_vibrate_enabled_title">Vibrate</string>
     <string name="lockscreen_vibrate_enabled_head">Vibrate when unlocking device</string>
 
+    <!-- Transparency -->
+    <string name="transparency_dialog_title">Transparency settings</string>
+    <string name="transparency_dialog_linked_transparency">Link statusbar &amp; navbar alpha</string>
+    <string name="transparency_dialog_transparency_sb_and_nv">Statusbar and navigation bar</string>
+    <string name="transparency_dialog_statusbar">Statusbar</string>
+    <string name="transparency_dialog_navbar">Navigation bar</string>
+    <string name="transparency_dialog_match_keyguard_alpha">Match lockscreen alpha</string>
+    <string name="transparency_dialog_transparency">Homescreen alpha</string>
+    <string name="transparency_dialog_transparency_keyguard">Lockscreen alpha</string>
+
     <!-- Lockscreen Battery -->
     <string name="lockscreen_battery_status_title">Battery Status</string>
     <string name="lockscreen_battery_status_charging">Only When Charging</string>
     <string name="lockscreen_battery_status_alwayson">Always On</string>
+
+    <!-- Lockscreen Customization -->
+    <string name="lockscreen_maximize_widgets_title">Maximize Widgets</string>
+    <string name="lockscreen_maximize_widgets_summary">Show widgets maximized and the unlock minimized</string>
+    <string name="lockscreen_hide_initial_page_hints_title">Hide initial page hints</string>
+    <string name="lockscreen_hide_initial_page_hints_summary">Set wether the hints for the left and right widgets are shown when the screen is turned on.</string>
+    <string name="lockscreen_use_widget_container_carousel_title">Use widget carousel</string>
+    <string name="lockscreen_use_widget_container_carousel_summary">Use a carousel animation when switching between lockscreen widgets.</string>
 
     <!-- Profiles Settings  -->
     <string name="profiles_settings_title">Profiles</string>
@@ -4808,6 +4827,28 @@
     <string name="link_volume_ringtones">Link ringtone &amp; notifications volumes</string>
     <string name="link_volume_mutes">Silent mode affects notifications</string>
 
+    <!-- Status bar | Clock -->
+    <string name="status_bar_clock">Clock and date</string>
+    <string name="status_bar_clock_title">Clock and date style</string>
+    <string name="clock_title_enable">Clock alignment</string>
+    <string name="clock_enabled">Enabled</string>
+    <string name="clock_disabled">Disabled</string>
+    <string name="clock_color_title">Clock color</string>
+    <string name="status_bar_show_clock_title">Show clock</string>
+    <string name="status_bar_am_pm_title">AM/PM style</string>
+    <string name="status_bar_am_pm_info">24-hour clock is enabled</string>
+    <string name="enable_clock_weekday">Day of the week</string>
+    <string name="enable_clock_weekday_summary">Abbreviated day of the week before the time</string>
+    <string name="right_clock">Right clock</string>
+    <string name="center_clock">Center clock</string>
+    <string name="dont_show">Don\'t show</string>
+    <string name="clock_date_display">Date</string>
+    <string name="clock_date_display_summary">Display custom date before the clock</string>
+    <string name="clock_date_style">Date style</string>
+    <string name="clock_date_format">Date format</string>
+    <string name="clock_date_string_edittext_title">Must be in DateFormat eg. MM/dd/yy</string>
+    <string name="clock_date_string_edittext_summary">Enter string</string>
+
     <!-- Display settings screen, notification light settings -->
     <string name="notification_pulse_title">Notification light</string>
     <string name="notification_light_general_title">General</string>
@@ -4872,6 +4913,8 @@
     <string name="lcd_density_summary">unknown</string>
     <string name="dual_pane">Dual panel mode</string>
     <string name="dual_pane_summary">Restart settings to take effect</string>
+    <string name="wakeup_when_plugged_unplugged_title">Wake up on charger</string>
+    <string name="wakeup_when_plugged_unplugged_summary">Wake up device if a charger is plugged/unplugged.</string>
 
     <!-- LCD Density -->
     <string name="dpi">DPI</string>
@@ -4969,10 +5012,11 @@
     <string name="navbar_height_dialog_summary">Please reboot for height change to be configured properly</string>
     <string name="navbar_height_dialog_button_later">I\'ll Reboot Later</string>
     <string name="navbar_height_dialog_button_reboot">Reboot Now</string>
-    <string name="navigation_bar_tint_title">Navbar Color</string>
+    <string name="navigation_bar_tint_title">Navbar Button Color</string>
     <string name="navigation_bar_glow_tint_title">Navbar Glow</string>
     <string name="navigation_bar_glow_tint_summary">Change the color of the glow</string>
     <string name="glow_times_title">Button Glow</string>
+    <string name="navigation_bar_color_title">Navbar color</string>
     <string name="glow_times_off">Off</string>
     <string name="glow_times_superquick">Super Quick</string>
     <string name="glow_times_quick">Quick</string>
@@ -5164,11 +5208,7 @@
     <string name="ime_switcher_notify_summary">Display input method selector notification</string>
 
     <!-- Statusbar  -->
-    <string name="status_bar_clock_title">Clock</string>
     <string name="status_bar_general_title">General</string>
-    <string name="status_bar_show_clock_title">Show Clock</string>
-    <string name="status_bar_am_pm_title">AM/PM Style</string>
-    <string name="status_bar_am_pm_info">24-hour clock is enabled</string>
     <string name="status_bar_battery_title">Battery Style</string>
     <string name="status_bar_toggle_brightness">Brightness Control</string>
     <string name="status_bar_toggle_brightness_summary">Adjust brightness by sliding across status bar</string>
@@ -5180,16 +5220,6 @@
     <string name="status_bar_battery_status_percentage">Percentage</string>
     <string name="status_bar_battery_status_circle">Circle</string>
     <string name="status_bar_battery_status_circle_percentage">Circle (Percent)</string>
-
-    <!-- clock stuff -->
-    <string name="right_clock">Right Clock</string>
-    <string name="center_clock">Center Clock</string>
-    <string name="no_clock">No Clock</string>
-    <string name="dont_show">Don\'t Show</string>
-    <string name="small_am_pm">Small AM/PM</string>
-    <string name="regular_am_pm">Regular AM/PM</string>
-    <string name="small_weekday">Small Weekday</string>
-    <string name="regular_weekday">Regular Weekday</string>
 
     <!-- Status bar notification count -->
     <string name="status_bar_notif_count_title">Notification Count</string>
@@ -5309,9 +5339,6 @@
     <!-- Stylus Icon -->
     <string name="stylus_icon_enabled_title">Show icon when using stylus</string>
     <string name="stylus_icon_enabled_summary">Show the pointer icon when hovering or drawing with the stylus</string>
-
-    <string name="lockscreen_maximize_widgets_title">Maximize Widgets</string>
-    <string name="lockscreen_maximize_widgets_summary">Show widgets maximized and the unlock minimized</string>
 
     <!-- Recents Ram Bar -->
     <string name="ram_bar">Recents RAM bar</string>

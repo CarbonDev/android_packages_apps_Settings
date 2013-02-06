@@ -36,6 +36,11 @@
                 android:summary="@string/navbar_qty_summary" />
 
             <net.margaritov.preference.colorpicker.ColorPickerPreference
+                android:key="nav_bar_color"
+                android:title="@string/navigation_bar_color_title"
+                android:defaultValue="#000000" />
+
+            <net.margaritov.preference.colorpicker.ColorPickerPreference
                 android:key="nav_button_color"
                 android:title="@string/navigation_bar_tint_title"
                 android:defaultValue="#FFFFFF" />
@@ -46,9 +51,6 @@
                 android:summary="@string/navigation_bar_glow_tint_summary"
                 android:defaultValue="#FFFFFF" />
 
-            <com.android.settings.widgets.SeekBarPreference
-                android:key="navigation_bar_alpha"
-                android:title="@string/navigation_bar_alpha_title" />
         </PreferenceCategory>
 
         <PreferenceCategory
