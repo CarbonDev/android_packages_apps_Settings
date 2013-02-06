@@ -4971,7 +4971,6 @@
     <string name="navbar_action_power">Power</string>
     <string name="navbar_action_notifications">Notifications</string>
     <string name="navbar_action_none">Empty</string>
-<<<<<<< HEAD
     <string name="navbar_widgets">Navbar Widgets</string>
     <string name="navbar_enable_bar">Enable Navbar</string>
     <string name="navigation_bar_height_title">Navbar Height</string>
@@ -4988,12 +4987,11 @@
     <string name="navbar_height_dialog_summary">Please reboot for height change to be configured properly</string>
     <string name="navbar_height_dialog_button_later">I\'ll Reboot Later</string>
     <string name="navbar_height_dialog_button_reboot">Reboot Now</string>
-    <string name="navigation_bar_tint_title">Navbar Color</string>
+    <string name="navigation_bar_tint_title">Navbar Button Color</string>
     <string name="navigation_bar_glow_tint_title">Navbar Glow</string>
     <string name="navigation_bar_glow_tint_summary">Change the color of the glow</string>
     <string name="glow_times_title">Button Glow</string>
-    <string name="navigation_bar_color_title">Navigation bar color</string>
-    <string name="navigation_bar_tint_title">Navigation bar buttons color</string>
+    <string name="navigation_bar_color_title">Navbar color</string>
     <string name="glow_times_off">Off</string>
     <string name="glow_times_superquick">Super Quick</string>
     <string name="glow_times_quick">Quick</string>
