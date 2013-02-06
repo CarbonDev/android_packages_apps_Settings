@@ -49,6 +49,11 @@
         android:summary="@string/lockscreen_maximize_widgets_summary" />
 
      <CheckBoxPreference
+        android:key="lockscreen_use_widget_container_carousel"
+        android:title="@string/lockscreen_use_widget_container_carousel_title"
+        android:summary="@string/lockscreen_use_widget_container_carousel_summary" />
+
+     <CheckBoxPreference
         android:key="lockscreen_hide_initial_page_hints"
         android:title="@string/lockscreen_hide_initial_page_hints_title"
         android:summary="@string/lockscreen_hide_initial_page_hints_summary" />
