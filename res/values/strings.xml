@@ -4714,7 +4714,8 @@
 
     <!-- Pie controls -->
     <string name="pie_controls_title">Pie controls</string>
-    <string name="pie_controls_summary">Allows navigation and status report on expanded desktop mode</string>
+    <string name="pie_controls_summary">Allows navigation and status report</string>
+    <string name="pie_targets_title">Targets</string>
     <string name="pie_gravity_title">Pie gravity</string>
     <string name="pie_gravity_summary">Select the location where Pie will be placed at</string>
     <string name="pie_gravity_top">Top</string>
@@ -4752,7 +4753,8 @@
     <string name="pie_gap_huge">Huge</string>
     <string name="pie_trigger_title">Trigger size</string>
     <string name="pie_trigger_summary">Determine the size of the triggering area that will start pie controls</string>
-    <string name="pie_trigger_small">Small (Default)</string>
+    <string name="pie_trigger_small">Small</string>
+    <string name="pie_trigger_normal">Normal (Default)</string>
     <string name="pie_trigger_big">Big</string>
     <string name="pie_trigger_huge">Huge</string>
     <string name="pie_notifications_title">Enable Chevron Targets</string>
@@ -4761,6 +4763,8 @@
     <string name="pie_menu_summary">Whether or not the menu button will appear when unneeded</string>
     <string name="pie_search_title">Show search button</string>
     <string name="pie_search_summary">Access to GoogleNow via Pie</string>
+    <string name="pie_lastapp_title">Last App button</string>
+    <string name="pie_lastapp_summary">Enable last app button on Pie</string>
     <string name="all_color">Custom Colors</string>
     <string name="stock_color">Default Colors</string>
 
