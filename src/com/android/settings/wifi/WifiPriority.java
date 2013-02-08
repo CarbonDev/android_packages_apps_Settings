@@ -29,7 +29,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.settings.R;
-import com.android.settings.liquid.TouchInterceptor;
+import com.android.settings.carbon.TouchInterceptor;
 
 import java.util.ArrayList;
 import java.util.Collections;

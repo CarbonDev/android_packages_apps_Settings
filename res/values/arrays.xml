@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright (C) 2007 The Android Open Source Project
      Copyright (C) 2013 The CyanogenMod Project
 
@@ -1489,7 +1489,7 @@
         <item>SOUND</item>
     </string-array>
 
-    <!--- Volume key cursor control -->
+    <!-- Volume key cursor control -->
     <string-array name="volume_key_cursor_control_entries" translatable="false">
         <item>@string/volume_key_cursor_control_off</item>
         <item>@string/volume_key_cursor_control_on</item>
@@ -1525,7 +1525,7 @@
         <item>2</item>
     </string-array>
 
-    <!--- Sms security limit -->
+    <!-- Sms security limit -->
     <string-array name="sms_security_check_limit_entries" translatable="false">
         <item>@string/sms_security_check_limit_default</item>
         <item>50</item>
@@ -1603,8 +1603,6 @@
         <item>1007</item>
     </string-array>
 
-    <!-- **** CARBON EDITS END **** -->
-
     <!-- Brightness slider -->
     <string-array name="brightness_location_entries">
         <item>@string/brightness_slider_top</item>
@@ -1618,4 +1616,33 @@
         <item>3</item>
     </string-array>
 
+    <!-- Custom lock screen background-->
+    <string-array name="lockscreen_background_entries" translatable="false">
+        <item>@string/lockscreen_background_color_fill</item>
+        <item>@string/lockscreen_background_custom_image</item>
+        <item>@string/lockscreen_background_default_wallpaper</item>
+    </string-array>
+
+    <string-array name="lockscreen_background_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <!-- Expanded desktop -->
+    <string-array name="expanded_desktop_entries">
+        <item>@string/expanded_desktop_disabled</item>
+        <item>@string/expanded_desktop_only_nav_bar</item>
+        <item>@string/expanded_desktop_only_status_bar</item>
+        <item>@string/expanded_desktop_both_hidden</item>
+    </string-array>
+
+    <string-array name="expanded_desktop_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <!-- **** CARBON EDITS END **** -->
 </resources>
