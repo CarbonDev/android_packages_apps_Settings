@@ -4559,7 +4559,7 @@
     <string name="lockscreen_maximize_widgets_title">Maximize Widgets</string>
     <string name="lockscreen_maximize_widgets_summary">Show widgets maximized and the unlock minimized</string>
     <string name="lockscreen_hide_initial_page_hints_title">Hide initial page hints</string>
-    <string name="lockscreen_hide_initial_page_hints_summary">Set wether the hints for the left and right widgets are shown when the screen is turned on.</string>
+    <string name="lockscreen_hide_initial_page_hints_summary">Set whether hints for left and right widgets are shown when screen is turned on.</string>
     <string name="lockscreen_use_widget_container_carousel_title">Use widget carousel</string>
     <string name="lockscreen_use_widget_container_carousel_summary">Use a carousel animation when switching between lockscreen widgets.</string>
 
