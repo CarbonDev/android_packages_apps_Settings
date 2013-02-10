@@ -199,14 +199,9 @@
                 android:parentActivityName="Settings$WifiSettingsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-<<<<<<< HEAD
                 <action android:name="android.settings.WIFI_IP_SETTINGS" />
                 <category android:name="android.intent.category.VOICE_LAUNCH" />
                 <category android:name="android.intent.category.DEFAULT" />
-=======
-
-                <category android:name="com.aokp.romcontrol.SHORTCUT" />
->>>>>>> f499483... QuickSettings: allow custom ordering and what toggles are visible/hidden
             </intent-filter>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="com.android.settings.wifi.AdvancedWifiSettings" />
@@ -421,7 +416,6 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
 
         <activity android:name="Settings$LocalePickerActivity"
                 android:label="@string/language_picker_title"
@@ -432,25 +426,7 @@
                 <action android:name="android.settings.LOCALE_SETTINGS" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.VOICE_LAUNCH" />
-=======
-        <activity
-            android:name=".ShareToClipboard"
-            android:icon="@drawable/ic_menu_clipboard"
-            android:label="@string/title_clipboard_share"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-            <intent-filter>
-                <action android:name="android.intent.action.SEND" />
-
-                <category android:name="android.intent.category.ALTERNATIVE" />
-                <category android:name="android.intent.category.DEFAULT" />
-
-                <data android:mimeType="text/*" />
->>>>>>> f499483... QuickSettings: allow custom ordering and what toggles are visible/hidden
             </intent-filter>
-            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.android.settings.LocalePicker" />
-            <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
-                android:resource="@id/language_settings" />
         </activity>
 
         <activity android:name="Settings$InputMethodAndLanguageSettingsActivity"
@@ -468,7 +444,6 @@
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
                 android:resource="@id/language_settings" />
         </activity>
-<<<<<<< HEAD
 
         <activity android:name="Settings$KeyboardLayoutPickerActivity"
                 android:label="@string/keyboard_layout_picker_title"
@@ -476,26 +451,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
-=======
-        <activity
-            android:name=".fragments.StatusBarToggles"
-            android:label="@string/title_statusbar_toggles" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="com.aokp.romcontrol.SHORTCUT" />
-            </intent-filter>
-        </activity>
-
-        <!-- vibration manager -->
-        <activity
-            android:name=".fragments.Vibrations"
-            android:label="@string/vibrations" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="com.aokp.romcontrol.SHORTCUT" />
->>>>>>> f499483... QuickSettings: allow custom ordering and what toggles are visible/hidden
             </intent-filter>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="com.android.settings.inputmethod.KeyboardLayoutPickerFragment" />
@@ -503,7 +459,6 @@
                 android:resource="@id/language_settings" />
         </activity>
 
-<<<<<<< HEAD
         <!-- Keep compatibility with old shortcuts. -->
         <activity-alias android:name="LanguageSettings"
                 android:label="@string/language_keyboard_settings_title"
@@ -520,16 +475,6 @@
                 android:label="@string/spellcheckers_settings_title"
                 android:taskAffinity="com.android.settings"
                 android:parentActivityName="Settings$InputMethodAndLanguageSettingsActivity">
-=======
-        <provider
-            android:name=".vibrations.VibrationsProvider"
-            android:authorities="com.aokp.romcontrol.Vibrations"
-            android:exported="true" />
-
-        <activity
-            android:name="CreateShortcut"
-            android:theme="@style/Theme.CreateShortCut" >
->>>>>>> f499483... QuickSettings: allow custom ordering and what toggles are visible/hidden
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.VOICE_LAUNCH" />
@@ -1666,6 +1611,13 @@
         <receiver android:name=".carbon.BootReceiver" android:enabled="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name=".carbon.ChangeFastChargeStateReceiver" >
+            <intent-filter>
+                <action android:name="com.android.settings.ACTION_CHANGE_FCHARGE_STATE" />
             </intent-filter>
         </receiver>
 

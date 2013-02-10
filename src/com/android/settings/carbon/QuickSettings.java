@@ -34,7 +34,7 @@ import android.widget.TextView;
 
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
-import com.android.settings.widgets.TouchInterceptor;
+import com.android.settings.carbon.TouchInterceptor;
 import com.android.settings.widgets.SeekBarPreference;
 import com.scheffsblend.smw.Preferences.ImageListPreference;
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
@@ -43,7 +43,7 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StatusBarToggles extends SettingsPreferenceFragment implements
+public class QuickSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
     private static final String TAG = "TogglesLayout";
@@ -87,12 +87,7 @@ public class StatusBarToggles extends SettingsPreferenceFragment implements
         mChooseFastToggleSide = (ListPreference) findPreference(PREF_CHOOSE_FASTTOGGLE_SIDE);
         mChooseFastToggleSide.setOnPreferenceChangeListener(this);
         mChooseFastToggleSide.setValue(Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.CHOOSE_FASTTOGGLE_SIDE, 1) + "");
-
-        if (isTablet(mContext)) {
-            getPreferenceScreen().removePreference(mFastToggle);
-            getPreferenceScreen().removePreference(mChooseFastToggleSide);
-        }
+                Settings.System.QS_QUICK_PULLDOWN, 1) + "");
 
         final String[] entries = getResources().getStringArray(R.array.available_toggles_entries);
 
@@ -116,16 +111,16 @@ public class StatusBarToggles extends SettingsPreferenceFragment implements
         } else if (preference == mFastToggle) {
             boolean val = (Boolean) newValue;
             Settings.System.putBoolean(getActivity().getContentResolver(),
-                    Settings.System.FAST_TOGGLE, val);
-            getActivity().getBaseContext().getContentResolver().notifyChange(Settings.System.getUriFor(Settings.System.FAST_TOGGLE), null);
+                    Settings.System.QS_NO_NOTIFICATION_PULLDOWN, val);
+            getActivity().getBaseContext().getContentResolver().notifyChange(Settings.System.getUriFor(Settings.System.QS_NO_NOTIFICATION_PULLDOWN), null);
             return true;
         } else if (preference == mChooseFastToggleSide) {
             int val = Integer.parseInt((String) newValue);
             Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.CHOOSE_FASTTOGGLE_SIDE, val);
-            getActivity().getBaseContext().getContentResolver().notifyChange(Settings.System.getUriFor(Settings.System.CHOOSE_FASTTOGGLE_SIDE), null);
+                    Settings.System.QS_QUICK_PULLDOWN, val);
+            getActivity().getBaseContext().getContentResolver().notifyChange(Settings.System.getUriFor(Settings.System.QS_QUICK_PULLDOWN), null);
             mChooseFastToggleSide.setValue(Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.CHOOSE_FASTTOGGLE_SIDE, 1) + "");
+                Settings.System.QS_QUICK_PULLDOWN, 1) + "");
         }
         return false;
     }

@@ -4946,6 +4946,7 @@
 
     <!-- Statusbar | Toggles -->
     <string name="toggle_default_entries">USER|BRIGHTNESS|SETTINGS|WIFI|SIGNAL|ROTATE|BATTERY|AIRPLANE_MODE|BLUETOOTH</string>
+    <string name="title_statusbar_toggles">Statusbar Toggles</string>
     <string name="toggle_style_title">Toggle style</string>
     <string name="toggle_style_summary">Whether to show icons or text on your toggles.</string>
     <string name="toggles_layout_title">Toggle Layout</string>
@@ -4962,7 +4963,6 @@
     <string name="summary_settings_behavior_reverse">Short press for Toggles, Long press for Settings</string>
     <string name="title_toggles_autohide">Auto hide toggles</string>
     <string name="summary_toggles_autohide">Hide toggles after drawer closes.</string>
-    <string name="brightness_location_title">Brightness location</string>
     <string name="reset_toggles_title">Reset toggles</string>
     <string name="reset_toggles_summary">Reset all toggles and their order</string>
     <string name="toggle_button_alpha_title">Toggle indicator alpha</string>
@@ -4981,19 +4981,18 @@
     <string name="toggle_airplane_mode">Airplane Mode</string>
     <string name="toggle_auto_rotate">Auto Rotate</string>
     <string name="toggle_bluetooth">Bluetooth</string>
-    <string name="toggle_fast_charge">Fast Charge</string>
+    <string name="toggle_fcharge">Fast Charge</string>
     <string name="toggle_gps">GPS</string>
     <string name="toggle_lte">LTE</string>
     <string name="toggle_data">Data</string>
     <string name="toggle_nfc">NFC</string>
     <string name="toggle_silent">Silent</string>
-    <string name="toggle_swagger">Swagger</string>
     <string name="toggle_sync">Sync</string>
     <string name="toggle_torch">Torch</string>
     <string name="toggle_2g">2G</string>
     <string name="toggle_usb_tether">USB Tether</string>
     <string name="toggle_vibrate">Vibrate</string>
-    <string name="toggle_wifi_ap">Tether</string>
+    <string name="toggle_wifi_tether">Wifi Tether</string>
     <string name="toggle_wifi">Wi-Fi</string>
     <string name="toggle_user">User</string>
     <string name="toggle_favorite_contact">Favorite Contact</string>
@@ -5003,6 +5002,7 @@
     <string name="toggle_ime">IME</string>
     <string name="toggle_battery">Battery</string>
     <string name="toggle_brightness">Brightness</string>
+    <string name="toggle_sound_state">Ring/Vib/Silent</string>
 
     <!-- Hardware keys -->
     <string name="hardware_keys_title">Hardware Keys</string>
@@ -5355,15 +5355,6 @@
     <string name="title_tile_nfc">NFC</string>
     <string name="title_tile_screen_timeout">Screen Timeout</string>
     <string name="title_tile_usb_tether">USB Tether</string>
-
-    <string name="title_dynamic_tiles">Dynamic Tiles</string>
-    <string name="dynamic_tiles_note_title">Note</string>
-    <string name="dynamic_tiles_note_summary">Dynamic tiles are not always visible</string>
-    <string name="title_dynamic_alarm">Alarm Clock</string>
-    <string name="title_dynamic_bugreport">Bug Report</string>
-    <string name="title_dynamic_ime">IME Changer</string>
-    <string name="title_dynamic_usbtether">USB Tether</string>
-    <string name="title_dynamic_wifi">Wi-Fi Display</string>
 
     <string name="title_general">General</string>
     <string name="title_quick_pulldown">Quick Pulldown</string>
