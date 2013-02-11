@@ -32,6 +32,7 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnMultiChoiceClickListener;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
@@ -49,6 +50,7 @@ import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.provider.MediaStore;
 import android.provider.Settings;
+import android.provider.Settings.SettingNotFoundException;
 import android.text.Spannable;
 import android.util.TypedValue;
 import android.view.Display;
@@ -80,6 +82,8 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     private static final String KEY_DUAL_PANE = "dual_pane";
     private static final String PREF_WAKEUP_WHEN_PLUGGED_UNPLUGGED = "wakeup_when_plugged_unplugged";
     private static final String PREF_NOTIFICATION_SHOW_WIFI_SSID = "notification_show_wifi_ssid";
+    private static final String PREF_POWER_CRT_SCREEN_ON = "system_power_crt_screen_on";
+    private static final String PREF_POWER_CRT_SCREEN_OFF = "system_power_crt_screen_off";
 
     Preference mCustomLabel;
     Preference mRamBar;
@@ -87,6 +91,9 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     CheckBoxPreference mDualPane;
     CheckBoxPreference mWakeUpWhenPluggedOrUnplugged;
     CheckBoxPreference mShowWifiName;
+    CheckBoxPreference mCrtOff;
+    CheckBoxPreference mCrtOn;
+    Context mContext;
 
     Random randomGenerator = new Random();
 
@@ -96,14 +103,38 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     DensityChanger densityFragment;
     Configuration mCurConfig = new Configuration();
 
+    private boolean isCrtOffChecked = false;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mContext = getActivity();
 
         // Load the preferences from an XML resource
         addPreferencesFromResource(R.xml.interface_settings);
-
         PreferenceScreen prefSet = getPreferenceScreen();
+
+       // respect device default configuration
+        // true fades while false animates
+        boolean electronBeamFadesConfig = mContext.getResources().getBoolean(
+                com.android.internal.R.bool.config_animateScreenLights);
+
+        // use this to enable/disable crt on feature
+        // crt only works if crt off is enabled
+        // total system failure if only crt on is enabled
+        isCrtOffChecked = Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.SYSTEM_POWER_ENABLE_CRT_OFF,
+                electronBeamFadesConfig ? 0 : 1) == 1;
+
+        mCrtOff = (CheckBoxPreference) findPreference(PREF_POWER_CRT_SCREEN_OFF);
+        mCrtOff.setChecked(isCrtOffChecked);
+        mCrtOff.setOnPreferenceChangeListener(this);
+
+        mCrtOn = (CheckBoxPreference) findPreference(PREF_POWER_CRT_SCREEN_ON);
+        mCrtOn.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.SYSTEM_POWER_ENABLE_CRT_ON, 0) == 1);
+        mCrtOn.setEnabled(isCrtOffChecked);
+        mCrtOn.setOnPreferenceChangeListener(this);
 
         mLcdDensity = findPreference("lcd_density_setup");
         String currentProperty = SystemProperties.get("ro.sf.lcd_density");
@@ -245,8 +276,27 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     }
 
     @Override
-    public boolean onPreferenceChange(Preference preference, Object value) {
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
         final String key = preference.getKey();
+         if (mCrtOff.equals(preference)) {
+            isCrtOffChecked = ((Boolean) newValue).booleanValue();
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.SYSTEM_POWER_ENABLE_CRT_OFF,
+                    (isCrtOffChecked ? 1 : 0));
+            // if crt off gets turned off, crt on gets turned off and disabled
+            if (!isCrtOffChecked) {
+                Settings.System.putInt(getActivity().getContentResolver(),
+                        Settings.System.SYSTEM_POWER_ENABLE_CRT_ON, 0);
+                mCrtOn.setChecked(false);
+            }
+            mCrtOn.setEnabled(isCrtOffChecked);
+            return true;
+        } else if (mCrtOn.equals(preference)) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.SYSTEM_POWER_ENABLE_CRT_ON,
+                    ((Boolean) newValue).booleanValue() ? 1 : 0);
+            return true;
+        }
         return false;
     }
 
