@@ -17,6 +17,8 @@
 package com.android.settings.paranoid;
 
 import android.app.Activity;
+import android.content.ContentResolver;
+import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
@@ -50,6 +52,8 @@ public class PieColor extends SettingsPreferenceFragment implements OnPreference
     private static final String PIE_CHEVRON_RIGHT = "pie_chevron_right";
     private static final String PIE_BUTTON_COLOR = "pie_button_color";
 
+    private Context mContext;
+
     CheckBoxPreference mEnableColor;
     ColorPickerPreference mPieBg;
     ColorPickerPreference mJuice;
@@ -66,6 +70,7 @@ public class PieColor extends SettingsPreferenceFragment implements OnPreference
         super.onCreate(savedInstanceState);
         // Load the preferences from an XML resource
         addPreferencesFromResource(R.xml.pie_color);
+        mContext = getActivity();
 
         mEnableColor = (CheckBoxPreference) findPreference(PIE_ENABLE_COLOR);
         mEnableColor.setChecked(Settings.System.getInt(getContentResolver(),
