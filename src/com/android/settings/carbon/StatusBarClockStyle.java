@@ -16,9 +16,12 @@
 
 package com.android.settings.carbon;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
@@ -42,7 +45,7 @@ import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 import java.util.Date;
 
-public class StatusBarClock extends SettingsPreferenceFragment implements
+public class StatusBarClockStyle extends SettingsPreferenceFragment implements
                 ShortcutPickerHelper.OnPickListener, OnPreferenceChangeListener {
 
     private static final String TAG = "StatusBarClockStyle";
@@ -50,12 +53,12 @@ public class StatusBarClock extends SettingsPreferenceFragment implements
     private static final String PREF_ENABLE = "clock_style";
     private static final String PREF_AM_PM_STYLE = "status_bar_am_pm";
     private static final String PREF_COLOR_PICKER = "clock_color";
-    private static final String PREF_CLOCK_DATE_DISPLAY = "clock_date_display";
-    private static final String PREF_CLOCK_DATE_STYLE = "clock_date_style";
-    private static final String PREF_CLOCK_DATE_FORMAT = "clock_date_format";
     private static final String PREF_CLOCK_SHORTCLICK = "clock_shortclick";
     private static final String PREF_CLOCK_LONGCLICK = "clock_longclick";
     private static final String PREF_CLOCK_DOUBLECLICK = "clock_doubleclick";
+    private static final String PREF_CLOCK_DATE_DISPLAY = "clock_date_display";
+    private static final String PREF_CLOCK_DATE_STYLE = "clock_date_style";
+    private static final String PREF_CLOCK_DATE_FORMAT = "clock_date_format";
     private static final String STATUS_BAR_CLOCK = "status_bar_show_clock";
 
     public static final int CLOCK_DATE_STYLE_LOWERCASE = 1;
@@ -71,6 +74,9 @@ public class StatusBarClock extends SettingsPreferenceFragment implements
     ListPreference mClockDateDisplay;
     ListPreference mClockDateStyle;
     ListPreference mClockDateFormat;
+    ListPreference mClockShortClick;
+    ListPreference mClockLongClick;
+    ListPreference mClockDoubleClick;
     private CheckBoxPreference mStatusBarClock;
     private ShortcutPickerHelper mPicker;
     private Preference mPreference;
@@ -109,6 +115,18 @@ public class StatusBarClock extends SettingsPreferenceFragment implements
         String hexColor = String.format("#%08x", (0xffffffff & intColor));
         mColorPicker.setSummary(hexColor);
 
+        mClockShortClick = (ListPreference) findPreference(PREF_CLOCK_SHORTCLICK);
+        mClockShortClick.setOnPreferenceChangeListener(this);
+        mClockShortClick.setSummary(getProperSummary(mClockShortClick));
+
+        mClockLongClick = (ListPreference) findPreference(PREF_CLOCK_LONGCLICK);
+        mClockLongClick.setOnPreferenceChangeListener(this);
+        mClockLongClick.setSummary(getProperSummary(mClockLongClick));
+
+        mClockDoubleClick = (ListPreference) findPreference(PREF_CLOCK_DOUBLECLICK);
+        mClockDoubleClick.setOnPreferenceChangeListener(this);
+        mClockDoubleClick.setSummary(getProperSummary(mClockDoubleClick));
+
         mClockDateDisplay = (ListPreference) findPreference(PREF_CLOCK_DATE_DISPLAY);
         mClockDateDisplay.setOnPreferenceChangeListener(this);
         mClockDateDisplay.setValue(Integer.toString(Settings.System.getInt(getActivity()
@@ -130,18 +148,6 @@ public class StatusBarClock extends SettingsPreferenceFragment implements
         }
 
         parseClockDateFormats();
-
-        mClockShortClick = (ListPreference) findPreference(PREF_CLOCK_SHORTCLICK);
-        mClockShortClick.setOnPreferenceChangeListener(this);
-        mClockShortClick.setSummary(getProperSummary(mClockShortClick));
-
-        mClockLongClick = (ListPreference) findPreference(PREF_CLOCK_LONGCLICK);
-        mClockLongClick.setOnPreferenceChangeListener(this);
-        mClockLongClick.setSummary(getProperSummary(mClockLongClick));
-
-        mClockDoubleClick = (ListPreference) findPreference(PREF_CLOCK_DOUBLECLICK);
-        mClockDoubleClick.setOnPreferenceChangeListener(this);
-        mClockDoubleClick.setSummary(getProperSummary(mClockDoubleClick));
 
         mStatusBarClock = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_CLOCK);
         mStatusBarClock.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
@@ -194,6 +200,33 @@ public class StatusBarClock extends SettingsPreferenceFragment implements
                     Settings.System.STATUSBAR_CLOCK_COLOR, intHex);
             Log.e("ROMAN", intHex + "");
             return true;
+        } else if (preference == mClockShortClick) {
+            mPreference = preference;
+            mString = Settings.System.NOTIFICATION_CLOCK[shortClick];
+            if (newValue.equals("**app**")) {
+                mPicker.pickShortcut();
+            } else {
+                result = Settings.System.putString(getContentResolver(), Settings.System.NOTIFICATION_CLOCK[shortClick], (String) newValue);
+                mClockShortClick.setSummary(getProperSummary(mClockShortClick));
+            }
+        } else if (preference == mClockLongClick) {
+            mPreference = preference;
+            mString = Settings.System.NOTIFICATION_CLOCK[longClick];
+            if (newValue.equals("**app**")) {
+                mPicker.pickShortcut();
+            } else {
+                result = Settings.System.putString(getContentResolver(), Settings.System.NOTIFICATION_CLOCK[longClick], (String) newValue);
+                mClockLongClick.setSummary(getProperSummary(mClockLongClick));
+            }
+        } else if (preference == mClockDoubleClick) {
+            mPreference = preference;
+            mString = Settings.System.NOTIFICATION_CLOCK[doubleClick];
+            if (newValue.equals("**app**")) {
+                mPicker.pickShortcut();
+            } else {
+                result = Settings.System.putString(getContentResolver(), Settings.System.NOTIFICATION_CLOCK[doubleClick], (String) newValue);
+                mClockDoubleClick.setSummary(getProperSummary(mClockDoubleClick));
+            }
         } else if (preference == mClockDateDisplay) {
             int val = Integer.parseInt((String) newValue);
             int index = mClockDateDisplay.findIndexOfValue((String) newValue);
@@ -254,35 +287,8 @@ public class StatusBarClock extends SettingsPreferenceFragment implements
                 if ((String) newValue != null) {
                     Settings.System.putString(getActivity().getContentResolver(), Settings.System.STATUSBAR_CLOCK_DATE_FORMAT, (String) newValue);
                 }
-            
+            }
             return true;
-        } else if (preference == mClockShortClick) {
-            mPreference = preference;
-            mString = Settings.System.NOTIFICATION_CLOCK[shortClick];
-            if (newValue.equals("**app**")) {
-                mPicker.pickShortcut();
-            } else {
-                result = Settings.System.putString(getContentResolver(), Settings.System.NOTIFICATION_CLOCK[shortClick], (String) newValue);
-                mClockShortClick.setSummary(getProperSummary(mClockShortClick));
-            }
-        } else if (preference == mClockLongClick) {
-            mPreference = preference;
-            mString = Settings.System.NOTIFICATION_CLOCK[longClick];
-            if (newValue.equals("**app**")) {
-                mPicker.pickShortcut();
-            } else {
-                result = Settings.System.putString(getContentResolver(), Settings.System.NOTIFICATION_CLOCK[longClick], (String) newValue);
-                mClockLongClick.setSummary(getProperSummary(mClockLongClick));
-            }
-        } else if (preference == mClockDoubleClick) {
-            mPreference = preference;
-            mString = Settings.System.NOTIFICATION_CLOCK[doubleClick];
-            if (newValue.equals("**app**")) {
-                mPicker.pickShortcut();
-            } else {
-                result = Settings.System.putString(getContentResolver(), Settings.System.NOTIFICATION_CLOCK[doubleClick], (String) newValue);
-                mClockDoubleClick.setSummary(getProperSummary(mClockDoubleClick));
-            }
         }
         return result;
     }

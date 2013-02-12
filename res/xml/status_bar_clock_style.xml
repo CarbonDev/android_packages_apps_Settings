@@ -82,6 +82,6 @@
             android:entries="@array/notification_action_entries"
             android:entryValues="@array/notification_action_values"
             android:key="clock_doubleclick"
-            ndroid:title="@string/title_clock_doubleclick" />
+            android:title="@string/title_clock_doubleclick" />
 
 </PreferenceScreen>
