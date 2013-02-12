@@ -78,6 +78,11 @@
             android:summary="@string/pie_notifications_summary"
             android:defaultValue="false" />
 
+        <CheckBoxPreference
+            android:key="pie_center"
+            android:title="@string/pie_center_title"
+            android:summary="@string/pie_center_summary" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

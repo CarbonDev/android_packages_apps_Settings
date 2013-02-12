@@ -4751,6 +4751,8 @@
     <string name="pie_gap_small">Small (default)</string>
     <string name="pie_gap_big">Big</string>
     <string name="pie_gap_huge">Huge</string>
+    <string name="pie_center_title">Center pie</string>
+    <string name="pie_center_summary">If un-checked, pie will appear where your fingers trigger it</string>
     <string name="pie_trigger_title">Trigger size</string>
     <string name="pie_trigger_summary">Determine the size of the triggering area that will start pie controls</string>
     <string name="pie_trigger_small">Small</string>
