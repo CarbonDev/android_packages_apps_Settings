@@ -1653,7 +1653,6 @@
         <item>WIFI</item>
         <item>SIGNAL</item>
         <item>ROTATE</item>
-        <item>CLOCK</item>
         <item>GPS</item>
         <item>IME</item>
         <item>BATTERY</item>
@@ -1678,7 +1677,6 @@
         <item>@string/toggle_wifi</item>
         <item>@string/toggle_signal</item>
         <item>@string/toggle_auto_rotate</item>
-        <item>@string/toggle_clock</item>
         <item>@string/toggle_gps</item>
         <item>@string/toggle_ime</item>
         <item>@string/toggle_battery</item>

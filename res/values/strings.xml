@@ -4998,7 +4998,6 @@
     <string name="toggle_favorite_contact">Favorite Contact</string>
     <string name="toggle_settings">Settings</string>
     <string name="toggle_signal">Signal</string>
-    <string name="toggle_clock">Clock</string>
     <string name="toggle_ime">IME</string>
     <string name="toggle_battery">Battery</string>
     <string name="toggle_brightness">Brightness</string>
