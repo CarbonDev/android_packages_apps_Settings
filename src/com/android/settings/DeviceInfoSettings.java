@@ -225,8 +225,9 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
                     if (mDevHitToast != null) {
                         mDevHitToast.cancel();
                     }
-                    mDevHitToast = Toast.makeText(getActivity(), R.string.show_dev_already,
-                            Toast.LENGTH_LONG);
+                    mDevHitToast = Toast.makeText(getActivity(), getResources().getQuantityString(
+                            R.plurals.show_dev_countdown, mDevHitCountdown, mDevHitCountdown),
+                            Toast.LENGTH_SHORT);
                     mDevHitToast.show();
                 }
             }
