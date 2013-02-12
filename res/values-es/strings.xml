@@ -159,7 +159,6 @@
     <string name="bluetooth_ask_enablement_and_lasting_discovery" product="default" msgid="6671615712909139801">"Una aplicación quiere activar el Bluetooth y hacer visible tu teléfono para otros dispositivos. Puedes cambiar esta configuración más tarde en los ajustes de Bluetooth."</string>
     <string name="bluetooth_turning_on" msgid="4850574877288036646">"Activando Bluetooth…"</string>
     <string name="bluetooth_turning_off" msgid="2337747302892025192">"Desactivando Bluetooth..."</string>
->>>>>>> 2c7702d... Merge remote-tracking branch 'AOSP/jb-mr1.1-release' into jb-ras-mr1
     <string name="bluetooth_auto_connect" msgid="40711424456733571">"Conexión automática"</string>
     <string name="bluetooth_connection_permission_request" msgid="4747918249032890077">"Solicitud para establecer conexión de Bluetooth"</string>
     <string name="bluetooth_connection_notif_message" msgid="3687933246423942977">"Toca para conectarte a \"<xliff:g id="DEVICE_NAME">%1$s</xliff:g>\"."</string>

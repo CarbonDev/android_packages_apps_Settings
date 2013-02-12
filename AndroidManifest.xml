@@ -1588,14 +1588,6 @@
                 android:resource="@id/wireless_settings" />
         </activity>
 
-        <!-- BUILD TWEAKS START -->
-
-        <activity android:name=".rascarlo.SystemSettings" />
-        <activity android:name=".rascarlo.LockscreenTargets" />
-        <activity android:name=".notificationlight.NotificationLightSettings" />
-
-        <!-- BUILD TWEAKS END -->
-
         <activity android:name="Settings$DreamSettingsActivity"
                 android:label="@string/screensaver_settings_title"
                 android:taskAffinity=""
