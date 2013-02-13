@@ -4846,7 +4846,6 @@
     <string name="voiceassist">Voice commands</string>
 
     <!-- Display settings screen, notification light settings -->
-    <string name="notification_pulse_title">Notification light</string>
     <string name="notification_light_general_title">General</string>
     <string name="notification_light_applist_title">Applications</string>
     <string name="notification_light_phonelist_title">Phone</string>

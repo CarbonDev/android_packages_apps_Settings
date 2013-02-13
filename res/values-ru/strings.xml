@@ -2205,7 +2205,6 @@
     <string name="link_volume_mutes">Беззвучный режим влияет на уведомления</string>
 
     <!-- Display settings screen, notification light settings -->
-    <string name="notification_pulse_title">Индикатор событий</string>
     <string name="notification_light_general_title">Основные</string>
     <string name="notification_light_applist_title">Приложения</string>
     <string name="notification_light_phonelist_title">Телефон</string>

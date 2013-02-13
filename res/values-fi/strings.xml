@@ -2075,7 +2075,6 @@
     <string name="profile_select">Valitse profiili</string>
     <string name="link_volume_ringtones">Yhdistä soittoääni ja ilmoitusääni</string>
     <string name="link_volume_mutes">Yhdistä soittoäänen ja ilmoitusäänen äänettömyys</string>
-    <string name="notification_pulse_title">Vilkuta ilmoitusvaloa</string>
     <string name="notification_light_general_title">Yleinen</string>
     <string name="notification_light_applist_title">Sovellukset</string>
     <string name="notification_light_phonelist_title">Puhelin</string>
