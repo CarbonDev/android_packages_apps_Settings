@@ -5036,7 +5036,14 @@
     <string name="dual_pane">Dual panel mode</string>
     <string name="dual_pane_summary">Restart settings to take effect</string>
     <string name="wakeup_when_plugged_unplugged_title">Wake up on charger</string>
-    <string name="wakeup_when_plugged_unplugged_summary">Wake up device if a charger is plugged/unplugged.</string>
+    <string name="wakeup_when_plugged_unplugged_summary">Wake up device if a charger is plugged/unplugged</string>
+    <string name="xposed_category_title">Xposed</string>
+    <string name="xposed_framework_modules_title">Framework &amp; Modules</string>
+    <string name="xposed_framework_modules_summary">Xposed framework installer and module manager. Check here first!</string>
+    <string name="xposed_per_app_title">Per App Settings</string>
+    <string name="xposed_per_app__summary">Customize DPI, UI layout, and more per app settings to your liking here</string>
+    <string name="xposed_netflix_title">Netflix Workaround</string>
+    <string name="xposed_netflix_summary">Netflix workaround for Exynos4 devices on AOSP 4.2.1+ Activate module to use</string>
 
     <!-- LCD Density -->
     <string name="dpi">DPI</string>
@@ -5372,8 +5379,8 @@
     <string name="brightness_slider_none">Don\'t Show</string>
 
     <!-- Kill app long-press back -->
-    <string name="kill_app_longpress_back">Kill app back button</string>
-    <string name="kill_app_longpress_back_summary">Kill the foreground app by long-pressing the back key</string>
+    <string name="kill_app_longpress_back">Long-press back key to kill app</string>
+    <string name="kill_app_longpress_back_summary">Long-pressing the back key will kill the current activity</string>
 
     <!-- Power menu enable disable -->
     <string name="power_menu_reboot_title">Reboot Menu</string>
