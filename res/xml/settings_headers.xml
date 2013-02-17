@@ -274,6 +274,13 @@
         android:icon="@drawable/ic_settings_development"
         android:title="@string/development_settings_title" />
 
+    <!-- About CarbonRom -->
+    <header
+        android:id="@+id/about_rom"
+        android:fragment="com.android.settings.carbon.About"
+        android:icon="@drawable/ic_settings_about"
+        android:title="@string/about_carbon_settings_title" />
+
     <!-- About Device -->
     <header
         android:id="@+id/about_settings"

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:carbon="http://schemas.android.com/apk/res/com.android.settings">
+
+	<PreferenceCategory
+		android:key="carbon"
+		android:title="@string/carbon_links">
+
+		<Preference
+			android:key="carbonrom_goo"
+			android:title="@string/carbon_goo_title"
+			android:summary="@string/carbon_goo_summary" />
+
+		<Preference
+			android:key="carbonrom_source"
+			android:title="@string/carbon_source_title"
+			android:summary="@string/carbon_source_summary" />
+
+		<Preference
+			android:key="carbonrom_irc"
+			android:title="@string/carbon_irc_title"
+			android:summary="@string/carbon_irc_summary" />
+
+		<Preference
+			android:key="carbonrom_facebook"
+			android:title="@string/carbon_facebook_title"
+			android:summary="@string/carbon_facebook_summary" />
+
+		<Preference
+			android:key="carbonrom_twitter"
+			android:title="@string/carbon_twitter_title"
+			android:summary="@string/carbon_twitter_summary" />
+
+		<Preference
+			android:key="carbonrom_googleplus"
+			android:title="@string/carbon_googleplus_title"
+			android:summary="@string/carbon_googleplus_summary" />
+	</PreferenceCategory>
+
+	<PreferenceCategory
+		android:key="carbondev"
+		android:title="@string/carbon_dev">
+
+		<com.android.settings.widgets.DeveloperPreference
+            android:title="CarbonDev"
+            carbon:nameDev="CarbonDev"
+            carbon:twitterHandle="carbonrom"
+            carbon:donateLink="@string/donate_carbon" />
+	</PreferenceCategory>
+
+	<PreferenceCategory
+		android:key="devs"
+		android:title="@string/devs_title">
+
+		<com.android.settings.widgets.DeveloperPreference
+            android:title="andros11"
+            carbon:nameDev="andros11" />
+
+		<com.android.settings.widgets.DeveloperPreference
+            android:title="BigShotRob"
+            carbon:nameDev="BigShotRob"
+            carbon:twitterHandle="bigshotrob22" />
+
+		<com.android.settings.widgets.DeveloperPreference
+            android:title="dg4prez"
+            carbon:nameDev="dg4prez"
+            carbon:twitterHandle="dg4prez" />
+
+		<com.android.settings.widgets.DeveloperPreference
+            android:title="kejar31"
+            carbon:nameDev="kejar31"
+            carbon:twitterHandle="kejar31" />
+
+		<com.android.settings.widgets.DeveloperPreference
+            android:title="mattmanwrx"
+            carbon:nameDev="mattmanwrx"
+            carbon:twitterHandle="_mattmann" />
+
+		<com.android.settings.widgets.DeveloperPreference
+            android:title="morfic"
+            carbon:nameDev="morfic"
+            carbon:twitterHandle="morfique" />
+
+		<com.android.settings.widgets.DeveloperPreference
+            android:title="nocoast"
+            carbon:nameDev="nocoast"
+            carbon:twitterHandle="n0coast" />
+
+		<com.android.settings.widgets.DeveloperPreference
+            android:title="pixeldotz"
+            carbon:nameDev="pixeldotz"
+            carbon:twitterHandle="pixeldotz" />
+
+		<com.android.settings.widgets.DeveloperPreference
+            android:title="slick_rick"
+            carbon:nameDev="slick_rick"
+            carbon:twitterHandle="slickrick_xda" />
+
+		<com.android.settings.widgets.DeveloperPreference
+            android:title="ToxicThunder"
+            carbon:nameDev="ToxicThunder"
+            carbon:twitterHandle="toxicthunder99" />
+
+		<com.android.settings.widgets.DeveloperPreference
+            android:title="winner00"
+            carbon:nameDev="winner00"
+            carbon:twitterHandle="expertontech" />
+
+	</PreferenceCategory>
+
+	<PreferenceCategory
+		android:key="contributors"
+		android:title="@string/contributors_title">
+
+		<com.android.settings.widgets.DeveloperPreference
+            android:title="CyanogenMod"
+            carbon:nameDev="CyanogenMod"
+            carbon:twitterHandle="cyanogenmod" />
+
+		<com.android.settings.widgets.DeveloperPreference
+            android:title="AOKP"
+            carbon:nameDev="AOKP"
+            carbon:twitterHandle="aokp_rom" />
+
+		<com.android.settings.widgets.DeveloperPreference
+            android:title="SlimRoms"
+            carbon:nameDev="SlimRoms"
+            carbon:twitterHandle="slimroms" />
+
+	</PreferenceCategory>
+
+</PreferenceScreen>

@@ -2347,8 +2347,6 @@
     <string name="about_settings_summary">View legal info, status, software version</string>
     <!-- About phone settings screen, setting option name to go to dialog that shows legal info -->
     <string name="legal_information">Legal information</string>
-    <!-- About phone settings screen, setting option name to see a list of contributors -->
-    <string name="contributors_title">Contributors</string>
     <!-- About phone settings screen, setting option name to show regulatory information [CHAR LIMIT=25] -->
     <string name="regulatory_information">Regulatory information</string>
     <!-- Note: this may be replaced by a more-specific title of the activity that will get launched --> <skip />
@@ -4425,6 +4423,34 @@
     <string name="cell_broadcast_settings_summary">Select the types of emergency alerts to display.</string>
 
     <!-- **** CARBON ADDITIONS START **** -->
+
+    <!-- About Carbon -->
+    <string name="about_carbon_settings_title">About CarbonRom</string>
+    <string name="about_carbon_title">CarbonRom</string>
+    <string name="about_carbon_summary">We are dedicated to fast, stable, and feature-filled roms, honesty and communication with our users, and openness with our code. We like frequent builds, with the very latest and greatest hardware support and fixes. We strive to not only provide you with the best rom we can build, but also to give back to the Android community and our fellow developers. For us, this is about creating something we can be proud of and hope you will enjoy</string>
+    <string name="app_name">CarbonRom</string>
+    <string name="carbon_dev">CarbonDev</string>
+    <string name="contributors_title">Contributors</string>
+    <string name="devs_title">Meet the CarbonRom team</string>
+    <string name="donate_carbon">http://goo.gl/2Nieg</string>
+    <string name="donate_cyanogenmod">http://forum.cyanogenmod.com/donate</string>
+    <string name="donate_aokp">http://aokp.co/</string>
+    <string name="donate_liquid">http://www.youtube.com/watch?v=dQw4w9WgXcQ</string>
+    <string name="carbon">CarbonRom JB 4.2.2</string>
+    <string name="carbon_links">Social media</string>
+    <string name="carbon_goo_title">Goo.im download page</string>
+    <string name="carbon_goo_summary">Visit our Goo.im download page for the latest builds</string>
+    <string name="carbon_source_title">Github Sources</string>
+    <string name="carbon_source_summary">Open source for all to see @ www.github.com/CarbonDev</string>
+    <string name="carbon_irc_title">Join us on IRC</string>
+    <string name="carbon_irc_summary">#teamcarbon @ irc.freenode.net</string>
+    <string name="carbon_facebook_title">Facebook Page</string>
+    <string name="carbon_facebook_summary">Subscribe to our Facebook page</string>
+    <string name="carbon_twitter_title">Twitter Handle</string>
+    <string name="carbon_twitter_summary">Follow us on Twitter</string>
+    <string name="carbon_googleplus_title">Google+ Community</string>
+    <string name="carbon_googleplus_summary">Join our G+ Community</string>
+    <string name="title_about">About CarbonRom</string>
 
     <string name="ok">OK</string>
     <string name="save">Save</string>
