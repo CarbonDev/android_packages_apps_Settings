@@ -263,11 +263,10 @@
             </intent-filter>
         </activity-alias>
 
-        <activity android:name="ApnSettings"
-                android:label="@string/apn_settings"
-                android:uiOptions="none"
-                android:configChanges="orientation|keyboardHidden|screenSize"
-                android:launchMode="singleTask">
+        <activity android:name="Settings$ApnSettingsActivity" android:label="@string/apn_settings"
+                  android:uiOptions="none"
+                  android:configChanges="orientation|keyboardHidden|screenSize"
+                  android:launchMode="singleTask" android:clearTaskOnLaunch="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.settings.APN_SETTINGS" />
