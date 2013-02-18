@@ -152,6 +152,8 @@ public class DevelopmentSettings extends PreferenceFragment
 
     private static final String MEDIA_SCANNER_ON_BOOT = "media_scanner_on_boot";
 
+    private static final String ADVANCED_REBOOT_KEY = "advanced_reboot";
+
     private static final int RESULT_DEBUG_APP = 1000;
 
     private IWindowManager mWindowManager;
@@ -211,6 +213,7 @@ public class DevelopmentSettings extends PreferenceFragment
     private PreferenceScreen mDevelopmentTools;
 
     private ListPreference mMSOB;
+    private CheckBoxPreference mAdvancedReboot;
 
     private final ArrayList<Preference> mAllPrefs = new ArrayList<Preference>();
     private final ArrayList<CheckBoxPreference> mResetCbPrefs
@@ -263,6 +266,7 @@ public class DevelopmentSettings extends PreferenceFragment
         mAllowMockSMS = findAndInitCheckboxPref(ALLOW_MOCK_SMS);
         mPassword = (PreferenceScreen) findPreference(LOCAL_BACKUP_PASSWORD);
         mAllPrefs.add(mPassword);
+        mAdvancedReboot = findAndInitCheckboxPref(ADVANCED_REBOOT_KEY);
 
         mMSOB = (ListPreference) findPreference(MEDIA_SCANNER_ON_BOOT);
         mAllPrefs.add(mMSOB);
@@ -272,6 +276,7 @@ public class DevelopmentSettings extends PreferenceFragment
             disableForUser(mEnableAdb);
             disableForUser(mClearAdbKeys);
             disableForUser(mPassword);
+            disableForUser(mAdvancedReboot);
         }
 
         mDebugAppPref = findPreference(DEBUG_APP_KEY);
@@ -528,6 +533,23 @@ public class DevelopmentSettings extends PreferenceFragment
         updateBugreportOptions();
         updateRootAccessOptions();
         updateMSOBOptions();
+        updateAdvancedRebootOptions();
+    }
+
+    private void resetAdvancedRebootOptions() {
+        Settings.Secure.putInt(getActivity().getContentResolver(),
+                Settings.Secure.ADVANCED_REBOOT, 0);
+    }
+
+    private void writeAdvancedRebootOptions() {
+        Settings.Secure.putInt(getActivity().getContentResolver(),
+                Settings.Secure.ADVANCED_REBOOT,
+                mAdvancedReboot.isChecked() ? 1 : 0);
+    }
+
+    private void updateAdvancedRebootOptions() {
+        mAdvancedReboot.setChecked(Settings.Secure.getInt(getActivity().getContentResolver(),
+                Settings.Secure.ADVANCED_REBOOT, 0) != 0);
     }
 
     private void resetMSOBOptions() {
@@ -560,6 +582,7 @@ public class DevelopmentSettings extends PreferenceFragment
         }
         resetDebuggerOptions();
         resetMSOBOptions();
+        resetAdvancedRebootOptions();
         writeAnimationScaleOption(0, mWindowAnimationScale, null);
         writeAnimationScaleOption(1, mTransitionAnimationScale, null);
         writeAnimationScaleOption(2, mAnimatorDurationScale, null);
@@ -626,7 +649,7 @@ public class DevelopmentSettings extends PreferenceFragment
         mKillAppLongpressBack.setChecked(Settings.Secure.getInt(
             getActivity().getContentResolver(), Settings.Secure.KILL_APP_LONGPRESS_BACK, 0) != 0);
     }
-        
+
     private void updatePasswordSummary() {
         try {
             if (mBackupManager.hasBackupPassword()) {
@@ -1262,6 +1285,8 @@ public class DevelopmentSettings extends PreferenceFragment
             writeDebugLayoutOptions();
         } else if (preference == mKillAppLongpressBack) {
             writeKillAppLongpressBackOptions();
+        } else if (preference == mAdvancedReboot) {
+            writeAdvancedRebootOptions();
         }
 
         return false;

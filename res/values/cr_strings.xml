@@ -789,4 +789,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- GPS download data over wi-fi only -->
     <string name="gps_download_data_wifi_only">Download GPS assisted data only over Wi-Fi networks</string>
 
+    <!-- Advanced reboot options -->
+    <string name="advanced_reboot_title">Advanced reboot</string>
+    <string name="advanced_reboot_summary">Hide options for rebooting into recovery or bootloader while on lockscreen</string>
 </resources>
