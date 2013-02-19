@@ -42,6 +42,11 @@
         android:entryValues="@array/lockscreen_battery_status_values"
         android:defaultValue="0" />
 
+     <net.margaritov.preference.colorpicker.ColorPickerPreference
+        android:key="lockscreen_text_color"
+        android:title="@string/lockscreen_text_color_title"
+        android:defaultValue="#ffffffff" />
+
      <!-- Clock Widget -->
      <PreferenceScreen
         android:key="lock_clock"
@@ -75,6 +80,11 @@
         android:summary="@string/lockscreen_shorcuts_longpress_summary" />
 
      <CheckBoxPreference
+        android:key="lockscreen_auto_rotate"
+        android:title="@string/lockscreen_auto_rotate_title"
+        android:summary="@string/lockscreen_auto_rotate_summary" />
+
+     <CheckBoxPreference
         android:key="lockscreen_maximize_widgets"
         android:persistent="false"
         android:title="@string/lockscreen_maximize_widgets_title"
@@ -89,6 +99,11 @@
         android:key="lockscreen_hide_initial_page_hints"
         android:title="@string/lockscreen_hide_initial_page_hints_title"
         android:summary="@string/lockscreen_hide_initial_page_hints_summary" />
+
+    <CheckBoxPreference
+        android:key="lockscreen_quick_unlock_control"
+        android:title="@string/lockscreen_quick_unlock_control_title"
+        android:summary="@string/lockscreen_quick_unlock_control_summary" />
 
      <PreferenceScreen
         android:fragment="com.android.settings.carbon.LockscreenButtons"

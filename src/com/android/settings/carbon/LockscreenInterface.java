@@ -48,6 +48,8 @@ import com.android.settings.Utils;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.notificationlight.ColorPickerView;
 
+import net.margaritov.preference.colorpicker.ColorPickerPreference;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -72,6 +74,9 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private static final String PREF_LOCKSCREEN_EIGHT_TARGETS = "lockscreen_eight_targets";
     private static final String PREF_LOCKSCREEN_SHORTCUTS = "lockscreen_shortcuts";
     private static final String PREF_LOCKSCREEN_SHORTCUTS_LONGPRESS = "lockscreen_shortcuts_longpress";
+    private static final String PREF_QUICK_UNLOCK = "lockscreen_quick_unlock_control";
+    private static final String PREF_LOCKSCREEN_AUTO_ROTATE = "lockscreen_auto_rotate";
+    private static final String PREF_LOCKSCREEN_TEXT_COLOR = "lockscreen_text_color";
 
     private ListPreference mCustomBackground;
     private ListPreference mBatteryStatus;
@@ -81,6 +86,9 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private CheckBoxPreference mLockscreenEightTargets;
     private Preference mShortcuts;	
     private CheckBoxPreference mLockscreenShortcutsLongpress;
+    CheckBoxPreference mQuickUnlock;
+    ColorPickerPreference mLockscreenTextColor;
+    CheckBoxPreference mLockscreenAutoRotate;
 
     private File mWallpaperImage;
     private File mWallpaperTemporary;
@@ -107,6 +115,17 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         } else {
             mMaximizeWidgets.setOnPreferenceChangeListener(this);
         }
+
+        mQuickUnlock = (CheckBoxPreference) findPreference(PREF_QUICK_UNLOCK);
+        mQuickUnlock.setChecked(Settings.System.getBoolean(mContext.getContentResolver(),
+                Settings.System.LOCKSCREEN_QUICK_UNLOCK_CONTROL, false));
+
+        mLockscreenAutoRotate = (CheckBoxPreference)findPreference(PREF_LOCKSCREEN_AUTO_ROTATE);
+        mLockscreenAutoRotate.setChecked(Settings.System.getBoolean(mContext.getContentResolver(),
+                Settings.System.LOCKSCREEN_AUTO_ROTATE, false));
+
+        mLockscreenTextColor = (ColorPickerPreference) findPreference(PREF_LOCKSCREEN_TEXT_COLOR);
+        mLockscreenTextColor.setOnPreferenceChangeListener(this);
 
         mLockscreenUseCarousel = (CheckBoxPreference)findPreference(PREF_LOCKSCREEN_USE_CAROUSEL);
         mLockscreenUseCarousel.setChecked(Settings.System.getBoolean(getActivity().getContentResolver(),
@@ -179,6 +198,16 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.LOCKSCREEN_USE_WIDGET_CONTAINER_CAROUSEL,
                     ((CheckBoxPreference)preference).isChecked() ? 1 : 0);
+            return true;
+        } else if (preference == mQuickUnlock) {
+            Settings.System.putBoolean(mContext.getContentResolver(),
+                    Settings.System.LOCKSCREEN_QUICK_UNLOCK_CONTROL,
+                    ((CheckBoxPreference) preference).isChecked());
+            return true;
+        } else if (preference == mLockscreenAutoRotate) {
+            Settings.System.putBoolean(mContext.getContentResolver(),
+                Settings.System.LOCKSCREEN_AUTO_ROTATE,
+                ((CheckBoxPreference) preference).isChecked());
             return true;
         } else if (preference == mLockscreenEightTargets) {
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
@@ -253,6 +282,12 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
             int index = mBatteryStatus.findIndexOfValue((String) objValue);
             Settings.System.putInt(cr, Settings.System.LOCKSCREEN_ALWAYS_SHOW_BATTERY, value);
             mBatteryStatus.setSummary(mBatteryStatus.getEntries()[index]);
+            return true;
+        } else if (preference == mLockscreenTextColor) {
+            String hex = ColorPickerPreference.convertToARGB(Integer.valueOf(String.valueOf(objValue)));
+            preference.setSummary(hex);
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(cr, Settings.System.LOCKSCREEN_CUSTOM_TEXT_COLOR, intHex);
             return true;
         } else if (preference == mMaximizeWidgets) {
             boolean value = (Boolean) objValue;
