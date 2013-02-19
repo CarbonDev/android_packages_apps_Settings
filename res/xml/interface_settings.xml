@@ -54,6 +54,12 @@
         android:title="@string/xposed_category_title" >
 
 	<PreferenceScreen
+	    android:key="xposed_warning"
+            android:title="@string/xposed_warning_title"
+	    android:summary="@string/xposed_warning_summary" >
+	</PreferenceScreen>
+
+	<PreferenceScreen
 	    android:key="xposed_framework_modules"
             android:title="@string/xposed_framework_modules_title"
 	    android:summary="@string/xposed_framework_modules_summary" >
@@ -63,7 +69,7 @@
 	</PreferenceScreen>
 
 	<PreferenceScreen
-	    android:key="xposed_settings"
+	    android:key="xposed__per_app_settings"
             android:title="@string/xposed_per_app_title"
 	    android:summary="@string/xposed_per_app__summary" >
 	    <intent android:action="android.intent.action.MAIN"

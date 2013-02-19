@@ -59,7 +59,7 @@ public class About extends SettingsPreferenceFragment {
         } else if (preference == mIrcUrl) {
             launchUrl("http://webchat.freenode.net/?channels=teamcarbon");
         } else if (preference == mSourceUrl) {
-            launchUrl("http://github.com/carbonrom");
+            launchUrl("https://github.com/carbondev");
         } else if (preference == mFacebookUrl) {
             launchUrl("http://www.facebook.com/carbonrom");
         } else if (preference == mTwitterUrl) {
