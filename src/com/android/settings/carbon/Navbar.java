@@ -81,8 +81,6 @@ public class Navbar extends SettingsPreferenceFragment implements
     private static final String NAVIGATION_BAR_HEIGHT = "navigation_bar_height";
     private static final String NAVIGATION_BAR_HEIGHT_LANDSCAPE = "navigation_bar_height_landscape";
     private static final String NAVIGATION_BAR_WIDTH = "navigation_bar_width";
-    private static final String PREF_NAVRING_AMOUNT = "pref_navring_amount";
-    private static final String ENABLE_NAVRING_LONG = "enable_navring_long";
     private static final String NAVIGATION_BAR_WIDGETS = "navigation_bar_widgets";
     private static final String KEY_HARDWARE_KEYS = "hardware_keys";
     private static final String PREF_MENU_ARROWS = "navigation_bar_menu_arrow_keys";
@@ -98,8 +96,6 @@ public class Navbar extends SettingsPreferenceFragment implements
 
     public static final String PREFS_NAV_BAR = "navbar";
 
-    Preference mNavRingTargets;
-
     // move these later
     ColorPickerPreference mNavigationColor;
     ColorPickerPreference mNavigationBarColor;
@@ -108,7 +104,6 @@ public class Navbar extends SettingsPreferenceFragment implements
     ListPreference menuDisplayLocation;
     ListPreference mNavBarMenuDisplay;
     ListPreference mNavBarButtonQty;
-    ListPreference mNavRingButtonQty;
     CheckBoxPreference mEnableNavigationBar;
     ListPreference mNavigationBarHeight;
     ListPreference mNavigationBarHeightLandscape;
@@ -117,7 +112,6 @@ public class Navbar extends SettingsPreferenceFragment implements
 	Preference mWidthHelp;
     SeekBarPreference mWidthPort;
     SeekBarPreference mWidthLand;
-    CheckBoxPreference mEnableNavringLong;
     CheckBoxPreference mMenuArrowKeysCheckBox;
     Preference mConfigureWidgets;
     CheckBoxPreference mNavBarHideEnable;
@@ -150,8 +144,6 @@ public class Navbar extends SettingsPreferenceFragment implements
 
         mPicker = new ShortcutPickerHelper(this, this);
 
-        mNavRingTargets = findPreference("navring_settings");
-
         menuDisplayLocation = (ListPreference) findPreference(PREF_MENU_UNLOCK);
         menuDisplayLocation.setOnPreferenceChangeListener(this);
         menuDisplayLocation.setValue(Settings.System.getInt(getActivity()
@@ -163,11 +155,6 @@ public class Navbar extends SettingsPreferenceFragment implements
         mNavBarMenuDisplay.setValue(Settings.System.getInt(getActivity()
                 .getContentResolver(), Settings.System.MENU_VISIBILITY,
                 0) + "");
-
-        mNavRingButtonQty = (ListPreference) findPreference(PREF_NAVRING_AMOUNT);
-        mNavRingButtonQty.setOnPreferenceChangeListener(this);
-        mNavRingButtonQty.setValue(Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.SYSTEMUI_NAVRING_AMOUNT, 1) + "");
 
         mNavBarButtonQty = (ListPreference) findPreference(PREF_NAVBAR_QTY);
         mNavBarButtonQty.setOnPreferenceChangeListener(this);
@@ -195,12 +182,6 @@ public class Navbar extends SettingsPreferenceFragment implements
         mNavBarHideTimeout.setOnPreferenceChangeListener(this);
         mNavBarHideTimeout.setValue(Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.NAV_HIDE_TIMEOUT, 3000) + "");
-
-        mEnableNavringLong = (CheckBoxPreference) findPreference("enable_navring_long");
-        mEnableNavringLong.setChecked(Settings.System.getBoolean(getContentResolver(),
-                Settings.System.SYSTEMUI_NAVRING_LONG_ENABLE, false));
-
-        mPicker = new ShortcutPickerHelper(this, this);
 
         boolean hasNavBarByDefault = mContext.getResources().getBoolean(
                 com.android.internal.R.bool.config_showNavigationBar);
@@ -346,19 +327,6 @@ public class Navbar extends SettingsPreferenceFragment implements
                     ((CheckBoxPreference) preference).isChecked());
             refreshSettings();
             return true;
-        } else if (preference == mEnableNavringLong) {
-            Settings.System.putBoolean(getActivity().getContentResolver(),
-                    Settings.System.SYSTEMUI_NAVRING_LONG_ENABLE,
-                    ((CheckBoxPreference) preference).isChecked());
-            resetNavRingLong();
-            return true;
-        } else if (preference == mNavRingTargets) {
-            FragmentTransaction ft = getFragmentManager().beginTransaction();
-            NavRingTargets fragment = new NavRingTargets();
-            ft.addToBackStack("config_nav_ring");
-            ft.replace(this.getId(), fragment);
-            ft.commit();
-            return true;
         } else if (preference == mConfigureWidgets) {
             FragmentTransaction ft = getFragmentManager().beginTransaction();
             WidgetConfigurationFragment fragment = new WidgetConfigurationFragment();
@@ -385,14 +353,6 @@ public class Navbar extends SettingsPreferenceFragment implements
         } else if (preference == mNavBarMenuDisplay) {
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.MENU_VISIBILITY, Integer.parseInt((String) newValue));
-            return true;
-        } else if (preference == mNavRingButtonQty) {
-            int val = Integer.parseInt((String) newValue);
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.SYSTEMUI_NAVRING_AMOUNT, val);
-            resetNavRing();
-            resetNavRingLong();
-            refreshSettings();
             return true;
         } else if (preference == mNavBarButtonQty) {
             int val = Integer.parseInt((String) newValue);
@@ -535,14 +495,6 @@ public class Navbar extends SettingsPreferenceFragment implements
 
         }
         return false;
-    }
-
-    public void resetNavRing() {
-            // TODO : FIXME
-    }
-
-    public void resetNavRingLong() {
-            // TODO : FIXME
     }
 
     @Override
