@@ -5074,8 +5074,8 @@
     <string name="xposed_per_app_title">Per App Settings</string>
     <string name="xposed_per_app__summary">Customize DPI, UI layout, and more per app settings to your liking here</string>
     <string name="xposed_netflix_title">Netflix Workaround</string>
-    <string name="xposed_netflix_summary">Netflix workaround for Exynos4 devices on AOSP 4.2.1+ Activate module to use</string>
-    <string name="xposed_warning_title">Warning:</string>
+    <string name="xposed_netflix_summary">Netflix workaround for Exynos4 devices only! Activate module to use</string>
+    <string name="xposed_warning_title">WARNING:</string>
     <string name="xposed_warning_summary">These mods may adversely affect performance and stability. Use at your own risk!</string>
 
     <!-- LCD Density -->

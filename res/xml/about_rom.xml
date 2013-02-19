@@ -55,7 +55,8 @@
 
 		<com.android.settings.widgets.DeveloperPreference
             android:title="andros11"
-            carbon:nameDev="andros11" />
+            carbon:nameDev="andros11"
+            carbon:twitterHandle="andros2011" />
 
 		<com.android.settings.widgets.DeveloperPreference
             android:title="BigShotRob"
