@@ -5072,7 +5072,7 @@
     <string name="xposed_framework_modules_title">Framework &amp; Modules</string>
     <string name="xposed_framework_modules_summary">Xposed framework installer and module manager. Check here first!</string>
     <string name="xposed_per_app_title">Per App Settings</string>
-    <string name="xposed_per_app__summary">Customize DPI, UI layout, and more per app settings to your liking here</string>
+    <string name="xposed_per_app_summary">Customize DPI, UI layout, and more per app settings to your liking here</string>
     <string name="xposed_netflix_title">Netflix Workaround</string>
     <string name="xposed_netflix_summary">Netflix workaround for Exynos4 devices only! Activate module to use</string>
     <string name="xposed_warning_title">WARNING:</string>

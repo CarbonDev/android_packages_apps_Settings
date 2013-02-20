@@ -69,9 +69,9 @@
 	</PreferenceScreen>
 
 	<PreferenceScreen
-	    android:key="xposed__per_app_settings"
+	    android:key="xposed_per_app_settings"
             android:title="@string/xposed_per_app_title"
-	    android:summary="@string/xposed_per_app__summary" >
+	    android:summary="@string/xposed_per_app_summary" >
 	    <intent android:action="android.intent.action.MAIN"
                 android:targetPackage="de.robv.android.xposed.mods.appsettings"
 		android:targetClass="de.robv.android.xposed.mods.appsettings.XposedModActivity" />
