@@ -108,11 +108,11 @@
         android:fragment="com.android.settings.carbon.PowerWidget"
         android:icon="@drawable/ic_carbon_powerwidget" />
 
-    <!-- Quicksettings-->
+    <!-- Status Bar Toggles-->
     <header
-        android:id="@+id/quick_settings"
-        android:title="@string/quick_settings_title"
-        android:fragment="com.android.settings.carbon.QuickSettings"
+        android:id="@+id/statusbar_toggles"
+        android:title="@string/toggles_title"
+        android:fragment="com.android.settings.carbon.StatusBarToggles"
         android:icon="@drawable/ic_carbon_quicksettings" />
 
     <!-- Statusbar -->
