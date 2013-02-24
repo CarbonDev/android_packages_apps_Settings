@@ -5796,5 +5796,8 @@
     <string name="missed_call_breath">Breathing Missed Call</string>
     <string name="missed_call_breath_summary">Will give your missed call notifications a breathing effect on the statusbar</string>
 
+   <!-- Notification Behaviour -->
+   <string name="notification_behaviour_title">Notification behaviour</string>
+
     <!-- **** CARBON ADDITIONS END **** -->
 </resources>

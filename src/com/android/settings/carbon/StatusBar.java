@@ -44,6 +44,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private static final String KEY_STATUS_BAR_ICON_OPACITY = "status_bar_icon_opacity";
     private static final String KEY_MMS_BREATH = "mms_breath";
     private static final String KEY_MISSED_CALL_BREATH = "missed_call_breath";
+    private static final String KEY_NOTIFICATION_BEHAVIOUR = "notifications_behaviour";
 
     private ListPreference mStatusBarCmSignal;
     private CheckBoxPreference mStatusBarBrightnessControl;
@@ -53,18 +54,21 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private ListPreference mStatusBarIconOpacity;
     private CheckBoxPreference mMMSBreath;
     private CheckBoxPreference mMissedCallBreath;
+    private ListPreference mNotificationsBeh;
+
+    private ContentResolver mCr;
+    private PreferenceScreen mPrefSet;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.status_bar);
-
         PreferenceScreen prefSet = getPreferenceScreen();
-
         ContentResolver resolver = getContentResolver();
-
         mContext = getActivity();
+        mPrefSet = getPreferenceScreen();
+        mCr = getContentResolver();
 
         mStatusBarBrightnessControl = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_BRIGHTNESS_CONTROL);
         mStatusBarCmSignal = (ListPreference) prefSet.findPreference(STATUS_BAR_SIGNAL);
@@ -105,6 +109,12 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mMissedCallBreath.setChecked(Settings.System.getInt(resolver,
                 Settings.System.MISSED_CALL_BREATH, 0) == 1);
 
+        int CurrentBeh = Settings.Secure.getInt(mCr, Settings.Secure.NOTIFICATIONS_BEHAVIOUR, 0);
+        mNotificationsBeh = (ListPreference) findPreference(KEY_NOTIFICATION_BEHAVIOUR);
+        mNotificationsBeh.setValue(String.valueOf(CurrentBeh));
+                mNotificationsBeh.setSummary(mNotificationsBeh.getEntry());
+        mNotificationsBeh.setOnPreferenceChangeListener(this);
+
         mPrefCategoryGeneral = (PreferenceCategory) findPreference(STATUS_BAR_CATEGORY_GENERAL);
 
         if (Utils.isWifiOnly(getActivity())) {
@@ -135,6 +145,13 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             int iconOpacity = Integer.valueOf((String) newValue);
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.STATUS_BAR_NOTIF_ICON_OPACITY, iconOpacity);
+            return true;
+        } else if (preference == mNotificationsBeh) {
+            String val = (String) newValue;
+                     Settings.Secure.putInt(mCr, Settings.Secure.NOTIFICATIONS_BEHAVIOUR,
+            Integer.valueOf(val));
+            int index = mNotificationsBeh.findIndexOfValue(val);
+            mNotificationsBeh.setSummary(mNotificationsBeh.getEntries()[index]);
             return true;
         }
         return false;
