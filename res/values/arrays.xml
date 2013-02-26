@@ -1540,14 +1540,6 @@
         <item>Custom java format</item>
     </string-array>
 
-    <string-array name="entries_status_bar_battery" translatable="false">
-        <item>@string/status_bar_style_icon</item>
-        <item>@string/status_bar_battery_status_percentage</item>
-        <item>@string/status_bar_battery_status_circle</item>
-        <item>@string/status_bar_battery_status_circle_percentage</item>
-        <item>@string/status_bar_style_hidden</item>
-    </string-array>
-
     <!-- Icon type for lockscreen shorcut. -->
     <string-array name="icon_types">
         <item>@string/icon_default</item>
@@ -1646,12 +1638,27 @@
         <item>@*android:drawable/ic_shortcut_unlock</item>
     </string-array>
 
-    <string-array name="values_status_bar_battery" translatable="false">
+    <!-- Battery styles -->
+    <string-array name="battery_icon_entries" translatable="false">
+        <item>@string/icon_only</item>
+        <item>@string/text_only</item>
+        <item>@string/icon_with_text</item>
+        <item>@string/icon_with_centered_text</item>
+        <item>@string/circle_battery</item>
+        <item>@string/circle_battery_w_percent</item>
+        <item>@string/circle_dotted_w_percent</item>
+        <item>@string/dont_show</item>
+    </string-array>
+
+    <string-array name="battery_icon_values" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>
         <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
     </string-array>
 
     <string-array name="circle_battery_animation_speed_entries" >

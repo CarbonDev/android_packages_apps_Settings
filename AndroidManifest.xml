@@ -1460,7 +1460,7 @@
 
         <activity android:name=".carbon.StatusBarClockStyle" />
 
-        <activity android:name=".carbon.StatusBarBatteryStyle" />
+        <activity android:name=".carbon.StatusBarBattery" />
 
         <activity android:name=".carbon.PerformanceSettings" />
 
