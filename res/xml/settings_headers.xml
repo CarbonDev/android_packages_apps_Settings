@@ -101,13 +101,6 @@
         android:fragment="com.android.settings.carbon.PowerMenu"
         android:icon="@drawable/ic_carbon_powermenu" />
 
-    <!-- Powerwidget -->
-    <header
-        android:id="@+id/power_widget_settings"
-        android:title="@string/power_widget_title"
-        android:fragment="com.android.settings.carbon.PowerWidget"
-        android:icon="@drawable/ic_carbon_powerwidget" />
-
     <!-- Status Bar Toggles-->
     <header
         android:id="@+id/statusbar_toggles"
