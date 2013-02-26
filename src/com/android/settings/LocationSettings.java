@@ -76,7 +76,6 @@ public class LocationSettings extends SettingsPreferenceFragment
         if (mSettingsObserver != null) {
             mContentQueryMap.deleteObserver(mSettingsObserver);
         }
-        mContentQueryMap.close();
     }
 
     private PreferenceScreen createPreferenceHierarchy() {
