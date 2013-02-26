@@ -4767,6 +4767,8 @@
     <string name="pie_search_summary">Access to GoogleNow via Pie</string>
     <string name="pie_lastapp_title">Last App button</string>
     <string name="pie_lastapp_summary">Enable last app button on Pie</string>
+    <string name="pie_stick_title">Prevent rotation</string>
+    <string name="pie_stick_summary">If checked Pie will stay in place no matter which orientation</string>
     <string name="all_color">Custom Colors</string>
     <string name="stock_color">Default Colors</string>
 

@@ -79,6 +79,11 @@
             android:defaultValue="false" />
 
         <CheckBoxPreference
+            android:key="pie_stick"
+            android:title="@string/pie_stick_title"
+            android:summary="@string/pie_stick_summary" />
+            
+        <CheckBoxPreference
             android:key="pie_center"
             android:title="@string/pie_center_title"
             android:summary="@string/pie_center_summary" />
