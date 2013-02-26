@@ -38,18 +38,18 @@
             <net.margaritov.preference.colorpicker.ColorPickerPreference
                 android:key="nav_bar_color"
                 android:title="@string/navigation_bar_color_title"
-                android:defaultValue="#000000" />
+                android:defaultValue="0xff000000" />
 
             <net.margaritov.preference.colorpicker.ColorPickerPreference
                 android:key="nav_button_color"
                 android:title="@string/navigation_bar_tint_title"
-                android:defaultValue="#FFFFFF" />
+                android:defaultValue="0xffffffff" />
 
             <net.margaritov.preference.colorpicker.ColorPickerPreference
                 android:key="nav_button_glow_color"
                 android:title="@string/navigation_bar_glow_tint_title"
                 android:summary="@string/navigation_bar_glow_tint_summary"
-                android:defaultValue="#FFFFFF" />
+                android:defaultValue="0xffffffff" />
 
             <CheckBoxPreference
                 android:key="navigation_bar_menu_arrow_keys"
