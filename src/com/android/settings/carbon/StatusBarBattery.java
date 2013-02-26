@@ -6,8 +6,10 @@ import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
+import android.provider.Settings.SettingNotFoundException;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,10 +17,13 @@ import android.view.MenuItem;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.Utils;
 
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 public class StatusBarBattery extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
+
+    private static final String TAG = "StatusBarBattery";
 
     private static final String PREF_BATT_ICON = "battery_icon_list";
     private static final String STATUS_BAR_CIRCLE_BATTERY_COLOR = "status_bar_circle_battery_color";
@@ -51,7 +56,7 @@ public class StatusBarBattery extends SettingsPreferenceFragment implements OnPr
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle(R.string.title_statusbar_battery);
-        addPreferencesFromResource(R.xml.statusbar_battery);
+        addPreferencesFromResource(R.xml.status_bar_battery);
 
         PreferenceScreen prefSet = getPreferenceScreen();
 
