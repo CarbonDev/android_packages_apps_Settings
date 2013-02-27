@@ -274,10 +274,12 @@ public class Navbar extends SettingsPreferenceFragment implements
         // Only show the hardware keys config on a device that does not have a navbar 	
         IWindowManager windowManager = IWindowManager.Stub.asInterface(
                 ServiceManager.getService(Context.WINDOW_SERVICE));
-
-        if (hasNavBarByDefault) {
-            // Let's assume they don't have hardware keys
-            getPreferenceScreen().removePreference(findPreference(KEY_HARDWARE_KEYS));
+        try {
+            if (windowManager.hasNavigationBar()) {
+                getPreferenceScreen().removePreference(findPreference(KEY_HARDWARE_KEYS));
+            }
+        } catch (RemoteException e) {
+            // Do nothing
         }
         refreshSettings();
         setHasOptionsMenu(true);
