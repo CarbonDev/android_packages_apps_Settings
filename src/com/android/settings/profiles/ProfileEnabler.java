@@ -16,9 +16,7 @@
 
 package com.android.settings.profiles;
 
-import android.app.ProfileManager;
 import android.content.Context;
-import android.content.Intent;
 import android.provider.Settings;
 import android.widget.CompoundButton;
 import android.widget.Switch;
@@ -27,10 +25,12 @@ public class ProfileEnabler implements CompoundButton.OnCheckedChangeListener  {
     private final Context mContext;
     private Switch mSwitch;
     private boolean mStateMachineEvent;
+    private ProfilesSettings mParent;
 
-    public ProfileEnabler(Context context, Switch switch_) {
+    public ProfileEnabler(Context context, ProfilesSettings parent, Switch switch_) {
         mContext = context;
         mSwitch = switch_;
+        mParent = parent;
     }
 
     public void resume() {
@@ -66,15 +66,9 @@ public class ProfileEnabler implements CompoundButton.OnCheckedChangeListener  {
         Settings.System.putInt(mContext.getContentResolver(),
                 Settings.System.SYSTEM_PROFILES_ENABLED, isChecked ? 1 : 0);
 
-        // Send a broadcast intent to the world
-        // TODO Enabling or disabling profiles should be at ProfileManager, not here
-        Intent intent=new Intent(ProfileManager.PROFILES_STATE_CHANGED_ACTION);
-        intent.putExtra(
-                ProfileManager.EXTRA_PROFILES_STATE,
-                isChecked ?
-                          ProfileManager.PROFILES_STATE_ENABLED :
-                          ProfileManager.PROFILES_STATE_DISABLED);
-        mContext.sendBroadcast(intent);
+        if (mParent != null) {
+            mParent.refreshActiveTab();
+        }
 
     }
 

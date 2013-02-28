@@ -24,11 +24,8 @@ import android.app.FragmentTransaction;
 import android.app.NotificationGroup;
 import android.app.Profile;
 import android.app.ProfileManager;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.provider.Settings;
@@ -62,9 +59,6 @@ public class ProfilesSettings extends SettingsPreferenceFragment {
     private static final int MENU_ADD_PROFILE = Menu.FIRST + 1;
     private static final int MENU_ADD_APPGROUP = Menu.FIRST + 2;
 
-    private final IntentFilter mFilter;
-    private final BroadcastReceiver mReceiver;
-
     private static Menu mOptionsMenu;
 
     private ProfileManager mProfileManager;
@@ -80,18 +74,6 @@ public class ProfilesSettings extends SettingsPreferenceFragment {
     static Bundle mSavedState;
 
     private static Activity mActivity;
-
-    public ProfilesSettings() {
-        mFilter = new IntentFilter();
-        mFilter.addAction(ProfileManager.PROFILES_STATE_CHANGED_ACTION);
-
-        mReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                handleEvent(context, intent);
-            }
-        };
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -119,7 +101,7 @@ public class ProfilesSettings extends SettingsPreferenceFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         // We don't call super.onActivityCreated() here, since it assumes we already set up
-        // Preference (probably in onCreate()), while ProfilesSettings exceptionally set it up in
+        // Preference (probably in onCreate()), while WifiSettings exceptionally set it up in
         // this method.
         // On/off switch
         Activity activity = getActivity();
@@ -141,7 +123,7 @@ public class ProfilesSettings extends SettingsPreferenceFragment {
             }
         }
 
-        mProfileEnabler = new ProfileEnabler(activity, mActionBarSwitch);
+        mProfileEnabler = new ProfileEnabler(activity, this, mActionBarSwitch);
 
         // After confirming PreferenceScreen is available, we call super.
         super.onActivityCreated(savedInstanceState);
@@ -153,7 +135,6 @@ public class ProfilesSettings extends SettingsPreferenceFragment {
         if (mProfileEnabler != null) {
             mProfileEnabler.resume();
         }
-        getActivity().registerReceiver(mReceiver, mFilter);
 
         // If running on a phone, remove padding around tabs
         if (!Utils.isTablet(getActivity())) {
@@ -168,7 +149,6 @@ public class ProfilesSettings extends SettingsPreferenceFragment {
         if (mProfileEnabler != null) {
             mProfileEnabler.pause();
         }
-        getActivity().unregisterReceiver(mReceiver);
 
         // store the current tab so we can get back to it later
         if (mSavedState == null) {
@@ -263,7 +243,9 @@ public class ProfilesSettings extends SettingsPreferenceFragment {
         mTabHost.setup();
         mTabHost.clearAllTabs();
 
-        mTabManager = new TabManager(getActivity(), mTabHost, android.R.id.tabcontent);
+        if (mTabManager == null) {
+            mTabManager = new TabManager(getActivity(), mTabHost, android.R.id.tabcontent);
+        }
         mTabManager.addTab(mTabHost.newTabSpec(TAB_PROFILES).setIndicator(getString(R.string.profile_profiles_manage)),
                 ProfilesList.class, null);
         mTabManager.addTab(mTabHost.newTabSpec(TAB_APPGROUPS).setIndicator(getString(R.string.profile_appgroups_manage)),
@@ -359,14 +341,6 @@ public class ProfilesSettings extends SettingsPreferenceFragment {
             dialog.show();
             ((TextView)dialog.findViewById(android.R.id.message)).setTextAppearance(getActivity(),
                     android.R.style.TextAppearance_DeviceDefault_Small);
-        }
-    }
-
-    private void handleEvent(Context context, Intent intent) {
-        String action = intent.getAction();
-        if (ProfileManager.PROFILES_STATE_CHANGED_ACTION.equals(action)) {
-            // we don't need to check the new state, refresh will do it
-            refreshActiveTab();
         }
     }
 
