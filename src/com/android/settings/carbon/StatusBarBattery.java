@@ -108,8 +108,6 @@ public class StatusBarBattery extends SettingsPreferenceFragment implements OnPr
                     Settings.System.STATUS_BAR_CIRCLE_BATTERY_COLOR, defaultColor);
         hexColor = String.format("#%08x", (0xffffffff & intColor));
         mCircleColor.setSummary(hexColor);
-        mCircleColor.setNewPreviewColor(intColor);
-
 
         mCircleTextColor = (ColorPickerPreference) findPreference(PREF_STATUS_BAR_CIRCLE_BATTERY_TEXT_COLOR);
         mCircleTextColor.setOnPreferenceChangeListener(this);
@@ -119,8 +117,6 @@ public class StatusBarBattery extends SettingsPreferenceFragment implements OnPr
                     Settings.System.STATUS_BAR_CIRCLE_BATTERY_TEXT_COLOR, defaultColor);
         hexColor = String.format("#%08x", (0xffffffff & intColor));
         mCircleTextColor.setSummary(hexColor);
-        mCircleTextColor.setNewPreviewColor(intColor);
-
 
         mCircleAnimSpeed = (ListPreference) findPreference(PREF_STATUS_BAR_CIRCLE_BATTERY_ANIMATIONSPEED);
         mCircleAnimSpeed.setOnPreferenceChangeListener(this);
