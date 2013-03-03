@@ -5324,7 +5324,30 @@
     <string name="navring_target_amount_text">Current number of targets</string>
     <string name="navring_target_longpress_text">Longpress status</string>
 
-    <!-- Navbar -->
+    <!-- Lockscreen Targets-->
+    <string name="lockscreen_targets_title">Lockscreen targets</string>
+    <string name="lockscreen_targets_summary">Lockscreen targets summary…</string>
+    <string name="lockscreen_target_longpress_text">Longpress status</string>
+    <string name="lockscreen_camera">Camera</string>
+    <string name="lockscreen_unlock">Unlock</string>
+    <string name="save_error">Could not save targets! You must have at least one unlock target!</string>
+    <string name="icon_picker_pack_title">Icon pack</string>
+    <string name="lockscreen_target_empty">Empty</string>
+    <string name="profile_reset_title">Reset</string>
+    <string name="wifi_save">Save</string>
+    <string name="lockscreen_target_info">Drag the unlock icon to targets to assign targets</string>
+    <string name="lockscreen_options_info">Touch text to get summary of each option</string>
+    <string name="lockscreen_target_reset">Lockscreen shortcuts reset to default</string>
+    <string name="lockscreen_target_save">Lockscreen targets saved</string>
+    <string name="lockscreen_target_save_error_title">Error saving targets</string>
+    <string name="lockscreen_target_save_error_msg">You must have at least one target that unlocks the screen!</string>
+    <string name="lockscreen_target_reset_title">Reset</string>
+    <string name="lockscreen_target_reset_message">Delete all user created lockscreen target and restore to default?</string>
+    <string name="lockscreen_target_edit_title">Edit target and icon</string>
+    <string name="lockscreen_target_edit_msg">Select or change the desired application or activity and the associated icon</string>
+    <string name="lockscreen_target_longpress_summary">Enables long press options for lock screen targets</string>
+
+    <!-- NavBar -->
     <string name="right">Right</string>
     <string name="left">Left</string>
     <string name="both">Both</string>

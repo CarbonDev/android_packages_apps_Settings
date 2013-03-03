@@ -1946,6 +1946,19 @@
         <item>5</item>
         <item>6</item>
         <item>8</item>
+    <string-array name="lockscreen_dialog_entries" translatable="false">
+        <item>@string/none</item>
+        <item>@string/lockscreen_unlock</item>
+        <item>@string/lockscreen_camera</item>
+        <item>@string/google_now</item>
+        <item>@string/select_application</item>
+    </string-array>
+    <string-array name="lockscreen_dialog_values" translatable="false">
+        <item>**null**</item>
+        <item>**unlock**</item>
+        <item>**camera**</item>
+        <item>**assist**</item>
+        <item>**app**</item>
     </string-array>
     <string-array name="notification_action_entries" translatable="false">
         <item>@string/nothing</item>
