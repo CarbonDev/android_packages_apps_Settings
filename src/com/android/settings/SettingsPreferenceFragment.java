@@ -31,6 +31,7 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.provider.Settings;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -88,6 +89,13 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements Di
     public static boolean isTablet(Context context) {
         return Settings.System.getInt(context.getContentResolver(),
                 Settings.System.CURRENT_UI_MODE,0) == 1;
+    }
+
+    public static boolean isSW600DPScreen(Context context) {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        int widthPixels = displayMetrics.widthPixels;
+        float density = displayMetrics.density;
+        return ((widthPixels / density) >= 600);
     }
 
     public void setTitle(int resId) {
