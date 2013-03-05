@@ -5595,6 +5595,8 @@
     <string name="lockscreen_buttons_previous">Previous Song</string>
     <string name="lockscreen_buttons_playpause">Play/Pause Music</string>
     <string name="lockscreen_buttons_toggle_sound">Toggle Sound</string>
+    <string name="lockscreen_buttons_camera">Launch camera</string>
+    <string name="lockscreen_buttons_power_off">Power off</string>
 
     <!-- Quick settings panel  -->
     <string name="quick_settings_panel_title">Quicksettings Panel</string>

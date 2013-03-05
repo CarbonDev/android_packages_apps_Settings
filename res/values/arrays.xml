@@ -1689,6 +1689,8 @@
         <item>@string/lockscreen_buttons_previous</item>
         <item>@string/lockscreen_buttons_playpause</item>
         <item>@string/lockscreen_buttons_toggle_sound</item>
+        <item>@string/lockscreen_buttons_camera</item>
+        <item>@string/lockscreen_buttons_power_off</item>
     </string-array>
 
     <string-array name="lockscreen_long_key_press_values" translatable="false">
@@ -1697,6 +1699,8 @@
         <item>PREVIOUS</item>
         <item>PLAYPAUSE</item>
         <item>SOUND</item>
+        <item>CAMERA</item>
+        <item>POWER</item>
     </string-array>
 
     <!-- Volume key cursor control -->
