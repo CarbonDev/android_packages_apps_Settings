@@ -4775,6 +4775,8 @@
     <string name="pie_lastapp_summary">Enable last app button on Pie</string>
     <string name="pie_stick_title">Prevent rotation</string>
     <string name="pie_stick_summary">If checked Pie will stay in place no matter which orientation</string>
+    <string name="pie_restart_launcher_title">Restart Launcher</string>
+    <string name="pie_restart_launcher_summary">Changing screensize can have adverse effects. This option allows your launcher to regain sanity, the cost is a slight blackout (recommended)</string>
     <string name="all_color">Custom Colors</string>
     <string name="stock_color">Default Colors</string>
 
@@ -5602,7 +5604,6 @@
     <string name="title_tile_nfc">NFC</string>
     <string name="title_tile_screen_timeout">Screen Timeout</string>
     <string name="title_tile_usb_tether">USB Tether</string>
-
     <string name="title_general">General</string>
     <string name="title_quick_pulldown">Quick Pulldown</string>
     <string name="summary_quick_pulldown">%1$s edge pulls down quick settings</string>
