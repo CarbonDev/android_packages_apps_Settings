@@ -128,26 +128,26 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         }
 
         mQuickUnlock = (CheckBoxPreference) findPreference(PREF_QUICK_UNLOCK);
-        mQuickUnlock.setChecked(Settings.System.getBoolean(mContext.getContentResolver(),
+        mQuickUnlock.setChecked(Settings.System.getBoolean(mContentRes,
                 Settings.System.LOCKSCREEN_QUICK_UNLOCK_CONTROL, false));
 
         mLockscreenAutoRotate = (CheckBoxPreference)findPreference(PREF_LOCKSCREEN_AUTO_ROTATE);
-        mLockscreenAutoRotate.setChecked(Settings.System.getBoolean(mContext.getContentResolver(),
+        mLockscreenAutoRotate.setChecked(Settings.System.getBoolean(mContentRes,
                 Settings.System.LOCKSCREEN_AUTO_ROTATE, false));
 
         mLockscreenAllWidgets = (CheckBoxPreference)findPreference(PREF_LOCKSCREEN_ALL_WIDGETS);
-        mLockscreenAllWidgets.setChecked(Settings.System.getBoolean(getActivity().getContentResolver(),
+        mLockscreenAllWidgets.setChecked(Settings.System.getBoolean(mContentRes,
                 Settings.System.LOCKSCREEN_ALL_WIDGETS, false));
 
         mLockscreenTextColor = (ColorPickerPreference) findPreference(PREF_LOCKSCREEN_TEXT_COLOR);
         mLockscreenTextColor.setOnPreferenceChangeListener(this);
 
         mLockscreenUseCarousel = (CheckBoxPreference)findPreference(PREF_LOCKSCREEN_USE_CAROUSEL);
-        mLockscreenUseCarousel.setChecked(Settings.System.getBoolean(getActivity().getContentResolver(),
+        mLockscreenUseCarousel.setChecked(Settings.System.getBoolean(mContentRes,
                 Settings.System.LOCKSCREEN_USE_WIDGET_CONTAINER_CAROUSEL, false));
 
         mLockscreenHideInitialPageHints = (CheckBoxPreference)findPreference(PREF_LOCKSCREEN_HIDE_INITIAL_PAGE_HINTS);
-        mLockscreenHideInitialPageHints.setChecked(Settings.System.getBoolean(getActivity().getContentResolver(),
+        mLockscreenHideInitialPageHints.setChecked(Settings.System.getBoolean(mContentRes,
                 Settings.System.LOCKSCREEN_HIDE_INITIAL_PAGE_HINTS, false));
 
         PreferenceScreen lockscreenButtons = (PreferenceScreen) findPreference(KEY_LOCKSCREEN_BUTTONS);
@@ -205,31 +205,31 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         if (preference == mLockscreenHideInitialPageHints) {
-            Settings.System.putInt(getActivity().getContentResolver(),
+            Settings.System.putInt(mContentRes,
                     Settings.System.LOCKSCREEN_HIDE_INITIAL_PAGE_HINTS,
                     ((CheckBoxPreference)preference).isChecked() ? 1 : 0);
             return true;
          } else if (preference == mSeeThrough) {
-            Settings.System.putInt(mContext.getContentResolver(), Settings.System.LOCKSCREEN_SEE_THROUGH, 
+            Settings.System.putInt(mContentRes, Settings.System.LOCKSCREEN_SEE_THROUGH, 
                     mSeeThrough.isChecked() ? 1 : 0);
             return true;
         } else if (preference == mLockscreenUseCarousel) {
-            Settings.System.putInt(getActivity().getContentResolver(),
+            Settings.System.putInt(mContentRes,
                     Settings.System.LOCKSCREEN_USE_WIDGET_CONTAINER_CAROUSEL,
                     ((CheckBoxPreference)preference).isChecked() ? 1 : 0);
             return true;
         } else if (preference == mQuickUnlock) {
-            Settings.System.putBoolean(mContext.getContentResolver(),
+            Settings.System.putBoolean(mContentRes,
                     Settings.System.LOCKSCREEN_QUICK_UNLOCK_CONTROL,
                     ((CheckBoxPreference) preference).isChecked());
             return true;
         } else if (preference == mLockscreenAutoRotate) {
-            Settings.System.putBoolean(mContext.getContentResolver(),
+            Settings.System.putBoolean(mContentRes,
                 Settings.System.LOCKSCREEN_AUTO_ROTATE,
                 ((CheckBoxPreference) preference).isChecked());
             return true;
         } else if (preference == mLockscreenAllWidgets) {
-            Settings.System.putBoolean(mContext.getContentResolver(),
+            Settings.System.putBoolean(mContentRes,
                     Settings.System.LOCKSCREEN_ALL_WIDGETS,
                     ((CheckBoxPreference) preference).isChecked());
             return true;

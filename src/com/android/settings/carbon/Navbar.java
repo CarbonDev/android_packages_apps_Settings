@@ -93,7 +93,6 @@ public class Navbar extends SettingsPreferenceFragment implements
     public static final int REQUEST_PICK_CUSTOM_ICON = 200;
     public static final int REQUEST_PICK_LANDSCAPE_ICON = 201;
     private static final int DIALOG_NAVBAR_ENABLE = 203;
-    private static final int DIALOG_NAVBAR_HEIGHT_REBOOT = 204;
 
     public static final String PREFS_NAV_BAR = "navbar";
 
@@ -148,48 +147,46 @@ public class Navbar extends SettingsPreferenceFragment implements
 
         menuDisplayLocation = (ListPreference) findPreference(PREF_MENU_UNLOCK);
         menuDisplayLocation.setOnPreferenceChangeListener(this);
-        menuDisplayLocation.setValue(Settings.System.getInt(getActivity()
-                .getContentResolver(), Settings.System.MENU_LOCATION,
-                0) + "");
+        menuDisplayLocation.setValue(Settings.System.getInt(mContentRes,
+                Settings.System.MENU_LOCATION,0) + "");
 
         mNavBarMenuDisplay = (ListPreference) findPreference(PREF_NAVBAR_MENU_DISPLAY);
         mNavBarMenuDisplay.setOnPreferenceChangeListener(this);
-        mNavBarMenuDisplay.setValue(Settings.System.getInt(getActivity()
-                .getContentResolver(), Settings.System.MENU_VISIBILITY,
-                0) + "");
+        mNavBarMenuDisplay.setValue(Settings.System.getInt(mContentRes,
+                Settings.System.MENU_VISIBILITY,0) + "");
 
         mNavBarButtonQty = (ListPreference) findPreference(PREF_NAVBAR_QTY);
         mNavBarButtonQty.setOnPreferenceChangeListener(this);
-        mNavBarButtonQty.setValue(Settings.System.getInt(getActivity().getContentResolver(),
+        mNavBarButtonQty.setValue(Settings.System.getInt(mContentRes,
                 Settings.System.NAVIGATION_BAR_BUTTONS_QTY, 3) + "");
 
 
         mNavBarHideEnable = (CheckBoxPreference) findPreference(NAVBAR_HIDE_ENABLE);
-        mNavBarHideEnable.setChecked(Settings.System.getBoolean(getContentResolver(),
+        mNavBarHideEnable.setChecked(Settings.System.getBoolean(mContentRes,
                 Settings.System.NAV_HIDE_ENABLE, false));
 
-        final int defaultDragOpacity = Settings.System.getInt(getActivity()
-                .getContentResolver(), Settings.System.DRAG_HANDLE_OPACITY,50);
+        final int defaultDragOpacity = Settings.System.getInt(mContentRes,
+                Settings.System.DRAG_HANDLE_OPACITY,50);
         mDragHandleOpacity = (SeekBarPreference) findPreference(DRAG_HANDLE_OPACITY);
         mDragHandleOpacity.setInitValue((int) (defaultDragOpacity));
         mDragHandleOpacity.setOnPreferenceChangeListener(this);
 
-        final int defaultDragWidth = Settings.System.getInt(getActivity()
-                .getContentResolver(), Settings.System.DRAG_HANDLE_WEIGHT, 5);
+        final int defaultDragWidth = Settings.System.getInt(mContentRes,
+                Settings.System.DRAG_HANDLE_WEIGHT, 5);
         mDragHandleWidth = (SeekBarPreference) findPreference(DRAG_HANDLE_WIDTH);
         mDragHandleWidth.setInitValue((int) (defaultDragWidth));
         mDragHandleWidth.setOnPreferenceChangeListener(this);
 
         mNavBarHideTimeout = (ListPreference) findPreference(NAVBAR_HIDE_TIMEOUT);
         mNavBarHideTimeout.setOnPreferenceChangeListener(this);
-        mNavBarHideTimeout.setValue(Settings.System.getInt(getActivity().getContentResolver(),
+        mNavBarHideTimeout.setValue(Settings.System.getInt(mContentRes,
                 Settings.System.NAV_HIDE_TIMEOUT, 3000) + "");
 
         boolean hasNavBarByDefault = mContext.getResources().getBoolean(
                 com.android.internal.R.bool.config_showNavigationBar);
         mEnableNavigationBar = (CheckBoxPreference) findPreference("enable_nav_bar");
-        mEnableNavigationBar.setChecked(Settings.System.getInt(getContentResolver(),
-                Settings.System.NAVIGATION_BAR_SHOW, hasNavBarByDefault ? 1 : 0) == 1);
+        mEnableNavigationBar.setChecked(Settings.System.getBoolean(mContentRes,
+                Settings.System.NAVIGATION_BAR_SHOW, hasNavBarByDefault));
 
         mNavigationColor = (ColorPickerPreference) findPreference(NAVIGATION_BAR_COLOR);
         mNavigationColor.setOnPreferenceChangeListener(this);
@@ -198,7 +195,7 @@ public class Navbar extends SettingsPreferenceFragment implements
         mNavigationBarColor.setOnPreferenceChangeListener(this);
 
         mColorizeAllIcons = (CheckBoxPreference) findPreference("navigation_bar_allcolor");
-        mColorizeAllIcons.setChecked(Settings.System.getBoolean(getActivity().getContentResolver(),
+        mColorizeAllIcons.setChecked(Settings.System.getBoolean(mContentRes,
                 Settings.System.NAVIGATION_BAR_ALLCOLOR, false));
 
         mNavigationBarGlowColor = (ColorPickerPreference) findPreference(PREF_NAV_GLOW_COLOR);
@@ -207,33 +204,25 @@ public class Navbar extends SettingsPreferenceFragment implements
         mGlowTimes = (ListPreference) findPreference(PREF_GLOW_TIMES);
         mGlowTimes.setOnPreferenceChangeListener(this);
 
-        final float defaultButtonAlpha = Settings.System.getFloat(getActivity()
-                .getContentResolver(), Settings.System.NAVIGATION_BAR_BUTTON_ALPHA,
-                0.6f);
+        final float defaultButtonAlpha = Settings.System.getFloat(mContentRes,
+                Settings.System.NAVIGATION_BAR_BUTTON_ALPHA,0.6f);
         mButtonAlpha = (SeekBarPreference) findPreference("button_transparency");
         mButtonAlpha.setInitValue((int) (defaultButtonAlpha * 100));
         mButtonAlpha.setOnPreferenceChangeListener(this);
 
         mWidthHelp = (Preference) findPreference("width_help");
 
-        float defaultPort = Settings.System.getFloat(getActivity()
-                .getContentResolver(), Settings.System.NAVIGATION_BAR_WIDTH_PORT,
-                0f);
+        float defaultPort = Settings.System.getFloat(mContentRes,
+                Settings.System.NAVIGATION_BAR_WIDTH_PORT,0f);
         mWidthPort = (SeekBarPreference) findPreference("width_port");
         mWidthPort.setInitValue((int) (defaultPort * 2.5f));
         mWidthPort.setOnPreferenceChangeListener(this);
 
-        float defaultLand = Settings.System.getFloat(getActivity()
-                .getContentResolver(), Settings.System.NAVIGATION_BAR_WIDTH_LAND,
-                0f);
+        float defaultLand = Settings.System.getFloat(mContentRes,
+                Settings.System.NAVIGATION_BAR_WIDTH_LAND,0f);
         mWidthLand = (SeekBarPreference) findPreference("width_land");
         mWidthLand.setInitValue((int) (defaultLand * 2.5f));
         mWidthLand.setOnPreferenceChangeListener(this);
-
-        // don't allow devices that must use a navigation bar to disable it
-        if (hasNavBarByDefault) {
-            prefs.removePreference(mEnableNavigationBar);
-        }
 
         mNavigationBarHeight = (ListPreference) findPreference("navigation_bar_height");
         mNavigationBarHeight.setOnPreferenceChangeListener(this);
@@ -245,7 +234,15 @@ public class Navbar extends SettingsPreferenceFragment implements
         mNavigationBarWidth.setOnPreferenceChangeListener(this);
         mConfigureWidgets = findPreference(NAVIGATION_BAR_WIDGETS);
 
-		if (isTablet(mContext)) {
+        mMenuArrowKeysCheckBox = (CheckBoxPreference) findPreference(PREF_MENU_ARROWS);
+        mMenuArrowKeysCheckBox.setChecked(Settings.System.getBoolean(mContentRes,
+                Settings.System.NAVIGATION_BAR_MENU_ARROW_KEYS, true));
+
+        // don't allow devices that must use a navigation bar to disable it
+        if (hasNavBarByDefault) {
+            prefs.removePreference(mEnableNavigationBar);
+        }
+        if (isTablet(mContext)) {
             prefs.removePreference(mNavBarMenuDisplay);
             prefs.removePreference(menuDisplayLocation);
         } else {
@@ -253,10 +250,6 @@ public class Navbar extends SettingsPreferenceFragment implements
             ((PreferenceGroup) findPreference("advanced_cat")).removePreference(mWidthLand);
             ((PreferenceGroup) findPreference("advanced_cat")).removePreference(mWidthPort);
         }
-
-        mMenuArrowKeysCheckBox = (CheckBoxPreference) findPreference(PREF_MENU_ARROWS);
-        mMenuArrowKeysCheckBox.setChecked(Settings.System.getBoolean(getContentResolver(),
-                Settings.System.NAVIGATION_BAR_MENU_ARROW_KEYS, true));
 
         // Only show the hardware keys config on a device that does not have a navbar 	
         IWindowManager windowManager = IWindowManager.Stub.asInterface(
@@ -281,34 +274,34 @@ public class Navbar extends SettingsPreferenceFragment implements
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.reset:
-                Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.putInt(mContentRes,
                         Settings.System.NAVIGATION_BAR_COLOR, -1);
-                Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.putInt(mContentRes,
                         Settings.System.NAVIGATION_BAR_TINT, -1);
-                Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.putInt(mContentRes,
                         Settings.System.NAVIGATION_BAR_GLOW_TINT, -1);
-                Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.putInt(mContentRes,
                         Settings.System.NAVIGATION_BAR_BUTTONS_QTY, 3);
 
-                Settings.System.putString(getActivity().getContentResolver(),
+                Settings.System.putString(mContentRes,
                         Settings.System.NAVIGATION_CUSTOM_ACTIVITIES[0], "**back**");
-                Settings.System.putString(getActivity().getContentResolver(),
+                Settings.System.putString(mContentRes,
                         Settings.System.NAVIGATION_CUSTOM_ACTIVITIES[1], "**home**");
-                Settings.System.putString(getActivity().getContentResolver(),
+                Settings.System.putString(mContentRes,
                         Settings.System.NAVIGATION_CUSTOM_ACTIVITIES[2], "**recents**");
 
-                Settings.System.putString(getActivity().getContentResolver(),
+                Settings.System.putString(mContentRes,
                         Settings.System.NAVIGATION_LONGPRESS_ACTIVITIES[0], "**null**");
-                Settings.System.putString(getActivity().getContentResolver(),
+                Settings.System.putString(mContentRes,
                         Settings.System.NAVIGATION_LONGPRESS_ACTIVITIES[1], "**null**");
-                Settings.System.putString(getActivity().getContentResolver(),
+                Settings.System.putString(mContentRes,
                         Settings.System.NAVIGATION_LONGPRESS_ACTIVITIES[2], "**null**");
 
-                Settings.System.putString(getActivity().getContentResolver(),
+                Settings.System.putString(mContentRes,
                         Settings.System.NAVIGATION_CUSTOM_APP_ICONS[0], "");
-                Settings.System.putString(getActivity().getContentResolver(),
+                Settings.System.putString(mContentRes,
                         Settings.System.NAVIGATION_CUSTOM_APP_ICONS[1], "");
-                Settings.System.putString(getActivity().getContentResolver(),
+                Settings.System.putString(mContentRes,
                         Settings.System.NAVIGATION_CUSTOM_APP_ICONS[2], "");
                 refreshSettings();
                 return true;
@@ -322,18 +315,18 @@ public class Navbar extends SettingsPreferenceFragment implements
             Preference preference) {
         if (preference == mEnableNavigationBar) {
 
-            Settings.System.putInt(getActivity().getContentResolver(),
+            Settings.System.putInt(mContentRes,
                     Settings.System.NAVIGATION_BAR_SHOW,
                     ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
             Helpers.restartSystemUI();
             return true;
         } else if (preference == mColorizeAllIcons) {
-            Settings.System.putBoolean(getActivity().getContentResolver(),
+            Settings.System.putBoolean(mContentRes,
                     Settings.System.NAVIGATION_BAR_ALLCOLOR,
                     ((CheckBoxPreference) preference).isChecked() ? true : false);
             return true;
         } else if (preference == mNavBarHideEnable) {
-            Settings.System.putBoolean(getActivity().getContentResolver(),
+            Settings.System.putBoolean(mContentRes,
                     Settings.System.NAV_HIDE_ENABLE,
                     ((CheckBoxPreference) preference).isChecked());
             mDragHandleOpacity.setInitValue(Settings.System.getInt(getActivity().getContentResolver(),
@@ -352,7 +345,7 @@ public class Navbar extends SettingsPreferenceFragment implements
             ft.commit();
             return true;
         } else if (preference == mMenuArrowKeysCheckBox) {
-            Settings.System.putBoolean(getActivity().getContentResolver(),
+            Settings.System.putBoolean(mContentRes,
                     Settings.System.NAVIGATION_BAR_MENU_ARROW_KEYS,
                     ((CheckBoxPreference) preference).isChecked());
             return true;
@@ -364,16 +357,16 @@ public class Navbar extends SettingsPreferenceFragment implements
     public boolean onPreferenceChange(Preference preference, Object newValue) {
 
         if (preference == menuDisplayLocation) {
-            Settings.System.putInt(getActivity().getContentResolver(),
+            Settings.System.putInt(mContentRes,
                     Settings.System.MENU_LOCATION, Integer.parseInt((String) newValue));
             return true;
         } else if (preference == mNavBarMenuDisplay) {
-            Settings.System.putInt(getActivity().getContentResolver(),
+            Settings.System.putInt(mContentRes,
                     Settings.System.MENU_VISIBILITY, Integer.parseInt((String) newValue));
             return true;
         } else if (preference == mNavBarButtonQty) {
             int val = Integer.parseInt((String) newValue);
-            Settings.System.putInt(getActivity().getContentResolver(),
+            Settings.System.putInt(mContentRes,
                     Settings.System.NAVIGATION_BAR_BUTTONS_QTY, val);
             refreshSettings();
             return true;
@@ -381,23 +374,20 @@ public class Navbar extends SettingsPreferenceFragment implements
             String newVal = (String) newValue;
             int dp = Integer.parseInt(newVal);
             int width = mapChosenDpToPixels(dp);
-            Settings.System.putInt(getContentResolver(), Settings.System.NAVIGATION_BAR_WIDTH,
+            Settings.System.putInt(mContentRes, Settings.System.NAVIGATION_BAR_WIDTH,
                     width);
-            //showDialog(DIALOG_NAVBAR_HEIGHT_REBOOT);
             return true;
         } else if (preference == mNavigationBarHeight) {
             String newVal = (String) newValue;
             int dp = Integer.parseInt(newVal);
             int height = mapChosenDpToPixels(dp);
-            Settings.System.putInt(getContentResolver(), Settings.System.NAVIGATION_BAR_HEIGHT,
+            Settings.System.putInt(mContentRes, Settings.System.NAVIGATION_BAR_HEIGHT,
                     height);
-            //showDialog(DIALOG_NAVBAR_HEIGHT_REBOOT);
             return true;
         } else if (preference == mNavBarHideTimeout) {
             int val = Integer.parseInt((String) newValue);
-            Settings.System.putInt(getActivity().getContentResolver(),
+            Settings.System.putInt(mContentRes,
                     Settings.System.NAV_HIDE_TIMEOUT, val);
-            refreshSettings();
             return true;
         } else if (preference == mNavigationBarHeightLandscape) {
             String newVal = (String) newValue;
@@ -406,7 +396,6 @@ public class Navbar extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(),
                     Settings.System.NAVIGATION_BAR_HEIGHT_LANDSCAPE,
                     height);
-            //showDialog(DIALOG_NAVBAR_HEIGHT_REBOOT);
             return true;
 
         } else if ((preference.getKey().startsWith("navbar_action"))
@@ -446,7 +435,7 @@ public class Navbar extends SettingsPreferenceFragment implements
                     Integer.valueOf(String.valueOf(newValue)));
             preference.setSummary(hex);
             int intHex = ColorPickerPreference.convertToColorInt(hex) & 0x00FFFFFF;
-            Settings.System.putInt(getActivity().getContentResolver(),
+            Settings.System.putInt(mContentRes,
                     Settings.System.NAVIGATION_BAR_COLOR, intHex);
             return true;
         } else if (preference == mNavigationBarColor) {
@@ -454,7 +443,7 @@ public class Navbar extends SettingsPreferenceFragment implements
                     Integer.valueOf(String.valueOf(newValue)));
             preference.setSummary(hex);
             int intHex = ColorPickerPreference.convertToColorInt(hex);
-            Settings.System.putInt(getActivity().getContentResolver(),
+            Settings.System.putInt(mContentRes,
                     Settings.System.NAVIGATION_BAR_TINT, intHex);
             return true;
         } else if (preference == mNavigationBarGlowColor) {
@@ -462,7 +451,7 @@ public class Navbar extends SettingsPreferenceFragment implements
                     Integer.valueOf(String.valueOf(newValue)));
             preference.setSummary(hex);
             int intHex = ColorPickerPreference.convertToColorInt(hex);
-            Settings.System.putInt(getActivity().getContentResolver(),
+            Settings.System.putInt(mContentRes,
                     Settings.System.NAVIGATION_BAR_GLOW_TINT, intHex);
             return true;
         } else if (preference == mGlowTimes) {
@@ -472,40 +461,40 @@ public class Navbar extends SettingsPreferenceFragment implements
             int onTime = Integer.valueOf(breakIndex[0]);
             int offTime = Integer.valueOf(breakIndex[1]);
 
-            Settings.System.putInt(getActivity().getContentResolver(),
+            Settings.System.putInt(mContentRes,
                     Settings.System.NAVIGATION_BAR_GLOW_DURATION[0], offTime);
-            Settings.System.putInt(getActivity().getContentResolver(),
+            Settings.System.putInt(mContentRes,
                     Settings.System.NAVIGATION_BAR_GLOW_DURATION[1], onTime);
             updateGlowTimesSummary();
             return true;
         } else if (preference == mButtonAlpha) {
             float val = Float.parseFloat((String) newValue);
-            Settings.System.putFloat(getActivity().getContentResolver(),
+            Settings.System.putFloat(mContentRes,
                     Settings.System.NAVIGATION_BAR_BUTTON_ALPHA,
                     val * 0.01f);
             return true;
        } else if (preference == mDragHandleOpacity) {
             String newVal = (String) newValue;
             int op = Integer.parseInt(newVal);
-            Settings.System.putInt(getActivity().getContentResolver(),
+            Settings.System.putInt(mContentRes,
                     Settings.System.DRAG_HANDLE_OPACITY, op);
             return true;
         } else if (preference == mDragHandleWidth) {
             String newVal = (String) newValue;
             int dp = Integer.parseInt(newVal);
             //int height = mapChosenDpToPixels(dp);
-            Settings.System.putInt(getContentResolver(),
+            Settings.System.putInt(mContentRes,
                     Settings.System.DRAG_HANDLE_WEIGHT, dp);
             return true;
         } else if (preference == mWidthPort) {
             float val = Float.parseFloat((String) newValue);
-            Settings.System.putFloat(getActivity().getContentResolver(),
+            Settings.System.putFloat(mContentRes,
                     Settings.System.NAVIGATION_BAR_WIDTH_PORT,
                     val * 0.4f);
             return true;
         } else if (preference == mWidthLand) {
             float val = Float.parseFloat((String) newValue);
-            Settings.System.putFloat(getActivity().getContentResolver(),
+            Settings.System.putFloat(mContentRes,
                     Settings.System.NAVIGATION_BAR_WIDTH_LAND,
                     val * 0.4f);
             return true;
@@ -516,45 +505,14 @@ public class Navbar extends SettingsPreferenceFragment implements
 
     @Override
     public Dialog onCreateDialog(int dialogId) {
-        switch (dialogId) {
-            case DIALOG_NAVBAR_HEIGHT_REBOOT:
-                return new AlertDialog.Builder(getActivity())
-                        .setTitle(getResources().getString(R.string.navbar_height_dialog_title))
-                        .setMessage(
-                                getResources().getString(R.string.navbar_height_dialog_summary))
-                        .setCancelable(false)
-                        .setNeutralButton(
-                                getResources()
-                                        .getString(R.string.navbar_height_dialog_button_later),
-                                new DialogInterface.OnClickListener() {
-
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        dialog.dismiss();
-                                    }
-                                })
-                        .setPositiveButton(
-                                getResources().getString(
-                                        R.string.navbar_height_dialog_button_reboot),
-                                new DialogInterface.OnClickListener() {
-
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        PowerManager pm = (PowerManager) getActivity()
-                                                .getSystemService(Context.POWER_SERVICE);
-                                        pm.reboot("Rebooting with new bar height");
-                                    }
-                                })
-                        .create();
-        }
         return null;
     }
 
     private void updateGlowTimesSummary() {
         int resId;
-        String combinedTime = Settings.System.getString(getContentResolver(),
+        String combinedTime = Settings.System.getString(mContentRes,
                 Settings.System.NAVIGATION_BAR_GLOW_DURATION[1]) + "|" +
-                Settings.System.getString(getContentResolver(),
+                Settings.System.getString(mContentRes,
                         Settings.System.NAVIGATION_BAR_GLOW_DURATION[0]);
 
         String[] glowArray = getResources().getStringArray(R.array.glow_times_values);
@@ -623,11 +581,9 @@ public class Navbar extends SettingsPreferenceFragment implements
                     super.onActivityResult(requestCode, resultCode, data);
                     return;
                 }
-                Settings.System.putString(
-                        getContentResolver(),
+                Settings.System.putString(mContentRes,
                         Settings.System.NAVIGATION_CUSTOM_APP_ICONS[mPendingIconIndex], "");
-                Settings.System.putString(
-                        getContentResolver(),
+                Settings.System.putString(mContentRes,
                         Settings.System.NAVIGATION_CUSTOM_APP_ICONS[mPendingIconIndex],
                         Uri.fromFile(
                                 new File(mContext.getFilesDir(), iconName)).getPath());
@@ -652,7 +608,11 @@ public class Navbar extends SettingsPreferenceFragment implements
 
     public void refreshSettings() {
 
-        int navbarQuantity = Settings.System.getInt(getContentResolver(),
+        mDragHandleOpacity.setEnabled(mNavBarHideEnable.isChecked());
+        mDragHandleWidth.setEnabled(mNavBarHideEnable.isChecked());
+        mNavBarHideTimeout.setEnabled(mNavBarHideEnable.isChecked());
+
+        int navbarQuantity = Settings.System.getInt(mContentRes,
                 Settings.System.NAVIGATION_BAR_BUTTONS_QTY, 3);
 
         PreferenceGroup targetGroup = (PreferenceGroup) findPreference("navbar_buttons");
@@ -714,7 +674,7 @@ public class Navbar extends SettingsPreferenceFragment implements
                 }
             });
 
-            String customIconUri = Settings.System.getString(getContentResolver(),
+            String customIconUri = Settings.System.getString(mContentRes,
                     Settings.System.NAVIGATION_CUSTOM_APP_ICONS[i]);
             if (customIconUri != null && customIconUri.length() > 0) {
                 File f = new File(Uri.parse(customIconUri).getPath());
@@ -761,7 +721,7 @@ public class Navbar extends SettingsPreferenceFragment implements
     }
 
     private Drawable getNavbarIconImage(int index, boolean landscape) {
-        String uri = Settings.System.getString(getActivity().getContentResolver(),
+        String uri = Settings.System.getString(mContentRes,
                 Settings.System.NAVIGATION_CUSTOM_ACTIVITIES[index]);
 
         if (uri == null)
@@ -806,10 +766,10 @@ public class Navbar extends SettingsPreferenceFragment implements
     private String getProperSummary(int i, boolean longpress) {
         String uri = "";
         if (longpress)
-            uri = Settings.System.getString(getActivity().getContentResolver(),
+            uri = Settings.System.getString(mContentRes,
                     Settings.System.NAVIGATION_LONGPRESS_ACTIVITIES[i]);
         else
-            uri = Settings.System.getString(getActivity().getContentResolver(),
+            uri = Settings.System.getString(mContentRes,
                     Settings.System.NAVIGATION_CUSTOM_ACTIVITIES[i]);
         if (uri == null)
             return getResources().getString(R.string.navbar_action_none);
@@ -845,14 +805,12 @@ public class Navbar extends SettingsPreferenceFragment implements
 
     @Override
     public void shortcutPicked(String uri, String friendlyName, Bitmap bmp, boolean isApplication) {
-        if (Settings.System.putString(getActivity().getContentResolver(),
+        if (Settings.System.putString(mContentRes,
                 mPendingNavBarCustomAction.activitySettingName, uri)) {
             if (mPendingNavBarCustomAction.iconIndex != -1) {
                 if (bmp == null) {
-                    Settings.System
-                            .putString(
-                                    getContentResolver(),
-                                    Settings.System.NAVIGATION_CUSTOM_APP_ICONS[mPendingNavBarCustomAction.iconIndex],
+                    Settings.System.putString(mContentRes,
+                            Settings.System.NAVIGATION_CUSTOM_APP_ICONS[mPendingNavBarCustomAction.iconIndex],
                                     "");
                 } else {
                     String iconName = getIconFileName(mPendingNavBarCustomAction.iconIndex);
@@ -863,13 +821,9 @@ public class Navbar extends SettingsPreferenceFragment implements
                         return; // NOOOOO
                     }
                     bmp.compress(Bitmap.CompressFormat.PNG, 100, iconStream);
-                    Settings.System
-                            .putString(
-                                    getContentResolver(),
+                    Settings.System.putString(mContentRes,
                                     Settings.System.NAVIGATION_CUSTOM_APP_ICONS[mPendingNavBarCustomAction.iconIndex], "");
-                    Settings.System
-                            .putString(
-                                    getContentResolver(),
+                    Settings.System.putString(mContentRes,
                                     Settings.System.NAVIGATION_CUSTOM_APP_ICONS[mPendingNavBarCustomAction.iconIndex],
                                     Uri.fromFile(mContext.getFileStreamPath(iconName)).toString());
                 }
@@ -894,31 +848,4 @@ public class Navbar extends SettingsPreferenceFragment implements
         refreshSettings();
     }
 
-    public static class NavbarLayout extends ListFragment {
-        private static final String TAG = "NavbarLayout";
-
-        Context mContext;
-
-        /** Called when the activity is first created. */
-        @Override
-        public void onCreate(Bundle icicle) {
-            super.onCreate(icicle);
-
-            mContext = getActivity().getBaseContext();
-        }
-
-        public void onActivityCreated(Bundle savedInstanceState) {
-            super.onActivityCreated(savedInstanceState);
-        };
-
-        @Override
-        public void onDestroy() {
-            super.onDestroy();
-        }
-
-        @Override
-        public void onResume() {
-            super.onResume();
-        }
-    }
 }

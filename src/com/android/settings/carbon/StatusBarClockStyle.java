@@ -110,7 +110,7 @@ public class StatusBarClockStyle extends SettingsPreferenceFragment implements
         mColorPicker.setOnPreferenceChangeListener(this);
         int defaultColor = getResources().getColor(
                 com.android.internal.R.color.holo_blue_light);
-        int intColor = Settings.System.getInt(getActivity().getContentResolver(),
+        int intColor = Settings.System.getInt(mContentRes,
                     Settings.System.STATUSBAR_CLOCK_COLOR, defaultColor);
         String hexColor = String.format("#%08x", (0xffffffff & intColor));
         mColorPicker.setSummary(hexColor);
@@ -162,7 +162,7 @@ public class StatusBarClockStyle extends SettingsPreferenceFragment implements
         } catch (SettingNotFoundException e ) {
         }
 
-        boolean mClockDateToggle = Settings.System.getInt(getActivity().getContentResolver(),
+        boolean mClockDateToggle = Settings.System.getInt(mContentRes,
                     Settings.System.STATUSBAR_CLOCK_DATE_DISPLAY, 0) != 0;
         if (!mClockDateToggle) {
             mClockDateStyle.setEnabled(false);
@@ -179,14 +179,14 @@ public class StatusBarClockStyle extends SettingsPreferenceFragment implements
         if (preference == mClockAmPmStyle) {
             int val = Integer.parseInt((String) newValue);
             int index = mClockAmPmStyle.findIndexOfValue((String) newValue);
-            result = Settings.System.putInt(getActivity().getContentResolver(),
+            result = Settings.System.putInt(mContentRes,
                     Settings.System.STATUSBAR_CLOCK_AM_PM_STYLE, val);
             mClockAmPmStyle.setSummary(mClockAmPmStyle.getEntries()[index]);
             return true;
         } else if (preference == mClockStyle) {
             int val = Integer.parseInt((String) newValue);
             int index = mClockStyle.findIndexOfValue((String) newValue);
-            result = Settings.System.putInt(getActivity().getContentResolver(),
+            result = Settings.System.putInt(mContentRes,
                     Settings.System.STATUSBAR_CLOCK_STYLE, val);
             mClockStyle.setSummary(mClockStyle.getEntries()[index]);
             return true;
@@ -196,7 +196,7 @@ public class StatusBarClockStyle extends SettingsPreferenceFragment implements
             preference.setSummary(hex);
 
             int intHex = ColorPickerPreference.convertToColorInt(hex);
-            Settings.System.putInt(getActivity().getContentResolver(),
+            Settings.System.putInt(mContentRes,
                     Settings.System.STATUSBAR_CLOCK_COLOR, intHex);
             Log.e("ROMAN", intHex + "");
             return true;
@@ -230,7 +230,7 @@ public class StatusBarClockStyle extends SettingsPreferenceFragment implements
         } else if (preference == mClockDateDisplay) {
             int val = Integer.parseInt((String) newValue);
             int index = mClockDateDisplay.findIndexOfValue((String) newValue);
-            result = Settings.System.putInt(getActivity().getContentResolver(),
+            result = Settings.System.putInt(mContentRes,
                     Settings.System.STATUSBAR_CLOCK_DATE_DISPLAY, val);
             mClockDateDisplay.setSummary(mClockDateDisplay.getEntries()[index]);
             if (val == 0) {
@@ -244,7 +244,7 @@ public class StatusBarClockStyle extends SettingsPreferenceFragment implements
         } else if (preference == mClockDateStyle) {
             int val = Integer.parseInt((String) newValue);
             int index = mClockDateStyle.findIndexOfValue((String) newValue);
-            result = Settings.System.putInt(getActivity().getContentResolver(),
+            result = Settings.System.putInt(mContentRes,
                     Settings.System.STATUSBAR_CLOCK_DATE_STYLE, val);
             mClockDateStyle.setSummary(mClockDateStyle.getEntries()[index]);
             parseClockDateFormats();
@@ -258,7 +258,7 @@ public class StatusBarClockStyle extends SettingsPreferenceFragment implements
                 alert.setMessage(R.string.clock_date_string_edittext_summary);
 
                 final EditText input = new EditText(getActivity());
-                String oldText = Settings.System.getString(getActivity().getContentResolver(), Settings.System.STATUSBAR_CLOCK_DATE_FORMAT);
+                String oldText = Settings.System.getString(mContentRes, Settings.System.STATUSBAR_CLOCK_DATE_FORMAT);
                 if (oldText != null) {
                     input.setText(oldText);
                 }
@@ -270,7 +270,7 @@ public class StatusBarClockStyle extends SettingsPreferenceFragment implements
                         if (value.equals("")) {
                             return;
                         }
-                        Settings.System.putString(getActivity().getContentResolver(), Settings.System.STATUSBAR_CLOCK_DATE_FORMAT, value);
+                        Settings.System.putString(mContentRes, Settings.System.STATUSBAR_CLOCK_DATE_FORMAT, value);
 
                         return;
                     }
@@ -285,7 +285,7 @@ public class StatusBarClockStyle extends SettingsPreferenceFragment implements
                 dialog.show();
             } else {
                 if ((String) newValue != null) {
-                    Settings.System.putString(getActivity().getContentResolver(), Settings.System.STATUSBAR_CLOCK_DATE_FORMAT, (String) newValue);
+                    Settings.System.putString(mContentRes, Settings.System.STATUSBAR_CLOCK_DATE_FORMAT, (String) newValue);
                 }
             }
             return true;
@@ -316,7 +316,7 @@ public class StatusBarClockStyle extends SettingsPreferenceFragment implements
             mString = Settings.System.NOTIFICATION_CLOCK[shortClick];
         }
 
-        String uri = Settings.System.getString(getActivity().getContentResolver(),mString);
+        String uri = Settings.System.getString(mContentRes,mString);
         String empty = "";
 
         if (uri == null)

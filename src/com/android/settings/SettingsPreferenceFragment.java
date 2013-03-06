@@ -49,13 +49,17 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements Di
     private static final int MENU_HELP = Menu.FIRST + 100;
 
     private SettingsDialogFragment mDialogFragment;
+    protected boolean hasFastCharge;
+    protected ContentResolver mContentRes;
 
     private String mHelpUrl;
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+        hasFastCharge = getResources().getBoolean(R.bool.has_fast_charge);
         mContext = getActivity();
+        mContentRes = getActivity().getContentResolver();
         // Prepare help url and enable menu if necessary
         int helpResource = getHelpResource();
         if (helpResource != 0) {
