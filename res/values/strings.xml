@@ -5203,6 +5203,7 @@
     <string name="toggles_per_row_summary">Choose how many toggles to show per row</string>
     <string name="toggles_style_title">Toggles style</string>
     <string name="toggles_style_summary">Notification (traditional) or tiles</string>
+    <string name="toggles_display_dialog">Choose which toggles to use</string>
     <string name="toggles_display_close">Close</string>
     <string name="toggles_order_title">Toggle order</string>
     <string name="toggles_order_summary">Choose the order which your toggles are displayed</string>
@@ -5257,6 +5258,7 @@
     <string name="toggle_brightness">Brightness</string>
     <string name="toggle_sound_state">Ring/Vib/Silent</string>
     <string name="toggle_navbar_hide">Navbar Auto Hide</string>
+    <string name="toggle_quickrecord">Quick Record</string>
 
     <!-- Hardware keys -->
     <string name="hardware_keys_title">Hardware Keys</string>
@@ -5384,9 +5386,6 @@
     <string name="navring_icon">Custom icon</string>
     <string name="navring_target_amount_text">Current number of targets</string>
     <string name="navring_target_longpress_text">Longpress status</string>
-    <string name="interface_navring_settings_title">Navring Options</string>
-    <string name="interface_navring_settings_summary">Edit your custom nav ring apps</string>
-
 
     <!-- Navbar -->
     <string name="right">Right</string>

@@ -110,6 +110,10 @@
     <dimen name="navring_radius_tablet_landscape">270dp</dimen>
     <!--  Radius of NavRing in Tablet Mode Landscape -->
     <dimen name="navring_radius_tablet_portrait">240dp</dimen>
+    <!-- height of a normal list item in edit playlist mode -->
+    <dimen name="normal_height">64dip</dimen>
+    <!-- height of an expanded list item in edit playlist mode -->
+    <dimen name="expanded_height">128dip</dimen>
 
     <!-- **** CARBON ADDITIONS END **** -->
 
