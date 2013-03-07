@@ -1454,8 +1454,6 @@
         <!-- Carbon Activities Start -->
         <activity android:name=".carbon.About" />
 
-        <activity android:name=".carbon.PowerWidget" />
-
         <activity android:name=".carbon.StatusBar" />
 
         <activity android:name=".carbon.StatusBarClockStyle" />
@@ -1538,7 +1536,7 @@
 
 	    <activity android:name=".carbon.RamBar" />
 
-        <activity android:name=".carbon.QuickSettings" />
+        <activity android:name=".carbon.StatusBarToggles" />
 
         <activity android:name="Settings$ASSRamBarActivity"
                 android:label="@string/ram_bar">

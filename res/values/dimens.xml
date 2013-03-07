@@ -71,11 +71,6 @@
     <!-- Light settings dialog -->
     <dimen name="dialog_light_settings_width">400dip</dimen>
 
-    <!-- height of a normal list item in edit playlist mode -->
-    <dimen name="normal_height">64dip</dimen>
-    <!-- height of an expanded list item in edit playlist mode -->
-    <dimen name="expanded_height">128dip</dimen>
-
     <dimen name="navigation_bar_48">48.0dip</dimen>
     <dimen name="navigation_bar_44">44.0dip</dimen>
     <dimen name="navigation_bar_42">42.0dip</dimen>
