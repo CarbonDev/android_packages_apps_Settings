@@ -24,6 +24,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -67,6 +68,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private static final String KEY_ALWAYS_BATTERY_PREF = "lockscreen_battery_status";
     private static final String KEY_LOCKSCREEN_BUTTONS = "lockscreen_buttons";
     private static final String KEY_LOCK_CLOCK = "lock_clock";
+    private static final String KEY_SEE_TRHOUGH = "see_through";
     private static final String KEY_LOCKSCREEN_MAXIMIZE_WIDGETS = "lockscreen_maximize_widgets";
     private static final String PREF_LOCKSCREEN_USE_CAROUSEL = "lockscreen_use_widget_container_carousel";
     private static final String PREF_LOCKSCREEN_HIDE_INITIAL_PAGE_HINTS = "lockscreen_hide_initial_page_hints";
@@ -80,6 +82,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
 
     private ListPreference mCustomBackground;
     private ListPreference mBatteryStatus;
+    private CheckBoxPreference mSeeThrough;
     private CheckBoxPreference mMaximizeWidgets;
     private CheckBoxPreference mLockscreenUseCarousel;
     private CheckBoxPreference mLockscreenHideInitialPageHints;
@@ -100,6 +103,8 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ContentResolver resolver = getContentResolver();
+        mContext = getActivity();
 
         addPreferencesFromResource(R.xml.lockscreen_interface_settings);
 
@@ -107,6 +112,10 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         if (mBatteryStatus != null) {
             mBatteryStatus.setOnPreferenceChangeListener(this);
         }
+
+        mSeeThrough = (CheckBoxPreference) findPreference(KEY_SEE_TRHOUGH);
+        mSeeThrough.setChecked(Settings.System.getInt(resolver,
+                Settings.System.LOCKSCREEN_SEE_THROUGH, 0) == 1);
 
         mMaximizeWidgets = (CheckBoxPreference)findPreference(KEY_LOCKSCREEN_MAXIMIZE_WIDGETS);
         if (!Utils.isPhone(getActivity())) {
@@ -193,6 +202,10 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.LOCKSCREEN_HIDE_INITIAL_PAGE_HINTS,
                     ((CheckBoxPreference)preference).isChecked() ? 1 : 0);
+            return true;
+         } else if (preference == mSeeThrough) {
+            Settings.System.putInt(mContext.getContentResolver(), Settings.System.LOCKSCREEN_SEE_THROUGH, 
+                    mSeeThrough.isChecked() ? 1 : 0);
             return true;
         } else if (preference == mLockscreenUseCarousel) {
             Settings.System.putInt(getActivity().getContentResolver(),

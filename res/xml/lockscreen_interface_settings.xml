@@ -85,6 +85,11 @@
         android:summary="@string/lockscreen_auto_rotate_summary" />
 
      <CheckBoxPreference
+        android:key="see_through"
+        android:title="@string/lockscreen_seethrough"
+        android:summary="@string/lockscreen_seethrough_summary" />
+
+     <CheckBoxPreference
         android:key="lockscreen_maximize_widgets"
         android:persistent="false"
         android:title="@string/lockscreen_maximize_widgets_title"

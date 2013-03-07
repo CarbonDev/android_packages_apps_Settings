@@ -5745,5 +5745,9 @@
     <string name="battery_bar_animate_summary">The charging animation may result in a poor user expe
 rience. Enable at your own discretion.</string>
 
+   <!-- Lockscreen See Through -->
+   <string name="lockscreen_seethrough">Lockscreen See through</string>
+   <string name="lockscreen_seethrough_summary">Allows you to see your homescreen behind the lock screen including apps.</string>
+
     <!-- **** CARBON ADDITIONS END **** -->
 </resources>
