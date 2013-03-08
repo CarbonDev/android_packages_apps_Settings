@@ -23,6 +23,7 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 import com.android.settings.VoiceInputOutputSettings;
 
+import android.app.AlertDialog;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -64,6 +65,11 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
     private static final String VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
     private static final String KEY_STYLUS_ICON_ENABLED = "stylus_icon_enabled";
     private static final String KEY_STYLUS_GESTURES = "stylus_gestures";
+    private static final String KEYBOARD_ROTATION_TOGGLE = "keyboard_rotation_toggle";
+    private static final String KEYBOARD_ROTATION_TIMEOUT = "keyboard_rotation_timeout";
+
+    private static final int KEYBOARD_ROTATION_TIMEOUT_DEFAULT = 5000; // 5s
+
     // false: on ICS or later
     private static final boolean SHOW_INPUT_METHOD_SWITCHER_SETTINGS = false;
 
@@ -96,6 +102,8 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
     private SettingsObserver mSettingsObserver;
     private Intent mIntentWaitingForResult;
     private ListPreference mVolumeKeyCursorControl;
+    private CheckBoxPreference mKeyboardRotationToggle;
+    private ListPreference mKeyboardRotationTimeout;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -209,6 +217,21 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
                     findPreference(KEY_STYLUS_GESTURES));
         }
 
+        mKeyboardRotationToggle = (CheckBoxPreference) findPreference(KEYBOARD_ROTATION_TOGGLE);
+        mKeyboardRotationToggle.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.KEYBOARD_ROTATION_TIMEOUT, 0) > 0);
+
+        mKeyboardRotationTimeout = (ListPreference) findPreference(KEYBOARD_ROTATION_TIMEOUT);
+        mKeyboardRotationTimeout.setOnPreferenceChangeListener(this);
+        updateRotationTimeout(Settings.System.getInt(getActivity()
+                    .getContentResolver(), Settings.System.KEYBOARD_ROTATION_TIMEOUT, KEYBOARD_ROTATION_TIMEOUT_DEFAULT));
+    }
+
+    public void updateRotationTimeout(int timeout) {
+        if (timeout == 0)
+            timeout = KEYBOARD_ROTATION_TIMEOUT_DEFAULT;
+        mKeyboardRotationTimeout.setValue(Integer.toString(timeout));
+        mKeyboardRotationTimeout.setSummary(getString(R.string.keyboard_rotation_timeout_summary, mKeyboardRotationTimeout.getEntry()));
     }
 
     private void updateInputMethodSelectorSummary(int value) {
@@ -328,6 +351,15 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
                 this, getContentResolver(), mImis, !mHardKeyboardPreferenceList.isEmpty());
     }
 
+    public void mKeyboardRotationDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setMessage(R.string.keyboard_rotation_dialog);
+        builder.setCancelable(false);
+        builder.setPositiveButton(getResources().getString(com.android.internal.R.string.ok), null);
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
     @Override
     public void onInputDeviceAdded(int deviceId) {
         updateInputDevices();
@@ -352,6 +384,16 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         if (preference == mStatusBarImeSwitcher) {
             Settings.System.putInt(getActivity().getContentResolver(),
                 Settings.System.STATUS_BAR_IME_SWITCHER, mStatusBarImeSwitcher.isChecked() ? 1 : 0);
+            return true;
+        } else if (preference == mKeyboardRotationToggle) {
+            boolean isAutoRotate = (Settings.System.getInt(getContentResolver(),
+                        Settings.System.ACCELEROMETER_ROTATION, 0) == 1);
+            if (isAutoRotate && mKeyboardRotationToggle.isChecked())
+                mKeyboardRotationDialog();
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.KEYBOARD_ROTATION_TIMEOUT,
+                    mKeyboardRotationToggle.isChecked() ? KEYBOARD_ROTATION_TIMEOUT_DEFAULT : 0);
+            updateRotationTimeout(KEYBOARD_ROTATION_TIMEOUT_DEFAULT);
             return true;
         } else if (preference == mStylusIconEnabled) {
             Settings.System.putInt(getActivity().getContentResolver(),
@@ -430,6 +472,12 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
                     Settings.System.VOLUME_KEY_CURSOR_CONTROL, val);
             int index = mVolumeKeyCursorControl.findIndexOfValue(volumeKeyCursorControl);
             mVolumeKeyCursorControl.setSummary(mVolumeKeyCursorControl.getEntries()[index]);
+            return true;
+        } else if (preference == mKeyboardRotationTimeout) {
+            int timeout = Integer.parseInt((String) value);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.KEYBOARD_ROTATION_TIMEOUT, timeout);
+            updateRotationTimeout(timeout);
             return true;
         }
         return false;
