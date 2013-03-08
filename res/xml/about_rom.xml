@@ -99,11 +99,6 @@
             carbon:twitterHandle="slickrick_xda" />
 
 		<com.android.settings.widgets.DeveloperPreference
-            android:title="ToxicThunder"
-            carbon:nameDev="ToxicThunder"
-            carbon:twitterHandle="toxicthunder99" />
-
-		<com.android.settings.widgets.DeveloperPreference
             android:title="winner00"
             carbon:nameDev="winner00"
             carbon:twitterHandle="expertontech" />
