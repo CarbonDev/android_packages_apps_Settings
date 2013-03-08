@@ -1905,6 +1905,7 @@
         <item>NAVBARHIDE</item>
         <item>QUICKRECORD</item>
         <item>SLEEP</item>
+        <item>CARBON</item>
     </string-array>
     <string-array name="available_toggles_values" translatable="false">
         <item>@string/toggle_user</item>
@@ -1933,6 +1934,7 @@
         <item>@string/toggle_navbar_hide</item>
         <item>@string/toggle_quickrecord</item>
         <item>@string/toggle_sleep</item>
+        <item>@string/toggle_carbon</item>
     </string-array>
 
     <!-- Toggles per row -->

@@ -1520,18 +1520,46 @@
 
         <!-- Carbon Activities Start -->
         <activity android:name=".carbon.About" />
-
-        <activity android:name=".carbon.StatusBar" />
-
-        <activity android:name=".carbon.StatusBarClockStyle" />
-
-        <activity android:name=".carbon.StatusBarBattery" />
-
+        <activity android:name=".carbon.InterfaceSettings" />
+        <activity android:name=".carbon.LockscreenTargets" />
+        <activity android:name=".carbon.LockscreenInterface" />
+        <activity android:name=".carbon.LockscreenButtons" />
+        <activity android:name=".carbon.LockscreenShortcuts" />
+        <activity android:name=".carbon.Navbar" />
+        <activity android:name=".carbon.NavRingTargets" />
+        <activity android:name=".carbon.NotificationDrawerStyle" />
+        <activity android:name=".carbon.Pie" />
+        <activity android:name=".carbon.PieColor" />
         <activity android:name=".carbon.PerformanceSettings" />
+        <activity android:name=".carbon.PowerMenu" />
+        <activity android:name=".carbon.RamBar" />
+        <activity android:name=".carbon.StatusBar" />
+        <activity android:name=".carbon.StatusBarBattery" />
+        <activity android:name=".carbon.StatusBarClockStyle" />
+        <activity android:name=".carbon.StatusBarToggles" />
+        <activity android:name=".carbon.XposedSettings" />
 
-        <activity android:name=".paranoid.Pie" />
+        <activity android:name="Settings$CarbonSettingsActivity"
+                android:label="@string/carbon_settings_title"
+                android:taskAffinity=""
+                android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.carbon.CarbonSettings" />
+            <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
+                android:resource="@id/carbon_settings" />
+        </activity>
 
-        <activity android:name=".paranoid.PieColor" />
+        <activity android:name=".carbon.CarbonSettings"
+            android:label="CarbonSettings" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
         <activity android:name="Settings$PieActivity"
                 android:label="@string/pie_controls_title"
@@ -1542,9 +1570,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.android.settings.paranoid.Pie" />
+                android:value="com.android.settings.carbon.Pie" />
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
-                android:resource="@id/interface_settings" />
+                android:resource="@id/carbon_settings" />
         </activity>
 
         <activity android:name="Settings$QuietHoursSettingsActivity"
@@ -1610,28 +1638,6 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".carbon.InterfaceSettings" />
-
-        <activity android:name=".carbon.LockscreenTargets" />
-
-        <activity android:name=".carbon.LockscreenInterface" />
-
-        <activity android:name=".carbon.LockscreenButtons" />
-
-        <activity android:name=".carbon.LockscreenShortcuts" />
-
-        <activity android:name=".carbon.Navbar" />
-
-        <activity android:name=".carbon.NavRingTargets" />
-
-        <activity android:name=".carbon.PowerMenu" />
-        
-        <activity android:name=".carbon.NotificationDrawerStyle" />
-
-	    <activity android:name=".carbon.RamBar" />
-
-        <activity android:name=".carbon.StatusBarToggles" />
 
         <activity android:name="Settings$ASSRamBarActivity"
                 android:label="@string/ram_bar">
@@ -1749,7 +1755,7 @@
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="com.android.settings.carbon.notificationshortcuts.NotificationShortcuts" />
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
-                android:resource="@id/slim_notification_shortcuts" />
+                android:resource="@id/carbon_notification_shortcuts" />
         </activity>
 
         <activity android:name="net.margaritov.preference.colorpicker" />

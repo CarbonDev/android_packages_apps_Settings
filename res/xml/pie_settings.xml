@@ -20,7 +20,7 @@
     <PreferenceScreen
             android:key="pie_color"
             android:title="@string/pie_color_title"
-            android:fragment="com.android.settings.paranoid.PieColor" />
+            android:fragment="com.android.settings.carbon.PieColor" />
 
     <PreferenceCategory
         android:key="pie_control"

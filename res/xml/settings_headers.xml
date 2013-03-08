@@ -58,30 +58,16 @@
         android:fragment="com.android.settings.WirelessSettings"
         android:icon="@drawable/empty_icon" />
 
-    <!-- INTERFACE -->
-    <header android:id="@+id/interface_section"
-        android:title="@string/header_category_interface" /> 
+    <!-- Carbon Links -->
+    <header android:id="@+id/carbon_section"
+        android:title="@string/header_category_carbon_links" /> 
 
-    <!-- Interface -->
+    <!-- Carbon Settings -->
     <header
-        android:id="@+id/interface_settings"
-        android:title="@string/interface_title"
-        android:fragment="com.android.settings.carbon.InterfaceSettings"
-        android:icon="@drawable/ic_carbon_interface" />
-
-    <!-- Lockscreen -->
-    <header
-        android:id="@+id/lock_screen_settings"
-        android:title="@string/lock_screen_title"
-        android:fragment="com.android.settings.carbon.LockscreenInterface"
-        android:icon="@drawable/ic_carbon_lockscreen" />
-
-    <!-- Navigation -->
-    <header
-        android:id="@+id/nav_bar"
-        android:title="@string/navbar_title"
-        android:fragment="com.android.settings.carbon.Navbar"
-        android:icon="@drawable/ic_carbon_navbar" />
+        android:id="@+id/carbon_settings"
+        android:icon="@drawable/ic_settings_about_carbon"
+        android:title="@string/carbon_settings_title"
+        android:fragment="com.android.settings.carbon.CarbonSettings" />
 
     <!-- Performance -->
     <header
@@ -94,27 +80,6 @@
                 android:targetClass="com.brewcrewfoo.performance.activities.MainActivity" />
     </header>
 
-    <!-- Powermenu -->
-    <header
-        android:id="@+id/power_menu_settings"
-        android:title="@string/power_menu_title"
-        android:fragment="com.android.settings.carbon.PowerMenu"
-        android:icon="@drawable/ic_carbon_powermenu" />
-
-    <!-- Status Bar Toggles-->
-    <header
-        android:id="@+id/statusbar_toggles"
-        android:title="@string/toggles_title"
-        android:fragment="com.android.settings.carbon.StatusBarToggles"
-        android:icon="@drawable/ic_carbon_quicksettings" />
-
-    <!-- Statusbar -->
-    <header
-        android:id="@+id/status_bar_settings"
-        android:title="@string/status_bar_title"
-        android:fragment="com.android.settings.carbon.StatusBar"
-        android:icon="@drawable/ic_carbon_statusbar" />
-
     <!-- Themes -->
     <header
         android:id="@+id/themes_settings"
@@ -125,6 +90,13 @@
             android:targetPackage="com.tmobile.themechooser"
             android:targetClass="com.tmobile.themechooser.ThemeChooser" />
     </header>
+
+    <!-- Xposed -->
+    <header
+        android:id="@+id/xposed_settings"
+        android:title="@string/xposed_settings_title"
+        android:fragment="com.android.settings.carbon.XposedSettings"
+        android:icon="@drawable/ic_carbon_xposed" />
 
     <!-- DEVICE -->
     <header android:id="@+id/device_section"
@@ -273,13 +245,6 @@
         android:fragment="com.android.settings.DevelopmentSettings"
         android:icon="@drawable/ic_settings_development"
         android:title="@string/development_settings_title" />
-
-    <!-- About CarbonRom -->
-    <header
-        android:id="@+id/about_rom"
-        android:fragment="com.android.settings.carbon.About"
-        android:icon="@drawable/ic_settings_about_carbon"
-        android:title="@string/about_carbon_settings_title" />
 
     <!-- About Device -->
     <header

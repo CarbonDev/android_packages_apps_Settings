@@ -123,7 +123,7 @@ public class Settings extends PreferenceActivity
             R.id.date_time_settings,
             R.id.about_settings,
             R.id.accessibility_settings,
-            R.id.interface_section
+            R.id.carbon_section
     };
 
     private SharedPreferences mDevelopmentPreferences;
@@ -864,4 +864,6 @@ public class Settings extends PreferenceActivity
     public static class NotificationShortcutsSettingsActivity extends Settings { /* empty */ }
     public static class AboutActivity extends Settings { /* empty */ }
     public static class PieActivity extends Settings { /* empty */ }
+    public static class CarbonSettingsActivity extends Settings { /* empty */ }
+    public static class XposedSettingsActivity extends Settings { /* empty */ }
 }

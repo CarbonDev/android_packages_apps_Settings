@@ -15,16 +15,16 @@
             android:title="@string/notification_style_title"
             android:summary="@string/notification_style_summary" />
 
+        <PreferenceScreen	
+            android:id="@+id/carbon_notification_shortcuts"
+            android:fragment="com.android.settings.carbon.notificationshortcuts.NotificationShortcuts"
+            android:key="carbon_shortcuts_settings"
+            android:title="@string/notification_shortcuts_settings_title"
+            android:summary="@string/notification_shortcuts_settings_summary" />
+
         <Preference
             android:key="transparency_dialog"
             android:title="@string/transparency_dialog_title" />
-
-        <PreferenceScreen	
-            android:id="@+id/slim_notification_shortcuts"
-            android:fragment="com.android.settings.carbon.notificationshortcuts.NotificationShortcuts"
-            android:key="slim_shortcuts_settings"
-            android:title="@string/notification_shortcuts_settings_title"
-            android:summary="@string/notification_shortcuts_settings_summary" />
 
     </PreferenceCategory>
 
@@ -39,86 +39,32 @@
             android:entries="@array/user_mode_ui_entries"
             android:entryValues="@array/user_mode_ui_values" />
 
-       <CheckBoxPreference
+        <CheckBoxPreference
             android:key="hide_extras"
             android:title= "@string/hide_extras"
             android:summary= "@string/hide_extras_summary"
             android:defaultValue="false" />
-
-        <PreferenceScreen
-            android:key="pie_control"
-            android:fragment="com.android.settings.paranoid.Pie"
-            android:title="@string/pie_controls_title"
-            android:summary="@string/pie_controls_summary" />
-
-        <PreferenceScreen
-            android:key="recents_ram_bar"
-            android:fragment="com.android.settings.carbon.RamBar"
-            android:title="@string/ram_bar" />
-
-        <Preference
-            android:key="lcd_density_setup"
-            android:title="@string/lcd_density_title"
-            android:summary="@string/lcd_density_summary" />
 
         <CheckBoxPreference
             android:key="dual_pane"
             android:title="@string/dual_pane"
             android:summary="@string/dual_pane_summary" />
 
-    </PreferenceCategory>
+        <Preference
+            android:key="lcd_density_setup"
+            android:title="@string/lcd_density_title"
+            android:summary="@string/lcd_density_summary" />
 
-    <PreferenceCategory
-        android:key="xposed_options"
-        android:title="@string/xposed_category_title" >
-
-	<PreferenceScreen
-	    android:key="xposed_warning"
-            android:title="@string/xposed_warning_title"
-	    android:summary="@string/xposed_warning_summary" >
-	</PreferenceScreen>
-
-	<PreferenceScreen
-	    android:key="xposed_framework_modules"
-            android:title="@string/xposed_framework_modules_title"
-	    android:summary="@string/xposed_framework_modules_summary" >
-	    <intent android:action="android.intent.action.MAIN"
-                android:targetPackage="de.robv.android.xposed.installer"
-		android:targetClass="de.robv.android.xposed.installer.XposedInstallerActivity" />
-	</PreferenceScreen>
-
-	<PreferenceScreen
-	    android:key="xposed_per_app_settings"
-            android:title="@string/xposed_per_app_title"
-	    android:summary="@string/xposed_per_app_summary" >
-	    <intent android:action="android.intent.action.MAIN"
-                android:targetPackage="de.robv.android.xposed.mods.appsettings"
-		android:targetClass="de.robv.android.xposed.mods.appsettings.XposedModActivity" />
-	</PreferenceScreen>
-
-	<PreferenceScreen
-	    android:key="xposed_netflix_workaround"
-            android:title="@string/xposed_netflix_title"
-	    android:summary="@string/xposed_netflix_summary" >
-	</PreferenceScreen>
+        <PreferenceScreen
+            android:key="recents_ram_bar"
+            android:fragment="com.android.settings.carbon.RamBar"
+            android:title="@string/ram_bar" />
 
     </PreferenceCategory>
 
     <PreferenceCategory
         android:key="options"
         android:title="@string/additional_options_title">
-
-        <CheckBoxPreference
-            android:key="notification_show_wifi_ssid"
-            android:title="@string/notification_show_wifi_ssid_title"
-            android:summary="@string/notification_show_wifi_ssid_summary"
-            android:defaultValue="false" />
-
-        <CheckBoxPreference
-            android:key="wakeup_when_plugged_unplugged"
-            android:title="@string/wakeup_when_plugged_unplugged_title"
-            android:summary="@string/wakeup_when_plugged_unplugged_summary"
-            android:defaultValue="true" />
 
         <CheckBoxPreference
             android:key="system_power_crt_screen_off"
@@ -137,6 +83,18 @@
             android:entries="@array/pref_low_battery_warning_policy_entries"
             android:entryValues="@array/pref_low_battery_warning_policy_values"
             android:defaultValue="0" />
+
+        <CheckBoxPreference
+            android:key="notification_show_wifi_ssid"
+            android:title="@string/notification_show_wifi_ssid_title"
+            android:summary="@string/notification_show_wifi_ssid_summary"
+            android:defaultValue="false" />
+
+        <CheckBoxPreference
+            android:key="wakeup_when_plugged_unplugged"
+            android:title="@string/wakeup_when_plugged_unplugged_title"
+            android:summary="@string/wakeup_when_plugged_unplugged_summary"
+            android:defaultValue="true" />
 
     </PreferenceCategory>
 
