@@ -5779,5 +5779,10 @@
     <!-- TRDS Settings -->
     <string name="trds_settings_title">Dark Carbon</string>
 
+   <!-- Breathing Notifications -->
+   <string name="status_bar_breathing_notifs_title">Breathing Notifications</string>
+   <string name="mms_breath">Breathing SMS</string>
+   <string name="mms_breath_summary">Will give your sms notifications a breathing effect on the statusbar</string>
+
     <!-- **** CARBON ADDITIONS END **** -->
 </resources>

@@ -69,4 +69,16 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:key="status_bar_breathing_notifs"
+        android:title="@string/status_bar_breathing_notifs_title">
+
+        <CheckBoxPreference
+            android:key="mms_breath"
+            android:title="@string/mms_breath"
+            android:summary="@string/mms_breath_summary"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>
