@@ -4656,10 +4656,6 @@
     <string name="lockscreen_text_color_title">Lockscreen text color</string>
     <string name="lockscreen_quick_unlock_control_title">Quick pin unlock</string>
     <string name="lockscreen_quick_unlock_control_summary">Unlock password/pin lockscreen without pressing enter button</string>
-    <string name="lockscreen_seethrough">Lockscreen See through</string>
-    <string name="lockscreen_seethrough_summary">Allows you to see your homescreen behind the lock screen including apps</string>
-    <string name="lockscreen_all_widgets_title">Allow all widgets</string>
-    <string name="lockscreen_all_widgets_summary">Warning: Some widgets are not intended to be used on the lockscreen. Do not blame the widget maker or Carbon if your widget misbehaves. Choose responsibly!</string>
 
     <!-- Profiles Settings  -->
     <string name="profiles_settings_title">Profiles</string>
@@ -5748,6 +5744,10 @@
     <string name="battery_bar_animate_title">Charging animation</string>
     <string name="battery_bar_animate_summary">The charging animation may result in a poor user expe
 rience. Enable at your own discretion.</string>
+
+   <!-- Lockscreen See Through -->
+   <string name="lockscreen_seethrough">Lockscreen See through</string>
+   <string name="lockscreen_seethrough_summary">Allows you to see your homescreen behind the lock screen including apps.</string>
 
     <!-- **** CARBON ADDITIONS END **** -->
 </resources>

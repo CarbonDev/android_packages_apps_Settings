@@ -78,7 +78,6 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private static final String PREF_LOCKSCREEN_SHORTCUTS_LONGPRESS = "lockscreen_shortcuts_longpress";
     private static final String PREF_QUICK_UNLOCK = "lockscreen_quick_unlock_control";
     private static final String PREF_LOCKSCREEN_AUTO_ROTATE = "lockscreen_auto_rotate";
-    private static final String PREF_LOCKSCREEN_ALL_WIDGETS = "lockscreen_all_widgets";
     private static final String PREF_LOCKSCREEN_TEXT_COLOR = "lockscreen_text_color";
 
     private ListPreference mCustomBackground;
@@ -93,7 +92,6 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     CheckBoxPreference mQuickUnlock;
     ColorPickerPreference mLockscreenTextColor;
     CheckBoxPreference mLockscreenAutoRotate;
-    CheckBoxPreference mLockscreenAllWidgets;
 
     private File mWallpaperImage;
     private File mWallpaperTemporary;
@@ -134,10 +132,6 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         mLockscreenAutoRotate = (CheckBoxPreference)findPreference(PREF_LOCKSCREEN_AUTO_ROTATE);
         mLockscreenAutoRotate.setChecked(Settings.System.getBoolean(mContext.getContentResolver(),
                 Settings.System.LOCKSCREEN_AUTO_ROTATE, false));
-
-        mLockscreenAllWidgets = (CheckBoxPreference)findPreference(PREF_LOCKSCREEN_ALL_WIDGETS);
-        mLockscreenAllWidgets.setChecked(Settings.System.getBoolean(getActivity().getContentResolver(),
-                Settings.System.LOCKSCREEN_ALL_WIDGETS, false));
 
         mLockscreenTextColor = (ColorPickerPreference) findPreference(PREF_LOCKSCREEN_TEXT_COLOR);
         mLockscreenTextColor.setOnPreferenceChangeListener(this);
@@ -227,11 +221,6 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
             Settings.System.putBoolean(mContext.getContentResolver(),
                 Settings.System.LOCKSCREEN_AUTO_ROTATE,
                 ((CheckBoxPreference) preference).isChecked());
-            return true;
-        } else if (preference == mLockscreenAllWidgets) {
-            Settings.System.putBoolean(mContext.getContentResolver(),
-                    Settings.System.LOCKSCREEN_ALL_WIDGETS,
-                    ((CheckBoxPreference) preference).isChecked());
             return true;
         } else if (preference == mLockscreenEightTargets) {
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
