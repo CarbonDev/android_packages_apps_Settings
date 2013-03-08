@@ -17,7 +17,10 @@
 package com.android.settings.carbon;
 
 import android.content.ContentResolver;
+import android.content.Context;
+import android.database.ContentObserver;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
@@ -46,6 +49,10 @@ public class QuietHours extends SettingsPreferenceFragment implements
     private CheckBoxPreference mQuietHoursHaptic;
     private TimeRangePreference mQuietHoursTimeRange;
 
+    protected Handler mHandler;
+    private SettingsObserver mSettingsObserver;
+    private Context mContext;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,8 +60,8 @@ public class QuietHours extends SettingsPreferenceFragment implements
         if (getPreferenceManager() != null) {
             addPreferencesFromResource(R.xml.quiet_hours_settings);
 
-            ContentResolver resolver = getActivity().getApplicationContext().getContentResolver();
-
+            mContext = getActivity().getApplicationContext();
+            ContentResolver resolver = mContext.getContentResolver();                   
             PreferenceScreen prefSet = getPreferenceScreen();
 
             // Load the preferences
@@ -71,8 +78,9 @@ public class QuietHours extends SettingsPreferenceFragment implements
                 getPreferenceScreen().removePreference(mQuietHoursNote);
             }
 
+            mSettingsObserver = new SettingsObserver(new Handler());
+
             // Set the preference state and listeners where applicable
-            mQuietHoursEnabled.setChecked(Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_ENABLED, 0) == 1);
             mQuietHoursTimeRange.setTimeRange(Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_START, 0),
                     Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_END, 0));
             mQuietHoursTimeRange.setOnPreferenceChangeListener(this);
@@ -127,5 +135,31 @@ public class QuietHours extends SettingsPreferenceFragment implements
             return true;
         }
         return false;
+    }
+
+    class SettingsObserver extends ContentObserver {
+        SettingsObserver(Handler handler) {
+            super(handler);
+            observe();
+        }
+
+        void observe() {
+            ContentResolver resolver = mContext.getContentResolver();
+            resolver.registerContentObserver(
+                    Settings.System.getUriFor(Settings.System.QUIET_HOURS_ENABLED), false,
+                    this);
+            updateSettings();
+        }
+
+        @Override
+        public void onChange(boolean selfChange) {
+            updateSettings();
+        }
+    }
+
+    protected void updateSettings() {
+        ContentResolver resolver = mContext.getContentResolver();
+        mQuietHoursEnabled.setChecked(Settings.System.getInt(resolver,
+                Settings.System.QUIET_HOURS_ENABLED, 0) == 1);
     }
 }
