@@ -4509,6 +4509,9 @@
     <string name="text_on">On</string>
     <string name="text_off">Off</string>
 
+    <string name="lockscreen_quick_unlock_control_title">Quick pin unlock</string>
+    <string name="lockscreen_quick_unlock_control_summary">Unlock password/pin lockscreen without pressing enter button</string>
+
     <!-- Hostname setting -->
     <string name="device_hostname">Device hostname</string>
 
