@@ -5283,6 +5283,7 @@
     <string name="toggle_sound_state">Ring/Vib/Silent</string>
     <string name="toggle_navbar_hide">Navbar Auto Hide</string>
     <string name="toggle_quickrecord">Quick Record</string>
+    <string name="toggle_sleep">Sleep</string>
 
     <!-- Hardware keys -->
     <string name="hardware_keys_title">Hardware Keys</string>
