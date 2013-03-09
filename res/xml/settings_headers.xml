@@ -69,6 +69,12 @@
         android:title="@string/carbon_settings_title"
         android:fragment="com.android.settings.carbon.CarbonSettings" />
 
+    <!-- TRDS -->
+    <header
+        android:id="@+id/graphite_mode"
+        android:icon="@drawable/ic_carbon_graphite"
+        android:title="@string/graphite_mode_title" />
+
     <!-- Performance -->
     <header
         android:id="@+id/performance_settings"
