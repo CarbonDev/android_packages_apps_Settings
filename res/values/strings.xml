@@ -5042,4 +5042,7 @@
     <string name="adb_notify">USB debugging notify</string>
     <string name="adb_notify_summary">Display a notification when USB debugging is connected</string>
 
+    <!-- TRDS Settings -->
+    <string name="trds_settings_title">Dark Carbon</string>
+
 </resources>

@@ -63,13 +63,20 @@
         android:title="@string/header_category_carbon_links" />
 
     <!-- Carbon Fibers -->
-    <header android:icon="@drawable/ic_settings_about_carbon"
-            android:title="@string/carbon_fibers_title">
+    <header
+        android:icon="@drawable/ic_settings_about_carbon"
+        android:title="@string/carbon_fibers_title">
         <intent
-                android:action="android.intent.action.MAIN"
-                android:targetClass="com.carbon.settings.CrSettingsActivity"
-                android:targetPackage="com.carbon.settings" />
+            android:action="android.intent.action.MAIN"
+            android:targetClass="com.carbon.settings.CrSettingsActivity"
+            android:targetPackage="com.carbon.settings" />
     </header>
+
+    <!-- Dark Carbon -->
+    <header
+        android:id="@+id/trds_settings"
+        android:icon="@drawable/ic_settings_trds"
+        android:title="@string/trds_settings_title" />
 
     <!-- Performance -->
     <header
