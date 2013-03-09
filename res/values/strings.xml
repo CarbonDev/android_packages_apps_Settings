@@ -5873,6 +5873,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="safe_headset_volume_title">Safe headset volume</string>
     <string name="safe_headset_volume_summary">Prevent loud volume levels when headset is first plugged in</string>
 
+    <!-- Permissions Management -->
+    <string name="permissions_settings_title">Permissions</string>
+
     <!-- **** CARBON ADDITIONS END **** -->
 
     <!-- PA strings -->
