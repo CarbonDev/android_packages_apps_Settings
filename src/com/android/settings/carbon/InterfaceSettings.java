@@ -190,7 +190,7 @@ public class InterfaceSettings extends SettingsPreferenceFragment
         mWakeUpWhenPluggedOrUnplugged.setChecked(Settings.System.getBoolean(cr,
                         Settings.System.WAKEUP_WHEN_PLUGGED_UNPLUGGED, true));
 
-        // DELETE FROM HERE DOWN TO line 197, from 'if' to '}' if using an HTC device...
+        // hide option if device is already set to never wake up
         if(!mContext.getResources().getBoolean(
                 com.android.internal.R.bool.config_unplugTurnsOnScreen)) {
             ((PreferenceGroup) findPreference("misc")).removePreference(mWakeUpWhenPluggedOrUnplugged);
