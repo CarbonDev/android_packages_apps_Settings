@@ -4438,12 +4438,14 @@
     <string name="contributors_title">Contributors</string>
     <string name="devs_title">Meet the CarbonDev team</string>
     <string name="donate_carbon">http://goo.gl/2Nieg</string>
+    <string name="github_carbon">https://github.com/CarbonDev</string>
     <string name="carbon">CarbonRom JB 4.2.2</string>
     <string name="carbon_links">Social media</string>
     <string name="carbon_goo_title">Goo.im download page</string>
     <string name="carbon_goo_summary">Visit our Goo.im download page for the latest builds</string>
     <string name="carbon_source_title">Github Sources</string>
     <string name="carbon_source_summary">Open source for all to see @ www.github.com/CarbonDev</string>
+
     <string name="carbon_irc_title">Join us on IRC</string>
     <string name="carbon_irc_summary">#teamcarbon @ irc.freenode.net</string>
     <string name="carbon_facebook_title">Facebook Page</string>

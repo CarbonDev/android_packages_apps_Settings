@@ -38,6 +38,7 @@ public class DeveloperPreference extends Preference {
 
     private ImageView twitterButton;
     private ImageView donateButton;
+    private ImageView githubButton;
     private ImageView photoView;
 
     private TextView devName;
@@ -45,6 +46,7 @@ public class DeveloperPreference extends Preference {
     private String nameDev;
     private String twitterName;
     private String donateLink;
+    private String githubLink;
 
     public DeveloperPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -53,6 +55,7 @@ public class DeveloperPreference extends Preference {
         nameDev = a.getString(R.styleable.DeveloperPreference_nameDev);
         twitterName = a.getString(R.styleable.DeveloperPreference_twitterHandle);
         donateLink = a.getString(R.styleable.DeveloperPreference_donateLink);
+        githubLink = a.getString(R.styleable.DeveloperPreference_githubLink);
         a.recycle();
     }
 
@@ -64,6 +67,7 @@ public class DeveloperPreference extends Preference {
 
         twitterButton = (ImageView) layout.findViewById(R.id.twitter_button);
         donateButton = (ImageView) layout.findViewById(R.id.donate_button);
+        githubButton = (ImageView) layout.findViewById(R.id.github_button);
         devName = (TextView) layout.findViewById(R.id.name);
         photoView = (ImageView) layout.findViewById(R.id.photo);
 
@@ -88,6 +92,22 @@ public class DeveloperPreference extends Preference {
             donateButton.setOnClickListener(openDonate);
         } else {
             donateButton.setVisibility(View.GONE);
+        }
+
+       if (githubLink != null) {
+            final OnClickListener openGithub = new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Uri githubURL = Uri.parse(githubLink);
+                    final Intent intent = new Intent(Intent.ACTION_VIEW, githubURL);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    getContext().startActivity(intent);
+                }
+            };
+
+            githubButton.setOnClickListener(openGithub);
+        } else {
+            githubButton.setVisibility(View.GONE);
         }
 
         if (twitterName != null) {

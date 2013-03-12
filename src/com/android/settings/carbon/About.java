@@ -74,5 +74,7 @@ public class About extends SettingsPreferenceFragment {
         Uri uriUrl = Uri.parse(url);
         Intent donate = new Intent(Intent.ACTION_VIEW, uriUrl);
         getActivity().startActivity(donate);
+        Intent github = new Intent(Intent.ACTION_VIEW, uriUrl);
+        getActivity().startActivity(github);
     }
 }

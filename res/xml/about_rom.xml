@@ -46,7 +46,8 @@
             android:title="CarbonDev"
             carbon:nameDev="CarbonDev"
             carbon:twitterHandle="carbonrom"
-            carbon:donateLink="@string/donate_carbon" />
+            carbon:donateLink="@string/donate_carbon"
+            carbon:githubLink="@string/github_carbon" />
 	</PreferenceCategory>
 
 	<PreferenceCategory
