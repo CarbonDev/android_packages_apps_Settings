@@ -1532,6 +1532,7 @@
         <activity android:name=".carbon.PieColor" />
         <activity android:name=".carbon.PerformanceSettings" />
         <activity android:name=".carbon.PowerMenu" />
+        <activity android:name=".carbon.PowerWidget" />
         <activity android:name=".carbon.RamBar" />
         <activity android:name=".carbon.StatusBar" />
         <activity android:name=".carbon.StatusBarBattery" />

@@ -62,6 +62,13 @@
         android:icon="@drawable/ic_carbon_powermenu"
         android:fragment="com.android.settings.carbon.PowerMenu" />
 
+    <!-- Powerwidget -->
+    <PreferenceScreen
+        android:id="@+id/power_widget_settings"
+        android:title="@string/power_widget_title"
+        android:icon="@drawable/ic_carbon_powerwidget"
+        android:fragment="com.android.settings.carbon.PowerWidget" />
+
     <!-- Statusbar -->
     <PreferenceScreen
         android:id="@+id/status_bar_settings"

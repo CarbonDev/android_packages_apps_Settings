@@ -4526,6 +4526,7 @@
     <string name="lock_screen_title">Lockscreen</string>
     <string name="navbar_title">Navigation</string>
     <string name="power_menu_title">Powermenu</string>
+    <string name="power_widget_title">Powerwidget</string>
     <string name="status_bar_title">Statusbar</string>
     <string name="toggles_title">Statusbar Toggles</string>
 
