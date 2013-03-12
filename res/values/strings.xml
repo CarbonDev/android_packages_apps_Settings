@@ -4445,7 +4445,6 @@
     <string name="carbon_goo_summary">Visit our Goo.im download page for the latest builds</string>
     <string name="carbon_source_title">Github Sources</string>
     <string name="carbon_source_summary">Open source for all to see @ www.github.com/CarbonDev</string>
-
     <string name="carbon_irc_title">Join us on IRC</string>
     <string name="carbon_irc_summary">#teamcarbon @ irc.freenode.net</string>
     <string name="carbon_facebook_title">Facebook Page</string>
@@ -5799,6 +5798,10 @@
     <string name="low_battery_warning_policy_notif">Notification only</string>
     <string name="low_battery_warning_policy_sound">Sound only</string>
     <string name="low_battery_warning_policy_disabled">Disabled</string>
+
+    <!-- Status bar notification icon opacity -->
+    <string name="status_bar_icon_opacity">Notification icon opacity</string>
+    <string name="status_bar_icon_opacity_summary">Sets opacity of status bar notification icons</string>
 
     <!-- **** CARBON ADDITIONS END **** -->
 </resources>
