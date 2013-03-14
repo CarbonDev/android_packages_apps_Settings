@@ -5510,6 +5510,7 @@
     <!-- Power menu enable disable -->
     <string name="power_menu_reboot_title">Reboot Menu</string>
     <string name="power_menu_screenshot_title">Screenshot</string>
+    <string name="power_menu_torch_title">Torch</string>
     <string name="power_menu_expanded_desktop">Expanded Desktop</string>
     <string name="power_menu_profiles_title">Profile Switcher</string>
     <string name="power_menu_airplane_title">Airplane Mode</string>
