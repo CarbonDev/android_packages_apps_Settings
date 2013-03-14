@@ -79,6 +79,13 @@
             android:summary="@string/mms_breath_summary"
             android:defaultValue="false" />
 
+        <CheckBoxPreference
+            android:key="missed_call_breath"
+            android:icon="@drawable/ic_rb_breath_sms"
+            android:title="@string/missed_call_breath"
+            android:summary="@string/missed_call_breath_summary"
+            android:defaultValue="false" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>

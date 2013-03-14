@@ -41,6 +41,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private static final String STATUS_BAR_CATEGORY_GENERAL = "status_bar_general";
     private static final String KEY_STATUS_BAR_ICON_OPACITY = "status_bar_icon_opacity";
     private static final String KEY_MMS_BREATH = "mms_breath";
+    private static final String KEY_MISSED_CALL_BREATH = "missed_call_breath";
 
     private ListPreference mStatusBarCmSignal;
     private CheckBoxPreference mStatusBarBrightnessControl;
@@ -49,6 +50,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private PreferenceCategory mPrefCategoryGeneral;
     private ListPreference mStatusBarIconOpacity;
     private CheckBoxPreference mMMSBreath;
+    private CheckBoxPreference mMissedCallBreath;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -92,6 +94,10 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mMMSBreath = (CheckBoxPreference) findPreference(KEY_MMS_BREATH);
         mMMSBreath.setChecked(Settings.System.getInt(resolver,
                 Settings.System.MMS_BREATH, 0) == 1);
+
+        mMissedCallBreath = (CheckBoxPreference) findPreference(KEY_MISSED_CALL_BREATH);
+        mMissedCallBreath.setChecked(Settings.System.getInt(resolver,
+                Settings.System.MISSED_CALL_BREATH, 0) == 1);
 
         mPrefCategoryGeneral = (PreferenceCategory) findPreference(STATUS_BAR_CATEGORY_GENERAL);
 
@@ -144,6 +150,10 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         } else if (preference == mMMSBreath) {
             Settings.System.putInt(mContext.getContentResolver(), Settings.System.MMS_BREATH, 
                     mMMSBreath.isChecked() ? 1 : 0);
+            return true;
+        } else if (preference == mMissedCallBreath) {
+            Settings.System.putInt(mContext.getContentResolver(), Settings.System.MISSED_CALL_BREATH, 
+                    mMissedCallBreath.isChecked() ? 1 : 0);
             return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
