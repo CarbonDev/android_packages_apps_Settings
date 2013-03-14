@@ -8,11 +8,11 @@
         android:key="xposed_options"
         android:title="@string/xposed_settings_title_menu" >
 
-	<PreferenceScreen
-	    android:key="xposed_warning"
+	<Preference
+        style="?android:preferenceInformationStyle"
             android:title="@string/xposed_warning_title"
-	    android:summary="@string/xposed_warning_summary" >
-	</PreferenceScreen>
+	    android:summary="@string/xposed_warning_summary"
+        android:selectable="false" />
 
 	<PreferenceScreen
 	    android:key="xposed_framework_modules"
