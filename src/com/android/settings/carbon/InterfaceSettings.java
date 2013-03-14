@@ -89,7 +89,6 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     private static final String PREF_USER_MODE_UI = "user_mode_ui";
     private static final String PREF_HIDE_EXTRAS = "hide_extras";
     private static final String KEY_LOW_BATTERY_WARNING_POLICY = "pref_low_battery_warning_policy";
-    private static final String KEY_STATUS_BAR_ICON_OPACITY = "status_bar_icon_opacity";
 
     Preference mCustomLabel;
     Preference mRamBar;
@@ -103,7 +102,6 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     ListPreference mUserModeUI;
     Context mContext;
     ListPreference mLowBatteryWarning;
-    ListPreference mStatusBarIconOpacity;
 
     Random randomGenerator = new Random();
 
@@ -191,12 +189,6 @@ public class InterfaceSettings extends SettingsPreferenceFragment
         mWakeUpWhenPluggedOrUnplugged = (CheckBoxPreference) findPreference(PREF_WAKEUP_WHEN_PLUGGED_UNPLUGGED);
         mWakeUpWhenPluggedOrUnplugged.setChecked(Settings.System.getBoolean(cr,
                         Settings.System.WAKEUP_WHEN_PLUGGED_UNPLUGGED, true));
-
-        mStatusBarIconOpacity = (ListPreference) findPreference(KEY_STATUS_BAR_ICON_OPACITY);
-        int iconOpacity = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
-                Settings.System.STATUS_BAR_NOTIF_ICON_OPACITY, 140);
-        mStatusBarIconOpacity.setValue(String.valueOf(iconOpacity));
-        mStatusBarIconOpacity.setOnPreferenceChangeListener(this);
 
         // hide option if device is already set to never wake up
         if(!mContext.getResources().getBoolean(
@@ -348,11 +340,6 @@ public class InterfaceSettings extends SettingsPreferenceFragment
                     Settings.System.POWER_UI_LOW_BATTERY_WARNING_POLICY,
                     lowBatteryWarning);
             mLowBatteryWarning.setSummary(mLowBatteryWarning.getEntries()[index]);
-            return true;
-        } else if (preference == mStatusBarIconOpacity) {
-            int iconOpacity = Integer.valueOf((String) newValue);
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.STATUS_BAR_NOTIF_ICON_OPACITY, iconOpacity);
             return true;
         }
         return false;
