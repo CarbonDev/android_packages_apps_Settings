@@ -610,12 +610,12 @@ public class Settings extends PreferenceActivity
         private LayoutInflater mInflater;
 
         static int getHeaderType(Header header) {
-            if (header.fragment == null && header.intent == null && header.id != R.id.graphite_mode) {
+            if (header.fragment == null && header.intent == null && header.id != R.id.dark_mode) {
                 return HEADER_TYPE_CATEGORY;
             } else if (header.id == R.id.wifi_settings
                     || header.id == R.id.bluetooth_settings
                     || header.id == R.id.profiles_settings
-                    || header.id == R.id.graphite_mode) {
+                    || header.id == R.id.dark_mode) {
                 return HEADER_TYPE_SWITCH;
             } else {
                 return HEADER_TYPE_NORMAL;
@@ -721,7 +721,7 @@ public class Settings extends PreferenceActivity
                         mBluetoothEnabler.setSwitch(holder.switch_);
                     } else if (header.id == R.id.profiles_settings) {
                         mProfileEnabler.setSwitch(holder.switch_);
-                    } else if (header.id == R.id.graphite_mode) {
+                    } else if (header.id == R.id.dark_mode) {
                         mTRDSSwitch = (Switch) view.findViewById(R.id.switchWidget);
                         mTRDSEnabler.setSwitch(holder.switch_);
                     }
@@ -786,7 +786,7 @@ public class Settings extends PreferenceActivity
         } else {
             mLastHeader = header;
         }
-        if (header.id == R.id.graphite_mode) {
+        if (header.id == R.id.dark_mode) {
             mTRDSSwitch.toggle();
         }
     }

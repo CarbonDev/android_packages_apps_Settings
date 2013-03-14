@@ -5805,8 +5805,8 @@
     <string name="status_bar_icon_opacity">Notification icon opacity</string>
     <string name="status_bar_icon_opacity_summary">Sets opacity of status bar notification icons</string>
 
-    <!-- Graphite mode -->
-    <string name="graphite_mode_title">Graphite Mode</string>
+    <!-- Dark Mode -->
+    <string name="dark_mode_title">Dark Mode</string>
 
     <!-- **** CARBON ADDITIONS END **** -->
 </resources>

@@ -71,9 +71,9 @@
 
     <!-- TRDS -->
     <header
-        android:id="@+id/graphite_mode"
-        android:icon="@drawable/ic_carbon_graphite"
-        android:title="@string/graphite_mode_title" />
+        android:id="@+id/dark_mode"
+        android:icon="@drawable/ic_carbon_dark"
+        android:title="@string/dark_mode_title" />
 
     <!-- Performance -->
     <header
