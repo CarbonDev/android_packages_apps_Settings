@@ -232,7 +232,7 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         mSettingsObserver = new SettingsObserver(mHandler, getActivity());
         // remove stylus preference for non stylus devices
         if (!hasStylus()) {
-            PreferenceCategory pc = (PreferenceCategory) findPreference(KEY_STYLUS_GESTURES);
+            PreferenceScreen pc = (PreferenceScreen) findPreference(KEY_STYLUS_GESTURES);
             if (pc != null) {
                 getPreferenceScreen().removePreference(pc);
             }
