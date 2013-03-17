@@ -1774,7 +1774,7 @@
         </receiver>
 
         <receiver
-            android:name=".carbon.ChangeFastChargeStateReceiver" >
+            android:name=".service.ChangeFastChargeStateReceiver" >
             <intent-filter>
                 <action android:name="com.android.settings.ACTION_CHANGE_FCHARGE_STATE" />
             </intent-filter>
@@ -1787,6 +1787,9 @@
             </intent-filter>
         </receiver>
 
+        <service 
+            android:name=".service.ExternalCommandService"
+            android:exported="false"/>
     </application>
 
 </manifest>
