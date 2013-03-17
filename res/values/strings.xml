@@ -5516,6 +5516,7 @@
     <string name="power_menu_expanded_desktop">Expanded Desktop</string>
     <string name="power_menu_profiles_title">Profile Switcher</string>
     <string name="power_menu_airplane_title">Airplane Mode</string>
+    <string name="title_show_navbar_hide">Show Navigation Bar Toggle</string>
     <string name="power_menu_user_title">User Switcher</string>
     <string name="power_menu_sound_title">Sound Panel</string>
     <string name="summary_expanded_desktop">%1$s</string>

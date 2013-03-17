@@ -61,4 +61,9 @@
         android:title="@string/power_menu_user_title"
         android:defaultValue="false" />
 
+    <CheckBoxPreference
+        android:key="show_navbar_hide"
+        android:title="@string/title_show_navbar_hide"
+        android:defaultValue="false" />
+
 </PreferenceScreen>
