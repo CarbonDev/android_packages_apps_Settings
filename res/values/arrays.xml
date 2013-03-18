@@ -1731,6 +1731,7 @@
         <item>@string/circle_dotted_w_percent</item>
         <item>@string/speed_battery</item>
         <item>@string/square_battery</item>
+        <item>@string/gear_battery</item>
         <item>@string/dont_show</item>
     </string-array>
 
@@ -1745,6 +1746,7 @@
         <item>7</item>
         <item>8</item>
         <item>9</item>
+        <item>10</item>
     </string-array>
 
     <string-array name="circle_battery_animation_speed_entries" >

@@ -5753,6 +5753,7 @@
     <string name="circle_dotted_w_percent">Dotted w/ percent</string>
     <string name="speed_battery">SpeedoMeter</string>
     <string name="square_battery">SquareMod</string>
+    <string name="gear_battery">Gear</string>
     <string name="hide">Hide</string>
     <string name="circle_battery_color">Circle color</string>
     <string name="circle_battery_text_color">Circle text color</string>
