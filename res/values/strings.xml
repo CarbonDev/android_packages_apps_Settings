@@ -5300,8 +5300,8 @@
     <string name="hardware_keys_action_search">Search Assistant</string>
     <string name="hardware_keys_action_voice_search">Voice Search</string>
     <string name="hardware_keys_action_in_app_search">In-app Search</string>
-    <string name="hardware_keys_action_power">Power off</string>
-    <string name="hardware_keys_action_notifications">Notification shade toggle</string>
+    <string name="hardware_keys_action_power">Screen off</string>
+    <string name="hardware_keys_action_notifications">Notifications</string>
     <string name="hardware_keys_action_expanded">Expanded desktop toggle</string>
     <string name="hardware_keys_action_kill_app">Kill app</string>
     <string name="hardware_keys_action_last_app">Switch to last app</string>
@@ -5329,13 +5329,13 @@
     <string name="navbar_action_home">Home</string>
     <string name="navbar_action_back">Back</string>
     <string name="navbar_action_recents">Recents</string>
-    <string name="navbar_action_lastapp">Last app</string>
+    <string name="navbar_action_lastapp">Last App</string>
     <string name="navbar_action_search">Search</string>
     <string name="navbar_action_screenshot">Screenshot</string>
     <string name="navbar_action_menu">Menu</string>
     <string name="navbar_action_ime">Open IME Switcher</string>
-    <string name="navbar_action_kill">Kill Task</string>
-    <string name="navbar_action_power">Power</string>
+    <string name="navbar_action_kill">Kill App</string>
+    <string name="navbar_action_power">Screen Off</string>
     <string name="navbar_action_notifications">Notifications</string>
     <string name="navbar_action_none">Empty</string>
     <string name="navbar_widgets">Navbar Widgets</string>
@@ -5420,8 +5420,8 @@
     <string name="toggle_widgets">Toggle Widgets</string>
     <string name="open_ime_switcher">Open IME Switcher</string>
     <string name="kill_app">Kill App</string>
-    <string name="lastapp">Last app</string>
-    <string name="power">Power</string>
+    <string name="lastapp">Last App</string>
+    <string name="power">Screen Off</string>
     <string name="notifications">Notifications</string>
     <string name="custom_app">Custom App</string>
     <string name="menu_power">Powermenu</string>
@@ -5590,7 +5590,7 @@
     <string name="lockscreen_buttons_playpause">Play/Pause Music</string>
     <string name="lockscreen_buttons_toggle_sound">Toggle Sound</string>
     <string name="lockscreen_buttons_camera">Launch camera</string>
-    <string name="lockscreen_buttons_power_off">Power off</string>
+    <string name="lockscreen_buttons_power_off">Screen off</string>
 
     <!-- Quick settings panel  -->
     <string name="quick_settings_panel_title">Quicksettings Panel</string>
@@ -5772,7 +5772,7 @@
     <string name="battery_bar_animate_title">Charging animation</string>
     <string name="battery_bar_animate_summary">The charging animation may result in a poor user experience. Enable at your own discretion.</string>
 
-    <!-- Low battery inidicator options -->
+    <!-- Low battery indicator options -->
     <string name="pref_low_battery_warning_policy_title">Low battery warning</string>
     <string name="pref_low_battery_warning_policy_dialog_title">Indicate low battery warning with:</string>
     <string name="low_battery_warning_policy_popup_sound">Pop-up and sound</string>
