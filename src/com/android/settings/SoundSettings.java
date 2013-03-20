@@ -86,6 +86,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private static final String KEY_VOLBTN_MUSIC_CTRL = "volbtn_music_controls";
     private static final String KEY_HEADSET_CONNECT_PLAYER = "headset_connect_player";
     private static final String KEY_VOLUME_ADJUST_SOUNDS = "volume_adjust_sounds";
+    private static final String KEY_SWAP_VOLUME_BUTTONS = "swap_volume_buttons";
 
     private static final String RING_MODE_NORMAL = "normal";
     private static final String RING_MODE_VIBRATE = "vibrate";
@@ -113,6 +114,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private Preference mNotificationPreference;
     private PreferenceScreen mQuietHours;
     private CheckBoxPreference mVolumeAdjustSounds;
+    private CheckBoxPreference mSwapVolumeButtons;
 
     private Runnable mRingtoneLookupRunnable;
 
@@ -215,6 +217,10 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         mVolBtnMusicCtrl = (CheckBoxPreference) findPreference(KEY_VOLBTN_MUSIC_CTRL);
         mVolBtnMusicCtrl.setChecked(Settings.System.getInt(resolver,
                 Settings.System.VOLBTN_MUSIC_CONTROLS, 1) != 0);
+
+        mSwapVolumeButtons = (CheckBoxPreference) findPreference(KEY_SWAP_VOLUME_BUTTONS);
+        mSwapVolumeButtons.setChecked(Settings.System.getInt(resolver,
+                Settings.System.SWAP_VOLUME_KEYS, 0) == 1);
 
         mVolumeAdjustSounds = (CheckBoxPreference) findPreference(KEY_VOLUME_ADJUST_SOUNDS);
         mVolumeAdjustSounds.setPersistent(false);
@@ -438,6 +444,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         } else if (preference == mDockSounds) {
             Settings.Global.putInt(getContentResolver(), Settings.Global.DOCK_SOUNDS_ENABLED,
                     mDockSounds.isChecked() ? 1 : 0);
+
         } else if (preference == mDockAudioMediaEnabled) {
             Settings.Global.putInt(getContentResolver(), Settings.Global.DOCK_AUDIO_MEDIA_ENABLED,
                     mDockAudioMediaEnabled.isChecked() ? 1 : 0);
@@ -445,9 +452,15 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         } else if (preference == mVolBtnMusicCtrl) {
             Settings.System.putInt(getContentResolver(), Settings.System.VOLBTN_MUSIC_CONTROLS,
                     mVolBtnMusicCtrl.isChecked() ? 1 : 0);
+
         } else if (preference == mVolumeAdjustSounds) {
             Settings.System.putInt(getContentResolver(), Settings.System.VOLUME_ADJUST_SOUNDS_ENABLED,
                     mVolumeAdjustSounds.isChecked() ? 1 : 0);
+
+        } else if (preference == mSwapVolumeButtons) {
+            Settings.System.putInt(getActivity().getContentResolver(), Settings.System.SWAP_VOLUME_KEYS,
+                    mSwapVolumeButtons.isChecked() ? 1 : 0);
+
         } else if (preference == mHeadsetConnectPlayer) {
             Settings.System.putInt(getContentResolver(), Settings.System.HEADSET_CONNECT_PLAYER,
                     mHeadsetConnectPlayer.isChecked() ? 1 : 0);
