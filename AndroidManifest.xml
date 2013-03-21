@@ -1562,6 +1562,28 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="Settings$XposedSettingsActivity"
+                android:label="@string/xposed_settings_title"
+                android:taskAffinity=""
+                android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.carbon.XposedSettings" />
+            <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
+                android:resource="@id/xposed_settings" />
+        </activity>
+
+        <activity android:name=".carbon.XposedSettings"
+            android:label="XposedSettings" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <activity android:name="Settings$PieActivity"
                 android:label="@string/pie_controls_title"
                 android:taskAffinity=""
