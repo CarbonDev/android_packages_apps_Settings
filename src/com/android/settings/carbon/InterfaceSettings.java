@@ -89,6 +89,7 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     private static final String PREF_USER_MODE_UI = "user_mode_ui";
     private static final String PREF_HIDE_EXTRAS = "hide_extras";
     private static final String KEY_LOW_BATTERY_WARNING_POLICY = "pref_low_battery_warning_policy";
+    private static final String PREF_USE_ALT_RESOLVER = "use_alt_resolver";
 
     Preference mCustomLabel;
     Preference mRamBar;
@@ -102,6 +103,7 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     ListPreference mUserModeUI;
     Context mContext;
     ListPreference mLowBatteryWarning;
+    CheckBoxPreference mUseAltResolver;
 
     Random randomGenerator = new Random();
 
@@ -185,6 +187,10 @@ public class InterfaceSettings extends SettingsPreferenceFragment
         mLowBatteryWarning.setValue(String.valueOf(lowBatteryWarning));
         mLowBatteryWarning.setSummary(mLowBatteryWarning.getEntry());
         mLowBatteryWarning.setOnPreferenceChangeListener(this);
+
+        mUseAltResolver = (CheckBoxPreference) findPreference(PREF_USE_ALT_RESOLVER);
+        mUseAltResolver.setChecked(Settings.System.getBoolean(mContext.getContentResolver(),
+                Settings.System.ACTIVITY_RESOLVER_USE_ALT, false));
 
         mWakeUpWhenPluggedOrUnplugged = (CheckBoxPreference) findPreference(PREF_WAKEUP_WHEN_PLUGGED_UNPLUGGED);
         mWakeUpWhenPluggedOrUnplugged.setChecked(Settings.System.getBoolean(cr,
@@ -289,6 +295,11 @@ public class InterfaceSettings extends SettingsPreferenceFragment
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.NOTIFICATION_SHOW_WIFI_SSID,
                     mShowWifiName.isChecked() ? 1 : 0);
+            return true;
+        } else if (preference == mUseAltResolver) {
+            Settings.System.putBoolean(getActivity().getContentResolver(),
+                    Settings.System.ACTIVITY_RESOLVER_USE_ALT,
+                    ((CheckBoxPreference) preference).isChecked());
             return true;
         }
 

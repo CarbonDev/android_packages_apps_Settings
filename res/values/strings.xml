@@ -5798,8 +5798,12 @@
     <string name="missed_call_breath">Breathing Missed Call</string>
     <string name="missed_call_breath_summary">Will give your missed call notifications a breathing effect on the statusbar</string>
 
-   <!-- Notification Behaviour -->
-   <string name="notification_behaviour_title">Notification behaviour</string>
+    <!-- Notification Behaviour -->
+    <string name="notification_behaviour_title">Notification behaviour</string>
+
+    <!-- Alternate default app picker -->
+    <string name="alt_resolver_title">Use Alt Default App Picker</string>
+    <string name="alt_resolver_summary">Use Alternate Default App Picker</string>
 
     <!-- **** CARBON ADDITIONS END **** -->
 </resources>
