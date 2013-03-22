@@ -5805,5 +5805,9 @@
     <string name="alt_resolver_title">Use Alt Default App Picker</string>
     <string name="alt_resolver_summary">Use Alternate Default App Picker</string>
 
+    <!-- Power button torch -->
+    <string name="power_button_torch_title">Power button torch</string>
+    <string name="power_button_torch_summary">WARNING: This feature may not work well for devices with nonremovable batteries and Nexus devices. Use at your own risk! Hold power key with screen off to enable torch. Release to disable.</string>
+
     <!-- **** CARBON ADDITIONS END **** -->
 </resources>

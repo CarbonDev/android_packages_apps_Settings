@@ -97,6 +97,13 @@
             android:defaultValue="false" />
 
         <CheckBoxPreference
+            android:key="power_button_torch"
+            android:title="@string/power_button_torch_title"
+            android:summary="@string/power_button_torch_summary"
+            android:persistent="false"
+            android:defaultValue="false" />
+
+        <CheckBoxPreference
             android:key="wakeup_when_plugged_unplugged"
             android:title="@string/wakeup_when_plugged_unplugged_title"
             android:summary="@string/wakeup_when_plugged_unplugged_summary"

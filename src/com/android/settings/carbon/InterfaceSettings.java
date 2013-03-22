@@ -47,6 +47,7 @@ import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.preference.Preference.OnPreferenceChangeListener;
@@ -90,6 +91,7 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     private static final String PREF_HIDE_EXTRAS = "hide_extras";
     private static final String KEY_LOW_BATTERY_WARNING_POLICY = "pref_low_battery_warning_policy";
     private static final String PREF_USE_ALT_RESOLVER = "use_alt_resolver";
+    private static final String KEY_POWER_BUTTON_TORCH = "power_button_torch";
 
     Preference mCustomLabel;
     Preference mRamBar;
@@ -104,6 +106,7 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     Context mContext;
     ListPreference mLowBatteryWarning;
     CheckBoxPreference mUseAltResolver;
+    CheckBoxPreference mPowerButtonTorch;
 
     Random randomGenerator = new Random();
 
@@ -191,6 +194,11 @@ public class InterfaceSettings extends SettingsPreferenceFragment
         mUseAltResolver = (CheckBoxPreference) findPreference(PREF_USE_ALT_RESOLVER);
         mUseAltResolver.setChecked(Settings.System.getBoolean(mContext.getContentResolver(),
                 Settings.System.ACTIVITY_RESOLVER_USE_ALT, false));
+
+        mPowerButtonTorch = (CheckBoxPreference) findPreference(KEY_POWER_BUTTON_TORCH);
+        mPowerButtonTorch.setChecked((Settings.System.getInt(getActivity().
+                getApplicationContext().getContentResolver(),
+                Settings.System.POWER_BUTTON_TORCH, 0) == 1));
 
         mWakeUpWhenPluggedOrUnplugged = (CheckBoxPreference) findPreference(PREF_WAKEUP_WHEN_PLUGGED_UNPLUGGED);
         mWakeUpWhenPluggedOrUnplugged.setChecked(Settings.System.getBoolean(cr,
@@ -300,6 +308,11 @@ public class InterfaceSettings extends SettingsPreferenceFragment
             Settings.System.putBoolean(getActivity().getContentResolver(),
                     Settings.System.ACTIVITY_RESOLVER_USE_ALT,
                     ((CheckBoxPreference) preference).isChecked());
+            return true;
+        } else if (preference == mPowerButtonTorch) {
+            boolean enabled = mPowerButtonTorch.isChecked();
+            Settings.System.putInt(getContentResolver(), Settings.System.POWER_BUTTON_TORCH,
+                    enabled ? 1 : 0);
             return true;
         }
 
