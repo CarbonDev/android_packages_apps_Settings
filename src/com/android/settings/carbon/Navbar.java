@@ -74,7 +74,6 @@ import com.android.settings.R;
 import com.android.settings.util.Helpers;
 import com.android.settings.SettingsActivity;
 import com.android.settings.util.ShortcutPickerHelper;
-import com.android.settings.widgets.NavBarItemPreference;
 import com.android.settings.widgets.SeekBarPreference;
 import com.android.settings.carbon.NavRingTargets;
 
@@ -278,11 +277,6 @@ public class Navbar extends SettingsPreferenceFragment implements
             pg.removePreference(mWidthPort);
             pg.removePreference(mWidthLand);
             pg.removePreference(mWidthHelp);
-            if (isPhablet(mContext)) { // Phablets don't have NavBar onside
-                pg.removePreference(mNavigationBarWidth);
-            } else {
-                pg.removePreference(mNavigationBarHeightLandscape);
-            }
         }
 
         // Only show the hardware keys config on a device that does not have a navbar 	
