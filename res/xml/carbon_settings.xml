@@ -17,6 +17,9 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/carbon_settings_title">
 
+    <PreferenceScreen android:key="carbon_logo"
+                      android:layout="@layout/logo_row" />
+
     <PreferenceCategory android:key="carbon_settings_category"
         android:title="@string/carbon_settings_title_menu">
 
