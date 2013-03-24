@@ -133,6 +133,17 @@
         </PreferenceCategory>
 
         <PreferenceCategory
+            android:key="navbar_rings"
+            android:title="@string/navbar_ring_cat">
+
+            <PreferenceScreen
+                android:key="nav_ring"
+                android:title="@string/interface_navring_settings_title"
+                android:summary="@string/interface_navring_settings_summary"
+                android:fragment="com.android.settings.carbon.NavRingTargets" />
+        </PreferenceCategory>
+
+        <PreferenceCategory
             android:key="navbar_widgets_cat"
             android:title="@string/navbar_widgets">
             <Preference
