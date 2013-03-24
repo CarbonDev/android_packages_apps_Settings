@@ -5813,5 +5813,15 @@
     <string name="power_button_torch_title">Power button torch</string>
     <string name="power_button_torch_summary">WARNING: This feature may not work well for devices with nonremovable batteries and Nexus devices. Use at your own risk! Hold power key with screen off to enable torch. Release to disable.</string>
 
+    <!-- ======================================================================================= -->
+    <!-- PARANOIDANDROID STUFF -->
+    <!-- ======================================================================================= -->
+    
+    <!-- Customization main menu category heading [CHAR LIMIT=40] -->
+    <string name="header_category_customization">Customization</string>
+    
+    <!-- Hybrid sub menu [CHAR LIMIT=30] -->
+    <string name="hybrid_settings">Hybrid properties</string>
+
     <!-- **** CARBON ADDITIONS END **** -->
 </resources>

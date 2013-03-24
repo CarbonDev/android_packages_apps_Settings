@@ -104,6 +104,21 @@
         android:fragment="com.android.settings.carbon.XposedSettings"
         android:icon="@drawable/ic_carbon_xposed" />
 
+    <!-- CUSTOMIZATION -->
+    <header android:id="@+id/customization_section"
+        android:title="@string/header_category_customization" />
+        
+    <!-- Hybrid options -->
+    <header
+        android:id="@+id/hybrid_settings"
+        android:icon="@drawable/ic_settings_hybrid"
+        android:title="@string/hybrid_settings">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.paranoid.preferences"
+            android:targetClass="com.paranoid.preferences.PreferenceListActivity" />
+    </header>
+
     <!-- DEVICE -->
     <header android:id="@+id/device_section"
         android:title="@string/header_category_device" />
