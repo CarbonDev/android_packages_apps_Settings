@@ -103,10 +103,6 @@
         android:title="@string/xposed_settings_title"
         android:fragment="com.android.settings.carbon.XposedSettings"
         android:icon="@drawable/ic_carbon_xposed" />
-
-    <!-- CUSTOMIZATION -->
-    <header android:id="@+id/customization_section"
-        android:title="@string/header_category_customization" />
         
     <!-- Hybrid options -->
     <header
@@ -116,7 +112,7 @@
         <intent
             android:action="android.intent.action.MAIN"
             android:targetPackage="com.paranoid.preferences"
-            android:targetClass="com.paranoid.preferences.PreferenceListActivity" />
+            android:targetClass="com.paranoid.preferences.MainActivity" />
     </header>
 
     <!-- DEVICE -->
