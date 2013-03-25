@@ -45,6 +45,14 @@
         android:icon="@drawable/ic_carbon_navbar"
         android:fragment="com.android.settings.carbon.Navbar" />
 
+    <!-- Ribbon -->
+    <PreferenceScreen
+        android:id="@+id/ribbon_targets"
+        android:fragment="com.android.settings.carbon.RibbonTargets"
+        android:icon="@drawable/ic_rom_control_ribbon"
+        android:title="@string/ribbon_settings_title"
+        android:summary="@string/ribbon_settings_summary" />
+
     <!-- Pie Controls -->
     <PreferenceScreen
         android:id="@+id/pie_controls"
