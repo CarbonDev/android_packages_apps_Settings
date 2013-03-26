@@ -87,6 +87,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private static final String KEY_HEADSET_CONNECT_PLAYER = "headset_connect_player";
     private static final String KEY_VOLUME_ADJUST_SOUNDS = "volume_adjust_sounds";
     private static final String KEY_SWAP_VOLUME_BUTTONS = "swap_volume_buttons";
+    private static final String KEY_LOCK_VOLUME_KEYS = "lock_volume_keys";
 
     private static final String RING_MODE_NORMAL = "normal";
     private static final String RING_MODE_VIBRATE = "vibrate";
@@ -115,6 +116,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private PreferenceScreen mQuietHours;
     private CheckBoxPreference mVolumeAdjustSounds;
     private CheckBoxPreference mSwapVolumeButtons;
+    private CheckBoxPreference mLockVolumeKeys;
 
     private Runnable mRingtoneLookupRunnable;
 
@@ -221,6 +223,10 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         mSwapVolumeButtons = (CheckBoxPreference) findPreference(KEY_SWAP_VOLUME_BUTTONS);
         mSwapVolumeButtons.setChecked(Settings.System.getInt(resolver,
                 Settings.System.SWAP_VOLUME_KEYS, 0) == 1);
+
+        mLockVolumeKeys = (CheckBoxPreference) findPreference(KEY_LOCK_VOLUME_KEYS);
+        mLockVolumeKeys.setChecked(Settings.System.getInt(resolver,
+                Settings.System.LOCK_VOLUME_KEYS, 0) != 0);
 
         mVolumeAdjustSounds = (CheckBoxPreference) findPreference(KEY_VOLUME_ADJUST_SOUNDS);
         mVolumeAdjustSounds.setPersistent(false);

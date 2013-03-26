@@ -108,6 +108,12 @@
             android:defaultValue="true" />
 
     <CheckBoxPreference
+        android:key="lock_volume_keys"
+        android:title="@string/sound_lock_volume_keys_title"
+        android:summary="@string/sound_lock_volume_keys_summary"
+        android:persistent="false" />
+		
+    <CheckBoxPreference
             android:key="swap_volume_buttons"
             android:title="@string/swap_volume_keys_title"
             android:summary="@string/swap_volume_keys_summary" />
