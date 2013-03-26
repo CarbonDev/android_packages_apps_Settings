@@ -88,13 +88,9 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private static final String KEY_HEADSET_CONNECT_PLAYER = "headset_connect_player";
     private static final String KEY_SAFE_HEADSET_VOLUME = "safe_headset_volume";
     private static final String KEY_VOLUME_ADJUST_SOUNDS = "volume_adjust_sounds";
-<<<<<<< HEAD
-=======
-    private static final String KEY_SWAP_VOLUME_BUTTONS = "swap_volume_buttons";
     private static final String KEY_LOCK_VOLUME_KEYS = "lock_volume_keys";
     private static final String KEY_CAMERA_SOUNDS = "camera_sounds";
     private static final String PROP_CAMERA_SOUND = "persist.sys.camera-sound";
->>>>>>> 61f1465... disable camera sounds (1/3)
 
     private static final String RING_MODE_NORMAL = "normal";
     private static final String RING_MODE_VIBRATE = "vibrate";
@@ -122,12 +118,8 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private CheckBoxPreference mHeadsetConnectPlayer;
     private CheckBoxPreference mSafeHeadsetVolume;
     private CheckBoxPreference mVolumeAdjustSounds;
-<<<<<<< HEAD
-=======
-    private CheckBoxPreference mSwapVolumeButtons;
     private CheckBoxPreference mLockVolumeKeys;
     private CheckBoxPreference mCameraSounds;
->>>>>>> 61f1465... disable camera sounds (1/3)
 
     private Runnable mRingtoneLookupRunnable;
 
@@ -243,19 +235,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         mLockSounds.setChecked(Settings.System.getInt(resolver,
                 Settings.System.LOCKSCREEN_SOUNDS_ENABLED, 1) != 0);
 
-<<<<<<< HEAD
-=======
-        mVolBtnMusicCtrl = (CheckBoxPreference) findPreference(KEY_VOLBTN_MUSIC_CTRL);
-        mVolBtnMusicCtrl.setChecked(Settings.System.getInt(resolver,
-                Settings.System.VOLBTN_MUSIC_CONTROLS, 1) != 0);
-
-        mSwapVolumeButtons = (CheckBoxPreference) getPreferenceScreen().findPreference(KEY_SWAP_VOLUME_BUTTONS);
-        if (mSwapVolumeButtons != null) {
-            int swapVolumeKeys = Settings.System.getInt(getContentResolver(),
-                    Settings.System.SWAP_VOLUME_KEYS, 0);
-            mSwapVolumeButtons.setChecked(swapVolumeKeys > 0);
-        }
-
         mLockVolumeKeys = (CheckBoxPreference) findPreference(KEY_LOCK_VOLUME_KEYS);
         mLockVolumeKeys.setChecked(Settings.System.getInt(resolver,
                 Settings.System.LOCK_VOLUME_KEYS, 0) != 0);
@@ -265,7 +244,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         mCameraSounds.setChecked(SystemProperties.getBoolean(
                 PROP_CAMERA_SOUND, true));
 
->>>>>>> 61f1465... disable camera sounds (1/3)
         mVolumeAdjustSounds = (CheckBoxPreference) findPreference(KEY_VOLUME_ADJUST_SOUNDS);
         mVolumeAdjustSounds.setPersistent(false);
         mVolumeAdjustSounds.setChecked(Settings.System.getInt(resolver,
@@ -510,6 +488,9 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         } else if (preference == mVolumeAdjustSounds) {
             Settings.System.putInt(getContentResolver(), Settings.System.VOLUME_ADJUST_SOUNDS_ENABLED,
                     mVolumeAdjustSounds.isChecked() ? 1 : 0);
+        } else if (preference == mLockVolumeKeys) {
+            Settings.System.putInt(getContentResolver(), Settings.System.LOCK_VOLUME_KEYS,
+                    mLockVolumeKeys.isChecked() ? 1 : 0);
         } else {
             // If we didn't handle it, let preferences handle it.
             return super.onPreferenceTreeClick(preferenceScreen, preference);
