@@ -17,6 +17,7 @@
 package com.android.settings;
 
 import com.android.settings.bluetooth.DockEventReceiver;
+import com.android.settings.Utils;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -87,6 +88,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private static final String KEY_HEADSET_CONNECT_PLAYER = "headset_connect_player";
     private static final String KEY_VOLUME_ADJUST_SOUNDS = "volume_adjust_sounds";
     private static final String KEY_SWAP_VOLUME_BUTTONS = "swap_volume_buttons";
+    private static final String KEY_LOCK_VOLUME_KEYS = "lock_volume_keys";
 
     private static final String RING_MODE_NORMAL = "normal";
     private static final String RING_MODE_VIBRATE = "vibrate";
@@ -115,6 +117,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private PreferenceScreen mQuietHours;
     private CheckBoxPreference mVolumeAdjustSounds;
     private CheckBoxPreference mSwapVolumeButtons;
+    private CheckBoxPreference mLockVolumeKeys;
 
     private Runnable mRingtoneLookupRunnable;
 
@@ -218,9 +221,16 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         mVolBtnMusicCtrl.setChecked(Settings.System.getInt(resolver,
                 Settings.System.VOLBTN_MUSIC_CONTROLS, 1) != 0);
 
-        mSwapVolumeButtons = (CheckBoxPreference) findPreference(KEY_SWAP_VOLUME_BUTTONS);
-        mSwapVolumeButtons.setChecked(Settings.System.getInt(resolver,
-                Settings.System.SWAP_VOLUME_KEYS, 0) == 1);
+        mSwapVolumeButtons = (CheckBoxPreference) getPreferenceScreen().findPreference(KEY_SWAP_VOLUME_BUTTONS);
+        if (mSwapVolumeButtons != null) {
+            int swapVolumeKeys = Settings.System.getInt(getContentResolver(),
+                    Settings.System.SWAP_VOLUME_KEYS, 0);
+            mSwapVolumeButtons.setChecked(swapVolumeKeys > 0);
+        }
+
+        mLockVolumeKeys = (CheckBoxPreference) findPreference(KEY_LOCK_VOLUME_KEYS);
+        mLockVolumeKeys.setChecked(Settings.System.getInt(resolver,
+                Settings.System.LOCK_VOLUME_KEYS, 0) != 0);
 
         mVolumeAdjustSounds = (CheckBoxPreference) findPreference(KEY_VOLUME_ADJUST_SOUNDS);
         mVolumeAdjustSounds.setPersistent(false);
@@ -458,8 +468,12 @@ public class SoundSettings extends SettingsPreferenceFragment implements
                     mVolumeAdjustSounds.isChecked() ? 1 : 0);
 
         } else if (preference == mSwapVolumeButtons) {
-            Settings.System.putInt(getActivity().getContentResolver(), Settings.System.SWAP_VOLUME_KEYS,
-                    mSwapVolumeButtons.isChecked() ? 1 : 0);
+            Context context = getActivity().getApplicationContext();
+            Settings.System.putInt(context.getContentResolver(), 
+                    Settings.System.SWAP_VOLUME_KEYS,
+                    mSwapVolumeButtons.isChecked()
+                    ? (Utils.isTablet(context) ? 2 : 1)
+                    : 0);
 
         } else if (preference == mHeadsetConnectPlayer) {
             Settings.System.putInt(getContentResolver(), Settings.System.HEADSET_CONNECT_PLAYER,
