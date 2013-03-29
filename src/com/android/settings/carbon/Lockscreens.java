@@ -462,12 +462,9 @@ public class Lockscreens extends Fragment implements
                 Settings.System.LOCKSCREEN_USE_WIDGET_CONTAINER_CAROUSEL, false));
     }
 
+
     private void setDrawables() {
         mLongPressStatus.setChecked(mBoolLongPress);
-
-        if (mUnlockCounter() < 1) {
-            targetActivities[0] = AwesomeConstant.ACTION_UNLOCK.value();
-        }
 
         // Custom Targets
         ArrayList<TargetDrawable> storedDraw = new ArrayList<TargetDrawable>();
@@ -669,6 +666,10 @@ public class Lockscreens extends Fragment implements
         }
         mBoolLongPress = (Settings.System.getBoolean(cr,
                 Settings.System.LOCKSCREEN_TARGETS_LONGPRESS, false));
+
+        if (mUnlockCounter() < 1) {
+            targetActivities[0] = AwesomeConstant.ACTION_UNLOCK.value();
+        }
         setDrawables();
     }
 
