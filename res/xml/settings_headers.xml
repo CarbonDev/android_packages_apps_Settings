@@ -75,6 +75,17 @@
         android:icon="@drawable/ic_carbon_trds"
         android:title="@string/trds_settings_title" />
 
+    <!-- Hybrid options -->
+    <header
+        android:id="@+id/hybrid_settings"
+        android:icon="@drawable/ic_settings_hybrid"
+        android:title="@string/hybrid_settings">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.paranoid.preferences"
+            android:targetClass="com.paranoid.preferences.MainActivity" />
+    </header>
+
     <!-- Performance -->
     <header
         android:id="@+id/performance_settings"
@@ -103,17 +114,6 @@
         android:title="@string/xposed_settings_title"
         android:fragment="com.android.settings.carbon.XposedSettings"
         android:icon="@drawable/ic_carbon_xposed" />
-        
-    <!-- Hybrid options -->
-    <header
-        android:id="@+id/hybrid_settings"
-        android:icon="@drawable/ic_settings_hybrid"
-        android:title="@string/hybrid_settings">
-        <intent
-            android:action="android.intent.action.MAIN"
-            android:targetPackage="com.paranoid.preferences"
-            android:targetClass="com.paranoid.preferences.MainActivity" />
-    </header>
 
     <!-- DEVICE -->
     <header android:id="@+id/device_section"
