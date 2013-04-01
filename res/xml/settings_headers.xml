@@ -86,6 +86,14 @@
                 android:targetClass="com.brewcrewfoo.performance.activities.MainActivity" />
     </header>
 
+    <!-- Persist Installer-->
+    <header
+        android:id="@+id/installer"
+        android:title="@string/persist_options"
+        android:summary="@string/header_summary_installer"
+        android:icon="@drawable/ic_rom_control_installer"
+        android:fragment="com.android.settings.carbon.Installer" />
+
     <!-- Themes -->
     <header
         android:id="@+id/themes_settings"
