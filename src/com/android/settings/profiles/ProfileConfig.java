@@ -243,6 +243,13 @@ public class ProfileConfig extends SettingsPreferenceFragment
                     R.array.profile_lockmode_summaries)[mProfile.getScreenLockMode()]);
             mScreenLockModePreference.setValue(String.valueOf(mProfile.getScreenLockMode()));
             mScreenLockModePreference.setOnPreferenceChangeListener(this);
+
+            DevicePolicyManager dpm = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
+            if (dpm.requireSecureKeyguard()) {
+                mScreenLockModePreference.setEnabled(false);
+                mScreenLockModePreference.setSummary(R.string.unlock_set_unlock_disabled_summary);
+            }
+
             systemPrefs.addPreference(mScreenLockModePreference);
         }
 
