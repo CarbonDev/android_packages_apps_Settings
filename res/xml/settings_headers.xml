@@ -97,13 +97,6 @@
             android:targetClass="com.tmobile.themechooser.ThemeChooser" />
     </header>
 
-    <!-- Xposed -->
-    <header
-        android:id="@+id/xposed_settings"
-        android:title="@string/xposed_settings_title"
-        android:fragment="com.android.settings.carbon.XposedSettings"
-        android:icon="@drawable/ic_carbon_xposed" />
-
     <!-- DEVICE -->
     <header android:id="@+id/device_section"
         android:title="@string/header_category_device" />
