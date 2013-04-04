@@ -5402,10 +5402,7 @@
     <string name="navbar_widgets_shiftRight">Shift Right</string>
     <string name="navbar_widgets_delete">Delete Widget</string>
     <string name="navigation_bar_menu_arrow_keys_title">Menu Arrow Keys</string>
-    <string name="navigation_bar_menu_arrow_keys_summary">Show arrow keys in the navbar while typing</string>
-    <string name="statusbar_hide_title">Hide Statusbar</string>
-    <string name="statusbar_hide_summary">Allow completly hide the Statusbar</string>
-    <string name="navigation_bar_alpha_title">Statusbar and navbar opacity</string>
+    <string name="navigation_bar_menu_arrow_keys_summary">Show arrow keys in the navigation bar while typing</string>
     <string name="navbar_hide_enable_title">Hidden Navbar Enable</string>
     <string name="drag_handle_opacity_title">Drag Handle Opacity</string>
     <string name="drag_handle_width_title">Drag Handle Width</string>
@@ -5502,6 +5499,7 @@
     <string name="size_3_dp">3 dp</string>
     <string name="size_4_dp">4 dp</string>
     <string name="custom_app_icon_successfully">"'s Icon Set Successfully"</string>
+    <string name="navigation_bar_alpha_title">Statusbar and navbar opacity</string>
 
     <!-- Shortcut Picker -->
     <string name="group_applications">Applications</string>
