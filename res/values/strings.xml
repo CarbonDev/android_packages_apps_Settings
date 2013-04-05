@@ -4528,8 +4528,6 @@
     <string name="carbon_settings_title_menu">Customize Carbon here </string>
     <string name="performance_title">Performance</string>
     <string name="themes_settings_title">Themes</string>
-    <string name="xposed_settings_title">Xposed</string>
-    <string name="xposed_settings_title_menu">Customize Xposed settings here</string>
 
     <!-- Carbon Settings (submenu) -->
     <string name="interface_title">Interface</string>
@@ -5200,17 +5198,6 @@
     <string name="dual_pane_summary">Restart settings to take effect</string>
     <string name="wakeup_when_plugged_unplugged_title">Wake up on charger</string>
     <string name="wakeup_when_plugged_unplugged_summary">Wake up device if a charger is plugged/unplugged</string>
-
-    <!-- Xposed -->
-    <string name="xposed_category_title">Xposed</string>
-    <string name="xposed_framework_modules_title">Framework &amp; Modules</string>
-    <string name="xposed_framework_modules_summary">Xposed framework installer and module manager. Check here first!</string>
-    <string name="xposed_per_app_title">Per App Settings</string>
-    <string name="xposed_per_app_summary">Customize DPI, UI layout, and more per app settings to your liking here</string>
-    <string name="xposed_netflix_title">Netflix Workaround</string>
-    <string name="xposed_netflix_summary">Netflix workaround for Exynos4 devices only! Activate module to use</string>
-    <string name="xposed_warning_title">WARNING:</string>
-    <string name="xposed_warning_summary">These mods may adversely affect performance and stability. Use at your own risk!</string>
 
     <!-- LCD Density -->
     <string name="dpi">DPI</string>
