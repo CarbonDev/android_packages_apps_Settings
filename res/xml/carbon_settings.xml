@@ -17,12 +17,6 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/carbon_settings_title">
 
-    <PreferenceScreen android:key="carbon_logo"
-                      android:layout="@layout/logo_row" />
-
-    <PreferenceCategory android:key="carbon_settings_category"
-        android:title="@string/carbon_settings_title_menu">
-
     <!-- About CarbonRom -->
     <PreferenceScreen
         android:id="@+id/about_rom"
@@ -85,7 +79,5 @@
         android:title="@string/toggles_title"
         android:icon="@drawable/ic_carbon_quicksettings"
         android:fragment="com.android.settings.carbon.StatusBarToggles" />
-
-    </PreferenceCategory>
 
 </PreferenceScreen>

@@ -4523,9 +4523,9 @@
 
     <!-- Carbon Links  -->
     <!-- Settings main menu category heading. [CHAR LIMIT=40] -->
-    <string name="header_category_carbon_links">Carbon Links</string>
+    <string name="header_category_carbon_links">Carbon</string>
     <string name="carbon_settings_title">CarbonRom</string>
-    <string name="carbon_settings_title_menu">Customize Carbon here </string>
+    <string name="carbon_settings_title_menu">Customize Carbon</string>
     <string name="performance_title">Performance</string>
     <string name="themes_settings_title">Themes</string>
 
