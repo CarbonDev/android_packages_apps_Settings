@@ -942,8 +942,10 @@ public class StatusBarToggles extends SettingsPreferenceFragment implements
             b.append(_toggle);
             b.append("|");
         }
-        if (String.valueOf(b.charAt(b.length() - 1)).equals("!")) {
-            b.deleteCharAt(b.length() - 1);
+        if (b.length() > 0) {
+            if (b.charAt(b.length() - 1) == '!') {
+                b.deleteCharAt(b.length() - 1);
+            }
         }
         Log.d(TAG, "saving toggles:" + b.toString());
         Settings.System.putString(c.getContentResolver(), Settings.System.QUICK_TOGGLES,
