@@ -6,9 +6,11 @@
                 android:title="@string/hardware_keys_title"
                 android:fragment="com.android.settings.carbon.HardwareKeys" />
 
-        <CheckBoxPreference
+        <PreferenceScreen
                 android:key="enable_nav_bar"
-                android:title="@string/navbar_enable_bar" />
+                android:title="@string/navbar_enable_bar_title"
+                android:summary="@string/navbar_enable_bar_summary" />
+
         <PreferenceCategory
                 android:key="navbar_buttons"
                 android:title="@string/navbar_button_cat">
@@ -70,20 +72,6 @@
                     android:title="@string/glow_times_title"
                     android:defaultValue="100|10"
                     android:persistent="false" />
-
-                <ListPreference
-                        android:entries="@array/navigation_bar_height_entries"
-                        android:entryValues="@array/navigation_bar_height"
-                        android:key="navigation_bar_height"
-                        android:title="@string/navigation_bar_height_title"
-                        android:summary="@string/navigation_bar_height_summary" />
-
-                <ListPreference
-                        android:entries="@array/navigation_bar_height_landscape_entries"
-                        android:entryValues="@array/navigation_bar_height_landscape"
-                        android:key="navigation_bar_height_landscape"
-                        android:title="@string/navigation_bar_height_landscape_title"
-                        android:summary="@string/navigation_bar_height_landscape_summary" />
 
                 <ListPreference
                         android:entries="@array/navigation_bar_width_entries"

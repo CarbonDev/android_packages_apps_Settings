@@ -1646,14 +1646,6 @@
 
         <activity android:name=".profiles.NFCProfileSelect" />
 
-        <activity
-            android:name=".carbon.DensityChanger"
-            android:label="@string/lcd_density_wizard" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
-
         <activity android:name="Settings$ASSRamBarActivity"
                 android:label="@string/ram_bar">
             <intent-filter>

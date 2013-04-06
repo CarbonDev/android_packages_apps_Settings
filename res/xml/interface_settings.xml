@@ -9,6 +9,12 @@
             android:key="custom_carrier_label"
             android:title="@string/custom_carrier_label_title" />
 
+        <CheckBoxPreference
+            android:key="hide_extras"
+            android:title= "@string/hide_extras"
+            android:summary= "@string/hide_extras_summary"
+            android:defaultValue="false" />
+
         <Preference
             android:fragment="com.android.settings.carbon.NotificationDrawerStyle"
             android:key="notification_style"
@@ -21,6 +27,11 @@
             android:key="carbon_shortcuts_settings"
             android:title="@string/notification_shortcuts_settings_title"
             android:summary="@string/notification_shortcuts_settings_summary" />
+
+        <PreferenceScreen
+            android:key="recents_ram_bar"
+            android:fragment="com.android.settings.carbon.RamBar"
+            android:title="@string/ram_bar" />
 
         <CheckBoxPreference
             android:key="show_overflow"
@@ -37,40 +48,6 @@
             android:title="@string/alt_resolver_title"
             android:summary="@string/alt_resolver_summary"
             android:defaultValue="false" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:key="advanced_options"
-        android:title="@string/advanced_settings_title" >
-
-        <ListPreference
-            android:key="user_mode_ui"
-            android:title="@string/user_mode_ui"
-            android:summary="@string/user_mode_ui_summary"
-            android:entries="@array/user_mode_ui_entries"
-            android:entryValues="@array/user_mode_ui_values" />
-
-        <CheckBoxPreference
-            android:key="hide_extras"
-            android:title= "@string/hide_extras"
-            android:summary= "@string/hide_extras_summary"
-            android:defaultValue="false" />
-
-        <CheckBoxPreference
-            android:key="dual_pane"
-            android:title="@string/dual_pane"
-            android:summary="@string/dual_pane_summary" />
-
-        <Preference
-            android:key="lcd_density_setup"
-            android:title="@string/lcd_density_title"
-            android:summary="@string/lcd_density_summary" />
-
-        <PreferenceScreen
-            android:key="recents_ram_bar"
-            android:fragment="com.android.settings.carbon.RamBar"
-            android:title="@string/ram_bar" />
 
     </PreferenceCategory>
 

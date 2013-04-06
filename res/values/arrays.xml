@@ -847,22 +847,6 @@
 
     <!-- **** CARBON EDITS START **** -->
 
-    <!-- LCD Density -->
-    <string-array name="lcd_density_entries" translatable="false">
-        <item>160</item>
-        <item>180</item>
-        <item>200</item>
-        <item>220</item>
-        <item>240</item>
-        <item>241</item>
-        <item>260</item>
-        <item>280</item>
-        <item>300</item>
-        <item>320</item>
-        <item>340</item>
-        <item>@string/custom_density</item>
-    </string-array>
-
     <!-- Notification Shortcuts -->
     <string-array name="notification_shortcuts_quantity_entries" translatable="false">
         <item>4</item>
@@ -994,20 +978,6 @@
         <item>@*android:drawable/ic_shortcut_tv</item>
         <item>@*android:drawable/ic_shortcut_twitter</item>
         <item>@*android:drawable/ic_shortcut_unlock</item>
-    </string-array>
-
-    <string-array name="lcd_density_stock_entries">
-        <item>160 -- mdpi</item>
-        <item>213 -- nexus7</item>
-        <item>240 -- hdpi</item>
-        <item>320 -- xhdpi</item>
-    </string-array>
-
-    <string-array name="lcd_density_stock_values" translatable="false">
-        <item>160</item>
-        <item>213</item>
-        <item>240</item>
-        <item>320</item>
     </string-array>
 
     <!-- Volume Overlay options. -->
@@ -2014,16 +1984,6 @@
         <item>**event**</item>
         <item>**voiceassist**</item>
         <item>**app**</item>
-    </string-array>
-    <string-array name="user_mode_ui_entries" translatable="false">
-        <item>@string/phone_mode_ui</item>
-        <item>@string/tablet_mode_ui</item>
-        <item>@string/phablet_mode_ui</item>
-    </string-array>
-    <string-array name="user_mode_ui_values" translatable="false">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
     </string-array>
 	<string-array name="choose_toggle_side_entries" translatable="false">
         <item>@string/right</item>
