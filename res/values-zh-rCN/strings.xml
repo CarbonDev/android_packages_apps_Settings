@@ -2503,5 +2503,4 @@
     <string name="sms_security_check_limit_title">短信限制</string>
     <string name="sms_security_check_limit_summary">当某个应用频繁性的发送短信时显示一个警告窗口. 目前限制: 15 分钟内发送 %d 条信息</string>
     <string name="sms_security_check_limit_default">30 (默认)</string>
-    <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>
