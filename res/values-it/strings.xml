@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--  Copyright (C) 2007 The Android Open Source Project
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2007 The Android Open Source Project
+     Copyright (C) 2013 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -12,7 +13,7 @@
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
      See the License for the specific language governing permissions and
      limitations under the License.
- -->
+-->
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
@@ -71,6 +72,7 @@
     <string name="small_font" msgid="2295331917424072635">"Piccole"</string>
     <string name="medium_font" msgid="2068475425515133701">"Medie"</string>
     <string name="large_font" msgid="599055175160971446">"Grandi"</string>
+    <string name="font_size_preview_text">Servite a questo signore una birra e dei sigari.</string>
     <string name="font_size_save" msgid="3450855718056759095">"OK"</string>
     <string name="sdcard_setting" product="nosdcard" msgid="8281011784066476192">"Archivio USB"</string>
     <string name="sdcard_setting" product="default" msgid="5922637503871474866">"Scheda SD"</string>
@@ -141,7 +143,7 @@
     <string name="bluetooth_pairing" msgid="1426882272690346242">"Accoppiamento..."</string>
     <string name="bluetooth_device" msgid="5291950341750186887">"Dispositivo Bluetooth senza nome"</string>
     <string name="progress_scanning" msgid="192587958424295789">"Ricerca"</string>
-    <string name="bluetooth_no_devices_found" msgid="1085232930277181436">"Nessun dispositivo Bluetooth in vicinanze."</string>
+    <string name="bluetooth_no_devices_found" msgid="1085232930277181436">"Nessun dispositivo Bluetooth nelle vicinanze."</string>
     <string name="bluetooth_notif_ticker" msgid="4726721390078512173">"Richiesta accoppiamento Bluetooth"</string>
     <string name="bluetooth_notif_title" msgid="2485175521845371514">"Richiesta accoppiamento"</string>
     <string name="bluetooth_notif_message" msgid="5300852675110479862">"Tocca per l\'accoppiamento con <xliff:g id="DEVICE_NAME">%1$s</xliff:g>."</string>
@@ -166,13 +168,16 @@
     <string name="bluetooth_phonebook_request" msgid="457033227379858269">"Richiesta rubrica"</string>
     <string name="bluetooth_pb_acceptance_dialog_text" msgid="6555508756987053866">"%1$s desidera accedere ai tuoi contatti e alla tua cronologia chiamate. Consentire l\'accesso a %2$s?"</string>
     <string name="bluetooth_pb_remember_choice" msgid="2901499974259177202">"Non chiedermelo più"</string>
+    <string name="bluetooth_mas_request">"Richiesta di Aceesso ai Messaggi"</string>
+    <string name="bluetooth_mas_acceptance_dialog_text">%1$s vorrebbe accedere ai tuoi messaggi. Dai accesso a %2$s?</string>
+    <string name="bluetooth_mas_remember_choice">Non chiedermelo più</string>
     <string name="date_and_time" msgid="4114084177056654663">"Impostazioni data e ora"</string>
     <string name="choose_timezone" msgid="1362834506479536274">"Scegli il fuso orario"</string>
+    <string name="default_date_format"><xliff:g id="default_date_format">MM/dd/yyyy</xliff:g></string>
     <string name="normal_date_format" msgid="7636406984925498359">"Regionale (<xliff:g id="DATE">%s</xliff:g>)"</string>
     <string name="display_preview_label" msgid="1127597250917274792">"Anteprima:"</string>
     <string name="display_font_size_label" msgid="8941851418397475389">"Dimensioni carattere:"</string>
-    <!-- no translation found for intent_sender_data_label (6332324780477289261) -->
-    <skip />
+    <string name="intent_sender_data_label"><xliff:g id="data">Dati:</xliff:g></string>
     <string name="intent_sender_sendbroadcast_text" msgid="1415735148895872715">"Invia <xliff:g id="BROADCAST">broadcast</xliff:g>"</string>
     <string name="intent_sender_action_label" msgid="616458370005452389">"<xliff:g id="ACTION">Action</xliff:g>:"</string>
     <string name="intent_sender_startactivity_text" msgid="5080516029580421895">"Inizia <xliff:g id="ACTIVITY">activity</xliff:g>"</string>
@@ -1018,7 +1023,7 @@
     <string name="lockpattern_settings_enable_summary" msgid="1165707416664252167">"Devi inserire la sequenza per sbloccare lo schermo"</string>
     <string name="lockpattern_settings_enable_visible_pattern_title" msgid="2615606088906120711">"Rendi visibile la sequenza"</string>
     <string name="lockpattern_settings_enable_tactile_feedback_title" msgid="8898518337442601027">"Vibra alla pressione"</string>
-    <string name="lockpattern_settings_enable_power_button_instantly_locks" msgid="5735444062633666327">"Blocco con pulsante accens."</string>
+    <string name="lockpattern_settings_enable_power_button_instantly_locks" msgid="5735444062633666327">"Blocco con pulsante accensione"</string>
     <string name="lockpattern_settings_choose_lock_pattern" msgid="1652352830005653447">"Imposta sequenza"</string>
     <string name="lockpattern_settings_change_lock_pattern" msgid="1123908306116495545">"Cambia sequenza di sblocco"</string>
     <string name="lockpattern_settings_help_how_to_record" msgid="2614673439060830433">"Procedura per l\'impostazione di una sequenza di sblocco"</string>
@@ -1838,9 +1843,39 @@
     <string name="cell_broadcast_settings" msgid="8415582011920085222">"Cell broadcast"</string>
     <string name="cell_broadcast_settings_summary" msgid="3301339398950905913">"Seleziona i tipi di avvisi di emergenza da visualizzare."</string>
 
-    <!-- CYANOGENMOD EDITS START -->
+    <!-- **** CARBON ADDITIONS START **** -->
+
+        <!-- About Carbon -->
+    <string name="about_carbon_settings_title">About CarbonRom</string>
+    <string name="about_carbon_title">CarbonRom</string>
+    <string name="app_name">CarbonRom</string>
+    <string name="carbon_dev">CarbonDev</string>
+    <string name="contributors_title">Collaboratori</string>
+    <string name="devs_title">Incontra il CarbonDev team</string>
+    <string name="donate_carbon">http://goo.gl/2Nieg</string>
+    <string name="github_carbon">https://github.com/CarbonDev</string>
+    <string name="carbon">CarbonRom JB 4.2.2</string>
+    <string name="carbon_links">Social media</string>
+    <string name="carbon_goo_title">Goo.im pagina di download</string>
+    <string name="carbon_goo_summary">Visita la nostra pagina di download di Goo.im per le ultime release</string>
+    <string name="carbon_source_title">Sorgenti Github</string>
+    <string name="carbon_source_summary">Open source per tutti @ www.github.com/CarbonDev</string>
+    <string name="carbon_irc_title">Incontraci su IRC</string>
+    <string name="carbon_irc_summary">#teamcarbon @ irc.freenode.net</string>
+    <string name="carbon_facebook_title">Pagina Facebook</string>
+    <string name="carbon_facebook_summary">Sottoscrivi la nostra pagina Facebook</string>
+    <string name="carbon_twitter_title">Twitter</string>
+    <string name="carbon_twitter_summary">Seguici su Twitter</string>
+    <string name="carbon_googleplus_title">Google+ Community</string>
+    <string name="carbon_googleplus_summary">Unisciti alla nostra G+ Community</string>
+    <string name="title_about">About Carbon</string>
 
     <string name="ok">OK</string>
+    <string name="save">Salva</string>
+
+    <!-- Activity titles defined in AndroidManifest.xml -->
+    <string name="title_navbar">Barra di Navigazione</string>
+    <string name="title_navring">Anello di Navigazione</string>
 
     <!-- Quiet hours -->
     <string name="quiet_hours_title">"Periodo di quiete"</string>
@@ -2484,6 +2519,54 @@
     <string name="volume_key_cursor_control_off">Disabilitato</string>
     <string name="volume_key_cursor_control_on">I tasti su/giù muovono il cursore a sinistra/destra</string>
     <string name="volume_key_cursor_control_on_reverse">I tasti su/giù muovono il cursore a destra/sinistra</string>
+    
+    <!-- Status bar notification icon opacity -->
+    <string name="status_bar_icon_opacity">Opacità icona di notifica</string>
+    <string name="status_bar_icon_opacity_summary">Imposta l\'opacità delle icone di notifica della barra di stato</string>
 
-    <!-- **** CYANOGENMOD ADDITIONS END **** -->
+    <!-- TRDS Settings -->
+    <string name="trds_settings_title">Dark Carbon</string>
+
+    <!-- Breathing Notifications -->
+    <string name="status_bar_breathing_notifs_title">Effetto Breathing per le Notifiche</string>
+    <string name="mms_breath">Breathing SMS</string>
+    <string name="mms_breath_summary">Darà alle notifiche sms nella barra di stato un\' effetto breathing</string>
+    <string name="missed_call_breath">Breathing Chiamate Perse</string>
+    <string name="missed_call_breath_summary">Darà alle notifiche delle chiamate perse nella barra di stato un\' effetto breathing</string>
+    
+    <!-- Notification Behaviour -->
+    <string name="notification_behaviour_title">Comportamento delle notifiche</string>
+
+    <!-- Alternate default app picker -->
+    <string name="alt_resolver_title">Interfaccia alternativa per scelta Apps (App Picker)</string>
+    <string name="alt_resolver_summary">Usa un'interfaccia alternativa quando scegli un applicazione.</string>
+
+    <!-- Power button torch -->
+    <string name="power_button_torch_title">Torcia nel pulsante di accensione</string>
+    <string name="power_button_torch_summary">ATTENZIONE: Questa funzione potrebbe non funzionare bene in dispositivi con batteria non rimovibile e dispositivi Nexus. Usa a tuo rischio! Premi il tasto di accensione a schermo spento per accendere la torcia. Rilascialo per spegnere.</string>
+    
+    <!-- Automatic brightness customization -->
+    <string name="light_sensor_current_value">Valore corrente del sensore di luminosità: <xliff:g id="light_level">%d</xliff:g> lux</string>
+    <string name="auto_brightness_dialog_title">Livelli di luminosità automatici</string>
+    <string name="auto_brightness_level_format"><xliff:g id="start_level">%1$s</xliff:g> -\n<xliff:g id="end_level">%2$s</xliff:g> lux</string>
+    <string name="auto_brightness_brightness_format"><xliff:g id="percent">%s</xliff:g>%%</string>
+    <string name="auto_brightness_adjust_button">Modifica</string>
+    <string name="auto_brightness_reset_button">Reset</string>
+    <string name="auto_brightness_remove_button">Rimuovi</string>
+    <string name="auto_brightness_add_line">Aggiungi linea</string>
+    <string name="auto_brightness_lux_dialog_title">Livelli luminosità ambientale</string>
+    <string name="auto_brightness_split_dialog_title">Intervallo livelli di luminosità</string>
+    <string name="auto_brightness_start_lux">Inizio (lux)</string>
+    <string name="auto_brightness_end_lux">Fine (lux)</string>
+    <string name="auto_brightness_reset_dialog_title">Resetta i livelli?</string>
+    <string name="auto_brightness_reset_confirmation">Tutti i livelli di luminosità saranno riportati ai loro valori di default.</string>
+    <string name="auto_brightness_split_lux_format">Posizione dell\'intervallo (tra <xliff:g id="min">%1$d</xliff:g> e <xliff:g id="max">%2$d</xliff:g> lux)</string>
+    <string name="auto_brightness_level_options">Opzioni livelli di luminosità</string>
+    <string name="auto_brightness_menu_edit_lux">Intervallo di luminosità ambientale</string>
+    <string name="auto_brightness_menu_split">Dividi</string>
+    <string name="auto_brightness_menu_remove">Rimuovi</string>
+    <string name="ok">OK</string>
+
+    <!-- **** CARBON ADDITIONS END **** -->
+    
 </resources>
