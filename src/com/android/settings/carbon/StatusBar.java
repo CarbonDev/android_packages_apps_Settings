@@ -46,6 +46,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private static final String KEY_MISSED_CALL_BREATH = "missed_call_breath";
     private static final String KEY_NOTIFICATION_BEHAVIOUR = "notifications_behaviour";
     private static final String STATUSBAR_HIDDEN = "statusbar_hidden";
+    private static final String STATUS_BAR_AUTO_HIDE = "status_bar_auto_hide";
 
     private ListPreference mStatusBarCmSignal;
     private CheckBoxPreference mStatusBarBrightnessControl;
@@ -57,6 +58,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private CheckBoxPreference mMissedCallBreath;
     private ListPreference mNotificationsBeh;
     private CheckBoxPreference mStatusBarHide;
+    private CheckBoxPreference mStatusBarAutoHide;
 
     private ContentResolver mCr;
     private PreferenceScreen mPrefSet;
@@ -120,6 +122,10 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mStatusBarHide = (CheckBoxPreference) findPreference(STATUSBAR_HIDDEN);
         mStatusBarHide.setChecked(Settings.System.getBoolean(mCr,
                 Settings.System.STATUSBAR_HIDDEN, false));
+
+        mStatusBarAutoHide = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_AUTO_HIDE);
+        mStatusBarAutoHide.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.AUTO_HIDE_STATUSBAR, 0) == 1));
 
         mPrefCategoryGeneral = (PreferenceCategory) findPreference(STATUS_BAR_CATEGORY_GENERAL);
 
@@ -187,6 +193,11 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             boolean checked = ((CheckBoxPreference)preference).isChecked();
             Settings.System.putBoolean(getActivity().getContentResolver(),
                     Settings.System.STATUSBAR_HIDDEN, checked ? true : false);
+            return true;
+        } else if (preference == mStatusBarAutoHide) {
+            value = mStatusBarAutoHide.isChecked();
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.AUTO_HIDE_STATUSBAR, value ? 1 : 0);
             return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
