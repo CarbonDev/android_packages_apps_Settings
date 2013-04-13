@@ -41,6 +41,7 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceCategory;
+import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
@@ -71,6 +72,7 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
     private static final String KEYBOARD_ROTATION_TIMEOUT = "keyboard_rotation_timeout";
     private static final String SHOW_ENTER_KEY = "show_enter_key";
     private static final String TAG = "AdvancedInputSettings";
+    private static final String KEY_POINTER_SETTINGS_CATEGORY = "pointer_settings_category";
     private static final String KEY_STYLUS_GESTURES = "stylus_gestures";
     private static final String KEY_STYLUS_ICON_ENABLED = "stylus_icon_enabled";
 
@@ -94,6 +96,7 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
     private PreferenceCategory mHardKeyboardCategory;
     private PreferenceCategory mGameControllerCategory;
     private Preference mLanguagePref;
+    private PreferenceScreen mStylusGestures;
     private final ArrayList<InputMethodPreference> mInputMethodPreferenceList =
             new ArrayList<InputMethodPreference>();
     private final ArrayList<PreferenceScreen> mHardKeyboardPreferenceList =
@@ -191,10 +194,15 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         // Build hard keyboard and game controller preference categories.
         mIm = (InputManager)getActivity().getSystemService(Context.INPUT_SERVICE);
         updateInputDevices();
-        // remove stylus preference for non stylus devices 
+
+        mStylusGestures = (PreferenceScreen) findPreference(KEY_STYLUS_GESTURES);
+        mStylusIconEnabled = (CheckBoxPreference) findPreference(KEY_STYLUS_ICON_ENABLED);
+        // remove stylus preference for non stylus devices
         if (!getResources().getBoolean(com.android.internal.R.bool.config_stylusGestures)) {
-            getPreferenceScreen().removePreference(findPreference(KEY_STYLUS_GESTURES));
-            //mStylusIconEnabled = null;
+            PreferenceGroup pointerSettingsCategory = (PreferenceGroup)
+                    findPreference(KEY_POINTER_SETTINGS_CATEGORY);
+            pointerSettingsCategory.removePreference(mStylusGestures);
+            pointerSettingsCategory.removePreference(mStylusIconEnabled);
         }
 
         mStylusIconEnabled = (CheckBoxPreference) findPreference(KEY_STYLUS_ICON_ENABLED);
