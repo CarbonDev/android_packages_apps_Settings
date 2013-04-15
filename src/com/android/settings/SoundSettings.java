@@ -196,8 +196,8 @@ public class SoundSettings extends SettingsPreferenceFragment implements
 
         mConvertSoundToVibration = (CheckBoxPreference) findPreference(KEY_CONVERT_SOUND_TO_VIBRATE);
         mConvertSoundToVibration.setPersistent(false);
-        mConvertSoundToVibration.setChecked(Settings.System.getBoolean(resolver,
-                Settings.System.NOTIFICATION_CONVERT_SOUND_TO_VIBRATION, false)); 
+        mConvertSoundToVibration.setChecked(Settings.System.getInt(resolver,
+                Settings.System.NOTIFICATION_CONVERT_SOUND_TO_VIBRATION, 1) != 0); 
 
         mVibrateWhenRinging = (CheckBoxPreference) findPreference(KEY_VIBRATE);
         mVibrateWhenRinging.setPersistent(false);
