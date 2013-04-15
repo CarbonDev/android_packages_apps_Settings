@@ -98,9 +98,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private static final String RING_MODE_VIBRATE = "vibrate";
     private static final String RING_MODE_MUTE = "mute";
 
-
-
-
     private static final String[] NEED_VOICE_CAPABILITY = {
             KEY_RINGTONE, KEY_DTMF_TONE, KEY_CATEGORY_CALLS,
             KEY_EMERGENCY_TONE, KEY_INCREASING_RING
@@ -193,11 +190,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         } else {
             mRingMode.setOnPreferenceChangeListener(this);
         }
-
-        mConvertSoundToVibration = (CheckBoxPreference) findPreference(KEY_CONVERT_SOUND_TO_VIBRATE);
-        mConvertSoundToVibration.setPersistent(false);
-        mConvertSoundToVibration.setChecked(Settings.System.getInt(resolver,
-                Settings.System.NOTIFICATION_CONVERT_SOUND_TO_VIBRATION, 1) != 0); 
 
         mVibrateWhenRinging = (CheckBoxPreference) findPreference(KEY_VIBRATE);
         mVibrateWhenRinging.setPersistent(false);
