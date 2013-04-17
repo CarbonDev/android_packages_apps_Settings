@@ -52,11 +52,6 @@
             android:summary="@string/status_bar_toggle_brightness_summary"
             android:defaultValue="false" />
 
-        <CheckBoxPreference
-            android:key="statusbar_hidden"
-            android:title="@string/statusbar_hide_title"
-            android:summary="@string/statusbar_hide_summary" />
-
         <ListPreference
             android:key="notifications_behaviour"
             android:title="@string/notification_behaviour_title"
