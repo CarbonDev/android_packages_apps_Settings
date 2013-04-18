@@ -80,6 +80,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private static final String PREF_LOCKSCREEN_AUTO_ROTATE = "lockscreen_auto_rotate";
     private static final String PREF_LOCKSCREEN_ALL_WIDGETS = "lockscreen_all_widgets";
     private static final String PREF_LOCKSCREEN_TEXT_COLOR = "lockscreen_text_color";
+    private static final String KEY_LOCKSCREEN_CAMERA_WIDGET = "lockscreen_camera_widget";
 
     private ListPreference mCustomBackground;
     private ListPreference mBatteryStatus;
@@ -90,6 +91,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private CheckBoxPreference mLockscreenEightTargets;
     private Preference mShortcuts;	
     private CheckBoxPreference mLockscreenShortcutsLongpress;
+    private CheckBoxPreference mCameraWidget;
     CheckBoxPreference mQuickUnlock;
     ColorPickerPreference mLockscreenTextColor;
     CheckBoxPreference mLockscreenAutoRotate;
@@ -177,6 +179,10 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         mShortcuts = (Preference) findPreference(PREF_LOCKSCREEN_SHORTCUTS);
         mShortcuts.setEnabled(!mLockscreenEightTargets.isChecked());
 
+        mCameraWidget = (CheckBoxPreference) findPreference(KEY_LOCKSCREEN_CAMERA_WIDGET);
+        mCameraWidget.setChecked(Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.KG_CAMERA_WIDGET, 0) == 1);
+
         if (!Utils.isPhone(getActivity())) {
              // Nothing for tablets and large screen devices
              getPreferenceScreen().removePreference(mShortcuts);
@@ -249,6 +255,10 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         } else if (preference == mLockscreenShortcutsLongpress) {
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.LOCKSCREEN_SHORTCUTS_LONGPRESS, mLockscreenShortcutsLongpress.isChecked() ? 1 : 0);
+            return true;
+        } else if (preference == mCameraWidget) {
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.KG_CAMERA_WIDGET, mCameraWidget.isChecked() ? 1 : 0);
             return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);

@@ -250,12 +250,20 @@ public class Navbar extends SettingsPreferenceFragment implements
                 Settings.System.NAVIGATION_BAR_MENU_ARROW_KEYS, true));
 
         PreferenceGroup pg = (PreferenceGroup) prefs.findPreference("advanced_cat");
-        if (isTablet(mContext)) { // Tablets don't set NavBar Height
+        if (isTablet(mContext)) {
             pg.removePreference(mNavigationBarWidth);
+            mNavBarHideEnable.setEnabled(false);
+            mDragHandleOpacity.setEnabled(false);
+            mDragHandleWidth.setEnabled(false);
+            mNavBarHideTimeout.setEnabled(false);
         } else { // Phones&Phablets don't have SystemBar
             pg.removePreference(mWidthPort);
             pg.removePreference(mWidthLand);
             pg.removePreference(mWidthHelp);
+        }
+
+        if (Integer.parseInt(menuDisplayLocation.getValue()) == 4) {
+            mNavBarMenuDisplay.setEnabled(false);
         }
 
         // Only show the hardware keys config on a device that does not have a navbar 	
@@ -382,9 +390,11 @@ public class Navbar extends SettingsPreferenceFragment implements
     public boolean onPreferenceChange(Preference preference, Object newValue) {
 
         if (preference == menuDisplayLocation) {
+            int val = Integer.parseInt((String) newValue);
             Settings.System.putInt(mContentRes,
-                    Settings.System.MENU_LOCATION, Integer.parseInt((String) newValue));
+                    Settings.System.MENU_LOCATION, val);
             refreshSettings();
+            mNavBarMenuDisplay.setEnabled(val < 4 ? true : false);
             return true;
         } else if (preference == mNavBarMenuDisplay) {
             Settings.System.putInt(mContentRes,
@@ -531,9 +541,11 @@ public class Navbar extends SettingsPreferenceFragment implements
 
     public void refreshSettings() {
         refreshButtons();
-        mDragHandleOpacity.setEnabled(mNavBarHideEnable.isChecked());
-        mDragHandleWidth.setEnabled(mNavBarHideEnable.isChecked());
-        mNavBarHideTimeout.setEnabled(mNavBarHideEnable.isChecked());
+        if (!isTablet(mContext)) {
+            mDragHandleOpacity.setEnabled(mNavBarHideEnable.isChecked());
+            mDragHandleWidth.setEnabled(mNavBarHideEnable.isChecked());
+            mNavBarHideTimeout.setEnabled(mNavBarHideEnable.isChecked());
+        }
     }
 
     private Uri getTempFileUri() {

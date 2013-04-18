@@ -103,6 +103,12 @@
             android:title="winner00"
             carbon:nameDev="winner00"
             carbon:twitterHandle="expertontech" />
+            
+		<com.android.settings.widgets.DeveloperPreference
+            android:title="Andy Fried"
+            carbon:nameDev="Andy Fried"
+            carbon:twitterHandle="andyfried3" />
+            
 
 	</PreferenceCategory>
 
