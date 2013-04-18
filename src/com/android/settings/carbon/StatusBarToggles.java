@@ -111,7 +111,6 @@ public class StatusBarToggles extends SettingsPreferenceFragment implements
     ListPreference mScreenshotDelay;
     ListPreference mCollapseShade;
     ListPreference mOnDoubleClick;
-    ListPreference mNumberOfActions;
     CustomTogglePref mCustomToggles;
     PreferenceGroup mCustomCat;
     PreferenceGroup mCustomButtons;
@@ -300,15 +299,6 @@ public class StatusBarToggles extends SettingsPreferenceFragment implements
     private void onTogglesUpdate(Bundle toggleInfo) {
         mToggles = toggleInfo.getStringArrayList("toggles");
         sToggles = toggleInfo;
-        if (mToggles.contains("FAVCONTACT")) {
-            if (mFavContact != null) {
-                mFavContact.setEnabled(true);
-            }
-        } else {
-            if (mFavContact != null) {
-                getPreferenceScreen().removePreference(mFavContact);
-            }
-        }
     }
 
     @Override
@@ -472,9 +462,6 @@ public class StatusBarToggles extends SettingsPreferenceFragment implements
                             }
                             else {
                                 StatusBarToggles.removeToggle(getActivity(), toggleKey);
-
-                            if ("FAVCONTACT".equals(toggleKey)) {
-                                mFavContact.setEnabled(isChecked);
                             }
                         }
                     });

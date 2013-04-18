@@ -285,8 +285,8 @@ public class Navbar extends SettingsPreferenceFragment implements
             pg.removePreference(mWidthHelp);
         }
 
-        if (Integer.parseInt(menuDisplayLocation.getValue()) == 4) {	290
-            mNavBarMenuDisplay.setEnabled(false);	291
+        if (Integer.parseInt(menuDisplayLocation.getValue()) == 4) {
+            mNavBarMenuDisplay.setEnabled(false);
         }
 
         // Only show the hardware keys config on a device that does not have a navbar 	
