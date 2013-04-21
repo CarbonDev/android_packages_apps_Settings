@@ -99,7 +99,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private static final String KEY_POWER_NOTIFICATIONS = "power_notifications";
     private static final String KEY_POWER_NOTIFICATIONS_VIBRATE = "power_notifications_vibrate";
     private static final String KEY_POWER_NOTIFICATIONS_RINGTONE = "power_notifications_ringtone";
-
+    private static final String KEY_VOL_RING = "volume_keys_control_ring_stream";
 
     private static final String RING_MODE_NORMAL = "normal";
     private static final String RING_MODE_VIBRATE = "vibrate";
@@ -141,6 +141,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private CheckBoxPreference mPowerSounds;
     private CheckBoxPreference mPowerSoundsVibrate;
     private Preference mPowerSoundsRingtone;
+    private CheckBoxPreference mVolumeKeysControlRing;
 
     private Runnable mRingtoneLookupRunnable;
 
@@ -251,6 +252,10 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         mLockVolumeKeys = (CheckBoxPreference) findPreference(KEY_LOCK_VOLUME_KEYS);
         mLockVolumeKeys.setChecked(Settings.System.getInt(resolver,
                 Settings.System.LOCK_VOLUME_KEYS, 0) != 0);
+
+        mVolumeKeysControlRing = (CheckBoxPreference) findPreference(KEY_VOL_RING);
+        mVolumeKeysControlRing.setChecked(Settings.System.getInt(resolver,
+                Settings.System.VOLUME_KEYS_CONTROL_RING_STREAM, 0) != 0);
 
         mCameraSounds = (CheckBoxPreference) findPreference(KEY_CAMERA_SOUNDS);
         mCameraSounds.setPersistent(false);
@@ -549,6 +554,10 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         } else if (preference == mLockVolumeKeys) {
             Settings.System.putInt(getContentResolver(), Settings.System.LOCK_VOLUME_KEYS,
                     mLockVolumeKeys.isChecked() ? 1 : 0);
+
+        } else if (preference == mVolumeKeysControlRing) {
+            Settings.System.putInt(getContentResolver(), Settings.System.VOLUME_KEYS_CONTROL_RING_STREAM,
+                    mVolumeKeysControlRing.isChecked() ? 1 : 0);
 
         } else if (preference == mSwapVolumeButtons) {
             Context context = getActivity().getApplicationContext();

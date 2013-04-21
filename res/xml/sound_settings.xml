@@ -94,6 +94,12 @@
             android:defaultValue="false" />
 
     <CheckBoxPreference
+        android:key="volume_keys_control_ring_stream"
+        android:title="@string/volume_keys_control_ring_stream"
+        android:summary="@string/volume_keys_control_ring_stream_summary"
+        android:defaultValue="false" />
+
+    <CheckBoxPreference
             android:key="dtmf_tone"
             android:title="@string/dtmf_tone_enable_title"
             android:defaultValue="true" />
