@@ -41,7 +41,6 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceCategory;
-import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
@@ -122,6 +121,23 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
 
         addPreferencesFromResource(R.xml.language_settings);
 
+        mDisableFullscreenKeyboard = (CheckBoxPreference) findPreference(PREF_DISABLE_FULLSCREEN_KEYBOARD);
+        mDisableFullscreenKeyboard.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.DISABLE_FULLSCREEN_KEYBOARD, 0) == 1);
+
+        mKeyboardRotationToggle = (CheckBoxPreference) findPreference(KEYBOARD_ROTATION_TOGGLE);
+        mKeyboardRotationToggle.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.KEYBOARD_ROTATION_TIMEOUT, 0) > 0);
+
+        mKeyboardRotationTimeout = (ListPreference) findPreference(KEYBOARD_ROTATION_TIMEOUT);
+        mKeyboardRotationTimeout.setOnPreferenceChangeListener(this);
+        updateRotationTimeout(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.KEYBOARD_ROTATION_TIMEOUT, KEYBOARD_ROTATION_TIMEOUT_DEFAULT));
+
+        mShowEnterKey = (CheckBoxPreference) findPreference(SHOW_ENTER_KEY);
+        mShowEnterKey.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.FORMAL_TEXT_INPUT, 0) == 1);
+
         try {
             mDefaultInputMethodSelectorVisibility = Integer.valueOf(
                     getString(R.string.input_method_selector_visibility_default_value));
@@ -199,10 +215,12 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         mStylusIconEnabled = (CheckBoxPreference) findPreference(KEY_STYLUS_ICON_ENABLED);
         // remove stylus preference for non stylus devices
         if (!getResources().getBoolean(com.android.internal.R.bool.config_stylusGestures)) {
-            PreferenceGroup pointerSettingsCategory = (PreferenceGroup)
+            PreferenceCategory pointerSettingsCategory = (PreferenceCategory)
                     findPreference(KEY_POINTER_SETTINGS_CATEGORY);
-            pointerSettingsCategory.removePreference(mStylusGestures);
-            pointerSettingsCategory.removePreference(mStylusIconEnabled);
+            if (pointerSettingsCategory != null) {
+                pointerSettingsCategory.removePreference(mStylusGestures);
+                pointerSettingsCategory.removePreference(mStylusIconEnabled);
+            }
         }
 
         mStylusIconEnabled = (CheckBoxPreference) findPreference(KEY_STYLUS_ICON_ENABLED);
@@ -215,10 +233,6 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         if (scp != null) {
             scp.setFragmentIntent(this, intent);
         }
-
-        mDisableFullscreenKeyboard = (CheckBoxPreference) findPreference(PREF_DISABLE_FULLSCREEN_KEYBOARD);
-        mDisableFullscreenKeyboard.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.DISABLE_FULLSCREEN_KEYBOARD, 0) == 1);
 
         mVolumeKeyCursorControl = (ListPreference) findPreference(VOLUME_KEY_CURSOR_CONTROL);
         if(mVolumeKeyCursorControl != null) {
@@ -237,19 +251,6 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
                 mStatusBarImeSwitcher = (CheckBoxPreference) keyImeSwitcherPref;
             }
         }
-
-        mKeyboardRotationToggle = (CheckBoxPreference) findPreference(KEYBOARD_ROTATION_TOGGLE);
-        mKeyboardRotationToggle.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.KEYBOARD_ROTATION_TIMEOUT, 0) > 0);
-
-        mKeyboardRotationTimeout = (ListPreference) findPreference(KEYBOARD_ROTATION_TIMEOUT);
-        mKeyboardRotationTimeout.setOnPreferenceChangeListener(this);
-        updateRotationTimeout(Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.KEYBOARD_ROTATION_TIMEOUT, KEYBOARD_ROTATION_TIMEOUT_DEFAULT));
-
-        mShowEnterKey = (CheckBoxPreference) findPreference(SHOW_ENTER_KEY);
-        mShowEnterKey.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.FORMAL_TEXT_INPUT, 0) == 1);
 
         mHandler = new Handler();
         mSettingsObserver = new SettingsObserver(mHandler, getActivity());
