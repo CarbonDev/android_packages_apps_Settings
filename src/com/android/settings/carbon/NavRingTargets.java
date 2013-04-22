@@ -62,7 +62,7 @@ import java.io.FileOutputStream;
 import java.net.URISyntaxException;
 import java.lang.NumberFormatException;
 
-public class NavRingTargets extends AOKPPreferenceFragment implements
+public class NavRingTargets extends SettingsPreferenceFragment implements
         ShortcutPickerHelper.OnPickListener, GlowPadView.OnTriggerListener {
     private static final String TAG = "NavRing";
     private static final boolean DEBUG = false;

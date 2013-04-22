@@ -64,7 +64,7 @@ import java.io.FileOutputStream;
 import java.net.URISyntaxException;
 import java.lang.NumberFormatException;
 
-public class Lockscreens extends AOKPPreferenceFragment implements
+public class Lockscreens extends SettingsPreferenceFragment implements
         ShortcutPickerHelper.OnPickListener, ColorPickerDialog.OnColorChangedListener,
         GlowPadView.OnTriggerListener {
     private static final String TAG = "Lockscreen";
