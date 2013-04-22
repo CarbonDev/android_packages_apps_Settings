@@ -4570,88 +4570,6 @@
     <!-- Menu Strings -->
     <string name="menu_nav_bar_reset">Reset nav bar</string>
 
-    <!-- Lockscreen Shortcuts -->
-    <string name="choose_app">Choose application</string>
-    <string name="icon_picker_type">Select icon type:</string>
-    <string name="icon_default">Default</string>
-    <string name="icon_presets">System icons</string>
-    <string name="icon_custom">Gallery</string>
-    <string name="lockscreen_shortcuts_title">Shortcuts</string>
-    <string name="lockscreen_shortcuts_summary">View or change custom lock screen shortcuts</string>
-    <string name="lock_screen_shortcuts_reset_message">Reset lock screen shortcuts?</string>
-    <string name="lock_screen_shortcuts_add">@string/profiles_add</string>
-    <string name="lock_screen_shortcuts_reset">Reset</string>
-    <string name="lock_screen_shortcuts_limit">Only 6 shorcuts are allowed!</string>
-    <string name="lockscreen_shorcuts_longpress_title">Shortcuts longpress</string>
-    <string name="lockscreen_shorcuts_longpress_summary">Open custom lock screen shortcuts on longpress</string>
-    <string name="lockscreen_shortcuts_icon_picker_alarm">Alarm</string>
-    <string name="lockscreen_shortcuts_icon_picker_andy">Andy</string>
-    <string name="lockscreen_shortcuts_icon_picker_battery">Battery</string>
-    <string name="lockscreen_shortcuts_icon_picker_browser">Browser</string>
-    <string name="lockscreen_shortcuts_icon_picker_calendar">Calendar</string>
-    <string name="lockscreen_shortcuts_icon_picker_camera">Camera</string>
-    <string name="lockscreen_shortcuts_icon_picker_cloud">Cloud</string>
-    <string name="lockscreen_shortcuts_icon_picker_contact">Contact</string>
-    <string name="lockscreen_shortcuts_icon_picker_directdial">Direct Dial</string>
-    <string name="lockscreen_shortcuts_icon_picker_directmessage">Direct Message</string>
-    <string name="lockscreen_shortcuts_icon_picker_drive">Drive</string>
-    <string name="lockscreen_shortcuts_icon_picker_dropbox">Dropbox</string>
-    <string name="lockscreen_shortcuts_icon_picker_email">Email</string>
-    <string name="lockscreen_shortcuts_icon_picker_email2">Email Alternate</string>
-    <string name="lockscreen_shortcuts_icon_picker_evernote">Evernote</string>
-    <string name="lockscreen_shortcuts_icon_picker_facebook">Facebook</string>
-    <string name="lockscreen_shortcuts_icon_picker_favorite">Favorite</string>
-    <string name="lockscreen_shortcuts_icon_picker_file_browser">File Browser</string>
-    <string name="lockscreen_shortcuts_icon_picker_file_browser2">File Browser Alternate</string>
-    <string name="lockscreen_shortcuts_icon_picker_fitness">Fitness</string>
-    <string name="lockscreen_shortcuts_icon_picker_gallery">Gallery</string>
-    <string name="lockscreen_shortcuts_icon_picker_gears">Gears</string>
-    <string name="lockscreen_shortcuts_icon_picker_google_small">Google</string>
-    <string name="lockscreen_shortcuts_icon_picker_gplus">Google Plus</string>
-    <string name="lockscreen_shortcuts_icon_picker_gtalk">GTalk</string>
-    <string name="lockscreen_shortcuts_icon_picker_help">Help</string>
-    <string name="lockscreen_shortcuts_icon_picker_joystick">Joystick</string>
-    <string name="lockscreen_shortcuts_icon_picker_key">Keys/Accounts</string>
-    <string name="lockscreen_shortcuts_icon_picker_laptop">Laptop</string>
-    <string name="lockscreen_shortcuts_icon_picker_notes">Notes</string>
-    <string name="lockscreen_shortcuts_icon_picker_luggage">Travel</string>
-    <string name="lockscreen_shortcuts_icon_picker_maps">Maps</string>
-    <string name="lockscreen_shortcuts_icon_picker_market">Market</string>
-    <string name="lockscreen_shortcuts_icon_picker_movie">Movies</string>
-    <string name="lockscreen_shortcuts_icon_picker_music">Music</string>
-    <string name="lockscreen_shortcuts_icon_picker_nav">Navigation</string>
-    <string name="lockscreen_shortcuts_icon_picker_phone">Phone</string>
-    <string name="lockscreen_shortcuts_icon_picker_package">Package</string>
-    <string name="lockscreen_shortcuts_icon_picker_pinterest">Pinterest</string>
-    <string name="lockscreen_shortcuts_icon_picker_play">Play</string>
-    <string name="lockscreen_shortcuts_icon_picker_pocket">Pocket</string>
-    <string name="lockscreen_shortcuts_icon_picker_podcast">Podcast</string>
-    <string name="lockscreen_shortcuts_icon_picker_quicksettings">Quick Settings</string>
-    <string name="lockscreen_shortcuts_icon_picker_rss">RSS Feed</string>
-    <string name="lockscreen_shortcuts_icon_picker_sdcard">SDCard</string>
-    <string name="lockscreen_shortcuts_icon_picker_search">Search</string>
-    <string name="lockscreen_shortcuts_icon_picker_sms">Messaging</string>
-    <string name="lockscreen_shortcuts_icon_picker_tasks">Tasks</string>
-    <string name="lockscreen_shortcuts_icon_picker_terminal">Terminal</string>
-    <string name="lockscreen_shortcuts_icon_picker_transit">Transit</string>
-    <string name="lockscreen_shortcuts_icon_picker_tv">TV</string>
-    <string name="lockscreen_shortcuts_icon_picker_twitter">Twitter</string>
-    <string name="lockscreen_shortcuts_icon_picker_unlock">Unlock</string>
-
-    <!-- Lockscreen Targets -->    
-    <string name="lockscreen_target_info">Drag the slider to targets to assign action</string>
-    <string name="lockscreen_target_title">Slider Targets</string>
-    <string name="lockscreen_target_summary">View or change custom lockscreen targets</string>
-    <string name="lockscreen_eight_targets_title">Enable eight slider targets</string>
-    <string name="lockscreen_eight_targets_summary">Enable eight custom lock screen targets.\nNote: Changing this option resets your lock screen targets</string>
-    <string name="lockscreen_target_reset">Lockscreen Targets Reset To Default</string>
-    <string name="lockscreen_target_save">Lockscreen Targets Saved</string>
-    <string name="lockscreen_target_reset_title">Reset</string>
-    <string name="lockscreen_target_reset_message">Delete all user created lockscreen targets and restore to default?</string>
-    <string name="lockscreen_target_empty">Empty</string>
-    <string name="lockscreen_target_edit_title">Edit Target And Icon</string>
-    <string name="lockscreen_target_edit_msg">Select or change the desired application or activity and the associated icon</string>
-
     <!-- Lockscreen Vibrate -->
     <string name="lockscreen_vibrate_enabled_title">Vibrate</string>
     <string name="lockscreen_vibrate_enabled_head">Vibrate when unlocking device</string>
@@ -4961,40 +4879,6 @@
     <string name="display_rotation_90_title">90 Degrees</string>
     <string name="display_rotation_180_title">180 Degrees</string>
     <string name="display_rotation_270_title">270 Degrees</string>
-
-    <!-- Lockscreen targets and shortcuts -->
-    <string name="picker_activities">Activities</string>
-    <string name="select_custom_app_title">Select Application</string>
-    <string name="select_custom_activity_title">Select Activity</string>
-    <string name="icon_picker_choose_icon_title">Choose Icon</string>
-    <string name="icon_picker_alarm">Alarm</string>
-    <string name="icon_picker_browser">Browser</string>
-    <string name="icon_picker_calendar">Calendar</string>
-    <string name="icon_picker_camera">Camera</string>
-    <string name="icon_picker_chrome">Chrome</string>
-    <string name="icon_picker_email">Email</string>
-    <string name="icon_picker_email2">Email Holo</string>
-    <string name="icon_picker_facebook">Facebook</string>
-    <string name="icon_picker_gallery">Gallery</string>
-    <string name="icon_picker_google_small">Google Now</string>
-    <string name="icon_picker_googleplus">Google Plus</string>
-    <string name="icon_picker_googletalk">Google Talk</string>
-    <string name="icon_picker_maps">Maps</string>
-    <string name="icon_picker_movie">Movie</string>
-    <string name="icon_picker_music">Music</string>
-    <string name="icon_picker_nav_normal">Navigation</string>
-    <string name="icon_picker_phone">Phone</string>
-    <string name="icon_picker_podcast">Podcast</string>
-    <string name="icon_picker_rss">Rss</string>
-    <string name="icon_picker_search">Search</string>
-    <string name="icon_picker_sms">Messaging</string>
-    <string name="icon_picker_twitter">Twitter</string>
-
-    <!-- String for IconPicker -->
-    <string name="icon_picker_title">Icon Source</string>
-    <string name="icon_picker_system_icons_title">System Icons</string>
-    <string name="icon_picker_gallery_title">Gallery</string>
-    <string name="icon_picker_pack_title">Icon Pack</string>
 
     <string name="increasing_ring_title">Ascending ringtone</string>
     <!-- Sound settings screen, the caption of the checkbox for making incoming calls increase in volume -->
