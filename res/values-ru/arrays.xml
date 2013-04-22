@@ -429,13 +429,13 @@
         <item>3</item>
     </string-array>
     <string-array name="screenshot_delay_entries">
-        <item>2 seconds</item>
-        <item>3 seconds</item>
-        <item>4 seconds</item>
-        <item>5 seconds</item>
-        <item>6 seconds</item>
-        <item>7 seconds</item>
-        <item>8 seconds</item>
+        <item>2 секунды</item>
+        <item>3 секунды</item>
+        <item>4 секунды</item>
+        <item>5 секунды</item>
+        <item>6 секунды</item>
+        <item>7 секунд</item>
+        <item>8 секунд</item>
     </string-array>
     <string-array name="screenshot_delay_values">
         <item>2000</item>
@@ -556,7 +556,7 @@
     </string-array>
     <string-array name="notification_shortcuts_quantity_entries">
         <item>4</item>
-        <item>6 (Default)</item>
+        <item>6 (по умолч.)</item>
         <item>8</item>
         <item>10</item>
         <item>12</item>
@@ -973,12 +973,12 @@
     <string-array name="profile_entries">
         <item>Вкл</item>
         <item>Выкл</item>
-        <item>No override</item>
+        <item>Не переписывать</item>
     </string-array>
     <string-array name="profile_values">
-        <item>OVERRIDE</item>
-        <item>SUPPRESS</item>
-        <item>DEFAULT</item>
+        <item>ПЕРЕПИСАТЬ</item>
+        <item>ПОДАВИТЬ</item>
+        <item>УМОЛЧАНИЯ</item>
     </string-array>
     <string-array name="profile_connection_entries">
         <item>Откл</item>
@@ -1126,7 +1126,7 @@
     <string-array name="entries_status_bar_am_pm">
         <item>Нормальный</item>
         <item>Маленький</item>
-        <item>нет</item>
+        <item>Нет</item>
     </string-array>
     <string-array name="values_status_bar_am_pm">
         <item>0</item>
@@ -1134,7 +1134,7 @@
         <item>2</item>
     </string-array>
     <string-array name="clock_date_display_entries">
-        <item>"не показывать"</item>
+        <item>"Не показывать"</item>
         <item>Маленькая дата</item>
         <item>Обычная дата</item>
     </string-array>
@@ -1193,7 +1193,7 @@
         <item>EEE MMMM dd</item>
         <item>EEEE dd/MM</item>
         <item>EEEE MM/dd</item>
-        <item>Custom java format</item>
+        <item>Пользовательский</item>
     </string-array>
     <string-array name="icon_types">
         <item>@string/icon_default</item>
@@ -1403,12 +1403,12 @@
     </string-array>
     <string-array name="lockscreen_long_key_press_values">
         <item></item>
-        <item>NEXT</item>
-        <item>PREVIOUS</item>
-        <item>PLAYPAUSE</item>
-        <item>SOUND</item>
-        <item>CAMERA</item>
-        <item>POWER</item>
+        <item>СЛЕДУЮЩИЙ</item>
+        <item>ПРЕДЫДУЩИЙ</item>
+        <item>ВОСПРПАУЗА</item>
+        <item>ЗВУК</item>
+        <item>КАМЕРА</item>
+        <item>ПИТАНИЕ</item>
     </string-array>
     <string-array name="volume_key_cursor_control_entries">
         <item>@string/volume_key_cursor_control_off</item>
@@ -1599,10 +1599,10 @@
         <item>2</item>
     </string-array>
     <string-array name="battery_bar_entries">
-        <item>Hide</item>
-        <item>Statusbar</item>
-        <item>Top of navbar</item>
-        <item>Bottom of navbar</item>
+        <item>Скрыть</item>
+        <item>Статусбар</item>
+        <item>Выше навбара</item>
+        <item>Ниже навбара</item>
     </string-array>
     <string-array name="battery_bar_values">
         <item>0</item>
@@ -1611,8 +1611,8 @@
         <item>3</item>
     </string-array>
     <string-array name="battery_bar_style_entries">
-        <item>Regular</item>
-        <item>Center-mirrored</item>
+        <item>Обычное</item>
+        <item>По центру</item>
     </string-array>
     <string-array name="battery_bar_style_values">
         <item>0</item>
@@ -1739,7 +1739,7 @@
     <string-array name="status_bar_icon_opacity_entries">
         <item>35%</item>
         <item>45%</item>
-        <item>55% (default)</item>
+        <item>55% (по умолч.)</item>
         <item>65%</item>
         <item>75%</item>
         <item>85%</item>
@@ -1757,10 +1757,10 @@
         <item>255</item>
     </string-array>
     <string-array name="notifs_beh_entries">
-        <item>Normal</item>
-        <item>Never expand</item>
-        <item>Always expand</item>
-        <item>Old style</item>
+        <item>Обычное</item>
+        <item>Не раскрывать</item>
+        <item>Всегда раскрывать</item>
+        <item>Старый стиль</item>
     </string-array>
     <string-array name="notifs_beh_values">
         <item>0</item>
