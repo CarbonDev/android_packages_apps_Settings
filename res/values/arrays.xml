@@ -1972,6 +1972,7 @@
         <item>5</item>
         <item>6</item>
         <item>8</item>
+    </string-array>
     <string-array name="lockscreen_dialog_entries" translatable="false">
         <item>@string/none</item>
         <item>@string/lockscreen_unlock</item>
@@ -2108,7 +2109,6 @@
         <item>2</item>
         <item>3</item>
     </string-array>
-<<<<<<< HEAD
 
     <string-array name="entries_pie_size">
         <item>@string/pie_size_small</item>
@@ -2297,40 +2297,7 @@
         <item>4</item>
     </string-array>
 
-    <!-- **** CARBON EDITS END **** -->
-=======
-    <string-array name="spen_entries" translatable="false">
-        <item>@string/home</item>
-        <item>@string/back</item>
-        <item>@string/recents</item>
-        <item>@string/recents_gb</item>
-        <item>@string/lastapp</item>
-        <item>@string/search</item>
-        <item>@string/menu</item>
-        <item>@string/open_ime_switcher</item>
-        <item>@string/nav_widgets</item>
-        <item>@string/kill_app</item>
-        <item>@string/power</item>
-        <item>@string/notifications</item>
-        <item>@string/custom_app</item>
-        <item>@string/blank</item>
-    </string-array>
-    <string-array name="spen_values" translatable="false">
-        <item>**home**</item>
-        <item>**back**</item>
-        <item>**recents**</item>
-        <item>**recentsgb**</item>
-        <item>**lastapp**</item>
-        <item>**search**</item>
-        <item>**menu**</item>
-        <item>**ime**</item>
-        <item>**widgets**</item>
-        <item>**kill**</item>
-        <item>**power**</item>
-        <item>**notifications**</item>
-        <item>**app**</item>
-        <item>**null**</item>
-    </string-array>
+    <!-- Custom toggle double-actions -->
     <string-array name="ribbon_icon_size_entries" translatable="false">
         <item>@string/icon_size_normal</item>
         <item>@string/icon_size_20</item>
@@ -2351,5 +2318,6 @@
         <item>1</item>
         <item>2</item>
     </string-array>
->>>>>>> 8bbe3f4... RC: AOKP Ribbon
+
+    <!-- **** CARBON EDITS END **** -->
 </resources>

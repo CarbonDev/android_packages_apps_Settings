@@ -1,5 +1,5 @@
 
-package com.android.setttings.carbon;
+package com.android.settings.carbon;
 
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -64,12 +64,12 @@ import java.io.FileNotFoundException;
 import com.android.internal.util.carbon.AwesomeConstants;
 import com.android.internal.util.carbon.NavBarHelpers;
 import com.android.internal.util.carbon.LockScreenHelpers;
-import com.android.setttings.SettingsPreferenceFragment;
-import com.android.setttings.R;
-import com.android.setttings.SettingsActivity;
-import com.android.setttings.util.Helpers;
-import com.android.setttings.util.ShortcutPickerHelper;
-import com.android.setttings.widgets.SeekBarPreference;
+import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.R;
+import com.android.settings.SettingsActivity;
+import com.android.settings.util.Helpers;
+import com.android.settings.util.ShortcutPickerHelper;
+import com.android.settings.widgets.SeekBarPreference;
 import net.margaritov.preference.colorpicker.ColorPickerDialog;
 
 public class RibbonTargets extends SettingsPreferenceFragment implements

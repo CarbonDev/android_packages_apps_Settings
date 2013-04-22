@@ -85,26 +85,20 @@ public class Lockscreens extends Fragment implements
     private Switch mLongPressStatus;
     private Switch mLockBatterySwitch;
     private Switch mLockRotateSwitch;
-    private Switch mLockVolControlSwitch;
-    private Switch mLockVolWakeSwitch;
     private Switch mLockPageHintSwitch;
     private Switch mLockMinimizeChallangeSwitch;
     private Switch mLockCarouselSwitch;
     private Switch mLockAllWidgetsSwitch;
-    private Switch mLockUnlimitedWidgetsSwitch;
     private Button mLockTextColorButton;
 
     private TextView mLongPressText;
     private TextView mLockTextColorText;
     private TextView mLockBatteryText;
     private TextView mLockRotateText;
-    private TextView mLockVolControlText;
-    private TextView mLockVolWakeText;
     private TextView mLockPageHintText;
     private TextView mLockMinimizeChallangeText;
     private TextView mLockCarouselText;
     private TextView mLockAllWidgetsText;
-    private TextView mLockUnlimitedWidgetsText;
 
     private ShortcutPickerHelper mPicker;
     private String[] targetActivities = new String[8];
@@ -220,7 +214,7 @@ public class Lockscreens extends Fragment implements
         mLockBatterySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton v, boolean checked) {
-                Settings.System.putBoolean(cr, Settings.System.LOCKSCREEN_BATTERY, checked);
+                Settings.System.putBoolean(cr, Settings.System.LOCKSCREEN_ALWAYS_SHOW_BATTERY, checked);
                 updateSwitches();
             }
         });
@@ -236,32 +230,6 @@ public class Lockscreens extends Fragment implements
             }
         });
 
-        mLockVolControlText = ((TextView) getActivity().findViewById(
-                R.id.lockscreen_vol_controls_id));
-        mLockVolControlText.setOnClickListener(mLockVolControlTextListener);
-        mLockVolControlSwitch = (Switch) getActivity().findViewById(
-                R.id.lockscreen_vol_controls_switch);
-        mLockVolControlSwitch
-                .setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton v, boolean checked) {
-                        Settings.System.putBoolean(cr, Settings.System.VOLUME_MUSIC_CONTROLS,
-                                checked);
-                        updateSwitches();
-                    }
-                });
-
-        mLockVolWakeText = ((TextView) getActivity().findViewById(R.id.lockscreen_vol_wake_id));
-        mLockVolWakeText.setOnClickListener(mLockVolWakeTextListener);
-        mLockVolWakeSwitch = (Switch) getActivity().findViewById(R.id.lockscreen_vol_wake_switch);
-        mLockVolWakeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton v, boolean checked) {
-                Settings.System.putBoolean(cr, Settings.System.VOLUME_WAKE_SCREEN, checked);
-                updateSwitches();
-            }
-        });
-
         mLockAllWidgetsText = ((TextView) getActivity()
                 .findViewById(R.id.lockscreen_all_widgets_id));
         mLockAllWidgetsText.setOnClickListener(mLockAllWidgetsTextListener);
@@ -273,21 +241,6 @@ public class Lockscreens extends Fragment implements
                     public void onCheckedChanged(CompoundButton v, boolean checked) {
                         Settings.System.putBoolean(cr, Settings.System.LOCKSCREEN_ALL_WIDGETS,
                                 checked);
-                        updateSwitches();
-                    }
-                });
-
-        mLockUnlimitedWidgetsText = ((TextView) getActivity().findViewById(
-                R.id.lockscreen_unlimited_widgets_id));
-        mLockUnlimitedWidgetsText.setOnClickListener(mLockUnlimitedWidgetsTextListener);
-        mLockUnlimitedWidgetsSwitch = (Switch) getActivity().findViewById(
-                R.id.lockscreen_unlimited_widgets_switch);
-        mLockUnlimitedWidgetsSwitch
-                .setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton v, boolean checked) {
-                        Settings.System.putBoolean(cr,
-                                Settings.System.LOCKSCREEN_UNLIMITED_WIDGETS, checked);
                         updateSwitches();
                     }
                 });
@@ -317,7 +270,7 @@ public class Lockscreens extends Fragment implements
                     @Override
                     public void onCheckedChanged(CompoundButton v, boolean checked) {
                         Settings.System.putBoolean(cr,
-                                Settings.System.LOCKSCREEN_MINIMIZE_LOCKSCREEN_CHALLENGE, checked);
+                                Settings.System.LOCKSCREEN_MAXIMIZE_WIDGETS, checked);
                         updateSwitches();
                     }
                 });
@@ -383,30 +336,6 @@ public class Lockscreens extends Fragment implements
         }
     };
 
-    private TextView.OnClickListener mLockVolControlTextListener = new TextView.OnClickListener() {
-        public void onClick(View v) {
-            createMessage(
-                    getResources().getString(R.string.volume_music_controls_title),
-                    getResources().getString(R.string.volume_music_controls_summary));
-        }
-    };
-
-    private TextView.OnClickListener mLockVolWakeTextListener = new TextView.OnClickListener() {
-        public void onClick(View v) {
-            createMessage(
-                    getResources().getString(R.string.volume_rocker_wake_title),
-                    getResources().getString(R.string.volume_rocker_wake_summary));
-        }
-    };
-
-    private TextView.OnClickListener mLockUnlimitedWidgetsTextListener = new TextView.OnClickListener() {
-        public void onClick(View v) {
-            createMessage(
-                    getResources().getString(R.string.lockscreen_unlimited_widgets_title),
-                    getResources().getString(R.string.lockscreen_unlimited_widgets_summary));
-        }
-    };
-
     private TextView.OnClickListener mLockAllWidgetsTextListener = new TextView.OnClickListener() {
         public void onClick(View v) {
             createMessage(
@@ -443,21 +372,15 @@ public class Lockscreens extends Fragment implements
 
     private void updateSwitches() {
         mLockBatterySwitch.setChecked(Settings.System.getBoolean(cr,
-                Settings.System.LOCKSCREEN_BATTERY, false));
+                Settings.System.LOCKSCREEN_ALWAYS_SHOW_BATTERY, false));
         mLockRotateSwitch.setChecked(Settings.System.getBoolean(cr,
                 Settings.System.LOCKSCREEN_AUTO_ROTATE, false));
-        mLockVolControlSwitch.setChecked(Settings.System.getBoolean(cr,
-                Settings.System.VOLUME_MUSIC_CONTROLS, false));
-        mLockVolWakeSwitch.setChecked(Settings.System.getBoolean(cr,
-                Settings.System.VOLUME_WAKE_SCREEN, false));
         mLockAllWidgetsSwitch.setChecked(Settings.System.getBoolean(cr,
                 Settings.System.LOCKSCREEN_ALL_WIDGETS, false));
-        mLockUnlimitedWidgetsSwitch.setChecked(Settings.System.getBoolean(cr,
-                Settings.System.LOCKSCREEN_UNLIMITED_WIDGETS, false));
         mLockPageHintSwitch.setChecked(Settings.System.getBoolean(cr,
                 Settings.System.LOCKSCREEN_HIDE_INITIAL_PAGE_HINTS, false));
         mLockMinimizeChallangeSwitch.setChecked(Settings.System.getBoolean(cr,
-                Settings.System.LOCKSCREEN_MINIMIZE_LOCKSCREEN_CHALLENGE, false));
+                Settings.System.LOCKSCREEN_MAXIMIZE_WIDGETS, false));
         mLockCarouselSwitch.setChecked(Settings.System.getBoolean(cr,
                 Settings.System.LOCKSCREEN_USE_WIDGET_CONTAINER_CAROUSEL, false));
     }
@@ -868,23 +791,17 @@ public class Lockscreens extends Fragment implements
             mLongPressStatus.setVisibility(View.VISIBLE);
             mLockBatterySwitch.setVisibility(View.VISIBLE);
             mLockRotateSwitch.setVisibility(View.VISIBLE);
-            mLockVolControlSwitch.setVisibility(View.VISIBLE);
-            mLockVolWakeSwitch.setVisibility(View.VISIBLE);
             mLockPageHintSwitch.setVisibility(View.VISIBLE);
             mLockMinimizeChallangeSwitch.setVisibility(View.VISIBLE);
             mLockCarouselSwitch.setVisibility(View.VISIBLE);
             mLockAllWidgetsSwitch.setVisibility(View.VISIBLE);
-            mLockUnlimitedWidgetsSwitch.setVisibility(View.VISIBLE);
             mLongPressText.setVisibility(View.VISIBLE);
             mLockBatteryText.setVisibility(View.VISIBLE);
             mLockRotateText.setVisibility(View.VISIBLE);
-            mLockVolControlText.setVisibility(View.VISIBLE);
-            mLockVolWakeText.setVisibility(View.VISIBLE);
             mLockPageHintText.setVisibility(View.VISIBLE);
             mLockMinimizeChallangeText.setVisibility(View.VISIBLE);
             mLockCarouselText.setVisibility(View.VISIBLE);
             mLockAllWidgetsText.setVisibility(View.VISIBLE);
-            mLockUnlimitedWidgetsText.setVisibility(View.VISIBLE);
             mLockTextColorText.setVisibility(View.VISIBLE);
             mLockTextColorButton.setVisibility(View.VISIBLE);
             mHelperText.setText(getResources().getString(R.string.lockscreen_options_info));
@@ -892,23 +809,17 @@ public class Lockscreens extends Fragment implements
             mLongPressStatus.setVisibility(View.GONE);
             mLockBatterySwitch.setVisibility(View.GONE);
             mLockRotateSwitch.setVisibility(View.GONE);
-            mLockVolControlSwitch.setVisibility(View.GONE);
-            mLockVolWakeSwitch.setVisibility(View.GONE);
             mLockPageHintSwitch.setVisibility(View.GONE);
             mLockMinimizeChallangeSwitch.setVisibility(View.GONE);
             mLockCarouselSwitch.setVisibility(View.GONE);
             mLockAllWidgetsSwitch.setVisibility(View.GONE);
-            mLockUnlimitedWidgetsSwitch.setVisibility(View.GONE);
             mLongPressText.setVisibility(View.GONE);
             mLockBatteryText.setVisibility(View.GONE);
             mLockRotateText.setVisibility(View.GONE);
-            mLockVolControlText.setVisibility(View.GONE);
-            mLockVolWakeText.setVisibility(View.GONE);
             mLockPageHintText.setVisibility(View.GONE);
             mLockMinimizeChallangeText.setVisibility(View.GONE);
             mLockCarouselText.setVisibility(View.GONE);
             mLockAllWidgetsText.setVisibility(View.GONE);
-            mLockUnlimitedWidgetsText.setVisibility(View.GONE);
             mLockTextColorText.setVisibility(View.GONE);
             mLockTextColorButton.setVisibility(View.GONE);
             mHelperText.setText(getResources().getString(R.string.lockscreen_target_info));

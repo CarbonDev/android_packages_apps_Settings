@@ -36,7 +36,7 @@
         android:id="@+id/lock_screen_settings"
         android:title="@string/lock_screen_title"
         android:icon="@drawable/ic_carbon_lockscreen"
-        android:fragment="com.android.settings.carbon.LockscreenInterface" />
+        android:fragment="com.android.settings.carbon.Lockscreens" />
 
     <!-- Navigation -->
     <PreferenceScreen
