@@ -132,7 +132,7 @@ public class NavRingTargets extends SettingsPreferenceFragment implements
 
         mPicker = new ShortcutPickerHelper(this, this);
         boolean tabletui = Settings.System.getInt(cr, Settings.System.CURRENT_UI_MODE, 0) == 1;
-        boolean dualpanel = Settings.System.getBoolean(cr, Settings.System.FORCE_DUAL_PANEL, false);
+        boolean dualpanel = Settings.System.getBoolean(cr, Settings.System.DUAL_PANE_PREFS, false);
         if (dualpanel) {
             return inflater.inflate(tabletui ? R.layout.navigation_ring_targets_tablet_dual
                     : R.layout.navigation_ring_targets, container, false);
