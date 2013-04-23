@@ -5410,9 +5410,9 @@
     <string name="center">Centered</string>
     <string name="top">Top</string>
     <string name="bottom">Bottom</string>
-    <string name="ribbon_settings_title">Ribbon options</string>
+    <string name="ribbon_settings_title">Ribbons</string>
     <string name="ribbon_settings_summary">@null</string>
-    <string name="title_ribbon">Ribbon Options</string>
+    <string name="title_ribbon">Ribbons</string>
 
     <!-- Lockscreen Targets-->
     <string name="lockscreen_targets_title">Lockscreen targets</string>
