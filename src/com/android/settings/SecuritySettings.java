@@ -614,7 +614,6 @@ public class SecuritySettings extends SettingsPreferenceFragment
         if (mVisiblePattern != null) {
             mVisiblePattern.setChecked(lockPatternUtils.isVisiblePatternEnabled());
         }
-
         if (mVisibleErrorPattern != null) {
             mVisibleErrorPattern.setChecked(lockPatternUtils.isShowErrorPath());
         }
@@ -695,7 +694,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
         } else if (preference == mSlideLockDelayToggle) {
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.SCREEN_LOCK_SLIDE_DELAY_TOGGLE, isToggled(preference) ? 1 : 0);
-        } if (preference == mQuickUnlockScreen) {
+        } else if (preference == mQuickUnlockScreen) {
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.LOCKSCREEN_QUICK_UNLOCK_CONTROL, isToggled(preference) ? 1 : 0);
         } else if (preference == mMenuUnlock) {
