@@ -17,7 +17,6 @@
 
 package com.android.settings;
 
-
 import static android.provider.Settings.System.SCREEN_OFF_TIMEOUT;
 
 import android.app.Activity;
