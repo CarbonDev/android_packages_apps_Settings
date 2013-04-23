@@ -3144,8 +3144,8 @@ android.permission.ACCESS_SUPERUSER
     <string name="power_button_torch_summary">ПРЕДУПРЕЖДЕНИЕ: функция может плохо работать на устройствах с встроенными батареями и устройствах Nexus. Используйте на свой страх и риск! Удерживайте кнопку питания при выключенном экране для активации фонарика. Отпустите для отключения.</string>
     <string name="light_sensor_current_value">Текущее значение светового сенсора: %d lux</string>
     <string name="auto_brightness_dialog_title">Автоматические уровни яркости</string>
-    <string name="auto_brightness_level_format"><xliff:g id="level">%1$s</xliff:g> лк</string>
-    <string name="auto_brightness_last_level_format"><xliff:g id="level">%1$d</xliff:g> -\n\u221e лк</string>
+    <string name="auto_brightness_level_format">"%1$s -
+%2$s lux"</string>
     <string name="auto_brightness_brightness_format">%s%%</string>
     <string name="auto_brightness_adjust_button">Настроить</string>
     <string name="auto_brightness_reset_button">Сброс</string>

@@ -40,7 +40,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.SeekBar;
 
-import com.android.settings.AutoBrightnessCustomizeDialog;
+import com.android.settings.carbon.AutoBrightnessCustomizeDialog;
 
 public class BrightnessPreference extends SeekBarDialogPreference implements
         SeekBar.OnSeekBarChangeListener, CheckBox.OnCheckedChangeListener {
