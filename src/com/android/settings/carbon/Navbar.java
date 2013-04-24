@@ -197,6 +197,9 @@ public class Navbar extends SettingsPreferenceFragment implements
         mNavBarHideTimeout.setValue(Settings.System.getInt(mContentRes,
                 Settings.System.NAV_HIDE_TIMEOUT, 3000) + "");
 
+        boolean hasNavBarByDefault = mContext.getResources().getBoolean(
+                com.android.internal.R.bool.config_showNavigationBar);
+
         mNavigationBarColor = (ColorPickerPreference) findPreference(PREF_NAV_COLOR);
         mNavigationBarColor.setOnPreferenceChangeListener(this);
 
