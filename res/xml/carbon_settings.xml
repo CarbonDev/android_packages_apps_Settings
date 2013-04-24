@@ -36,7 +36,7 @@
         android:id="@+id/lock_screen_settings"
         android:title="@string/lock_screen_title"
         android:icon="@drawable/ic_carbon_lockscreen"
-        android:fragment="com.android.settings.carbon.LockscreenInterface" />
+        android:fragment="com.android.settings.carbon.Lockscreens" />
 
     <!-- Navigation -->
     <PreferenceScreen
@@ -65,6 +65,14 @@
         android:title="@string/power_widget_title"
         android:icon="@drawable/ic_carbon_powerwidget"
         android:fragment="com.android.settings.carbon.PowerWidget" />
+
+    <!-- Ribbons -->
+    <PreferenceScreen
+        android:id="@+id/ribbon_targets"
+        android:fragment="com.android.settings.carbon.RibbonTargets"
+        android:icon="@drawable/ic_rom_control_ribbon"
+        android:title="@string/ribbon_settings_title"
+        android:summary="@string/ribbon_settings_summary" />
 
     <!-- Statusbar -->
     <PreferenceScreen

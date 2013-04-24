@@ -36,6 +36,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.os.UserHandle;
+import android.preference.PreferenceFragment;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.text.TextUtils;
@@ -61,7 +62,7 @@ import java.io.FileOutputStream;
 import java.net.URISyntaxException;
 import java.lang.NumberFormatException;
 
-public class NavRingTargets extends Fragment implements
+public class NavRingTargets extends SettingsPreferenceFragment implements
         ShortcutPickerHelper.OnPickListener, GlowPadView.OnTriggerListener {
     private static final String TAG = "NavRing";
     private static final boolean DEBUG = false;
@@ -131,8 +132,14 @@ public class NavRingTargets extends Fragment implements
 
         mPicker = new ShortcutPickerHelper(this, this);
         boolean tabletui = Settings.System.getInt(cr, Settings.System.CURRENT_UI_MODE, 0) == 1;
-        return inflater.inflate(tabletui ? R.layout.navigation_ring_targets_tablet
-                                : R.layout.navigation_ring_targets, container, false);
+        boolean dualpanel = Settings.System.getBoolean(cr, Settings.System.DUAL_PANE_PREFS, false);
+        if (dualpanel) {
+            return inflater.inflate(tabletui ? R.layout.navigation_ring_targets_tablet_dual
+                    : R.layout.navigation_ring_targets, container, false);
+        } else {
+            return inflater.inflate(tabletui ? R.layout.navigation_ring_targets_tablet
+                    : R.layout.navigation_ring_targets, container, false);
+        }
     }
 
     @Override
@@ -551,7 +558,7 @@ public class NavRingTargets extends Fragment implements
 
             final AlertDialog dialog = new AlertDialog.Builder(mContext)
                 .setTitle(title)
-                .setSingleChoiceItems(entries, -1, l)
+                .setItems(entries, l)
                 .create();
 
             dialog.show();

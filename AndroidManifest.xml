@@ -1158,7 +1158,7 @@
         </activity-alias>
 
         <activity android:name=".AppPicker" android:label="@string/select_application"
-                android:theme="@android:style/Theme.Holo.Dialog" />
+                android:theme="@*android:style/Theme.Holo.Dialog" />
 
         <activity android:name="Settings$UsbSettingsActivity"
                 android:label="@string/storage_title_usb"
@@ -1277,7 +1277,7 @@
 
         <activity android:name="ActivityPicker"
                 android:label="@string/activity_picker_label"
-                android:theme="@*android:style/Theme.Holo.Dialog.Alert"
+                android:theme="@*android:style/Theme.Holo.Dialog"
                 android:finishOnCloseSystemDialogs="true">
             <intent-filter>
                 <action android:name="android.intent.action.PICK_ACTIVITY" />
@@ -1396,7 +1396,7 @@
         <!-- Standard picker for widgets -->
         <activity android:name="AppWidgetPickActivity"
                 android:label="@string/widget_picker_title"
-                android:theme="@*android:style/Theme.Holo.Dialog.Alert"
+                android:theme="@*android:style/Theme.Holo.Dialog"
                 android:finishOnCloseSystemDialogs="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_PICK" />
@@ -1405,7 +1405,7 @@
         </activity>
 
         <activity android:name="AllowBindAppWidgetActivity"
-                android:theme="@*android:style/Theme.Holo.Dialog.Alert"
+                android:theme="@*android:style/Theme.Holo.Dialog"
                 android:finishOnCloseSystemDialogs="true"
                 android:excludeFromRecents="true">
             <intent-filter>
@@ -1536,10 +1536,7 @@
         <!-- Carbon Activities Start -->
         <activity android:name=".carbon.About" />
         <activity android:name=".carbon.InterfaceSettings" />
-        <activity android:name=".carbon.LockscreenTargets" />
-        <activity android:name=".carbon.LockscreenInterface" />
-        <activity android:name=".carbon.LockscreenButtons" />
-        <activity android:name=".carbon.LockscreenShortcuts" />
+        <activity android:name=".carbon.Lockscreens" />
         <activity android:name=".carbon.Navbar" />
         <activity android:name=".carbon.NavRingTargets" />
         <activity android:name=".carbon.NotificationDrawerStyle" />
@@ -1549,6 +1546,7 @@
         <activity android:name=".carbon.PowerMenu" />
         <activity android:name=".carbon.PowerWidget" />
         <activity android:name=".carbon.RamBar" />
+        <activity android:name=".carbon.RibbonTargets" />
         <activity android:name=".carbon.StatusBar" />
         <activity android:name=".carbon.StatusBarBattery" />
         <activity android:name=".carbon.StatusBarClockStyle" />
@@ -1670,16 +1668,6 @@
         <activity android:name=".notificationlight.BatteryLightSettings" />
 
         <activity android:name=".ApnEditor" />
-
-        <activity
-            android:name=".carbon.NavRingTargets"
-            android:label="@string/title_navring" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="com.android.settings.SHORTCUT" />
-            </intent-filter>
-        </activity>
 
         <!-- Carbon Activities End -->
 

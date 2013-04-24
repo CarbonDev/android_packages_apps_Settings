@@ -104,9 +104,13 @@
     <!--  Amount of Margin to offset NavRing in Portrait Mode -->
     <dimen name="navring_left_margin_port_sw">200dp</dimen>
     <dimen name="navring_left_margin_port">-100dp</dimen>
+    <!--  Amount of Margin to offset NavRing in Portrait Mode while DualPane -->
+    <dimen name="navring_left_margin_port_dual">-400dp</dimen>
     <!--  Amount of Margin to offset NavRing in Landscape Mode -->
     <dimen name="navring_left_margin_land_sw">500dp</dimen>
     <dimen name="navring_left_margin_land">250dp</dimen>
+    <!--  Amount of Margin to offset NavRing while DualPane -->
+    <dimen name="navring_left_margin_land_dual">-600dp</dimen>
     <!--  Height of NavRing in Tablet Mode Landscape -->
     <dimen name="navring_height_tablet_landscape">320dp</dimen>
     <!--  Height of NavRing in Tablet Mode Portrait -->
@@ -120,6 +124,11 @@
     <!-- height of an expanded list item in edit playlist mode -->
     <dimen name="expanded_height">128dip</dimen>
 
-    <!-- **** CARBON ADDITIONS END **** -->
+    <dimen name="auto_brightness_preview_text_size">8dip</dimen>
+    <dimen name="auto_brightness_preview_stroke_width">1dip</dimen>
+    <dimen name="auto_brightness_preview_marker_size">3dip</dimen>
+    <dimen name="auto_brightness_preview_grid_margin">3dip</dimen>
+    <dimen name="auto_brightness_dialog_more_button_size">48dp</dimen>
 
+    <!-- **** CARBON ADDITIONS END **** -->
 </resources>

@@ -93,6 +93,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private static final String KEY_LOCK_VOLUME_KEYS = "lock_volume_keys";
     private static final String KEY_CAMERA_SOUNDS = "camera_sounds";
     private static final String PROP_CAMERA_SOUND = "persist.sys.camera-sound";
+    private static final String KEY_SAFE_HEADSET_VOLUME = "safe_headset_volume";
 
     private static final String RING_MODE_NORMAL = "normal";
     private static final String RING_MODE_VIBRATE = "vibrate";
@@ -124,6 +125,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private CheckBoxPreference mSwapVolumeButtons;
     private CheckBoxPreference mLockVolumeKeys;
     private CheckBoxPreference mCameraSounds;
+    private CheckBoxPreference mSafeHeadsetVolume;
 
     private Runnable mRingtoneLookupRunnable;
 
@@ -190,6 +192,13 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         } else {
             mRingMode.setOnPreferenceChangeListener(this);
         }
+
+        mSafeHeadsetVolume = (CheckBoxPreference) findPreference(KEY_SAFE_HEADSET_VOLUME);
+        mSafeHeadsetVolume.setPersistent(false);
+        boolean safeMediaVolumeEnabled = getResources().getBoolean(
+                com.android.internal.R.bool.config_safe_media_volume_enabled);
+        mSafeHeadsetVolume.setChecked(Settings.System.getInt(resolver,
+                Settings.System.SAFE_HEADSET_VOLUME, safeMediaVolumeEnabled ? 1 : 0) != 0);
 
         mVibrateWhenRinging = (CheckBoxPreference) findPreference(KEY_VIBRATE);
         mVibrateWhenRinging.setPersistent(false);
@@ -329,13 +338,11 @@ public class SoundSettings extends SettingsPreferenceFragment implements
 
         filter = new IntentFilter(AudioManager.RINGER_MODE_CHANGED_ACTION);
         getActivity().registerReceiver(mReceiver, filter);
-
     }
 
     @Override
     public void onPause() {
         super.onPause();
-
         getActivity().unregisterReceiver(mReceiver);
     }
 
@@ -417,6 +424,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         if (preference == mVibrateWhenRinging) {
             Settings.System.putInt(getContentResolver(), Settings.System.VIBRATE_WHEN_RINGING,
                     mVibrateWhenRinging.isChecked() ? 1 : 0);
+
         } else if (preference == mDtmfTone) {
             Settings.System.putInt(getContentResolver(), Settings.System.DTMF_TONE_WHEN_DIALING,
                     mDtmfTone.isChecked() ? 1 : 0);
@@ -501,6 +509,11 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         } else if (preference == mHeadsetConnectPlayer) {
             Settings.System.putInt(getContentResolver(), Settings.System.HEADSET_CONNECT_PLAYER,
                     mHeadsetConnectPlayer.isChecked() ? 1 : 0);
+
+        } else if (preference == mSafeHeadsetVolume) {
+            Settings.System.putInt(getContentResolver(), Settings.System.SAFE_HEADSET_VOLUME,
+                    mSafeHeadsetVolume.isChecked() ? 1 : 0);
+
         } else {
             // If we didn't handle it, let preferences handle it.
             return super.onPreferenceTreeClick(preferenceScreen, preference);
@@ -519,8 +532,10 @@ public class SoundSettings extends SettingsPreferenceFragment implements
             } catch (NumberFormatException e) {
                 Log.e(TAG, "could not persist emergency tone setting", e);
             }
+
         } else if (preference == mRingMode) {
             setPhoneRingModeValue(objValue.toString());
+
         } else if (preference == mVolumeOverlay) {
             final int value = Integer.valueOf((String) objValue);
             final int index = mVolumeOverlay.findIndexOfValue((String) objValue);
