@@ -948,6 +948,54 @@
         <item>600000</item>
         <item>1800000</item>
     </string-array>
+    <string-array name="lockscreen_icon_picker_labels">
+        <item>@string/icon_picker_alarm</item>
+        <item>@string/icon_picker_browser</item>
+        <item>@string/icon_picker_calendar</item>
+        <item>@string/icon_picker_camera</item>
+        <item>@string/icon_picker_chrome</item>
+        <item>@string/icon_picker_email</item>
+        <item>@string/icon_picker_email2</item>
+        <item>@string/icon_picker_facebook</item>
+        <item>@string/icon_picker_gallery</item>
+        <item>@string/icon_picker_google_small</item>
+        <item>@string/icon_picker_googleplus</item>
+        <item>@string/icon_picker_googletalk</item>
+        <item>@string/icon_picker_maps</item>
+        <item>@string/icon_picker_sms</item>
+        <item>@string/icon_picker_movie</item>
+        <item>@string/icon_picker_music</item>
+        <item>@string/icon_picker_nav_normal</item>
+        <item>@string/icon_picker_phone</item>
+        <item>@string/icon_picker_podcast</item>
+        <item>@string/icon_picker_rss</item>
+        <item>@string/icon_picker_search</item>
+        <item>@string/icon_picker_twitter</item>
+    </string-array>
+    <array name="lockscreen_icon_picker_icons">
+        <item>@*android:drawable/ic_lockscreen_forgotpassword_pressed</item>
+        <item>@*android:drawable/ic_lockscreen_handle</item>
+        <item>@*android:drawable/ic_lockscreen_handle_pressed</item>
+        <item>@*android:drawable/ic_lockscreen_lock_pressed</item>
+        <item>@*android:drawable/ic_lockscreen_player_background</item>
+        <item>@*android:drawable/ic_lockscreen_sim</item>
+        <item>@*android:drawable/ic_lockscreen_silent_focused</item>
+        <item>@*android:drawable/ic_lockscreen_soundon_normal</item>
+        <item>@*android:drawable/ic_lockscreen_unlock_phantom</item>
+        <item>@*android:drawable/ic_media_embed_play</item>
+        <item>@*android:drawable/ic_media_group_collapse</item>
+        <item>@*android:drawable/ic_media_route_connecting_holo_dark</item>
+        <item>@*android:drawable/ic_media_route_on_0_holo_dark</item>
+        <item>@*android:drawable/ic_menu_copy_holo_dark</item>
+        <item>@*android:drawable/ic_media_route_on_1_holo_dark</item>
+        <item>@*android:drawable/ic_media_route_on_2_holo_dark</item>
+        <item>@*android:drawable/ic_media_route_on_holo_dark</item>
+        <item>@*android:drawable/ic_media_video_poster</item>
+        <item>@*android:drawable/ic_menu_archive</item>
+        <item>@*android:drawable/ic_menu_back</item>
+        <item>@*android:drawable/ic_maps_indicator_current_position_anim2</item>
+        <item>@*android:drawable/ic_menu_find</item>
+    </array>
     <string-array name="profile_entries">
         <item>Вкл</item>
         <item>Выкл</item>
