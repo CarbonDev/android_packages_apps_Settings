@@ -628,15 +628,38 @@
         <item>@string/notification_shortcuts_icon_picker_unlock</item>
     </string-array>
     <array name="notification_shortcuts_icon_picker_icons">
+        <item>@*android:drawable/jog_dial_arrow_long_left_green</item>
+        <item>@*android:drawable/jog_dial_arrow_long_left_yellow</item>
+        <item>@*android:drawable/jog_dial_arrow_long_middle_yellow</item>
+        <item>@*android:drawable/jog_dial_arrow_long_right_red</item>
+        <item>@*android:drawable/jog_dial_arrow_long_right_yellow</item>
+        <item>@*android:drawable/jog_dial_arrow_short_left</item>
+        <item>@*android:drawable/jog_dial_arrow_short_left_and_right</item>
+        <item>@*android:drawable/jog_dial_arrow_short_right</item>
+        <item>@*android:drawable/jog_dial_bg</item>
+        <item>@*android:drawable/jog_dial_dimple</item>
+        <item>@*android:drawable/jog_dial_dimple_dim</item>
+        <item>@*android:drawable/jog_tab_bar_left_answer</item>
+        <item>@*android:drawable/jog_tab_bar_left_end_confirm_gray</item>
+        <item>@*android:drawable/jog_tab_bar_left_end_confirm_green</item>
+        <item>@*android:drawable/jog_tab_bar_left_end_confirm_red</item>
+        <item>@*android:drawable/jog_tab_bar_left_end_confirm_yellow</item>
+        <item>@*android:drawable/jog_tab_bar_left_end_normal</item>
+        <item>@*android:drawable/jog_tab_bar_left_end_pressed</item>
+        <item>@*android:drawable/jog_tab_bar_left_generic</item>
+        <item>@*android:drawable/jog_tab_bar_left_unlock</item>
+        <item>@*android:drawable/jog_tab_bar_right_decline</item>
+        <item>@*android:drawable/jog_tab_bar_right_end_confirm_gray</item>
+        <item>@*android:drawable/jog_tab_bar_right_end_confirm_green</item>
         <item>@*android:drawable/jog_tab_bar_right_end_confirm_red</item>
         <item>@*android:drawable/jog_tab_bar_right_end_confirm_yellow</item>
         <item>@*android:drawable/jog_tab_bar_right_end_normal</item>
         <item>@*android:drawable/jog_tab_bar_right_end_pressed</item>
         <item>@*android:drawable/jog_tab_bar_right_generic</item>
         <item>@*android:drawable/jog_tab_bar_right_sound_off</item>
-        <item>@*android:drawable/jog_tab_bar_right_sound_on</item>
         <item>@*android:drawable/jog_tab_left_answer</item>
         <item>@*android:drawable/jog_tab_left_confirm_gray</item>
+        <item>@*android:drawable/jog_tab_right_pressed</item>
         <item>@*android:drawable/jog_tab_left_confirm_green</item>
         <item>@*android:drawable/jog_tab_left_confirm_red</item>
         <item>@*android:drawable/jog_tab_left_confirm_yellow</item>
@@ -651,36 +674,13 @@
         <item>@*android:drawable/jog_tab_right_decline</item>
         <item>@*android:drawable/jog_tab_right_generic</item>
         <item>@*android:drawable/jog_tab_right_normal</item>
-        <item>@*android:drawable/jog_tab_right_pressed</item>
         <item>@*android:drawable/jog_tab_right_sound_off</item>
         <item>@*android:drawable/jog_tab_right_sound_on</item>
         <item>@*android:drawable/jog_tab_target_gray</item>
+        <item>@*android:drawable/jog_tab_bar_right_sound_on</item>
         <item>@*android:drawable/jog_tab_target_green</item>
         <item>@*android:drawable/jog_tab_target_red</item>
-        <item>@*android:drawable/keyboard_accessory_bg_landscape</item>
-        <item>@*android:drawable/keyboard_background</item>
-        <item>@*android:drawable/kg_widget_delete_drop_target</item>
-        <item>@*android:drawable/keyboard_key_feedback</item>
-        <item>@*android:drawable/keyboard_key_feedback_background</item>
-        <item>@*android:drawable/keyboard_key_feedback_more_background</item>
-        <item>@*android:drawable/keyboard_popup_panel_background</item>
-        <item>@*android:drawable/keyboard_popup_panel_trans_background</item>
-        <item>@*android:drawable/keyguard_expand_challenge_handle</item>
-        <item>@*android:drawable/kg_add_widget</item>
-        <item>@*android:drawable/kg_bouncer_bg_white</item>
-        <item>@*android:drawable/kg_security_grip</item>
-        <item>@*android:drawable/kg_security_lock</item>
-        <item>@*android:drawable/kg_security_lock_focused</item>
-        <item>@*android:drawable/kg_security_lock_normal</item>
-        <item>@*android:drawable/kg_security_lock_pressed</item>
-        <item>@*android:drawable/kg_widget_bg_padded</item>
-        <item>@*android:drawable/light_header</item>
-        <item>@*android:drawable/light_header_dither</item>
-        <item>@*android:drawable/list_activated_holo</item>
         <item>@*android:drawable/jog_tab_target_yellow</item>
-        <item>@*android:drawable/list_divider_holo_dark</item>
-        <item>@*android:drawable/list_divider_holo_light</item>
-        <item>@*android:drawable/list_divider_horizontal_holo_dark</item>
         </array>
     <string-array name="lcd_density_stock_entries">
         <item>160 -- mdpi</item>
@@ -753,6 +753,32 @@
         <item>**power**</item>
         <item>**assist**</item>
         <item>**app**</item>
+    </string-array>
+    <string-array name="ribbon_dialog_entries">
+        <item>@string/navring_short</item>
+        <item>@string/navring_long</item>
+        <item>@string/navring_icon</item>
+        <item>@string/ribbon_insert</item>
+        <item>@string/navbar_delete_menu</item>
+    </string-array>
+    <string-array name="ribbon_dialog_values">
+        <item>**short**</item>
+        <item>**long**</item>
+        <item>**icon**</item>
+        <item>**insert**</item>
+        <item>**remove**</item>
+    </string-array>
+    <string-array name="ribbon_chooser_entries">
+        <item>@string/ribbon_lockscreen</item>
+        <item>@string/ribbon_notifications</item>
+        <item>@string/ribbon_quicksettings</item>
+        <item>@string/ribbon_swipe</item>
+    </string-array>
+    <string-array name="ribbon_chooser_values">
+        <item>0</item>
+        <item>1</item>
+        <item>3</item>
+        <item>2</item>
     </string-array>
     <string-array name="navring_long_dialog_entries">
         <item>@string/navring_short</item>
@@ -922,63 +948,15 @@
         <item>600000</item>
         <item>1800000</item>
     </string-array>
-    <string-array name="lockscreen_icon_picker_labels">
-        <item>@string/icon_picker_alarm</item>
-        <item>@string/icon_picker_browser</item>
-        <item>@string/icon_picker_calendar</item>
-        <item>@string/icon_picker_camera</item>
-        <item>@string/icon_picker_chrome</item>
-        <item>@string/icon_picker_email</item>
-        <item>@string/icon_picker_email2</item>
-        <item>@string/icon_picker_facebook</item>
-        <item>@string/icon_picker_gallery</item>
-        <item>@string/icon_picker_google_small</item>
-        <item>@string/icon_picker_googleplus</item>
-        <item>@string/icon_picker_googletalk</item>
-        <item>@string/icon_picker_maps</item>
-        <item>@string/icon_picker_sms</item>
-        <item>@string/icon_picker_movie</item>
-        <item>@string/icon_picker_music</item>
-        <item>@string/icon_picker_nav_normal</item>
-        <item>@string/icon_picker_phone</item>
-        <item>@string/icon_picker_podcast</item>
-        <item>@string/icon_picker_rss</item>
-        <item>@string/icon_picker_search</item>
-        <item>@string/icon_picker_twitter</item>
-    </string-array>
-    <array name="lockscreen_icon_picker_icons">
-        <item>@*android:drawable/ic_lockscreen_forgotpassword_pressed</item>
-        <item>@*android:drawable/ic_lockscreen_handle</item>
-        <item>@*android:drawable/ic_lockscreen_handle_pressed</item>
-        <item>@*android:drawable/ic_lockscreen_lock_pressed</item>
-        <item>@*android:drawable/ic_lockscreen_player_background</item>
-        <item>@*android:drawable/ic_lockscreen_sim</item>
-        <item>@*android:drawable/ic_lockscreen_silent_focused</item>
-        <item>@*android:drawable/ic_lockscreen_soundon_normal</item>
-        <item>@*android:drawable/ic_lockscreen_unlock_phantom</item>
-        <item>@*android:drawable/ic_media_embed_play</item>
-        <item>@*android:drawable/ic_media_group_collapse</item>
-        <item>@*android:drawable/ic_media_route_connecting_holo_dark</item>
-        <item>@*android:drawable/ic_media_route_on_0_holo_dark</item>
-        <item>@*android:drawable/ic_menu_copy_holo_dark</item>
-        <item>@*android:drawable/ic_media_route_on_1_holo_dark</item>
-        <item>@*android:drawable/ic_media_route_on_2_holo_dark</item>
-        <item>@*android:drawable/ic_media_route_on_holo_dark</item>
-        <item>@*android:drawable/ic_media_video_poster</item>
-        <item>@*android:drawable/ic_menu_archive</item>
-        <item>@*android:drawable/ic_menu_back</item>
-        <item>@*android:drawable/ic_maps_indicator_current_position_anim2</item>
-        <item>@*android:drawable/ic_menu_find</item>
-    </array>
     <string-array name="profile_entries">
         <item>Вкл</item>
         <item>Выкл</item>
         <item>Не переписывать</item>
     </string-array>
     <string-array name="profile_values">
-        <item>ПЕРЕПИСАТЬ</item>
-        <item>ПОДАВИТЬ</item>
-        <item>УМОЛЧАНИЯ</item>
+        <item>OVERRIDE</item>
+        <item>SUPPRESS</item>
+        <item>DEFAULT</item>
     </string-array>
     <string-array name="profile_connection_entries">
         <item>Откл</item>
@@ -1145,8 +1123,8 @@
     </string-array>
     <string-array name="clock_date_style_entries">
         <item>Нормальный</item>
-        <item>Нижн. регистр</item>
-        <item>Верхн. регистр</item>
+        <item>Нижн.регистр</item>
+        <item>Верхн.регистр</item>
     </string-array>
     <string-array name="clock_date_style_values">
         <item>0</item>
@@ -1172,7 +1150,7 @@
         <item>EEE MMMM dd</item>
         <item>EEEE dd/MM</item>
         <item>EEEE MM/dd</item>
-        <item>Custom java format</item>
+        <item>Пользовательский</item>
     </string-array>
     <string-array name="clock_date_format_values">
         <item>dd/MM/yy</item>
@@ -1193,7 +1171,7 @@
         <item>EEE MMMM dd</item>
         <item>EEEE dd/MM</item>
         <item>EEEE MM/dd</item>
-        <item>Пользовательский</item>
+        <item>Custom java format</item>
     </string-array>
     <string-array name="icon_types">
         <item>@string/icon_default</item>
@@ -1256,6 +1234,29 @@
         <item>@string/lockscreen_shortcuts_icon_picker_unlock</item>
     </string-array>
     <array name="lockscreen_shortcut_icon_picker_icons">
+        <item>@*android:drawable/jog_dial_arrow_long_left_green</item>
+        <item>@*android:drawable/jog_dial_arrow_long_left_yellow</item>
+        <item>@*android:drawable/jog_dial_arrow_long_middle_yellow</item>
+        <item>@*android:drawable/jog_dial_arrow_long_right_red</item>
+        <item>@*android:drawable/jog_dial_arrow_long_right_yellow</item>
+        <item>@*android:drawable/jog_dial_arrow_short_left</item>
+        <item>@*android:drawable/jog_dial_arrow_short_left_and_right</item>
+        <item>@*android:drawable/jog_dial_arrow_short_right</item>
+        <item>@*android:drawable/jog_dial_bg</item>
+        <item>@*android:drawable/jog_dial_dimple</item>
+        <item>@*android:drawable/jog_dial_dimple_dim</item>
+        <item>@*android:drawable/jog_tab_bar_left_answer</item>
+        <item>@*android:drawable/jog_tab_bar_left_end_confirm_gray</item>
+        <item>@*android:drawable/jog_tab_bar_left_end_confirm_green</item>
+        <item>@*android:drawable/jog_tab_bar_left_end_confirm_red</item>
+        <item>@*android:drawable/jog_tab_bar_left_end_confirm_yellow</item>
+        <item>@*android:drawable/jog_tab_bar_left_end_normal</item>
+        <item>@*android:drawable/jog_tab_bar_left_end_pressed</item>
+        <item>@*android:drawable/jog_tab_bar_left_generic</item>
+        <item>@*android:drawable/jog_tab_bar_left_unlock</item>
+        <item>@*android:drawable/jog_tab_bar_right_decline</item>
+        <item>@*android:drawable/jog_tab_bar_right_end_confirm_gray</item>
+        <item>@*android:drawable/jog_tab_bar_right_end_confirm_green</item>
         <item>@*android:drawable/jog_tab_bar_right_end_confirm_red</item>
         <item>@*android:drawable/jog_tab_bar_right_end_confirm_yellow</item>
         <item>@*android:drawable/jog_tab_bar_right_end_normal</item>
@@ -1286,29 +1287,6 @@
         <item>@*android:drawable/jog_tab_target_green</item>
         <item>@*android:drawable/jog_tab_target_red</item>
         <item>@*android:drawable/jog_tab_target_yellow</item>
-        <item>@*android:drawable/keyboard_accessory_bg_landscape</item>
-        <item>@*android:drawable/keyboard_background</item>
-        <item>@*android:drawable/keyboard_key_feedback</item>
-        <item>@*android:drawable/keyboard_key_feedback_background</item>
-        <item>@*android:drawable/keyboard_key_feedback_more_background</item>
-        <item>@*android:drawable/keyboard_popup_panel_background</item>
-        <item>@*android:drawable/keyboard_popup_panel_trans_background</item>
-        <item>@*android:drawable/keyguard_expand_challenge_handle</item>
-        <item>@*android:drawable/kg_add_widget</item>
-        <item>@*android:drawable/kg_bouncer_bg_white</item>
-        <item>@*android:drawable/kg_security_grip</item>
-        <item>@*android:drawable/kg_security_lock</item>
-        <item>@*android:drawable/kg_security_lock_focused</item>
-        <item>@*android:drawable/kg_security_lock_normal</item>
-        <item>@*android:drawable/kg_security_lock_pressed</item>
-        <item>@*android:drawable/kg_widget_bg_padded</item>
-        <item>@*android:drawable/kg_widget_delete_drop_target</item>
-        <item>@*android:drawable/light_header</item>
-        <item>@*android:drawable/light_header_dither</item>
-        <item>@*android:drawable/list_activated_holo</item>
-        <item>@*android:drawable/list_divider_holo_dark</item>
-        <item>@*android:drawable/list_divider_holo_light</item>
-        <item>@*android:drawable/list_divider_horizontal_holo_dark</item>
         </array>
     <string-array name="battery_icon_entries">
         <item>@string/icon_only</item>
@@ -1403,12 +1381,12 @@
     </string-array>
     <string-array name="lockscreen_long_key_press_values">
         <item></item>
-        <item>СЛЕДУЮЩИЙ</item>
-        <item>ПРЕДЫДУЩИЙ</item>
-        <item>ВОСПРПАУЗА</item>
-        <item>ЗВУК</item>
-        <item>КАМЕРА</item>
-        <item>ПИТАНИЕ</item>
+        <item>NEXT</item>
+        <item>PREVIOUS</item>
+        <item>PLAYPAUSE</item>
+        <item>SOUND</item>
+        <item>CAMERA</item>
+        <item>POWER</item>
     </string-array>
     <string-array name="volume_key_cursor_control_entries">
         <item>@string/volume_key_cursor_control_off</item>
@@ -1562,6 +1540,20 @@
         <item>6</item>
         <item>8</item>
     </string-array>
+    <string-array name="lockscreen_dialog_entries">
+        <item>@string/none</item>
+        <item>@string/lockscreen_unlock</item>
+        <item>@string/lockscreen_camera</item>
+        <item>@string/google_now</item>
+        <item>@string/select_application</item>
+    </string-array>
+    <string-array name="lockscreen_dialog_values">
+        <item>**null**</item>
+        <item>**unlock**</item>
+        <item>**camera**</item>
+        <item>**assist**</item>
+        <item>**app**</item>
+    </string-array>
     <string-array name="notification_action_entries">
         <item>@string/nothing</item>
         <item>@string/clock_options</item>
@@ -1601,8 +1593,8 @@
     <string-array name="battery_bar_entries">
         <item>Скрыть</item>
         <item>Статусбар</item>
-        <item>Выше навбара</item>
-        <item>Ниже навбара</item>
+        <item>Нав.панель(вверху)</item>
+        <item>Нав.панель(внизу)</item>
     </string-array>
     <string-array name="battery_bar_values">
         <item>0</item>
@@ -1631,15 +1623,15 @@
         <item>4</item>
     </string-array>
     <string-array name="hide_navbar_timeout_entries">
-        <item>Never</item>
-        <item>.5 Sec</item>
-        <item>1 Sec</item>
-        <item>1.5 Sec</item>
-        <item>3 Sec</item>
-        <item>5 Sec</item>
-        <item>10 Sec</item>
-        <item>15 Sec</item>
-        <item>30 Sec</item>
+        <item>Никогда</item>
+        <item>.5 с</item>
+        <item>1 с</item>
+        <item>1.5 с</item>
+        <item>3 с</item>
+        <item>5 с</item>
+        <item>10 с</item>
+        <item>15 с</item>
+        <item>30 с</item>
     </string-array>
     <string-array name="hide_navbar_timeout_values">
         <item>0</item>
@@ -1768,6 +1760,16 @@
         <item>2</item>
         <item>3</item>
     </string-array>
+    <string-array name="media_scanner_on_boot_entries">
+        <item>@string/media_scanner_on_boot_enabled</item>
+        <item>@string/media_scanner_on_boot_ask</item>
+        <item>@string/media_scanner_on_boot_disabled</item>
+    </string-array>
+    <string-array name="media_scanner_on_boot_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
     <string-array name="custom_toggle_qty_entries">
         <item>1</item>
         <item>2</item>
@@ -1807,6 +1809,26 @@
         <item>2</item>
         <item>3</item>
         <item>4</item>
+    </string-array>
+    <string-array name="ribbon_icon_size_entries">
+        <item>@string/icon_size_normal</item>
+        <item>@string/icon_size_20</item>
+        <item>@string/icon_size_15</item>
+    </string-array>
+    <string-array name="ribbon_icon_size_values">
+        <item>0</item>
+        <item>20</item>
+        <item>15</item>
+    </string-array>
+    <string-array name="ribbon_handle_location_entries">
+        <item>@string/center</item>
+        <item>@string/top</item>
+        <item>@string/bottom</item>
+    </string-array>
+    <string-array name="ribbon_handle_location_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
     </string-array>
     <string-array name="input_method_selector_titles">
         <item>@string/input_method_selector_show_automatically_title</item>
