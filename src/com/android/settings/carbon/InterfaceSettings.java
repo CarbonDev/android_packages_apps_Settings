@@ -91,32 +91,29 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     public static final String TAG = "InterfaceSettings";
     private static final String PREF_CUSTOM_CARRIER_LABEL = "custom_carrier_label";
     private static final String KEY_RECENTS_RAM_BAR = "recents_ram_bar";
-    private static final String KEY_DUAL_PANE = "dual_pane";
     private static final String PREF_WAKEUP_WHEN_PLUGGED_UNPLUGGED = "wakeup_when_plugged_unplugged";
     private static final String PREF_NOTIFICATION_SHOW_WIFI_SSID = "notification_show_wifi_ssid";
     private static final String PREF_POWER_CRT_SCREEN_ON = "system_power_crt_screen_on";
     private static final String PREF_POWER_CRT_SCREEN_OFF = "system_power_crt_screen_off";
-    private static final String PREF_USER_MODE_UI = "user_mode_ui";
     private static final String PREF_HIDE_EXTRAS = "hide_extras";
     private static final String KEY_LOW_BATTERY_WARNING_POLICY = "pref_low_battery_warning_policy";
     private static final String PREF_USE_ALT_RESOLVER = "use_alt_resolver";
     private static final String KEY_POWER_BUTTON_TORCH = "power_button_torch";
+    private static final String PREF_SHOW_OVERFLOW = "show_overflow";
     private static final String KEY_BACKGROUND_PREF = "lockscreen_background";
 
     Preference mCustomLabel;
     Preference mRamBar;
-    Preference mLcdDensity;
-    CheckBoxPreference mDualPane;
     CheckBoxPreference mWakeUpWhenPluggedOrUnplugged;
     CheckBoxPreference mShowWifiName;
     CheckBoxPreference mCrtOff;
     CheckBoxPreference mCrtOn;
     CheckBoxPreference mHideExtras;
-    ListPreference mUserModeUI;
     Context mContext;
     ListPreference mLowBatteryWarning;
     CheckBoxPreference mUseAltResolver;
     CheckBoxPreference mPowerButtonTorch;
+    CheckBoxPreference mShowActionOverflow;
     ListPreference mCustomBackground;
 
     private File mWallpaperImage;
@@ -125,10 +122,6 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     Random randomGenerator = new Random();
 
     String mCustomLabelText = null;
-
-    int newDensityValue;
-    DensityChanger densityFragment;
-    Configuration mCurConfig = new Configuration();
 
     private boolean isCrtOffChecked = false;
 
@@ -164,16 +157,6 @@ public class InterfaceSettings extends SettingsPreferenceFragment
         mCrtOn.setEnabled(isCrtOffChecked);
         mCrtOn.setOnPreferenceChangeListener(this);
 
-        mLcdDensity = findPreference("lcd_density_setup");
-        String currentProperty = SystemProperties.get("ro.sf.lcd_density");
-        try {
-            newDensityValue = Integer.parseInt(currentProperty);
-        } catch (Exception e) {
-            getPreferenceScreen().removePreference(mLcdDensity);
-        }
-
-        mLcdDensity.setSummary(getResources().getString(R.string.current_lcd_density) + currentProperty);
-
         mCustomLabel = findPreference(PREF_CUSTOM_CARRIER_LABEL);
         updateCustomLabelTextSummary();
 
@@ -183,20 +166,6 @@ public class InterfaceSettings extends SettingsPreferenceFragment
         mHideExtras = (CheckBoxPreference) findPreference(PREF_HIDE_EXTRAS);
         mHideExtras.setChecked(Settings.System.getBoolean(cr,
                         Settings.System.HIDE_EXTRAS_SYSTEM_BAR, false));
-
-        mUserModeUI = (ListPreference) findPreference(PREF_USER_MODE_UI);
-        int uiMode = Settings.System.getInt(cr,
-                Settings.System.CURRENT_UI_MODE, 0);
-        mUserModeUI.setValue(Integer.toString(Settings.System.getInt(cr,
-                Settings.System.USER_UI_MODE, uiMode)));
-        mUserModeUI.setOnPreferenceChangeListener(this);
-
-        mDualPane = (CheckBoxPreference) findPreference(KEY_DUAL_PANE);
-        boolean preferDualPane = getResources().getBoolean(
-                com.android.internal.R.bool.preferences_prefer_dual_pane);
-        boolean dualPaneMode = Settings.System.getInt(cr,
-                Settings.System.DUAL_PANE_PREFS, (preferDualPane ? 1 : 0)) == 1;
-        mDualPane.setChecked(dualPaneMode);
 
         mLowBatteryWarning = (ListPreference) findPreference(KEY_LOW_BATTERY_WARNING_POLICY);
         int lowBatteryWarning = Settings.System.getInt(getActivity().getContentResolver(),
@@ -213,6 +182,11 @@ public class InterfaceSettings extends SettingsPreferenceFragment
         mPowerButtonTorch.setChecked((Settings.System.getInt(getActivity().
                 getApplicationContext().getContentResolver(),
                 Settings.System.POWER_BUTTON_TORCH, 0) == 1));
+
+        mShowActionOverflow = (CheckBoxPreference) findPreference(PREF_SHOW_OVERFLOW);
+        mShowActionOverflow.setChecked((Settings.System.getInt(getActivity().
+                        getApplicationContext().getContentResolver(),
+                        Settings.System.UI_FORCE_OVERFLOW_BUTTON, 0) == 1));
 
         mCustomBackground = (ListPreference) findPreference(KEY_BACKGROUND_PREF);
         mCustomBackground.setOnPreferenceChangeListener(this);
@@ -313,15 +287,6 @@ public class InterfaceSettings extends SettingsPreferenceFragment
                 }
             });
             alert.show();
-        } else if (preference == mLcdDensity) {
-            ((PreferenceActivity) getActivity())
-            .startPreferenceFragment(new DensityChanger(), true);
-            return true;
-        } else if (preference == mDualPane) {
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.DUAL_PANE_PREFS,
-                    ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
-            return true;
         } else if (preference == mHideExtras) {
             Settings.System.putBoolean(mContext.getContentResolver(),
                     Settings.System.HIDE_EXTRAS_SYSTEM_BAR,
@@ -351,6 +316,19 @@ public class InterfaceSettings extends SettingsPreferenceFragment
             boolean enabled = mPowerButtonTorch.isChecked();
             Settings.System.putInt(getContentResolver(), Settings.System.POWER_BUTTON_TORCH,
                     enabled ? 1 : 0);
+            return true;
+        } else if (preference == mShowActionOverflow) {
+            boolean enabled = mShowActionOverflow.isChecked();
+            Settings.System.putInt(getContentResolver(), Settings.System.UI_FORCE_OVERFLOW_BUTTON,
+                    enabled ? 1 : 0);
+            // Show toast appropriately 
+            if (enabled) {
+                Toast.makeText(getActivity(), R.string.show_overflow_toast_enable,
+                        Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(getActivity(), R.string.show_overflow_toast_disable,
+                        Toast.LENGTH_LONG).show();
+            }
             return true;
         }
 
@@ -414,11 +392,6 @@ public class InterfaceSettings extends SettingsPreferenceFragment
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.SYSTEM_POWER_ENABLE_CRT_ON,
                     ((Boolean) newValue).booleanValue() ? 1 : 0);
-            return true;
-        } else if (preference == mUserModeUI) {
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.USER_UI_MODE, Integer.parseInt((String) newValue));
-            Helpers.restartSystemUI();
             return true;
         } else if (preference == mLowBatteryWarning) {
             int lowBatteryWarning = Integer.valueOf((String) newValue);

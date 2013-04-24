@@ -6,9 +6,11 @@
                 android:title="@string/hardware_keys_title"
                 android:fragment="com.android.settings.carbon.HardwareKeys" />
 
-        <CheckBoxPreference
+        <PreferenceScreen
                 android:key="enable_nav_bar"
-                android:title="@string/navbar_enable_bar" />
+                android:title="@string/navbar_enable_bar_title"
+                android:summary="@string/navbar_enable_bar_summary" />
+
         <PreferenceCategory
                 android:key="navbar_buttons"
                 android:title="@string/navbar_button_cat">
@@ -34,10 +36,6 @@
         <PreferenceCategory
                 android:key="navbar_colors_cat"
                 android:title="@string/navbar_color_cat" >
-               <net.margaritov.preference.colorpicker.ColorPickerPreference
-                       android:key="nav_bar_color"
-                       android:title="@string/navigation_bar_color_title"
-                       android:defaultValue="#000000" />
 
                <net.margaritov.preference.colorpicker.ColorPickerPreference
                        android:key="nav_button_color"
@@ -70,41 +68,6 @@
                     android:title="@string/glow_times_title"
                     android:defaultValue="100|10"
                     android:persistent="false" />
-
-                <ListPreference
-                        android:entries="@array/navigation_bar_height_entries"
-                        android:entryValues="@array/navigation_bar_height"
-                        android:key="navigation_bar_height"
-                        android:title="@string/navigation_bar_height_title"
-                        android:summary="@string/navigation_bar_height_summary" />
-
-                <ListPreference
-                        android:entries="@array/navigation_bar_height_landscape_entries"
-                        android:entryValues="@array/navigation_bar_height_landscape"
-                        android:key="navigation_bar_height_landscape"
-                        android:title="@string/navigation_bar_height_landscape_title"
-                        android:summary="@string/navigation_bar_height_landscape_summary" />
-
-                <ListPreference
-                        android:entries="@array/navigation_bar_width_entries"
-                        android:entryValues="@array/navigation_bar_width"
-                        android:key="navigation_bar_width"
-                        android:title="@string/navigation_bar_width_title"
-                        android:summary="@string/navigation_bar_width_summary" />
-
-               <Preference
-                   android:key="width_help"
-                   android:enabled="false"
-                   android:title="@string/navbar_width_help_title"
-                   android:summary="@string/navbar_width_help_summary" />
-
-               <com.android.settings.widgets.SeekBarPreference
-                   android:key="width_port"
-                   android:title="@string/width_port_title" />
-
-               <com.android.settings.widgets.SeekBarPreference
-                   android:key="width_land"
-                   android:title="@string/width_land_title" />
 
         </PreferenceCategory>
         <PreferenceCategory

@@ -85,16 +85,11 @@ public class Navbar extends SettingsPreferenceFragment implements
     // move these later
     private static final String PREF_MENU_UNLOCK = "pref_menu_display";
     private static final String PREF_NAVBAR_MENU_DISPLAY = "navbar_menu_display";
-    private static final String NAVIGATION_BAR_COLOR = "nav_bar_color";
     private static final String PREF_NAV_COLOR = "nav_button_color";
     private static final String NAVIGATION_BAR_ALLCOLOR = "navigation_bar_allcolor";
     private static final String PREF_NAV_GLOW_COLOR = "nav_button_glow_color";
     private static final String PREF_GLOW_TIMES = "glow_times";
     private static final String PREF_NAVBAR_QTY = "navbar_qty";
-    private static final String ENABLE_NAVIGATION_BAR = "enable_nav_bar";
-    private static final String NAVIGATION_BAR_HEIGHT = "navigation_bar_height";
-    private static final String NAVIGATION_BAR_HEIGHT_LANDSCAPE = "navigation_bar_height_landscape";
-    private static final String NAVIGATION_BAR_WIDTH = "navigation_bar_width";
     private static final String NAVIGATION_BAR_WIDGETS = "navigation_bar_widgets";
     private static final String KEY_HARDWARE_KEYS = "hardware_keys";
     private static final String PREF_MENU_ARROWS = "navigation_bar_menu_arrow_keys";
@@ -105,12 +100,10 @@ public class Navbar extends SettingsPreferenceFragment implements
 
     public static final int REQUEST_PICK_CUSTOM_ICON = 200;
     public static final int REQUEST_PICK_LANDSCAPE_ICON = 201;
-    private static final int DIALOG_NAVBAR_ENABLE = 203;
 
     public static final String PREFS_NAV_BAR = "navbar";
 
     // move these later
-    ColorPickerPreference mNavigationColor;
     ColorPickerPreference mNavigationBarColor;
     CheckBoxPreference mColorizeAllIcons;
     ColorPickerPreference mNavigationBarGlowColor;
@@ -118,10 +111,6 @@ public class Navbar extends SettingsPreferenceFragment implements
     ListPreference menuDisplayLocation;
     ListPreference mNavBarMenuDisplay;
     ListPreference mNavBarButtonQty;
-    CheckBoxPreference mEnableNavigationBar;
-    ListPreference mNavigationBarHeight;
-    ListPreference mNavigationBarHeightLandscape;
-    ListPreference mNavigationBarWidth;
     SeekBarPreference mButtonAlpha;
 	Preference mWidthHelp;
     SeekBarPreference mWidthPort;
@@ -210,12 +199,6 @@ public class Navbar extends SettingsPreferenceFragment implements
 
         boolean hasNavBarByDefault = mContext.getResources().getBoolean(
                 com.android.internal.R.bool.config_showNavigationBar);
-        mEnableNavigationBar = (CheckBoxPreference) findPreference(ENABLE_NAVIGATION_BAR);
-        mEnableNavigationBar.setChecked(Settings.System.getBoolean(mContentRes,
-                Settings.System.NAVIGATION_BAR_SHOW, hasNavBarByDefault));
-
-        mNavigationColor = (ColorPickerPreference) findPreference(NAVIGATION_BAR_COLOR);
-        mNavigationColor.setOnPreferenceChangeListener(this);
 
         mNavigationBarColor = (ColorPickerPreference) findPreference(PREF_NAV_COLOR);
         mNavigationBarColor.setOnPreferenceChangeListener(this);
@@ -238,51 +221,18 @@ public class Navbar extends SettingsPreferenceFragment implements
 
         mWidthHelp = (Preference) findPreference("width_help");
 
-        float defaultPort = Settings.System.getFloat(mContentRes,
-                Settings.System.NAVIGATION_BAR_WIDTH_PORT,0f);
-        mWidthPort = (SeekBarPreference) findPreference("width_port");
-        mWidthPort.setInitValue((int) (defaultPort * 2.5f));
-        mWidthPort.setOnPreferenceChangeListener(this);
-
-        float defaultLand = Settings.System.getFloat(mContentRes,
-                Settings.System.NAVIGATION_BAR_WIDTH_LAND,0f);
-        mWidthLand = (SeekBarPreference) findPreference("width_land");
-        mWidthLand.setInitValue((int) (defaultLand * 2.5f));
-        mWidthLand.setOnPreferenceChangeListener(this);
-
-        mNavigationBarHeight = (ListPreference) findPreference("navigation_bar_height");
-        mNavigationBarHeight.setOnPreferenceChangeListener(this);
-
-        mNavigationBarHeightLandscape = (ListPreference) findPreference("navigation_bar_height_landscape");
-        mNavigationBarHeightLandscape.setOnPreferenceChangeListener(this);
-
-        mNavigationBarWidth = (ListPreference) findPreference("navigation_bar_width");
-        mNavigationBarWidth.setOnPreferenceChangeListener(this);
         mConfigureWidgets = findPreference(NAVIGATION_BAR_WIDGETS);
 
         mMenuArrowKeysCheckBox = (CheckBoxPreference) findPreference(PREF_MENU_ARROWS);
         mMenuArrowKeysCheckBox.setChecked(Settings.System.getBoolean(mContentRes,
                 Settings.System.NAVIGATION_BAR_MENU_ARROW_KEYS, true));
 
-        // don't allow devices that must use a navigation bar to disable it
-        if (hasNavBarByDefault) {
-            prefs.removePreference(mEnableNavigationBar);
-        }
         PreferenceGroup pg = (PreferenceGroup) prefs.findPreference("advanced_cat");
         if (isTablet(mContext)) {
-            mNavigationBarHeight.setTitle(R.string.system_bar_height_title);
-            mNavigationBarHeight.setSummary(R.string.system_bar_height_summary);
-            mNavigationBarHeightLandscape.setTitle(R.string.system_bar_height_landscape_title);
-            mNavigationBarHeightLandscape.setSummary(R.string.system_bar_height_landscape_summary);
-            pg.removePreference(mNavigationBarWidth);
             mNavBarHideEnable.setEnabled(false);
             mDragHandleOpacity.setEnabled(false);
             mDragHandleWidth.setEnabled(false);
             mNavBarHideTimeout.setEnabled(false);
-        } else { // Phones&Phablets don't have SystemBar
-            pg.removePreference(mWidthPort);
-            pg.removePreference(mWidthLand);
-            pg.removePreference(mWidthHelp);
         }
 
         if (Integer.parseInt(menuDisplayLocation.getValue()) == 4) {
@@ -297,6 +247,7 @@ public class Navbar extends SettingsPreferenceFragment implements
             // Let's assume they don't have hardware keys
             getPreferenceScreen().removePreference(findPreference(KEY_HARDWARE_KEYS));
         }
+
         refreshSettings();
         setHasOptionsMenu(true);
         updateGlowTimesSummary();
@@ -338,8 +289,6 @@ public class Navbar extends SettingsPreferenceFragment implements
         switch (item.getItemId()) {
             case R.id.reset:
                 Settings.System.putInt(mContentRes,
-                        Settings.System.NAVIGATION_BAR_COLOR, -1);
-                Settings.System.putInt(mContentRes,
                         Settings.System.NAVIGATION_BAR_TINT, -1);
                 Settings.System.putInt(mContentRes,
                         Settings.System.NAVIGATION_BAR_GLOW_TINT, -1);
@@ -377,14 +326,7 @@ public class Navbar extends SettingsPreferenceFragment implements
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
             Preference preference) {
-        if (preference == mEnableNavigationBar) {
-
-            Settings.System.putInt(mContentRes,
-                    Settings.System.NAVIGATION_BAR_SHOW,
-                    ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
-            Helpers.restartSystemUI();
-            return true;
-        } else if (preference == mColorizeAllIcons) {
+        if (preference == mColorizeAllIcons) {
             Settings.System.putBoolean(mContentRes,
                     Settings.System.NAVIGATION_BAR_ALLCOLOR,
                     ((CheckBoxPreference) preference).isChecked() ? true : false);
@@ -431,41 +373,10 @@ public class Navbar extends SettingsPreferenceFragment implements
             Settings.System.putInt(mContentRes,
                     Settings.System.MENU_VISIBILITY, Integer.parseInt((String) newValue));
             return true;
-        } else if (preference == mNavigationBarWidth) {
-            String newVal = (String) newValue;
-            int dp = Integer.parseInt(newVal);
-            int width = mapChosenDpToPixels(dp);
-            Settings.System.putInt(mContentRes, Settings.System.NAVIGATION_BAR_WIDTH,
-                    width);
-            return true;
-        } else if (preference == mNavigationBarHeight) {
-            String newVal = (String) newValue;
-            int dp = Integer.parseInt(newVal);
-            int height = mapChosenDpToPixels(dp);
-            Settings.System.putInt(mContentRes, Settings.System.NAVIGATION_BAR_HEIGHT,
-                    height);
-            return true;
         } else if (preference == mNavBarHideTimeout) {
             int val = Integer.parseInt((String) newValue);
             Settings.System.putInt(mContentRes,
                     Settings.System.NAV_HIDE_TIMEOUT, val);
-            return true;
-        } else if (preference == mNavigationBarHeightLandscape) {
-            String newVal = (String) newValue;
-            int dp = Integer.parseInt(newVal);
-            int height = mapChosenDpToPixels(dp);
-            Settings.System.putInt(mContentRes,
-                    Settings.System.NAVIGATION_BAR_HEIGHT_LANDSCAPE,
-                    height);
-            return true;
-        } else if (preference == mNavigationColor) {
-            String hex = ColorPickerPreference.convertToARGB(
-                    Integer.valueOf(String.valueOf(newValue)));
-            preference.setSummary(hex);
-            int intHex = ColorPickerPreference.convertToColorInt(hex) & 0x00FFFFFF;
-            Settings.System.putInt(mContentRes,
-                    Settings.System.NAVIGATION_BAR_COLOR, intHex);
-            refreshSettings();
             return true;
         } else if (preference == mNavigationBarColor) {
             String hex = ColorPickerPreference.convertToARGB(
@@ -518,19 +429,6 @@ public class Navbar extends SettingsPreferenceFragment implements
             Settings.System.putInt(mContentRes,
                     Settings.System.DRAG_HANDLE_WEIGHT, dp);
             return true;
-        } else if (preference == mWidthPort) {
-            float val = Float.parseFloat((String) newValue);
-            Settings.System.putFloat(mContentRes,
-                    Settings.System.NAVIGATION_BAR_WIDTH_PORT,
-                    val * 0.4f);
-            return true;
-        } else if (preference == mWidthLand) {
-            float val = Float.parseFloat((String) newValue);
-            Settings.System.putFloat(mContentRes,
-                    Settings.System.NAVIGATION_BAR_WIDTH_LAND,
-                    val * 0.4f);
-            return true;
-
         }
         return false;
     }
@@ -563,26 +461,6 @@ public class Navbar extends SettingsPreferenceFragment implements
             mGlowTimes.setValueIndex(3);
         }
         mGlowTimes.setSummary(getResources().getString(resId));
-    }
-
-    public int mapChosenDpToPixels(int dp) {
-        switch (dp) {
-            case 48:
-                return getResources().getDimensionPixelSize(R.dimen.navigation_bar_48);
-            case 44:
-                return getResources().getDimensionPixelSize(R.dimen.navigation_bar_44);
-            case 42:
-                return getResources().getDimensionPixelSize(R.dimen.navigation_bar_42);
-            case 40:
-                return getResources().getDimensionPixelSize(R.dimen.navigation_bar_40);
-            case 36:
-                return getResources().getDimensionPixelSize(R.dimen.navigation_bar_36);
-            case 30:
-                return getResources().getDimensionPixelSize(R.dimen.navigation_bar_30);
-            case 24:
-                return getResources().getDimensionPixelSize(R.dimen.navigation_bar_24);
-        }
-        return -1;
     }
 
     public void refreshSettings() {
@@ -639,8 +517,6 @@ public class Navbar extends SettingsPreferenceFragment implements
         if (mNumberofButtons == 0) {
             return;
         }
-        int navBarColor = Settings.System.getInt(mContentRes,
-                Settings.System.NAVIGATION_BAR_COLOR, -1);
         int navButtonColor = Settings.System.getInt(mContentRes,
                 Settings.System.NAVIGATION_BAR_TINT, -1);
         float navButtonAlpha = Settings.System.getFloat(mContentRes,
@@ -657,15 +533,8 @@ public class Navbar extends SettingsPreferenceFragment implements
         }
         int a = Math.round(BarAlpha * 255);
         Drawable mBackground = AwesomeConstants.getSystemUIDrawable(mContext, "com.android.systemui:drawable/nav_bar_bg");
-        if (mBackground instanceof ColorDrawable) {
-            BackgroundAlphaColorDrawable bacd = new BackgroundAlphaColorDrawable(
-                    navBarColor > 0 ? navBarColor : ((ColorDrawable) mBackground).getColor());
-            bacd.setAlpha(a);
-            mNavBarContainer.setBackground(bacd);
-        } else {
             mBackground.setAlpha(a);
             mNavBarContainer.setBackground(mBackground);
-        }
         for (int i = 0; i < mNumberofButtons; i++) {
             ImageButton ib = mButtonViews.get(i);
             Drawable d = mButtons.get(i).getIcon();
