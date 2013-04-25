@@ -33,12 +33,6 @@
             android:fragment="com.android.settings.carbon.RamBar"
             android:title="@string/ram_bar" />
 
-        <CheckBoxPreference
-            android:key="show_overflow"
-            android:title="@string/show_overflow_title"
-            android:summary="@string/show_overflow_summary"
-            android:defaultValue="false" />
-
         <Preference
             android:key="transparency_dialog"
             android:title="@string/transparency_dialog_title" />

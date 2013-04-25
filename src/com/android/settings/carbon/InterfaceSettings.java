@@ -69,7 +69,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.settings.R;
 import com.android.settings.Utils;
@@ -99,7 +98,6 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     private static final String KEY_LOW_BATTERY_WARNING_POLICY = "pref_low_battery_warning_policy";
     private static final String PREF_USE_ALT_RESOLVER = "use_alt_resolver";
     private static final String KEY_POWER_BUTTON_TORCH = "power_button_torch";
-    private static final String PREF_SHOW_OVERFLOW = "show_overflow";
     private static final String KEY_BACKGROUND_PREF = "lockscreen_background";
 
     Preference mCustomLabel;
@@ -113,7 +111,6 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     ListPreference mLowBatteryWarning;
     CheckBoxPreference mUseAltResolver;
     CheckBoxPreference mPowerButtonTorch;
-    CheckBoxPreference mShowActionOverflow;
     ListPreference mCustomBackground;
 
     private File mWallpaperImage;
@@ -182,11 +179,6 @@ public class InterfaceSettings extends SettingsPreferenceFragment
         mPowerButtonTorch.setChecked((Settings.System.getInt(getActivity().
                 getApplicationContext().getContentResolver(),
                 Settings.System.POWER_BUTTON_TORCH, 0) == 1));
-
-        mShowActionOverflow = (CheckBoxPreference) findPreference(PREF_SHOW_OVERFLOW);
-        mShowActionOverflow.setChecked((Settings.System.getInt(getActivity().
-                        getApplicationContext().getContentResolver(),
-                        Settings.System.UI_FORCE_OVERFLOW_BUTTON, 0) == 1));
 
         mCustomBackground = (ListPreference) findPreference(KEY_BACKGROUND_PREF);
         mCustomBackground.setOnPreferenceChangeListener(this);
@@ -316,19 +308,6 @@ public class InterfaceSettings extends SettingsPreferenceFragment
             boolean enabled = mPowerButtonTorch.isChecked();
             Settings.System.putInt(getContentResolver(), Settings.System.POWER_BUTTON_TORCH,
                     enabled ? 1 : 0);
-            return true;
-        } else if (preference == mShowActionOverflow) {
-            boolean enabled = mShowActionOverflow.isChecked();
-            Settings.System.putInt(getContentResolver(), Settings.System.UI_FORCE_OVERFLOW_BUTTON,
-                    enabled ? 1 : 0);
-            // Show toast appropriately 
-            if (enabled) {
-                Toast.makeText(getActivity(), R.string.show_overflow_toast_enable,
-                        Toast.LENGTH_LONG).show();
-            } else {
-                Toast.makeText(getActivity(), R.string.show_overflow_toast_disable,
-                        Toast.LENGTH_LONG).show();
-            }
             return true;
         }
 
