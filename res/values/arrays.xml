@@ -847,6 +847,22 @@
 
     <!-- **** CARBON EDITS START **** -->
 
+    <!-- LCD Density -->
+    <string-array name="lcd_density_entries" translatable="false">
+        <item>160</item>
+        <item>180</item>
+        <item>200</item>
+        <item>220</item>
+        <item>240</item>
+        <item>241</item>
+        <item>260</item>
+        <item>280</item>
+        <item>300</item>
+        <item>320</item>
+        <item>340</item>
+        <item>@string/custom_density</item>
+    </string-array>
+
     <!-- Notification Shortcuts -->
     <string-array name="notification_shortcuts_quantity_entries" translatable="false">
         <item>4</item>
@@ -980,6 +996,20 @@
         <item>@*android:drawable/ic_shortcut_unlock</item>
     </string-array>
 
+    <string-array name="lcd_density_stock_entries">
+        <item>160 -- mdpi</item>
+        <item>213 -- nexus7</item>
+        <item>240 -- hdpi</item>
+        <item>320 -- xhdpi</item>
+    </string-array>
+
+    <string-array name="lcd_density_stock_values" translatable="false">
+        <item>160</item>
+        <item>213</item>
+        <item>240</item>
+        <item>320</item>
+    </string-array>
+
     <!-- Volume Overlay options. -->
     <string-array name="volume_overlay_entries">
         <item>Single</item>
@@ -1104,6 +1134,62 @@
         <item>3</item>
         <item>4</item>
         <item>5</item>
+    </string-array>
+    <string-array name="navigation_bar_width_entries" translatable="false">
+        <item>@string/size_42_dp_default</item>
+        <item>@string/size_40_dp</item>
+        <item>@string/size_36_dp</item>
+        <item>@string/size_30_dp</item>
+        <item>@string/size_24_dp</item>
+        <item>@string/size_0_dp</item>
+    </string-array>
+    <string-array name="navigation_bar_width" translatable="false">
+        <item>42</item>
+        <item>40</item>
+        <item>36</item>
+        <item>30</item>
+        <item>24</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="navigation_bar_height_entries" translatable="false">
+        <item>@string/size_48_dp_default</item>
+        <item>@string/size_44_dp</item>
+        <item>@string/size_42_dp</item>
+        <item>@string/size_40_dp</item>
+        <item>@string/size_36_dp</item>
+        <item>@string/size_30_dp</item>
+        <item>@string/size_24_dp</item>
+        <item>@string/size_0_dp</item>
+    </string-array>
+    <string-array name="navigation_bar_height" translatable="false">
+        <item>48</item>
+        <item>44</item>
+        <item>42</item>
+        <item>40</item>
+        <item>36</item>
+        <item>30</item>
+        <item>24</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="navigation_bar_height_landscape_entries" translatable="false">
+        <item>@string/size_48_dp_default</item>
+        <item>@string/size_44_dp</item>
+        <item>@string/size_42_dp</item>
+        <item>@string/size_40_dp</item>
+        <item>@string/size_36_dp</item>
+        <item>@string/size_30_dp</item>
+        <item>@string/size_24_dp</item>
+        <item>@string/size_0_dp</item>
+    </string-array>
+    <string-array name="navigation_bar_height_landscape" translatable="false">
+        <item>48</item>
+        <item>44</item>
+        <item>42</item>
+        <item>40</item>
+        <item>36</item>
+        <item>30</item>
+        <item>24</item>
+        <item>0</item>
     </string-array>
     <string-array name="glow_times_entries" translatable="false">
         <item>@string/glow_times_off</item>
@@ -1918,6 +2004,16 @@
         <item>**event**</item>
         <item>**voiceassist**</item>
         <item>**app**</item>
+    </string-array>
+    <string-array name="user_mode_ui_entries" translatable="false">
+        <item>@string/phone_mode_ui</item>
+        <item>@string/tablet_mode_ui</item>
+        <item>@string/phablet_mode_ui</item>
+    </string-array>
+    <string-array name="user_mode_ui_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
     </string-array>
 	<string-array name="choose_toggle_side_entries" translatable="false">
         <item>@string/right</item>

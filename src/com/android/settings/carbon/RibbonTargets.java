@@ -40,7 +40,6 @@ import android.provider.Settings;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.TextUtils;
-import android.util.ExtendedPropertiesUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
@@ -541,10 +540,10 @@ public class RibbonTargets extends SettingsPreferenceFragment implements
                 com.android.internal.R.bool.config_showNavigationBar);
         boolean navBarAutoHide = Settings.System.getBoolean(mContentRes,
                     Settings.System.NAV_HIDE_ENABLE, false);
-        boolean navbarZero = Integer.parseInt(ExtendedPropertiesUtils.getProperty(
-                    "com.android.systemui.navbar.dpi", "100")) == 0;
+        boolean navBarEnabled = Settings.System.getBoolean(mContentRes,
+                    Settings.System.NAVIGATION_BAR_SHOW, false);
         if (arrayNum == 2) {
-            if (!navbarZero) {
+            if (hasNavBarByDefault || navBarEnabled) {
                 mEnableBottomWarning.setVisibility(View.VISIBLE);
                 mEnableBottomSwitch.setEnabled(false);
             } else {
