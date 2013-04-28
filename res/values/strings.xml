@@ -4964,8 +4964,8 @@
     <string name="link_volume_mutes">Silent mode affects notifications</string>
 
     <!-- Status bar | Clock -->
-    <string name="status_bar_clock">Clock and date</string>
-    <string name="status_bar_clock_title">Clock and date style</string>
+    <string name="status_bar_clock">Clock and Date</string>
+    <string name="status_bar_clock_title">Clock and Date Style</string>
     <string name="clock_options">Clock Options</string>
     <string name="clock_title_enable">Clock alignment</string>
     <string name="clock_enabled">Enabled</string>
@@ -5735,7 +5735,7 @@
     <string name="system_power_crt_screen_on_summary">Screen will animate an Electron Beam when turned on</string>
 
     <!-- Battery Icon and Bar -->
-    <string name="status_bar_battery_icon_bar_title">Battery icon and bar style</string>
+    <string name="status_bar_battery_icon_bar_title">Battery Icon and Bar Style</string>
     <string name="battery_icon_cat">Battery icon style</string>
     <string name="status_bar_battery_title">Battery icon style</string>
     <string name="title_statusbar_battery">Statusbar Battery</string>
@@ -5785,7 +5785,7 @@
     <string name="low_battery_warning_policy_disabled">Disabled</string>
 
     <!-- Status bar notification icon opacity -->
-    <string name="status_bar_icon_opacity">Notification icon opacity</string>
+    <string name="status_bar_icon_opacity">Notification Icon Opacity</string>
     <string name="status_bar_icon_opacity_summary">Sets opacity of status bar notification icons</string>
 
     <!-- TRDS Settings -->
@@ -5799,7 +5799,7 @@
     <string name="missed_call_breath_summary">Will give your missed call notifications a breathing effect on the statusbar</string>
 
     <!-- Notification Behaviour -->
-    <string name="notification_behaviour_title">Notification behaviour</string>
+    <string name="notification_behaviour_title">Notification Behaviour</string>
 
     <!-- Alternate default app picker -->
     <string name="alt_resolver_title">Use Alt Default App Picker</string>
@@ -5865,8 +5865,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="notification_convert_sound_to_vibration_title">Notification conversion</string>
     <string name="notification_convert_sound_to_vibration_summary">Sounds to vibrations during vibrate mode</string>
 
-    <!-- Auto-Hide Status Bar -->
-    <string name="auto_hide_statusbar">Auto Hide statusbar</string>
+    <!-- Auto Hide Statusbar -->
+    <string name="auto_hide_statusbar">Auto Hide Statusbar</string>
     <string name="auto_hide_statusbar_summary">Statusbar hides itself when there are no notifications</string>
 
     <!-- Safe headset volume restore checkbox -->
@@ -5875,6 +5875,10 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Permissions Management -->
     <string name="permissions_settings_title">Permissions</string>
+
+    <!-- Hidden Statusbar Pulldown -->
+    <string name="hidden_statusbar_pulldown_title">Hidden Statusbar Pulldown</string>
+    <string name="hidden_statusbar_pulldown_summary">Allows Statusbar to be pulled down when hidden</string>
 
     <!-- **** CARBON ADDITIONS END **** -->
 
