@@ -56,7 +56,6 @@
             android:key="hidden_statusbar_pulldown"
             android:title="@string/hidden_statusbar_pulldown_title"
             android:summary="@string/hidden_statusbar_pulldown_summary"
-            android:dependency="status_bar_auto_hide"
             android:defaultValue="false" />
 
         <CheckBoxPreference

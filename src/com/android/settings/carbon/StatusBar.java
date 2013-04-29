@@ -60,6 +60,8 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private CheckBoxPreference mStatusBarAutoHide;
     private CheckBoxPreference mHiddenStatusbarPulldown;
 
+    private boolean isStatusBarAutoHideChecked = false;
+
     private ContentResolver mCr;
     private PreferenceScreen mPrefSet;
 
@@ -119,13 +121,17 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
                 mNotificationsBeh.setSummary(mNotificationsBeh.getEntry());
         mNotificationsBeh.setOnPreferenceChangeListener(this);
 
-        mStatusBarAutoHide = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_AUTO_HIDE);
-        mStatusBarAutoHide.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
-                Settings.System.AUTO_HIDE_STATUSBAR, 0) == 1));
+        isStatusBarAutoHideChecked = Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.AUTO_HIDE_STATUSBAR, 0) == 1;
+        mStatusBarAutoHide = (CheckBoxPreference) findPreference(STATUS_BAR_AUTO_HIDE);
+        mStatusBarAutoHide.setChecked(isStatusBarAutoHideChecked);
+        mStatusBarAutoHide.setOnPreferenceChangeListener(this);
 
-        mHiddenStatusbarPulldown = (CheckBoxPreference) prefSet.findPreference(HIDDEN_STATUSBAR_PULLDOWN);
-        mHiddenStatusbarPulldown.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
-                Settings.System.HIDDEN_STATUSBAR_PULLDOWN, 0) == 1));
+        mHiddenStatusbarPulldown = (CheckBoxPreference) findPreference(HIDDEN_STATUSBAR_PULLDOWN);
+        mHiddenStatusbarPulldown.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.HIDDEN_STATUSBAR_PULLDOWN, 0) == 1);
+        mHiddenStatusbarPulldown.setEnabled(isStatusBarAutoHideChecked);
+        mHiddenStatusbarPulldown.setOnPreferenceChangeListener(this);
 
         mPrefCategoryGeneral = (PreferenceCategory) findPreference(STATUS_BAR_CATEGORY_GENERAL);
 
@@ -165,13 +171,30 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             int index = mNotificationsBeh.findIndexOfValue(val);
             mNotificationsBeh.setSummary(mNotificationsBeh.getEntries()[index]);
             return true;
+        } else if (mStatusBarAutoHide.equals(preference)) {
+            isStatusBarAutoHideChecked = ((Boolean) newValue).booleanValue();
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.AUTO_HIDE_STATUSBAR,
+                    (isStatusBarAutoHideChecked ? 1 : 0));
+            // if auto hide statusbar gets turned off, hidden statusbar pulldown gets turned off and disabled
+            if (!isStatusBarAutoHideChecked) {
+                Settings.System.putInt(getActivity().getContentResolver(),
+                        Settings.System.AUTO_HIDE_STATUSBAR, 0);
+                mHiddenStatusbarPulldown.setChecked(false);
+            }
+            mHiddenStatusbarPulldown.setEnabled(isStatusBarAutoHideChecked);
+            return true;
+        } else if (mHiddenStatusbarPulldown.equals(preference)) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.HIDDEN_STATUSBAR_PULLDOWN,
+                    ((Boolean) newValue).booleanValue() ? 1 : 0);
+            return true;
         }
         return false;
     }
 
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         boolean value;
-
         if (preference == mStatusBarBrightnessControl) {
             value = mStatusBarBrightnessControl.isChecked();
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
@@ -189,16 +212,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         } else if (preference == mMissedCallBreath) {
             Settings.System.putInt(mContext.getContentResolver(), Settings.System.MISSED_CALL_BREATH, 
                     mMissedCallBreath.isChecked() ? 1 : 0);
-            return true;
-        } else if (preference == mStatusBarAutoHide) {
-            value = mStatusBarAutoHide.isChecked();
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.AUTO_HIDE_STATUSBAR, value ? 1 : 0);
-            return true;
-        } else if (preference == mHiddenStatusbarPulldown) {
-            value = mHiddenStatusbarPulldown.isChecked();
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.HIDDEN_STATUSBAR_PULLDOWN, value ? 1 : 0);
             return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
