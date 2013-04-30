@@ -58,6 +58,14 @@
             android:summary="@string/hidden_statusbar_pulldown_summary"
             android:defaultValue="false" />
 
+        <ListPreference
+            android:key="hidden_statusbar_pulldown_timeout"
+            android:entries="@array/hidden_statusbar_pulldown_timeout_entries"
+            android:entryValues="@array/hidden_statusbar_pulldown_timeout_values"
+            android:title="@string/hidden_statusbar_pulldown_timeout_title"
+            android:summary="@string/hidden_statusbar_pulldown_timeout_summary"
+            android:dependency="hidden_statusbar_pulldown" />
+
         <CheckBoxPreference
             android:key="status_bar_brightness_control"
             android:title="@string/status_bar_toggle_brightness"

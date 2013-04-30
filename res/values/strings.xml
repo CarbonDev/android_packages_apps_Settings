@@ -5926,6 +5926,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Hidden Statusbar Pulldown -->
     <string name="hidden_statusbar_pulldown_title">Hidden Statusbar Pulldown</string>
     <string name="hidden_statusbar_pulldown_summary">Allows Statusbar to be pulled down when hidden</string>
+    <string name="hidden_statusbar_pulldown_timeout_title">Hidden Statusbar Pulldown Timeout</string>
+    <string name="hidden_statusbar_pulldown_timeout_summary">Timeout for hidden Statusbar window</string>
 
 	<!-- Category title for power sound notification specific Settings.
          [CHAR LIMIT=40] -->

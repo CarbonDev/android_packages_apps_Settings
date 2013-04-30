@@ -47,6 +47,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private static final String KEY_NOTIFICATION_BEHAVIOUR = "notifications_behaviour";
     private static final String STATUS_BAR_AUTO_HIDE = "status_bar_auto_hide";
     private static final String HIDDEN_STATUSBAR_PULLDOWN = "hidden_statusbar_pulldown";
+    private static final String HIDDEN_STATUSBAR_PULLDOWN_TIMEOUT = "hidden_statusbar_pulldown_timeout";
 
     private ListPreference mStatusBarCmSignal;
     private CheckBoxPreference mStatusBarBrightnessControl;
@@ -59,6 +60,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private ListPreference mNotificationsBeh;
     private CheckBoxPreference mStatusBarAutoHide;
     private CheckBoxPreference mHiddenStatusbarPulldown;
+    ListPreference mHiddenStatusbarPulldownTimeout;
 
     private boolean isStatusBarAutoHideChecked = false;
 
@@ -133,6 +135,11 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mHiddenStatusbarPulldown.setEnabled(isStatusBarAutoHideChecked);
         mHiddenStatusbarPulldown.setOnPreferenceChangeListener(this);
 
+        mHiddenStatusbarPulldownTimeout = (ListPreference) findPreference(HIDDEN_STATUSBAR_PULLDOWN_TIMEOUT);
+        mHiddenStatusbarPulldownTimeout.setOnPreferenceChangeListener(this);
+        mHiddenStatusbarPulldownTimeout.setValue(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.HIDDEN_STATUSBAR_PULLDOWN_TIMEOUT, 10000) + "");
+
         mPrefCategoryGeneral = (PreferenceCategory) findPreference(STATUS_BAR_CATEGORY_GENERAL);
 
         if (Utils.isWifiOnly(getActivity())) {
@@ -188,6 +195,11 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.HIDDEN_STATUSBAR_PULLDOWN,
                     ((Boolean) newValue).booleanValue() ? 1 : 0);
+            return true;
+        } else if (preference == mHiddenStatusbarPulldownTimeout) {
+            int val = Integer.parseInt((String) newValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.HIDDEN_STATUSBAR_PULLDOWN_TIMEOUT, val);
             return true;
         }
         return false;
