@@ -1646,7 +1646,7 @@
 
         <activity
             android:name=".carbon.Installer"
-            android:label="@string/installer">
+            android:label="@string/title_installer">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
