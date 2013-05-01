@@ -1,4 +1,3 @@
-
 package com.android.settings.service;
 
 import com.android.settings.util.CMDProcessor;
@@ -21,7 +20,8 @@ public class ExternalCommandService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         if (intent.hasExtra("cmd")) {
-            new CMDProcessor().su.runWaitFor(intent.getStringExtra("cmd"));
+            CMDProcessor.startSuCommand(
+                    intent.getStringExtra("cmd"));
         }
     }
 }

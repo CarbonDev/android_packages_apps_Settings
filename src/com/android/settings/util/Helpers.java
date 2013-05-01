@@ -1,7 +1,15 @@
 package com.android.settings.util;
 
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.SystemProperties;
+import android.util.Log;
+import android.widget.Toast;
+
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -11,44 +19,44 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.Properties;
 
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.text.format.DateFormat;
-import android.util.Log;
-import android.widget.Toast;
-
-import com.android.settings.util.CMDProcessor.CommandResult;
-
+// don't show unavoidable warnings
+@SuppressWarnings({
+        "UnusedDeclaration",
+        "MethodWithMultipleReturnPoints",
+        "ReturnOfNull",
+        "NestedAssignment",
+        "DynamicRegexReplaceableByCompiledPattern",
+        "BreakStatement"})
 public class Helpers {
+    // avoids hardcoding the tag
+    private static final String TAG = Thread.currentThread().getStackTrace()[1].getClassName();
 
-    private static final String TAG = "Helpers";
+    public Helpers() {
+        // dummy constructor
+    }
 
     /**
      * Checks device for SuperUser permission
-     * 
+     *
      * @return If SU was granted or denied
      */
+    @SuppressWarnings("MethodWithMultipleReturnPoints")
     public static boolean checkSu() {
         if (!new File("/system/bin/su").exists()
                 && !new File("/system/xbin/su").exists()) {
-            Log.e(TAG, "su does not exist!!!");
+            Log.e(TAG, "su binary does not exist!!!");
             return false; // tell caller to bail...
         }
-
         try {
-            if ((new CMDProcessor().su
-                    .runWaitFor("ls /data/app-private")).success()) {
+            if (CMDProcessor.runSuCommand("ls /data/app-private").success()) {
                 Log.i(TAG, " SU exists and we have permission");
                 return true;
             } else {
-                Log.i(TAG, " SU exists but we dont have permission");
+                Log.i(TAG, " SU exists but we don't have permission");
                 return false;
             }
-        } catch (final NullPointerException e) {
-            Log.e(TAG, e.getLocalizedMessage().toString());
+        } catch (NullPointerException e) {
+            Log.e(TAG, "NullPointer throw while looking for su binary", e);
             return false;
         }
     }
@@ -58,11 +66,11 @@ public class Helpers {
      *
      * @return If the device has data connectivity
     */
-    public static boolean isNetworkAvailable(final Context c) {
+    public static boolean isNetworkAvailable(Context context) {
         boolean state = false;
-        if (c != null) {
-            ConnectivityManager cm = (ConnectivityManager) c
-                    .getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (context != null) {
+            ConnectivityManager cm =
+                    (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo netInfo = cm.getActiveNetworkInfo();
             if (netInfo != null && netInfo.isConnected()) {
                 Log.i(TAG, "The device currently has data connectivity");
@@ -77,7 +85,7 @@ public class Helpers {
 
     /**
      * Checks to see if Busybox is installed in "/system/"
-     * 
+     *
      * @return If busybox exists
      */
     public static boolean checkBusybox() {
@@ -86,103 +94,106 @@ public class Helpers {
             Log.e(TAG, "Busybox not in xbin or bin!");
             return false;
         }
-
         try {
-            if (!new CMDProcessor().su.runWaitFor("busybox mount").success()) {
-                Log.e(TAG, " Busybox is there but it is borked! ");
+            if (!CMDProcessor.runSuCommand("busybox mount").success()) {
+                Log.e(TAG, "Busybox is there but it is borked! ");
                 return false;
             }
-        } catch (final NullPointerException e) {
-            Log.e(TAG, e.getLocalizedMessage().toString());
+        } catch (NullPointerException e) {
+            Log.e(TAG, "NullpointerException thrown while testing busybox", e);
             return false;
         }
         return true;
     }
 
-    public static String[] getMounts(final String path)
-    {
-        try
-        {
-            BufferedReader br = new BufferedReader(new FileReader("/proc/mounts"), 256);
-            String line = null;
-            while ((line = br.readLine()) != null)
-            {
-                if (line.contains(path))
-                {
+    public static String[] getMounts(CharSequence path) {
+        BufferedReader bufferedReader = null;
+        try {
+            bufferedReader = new BufferedReader(new FileReader("/proc/mounts"), 256);
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                if (line.contains(path)) {
                     return line.split(" ");
                 }
             }
-            br.close();
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException ignored) {
             Log.d(TAG, "/proc/mounts does not exist");
-        } catch (IOException e) {
+        } catch (IOException ignored) {
             Log.d(TAG, "Error reading /proc/mounts");
+        } finally {
+            if (bufferedReader != null) {
+                try {
+                    bufferedReader.close();
+                } catch (IOException ignored) {
+                    // ignored
+                }
+            }
         }
         return null;
     }
 
-    public static boolean getMount(final String mount)
-    {
-        final CMDProcessor cmd = new CMDProcessor();
-        final String mounts[] = getMounts("/system");
-        if (mounts != null
-                && mounts.length >= 3)
-        {
-            final String device = mounts[0];
-            final String path = mounts[1];
-            final String point = mounts[2];
-            if (cmd.su.runWaitFor(
-                    "mount -o " + mount + ",remount -t " + point + " " + device + " " + path)
-                    .success())
-            {
+    public static boolean getMount(String mount) {
+        String[] mounts = getMounts("/system");
+        if (mounts != null && mounts.length >= 3) {
+            String device = mounts[0];
+            String path = mounts[1];
+            String point = mounts[2];
+            String preferredMountCmd = new String("mount -o " + mount + ",remount -t " + point + ' ' + device + ' ' + path);
+            if (CMDProcessor.runSuCommand(preferredMountCmd).success()) {
                 return true;
             }
         }
-        return (cmd.su.runWaitFor("busybox mount -o remount," + mount + " /system").success());
+        String fallbackMountCmd = new String("busybox mount -o remount," + mount + " /system");
+        return CMDProcessor.runSuCommand(fallbackMountCmd).success();
     }
 
     public static String readOneLine(String fname) {
-        BufferedReader br;
+        BufferedReader br = null;
         String line = null;
         try {
-            br = new BufferedReader(new FileReader(fname), 512);
-            try {
-                line = br.readLine();
-            } finally {
-                br.close();
-            }
-        } catch (Exception e) {
-            Log.e(TAG, "IO Exception when reading sys file", e);
-            // attempt to do magic!
+            br = new BufferedReader(new FileReader(fname), 1024);
+            line = br.readLine();
+        } catch (FileNotFoundException ignored) {
+            Log.d(TAG, "File was not found! trying via shell...");
             return readFileViaShell(fname, true);
+        } catch (IOException e) {
+            Log.d(TAG, "IOException while reading system file", e);
+            return readFileViaShell(fname, true);
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException ignored) {
+                    // failed to close reader
+                }
+            }
         }
         return line;
     }
 
     public static String readFileViaShell(String filePath, boolean useSu) {
-        CMDProcessor.CommandResult cr = null;
-        if (useSu) {
-            cr = new CMDProcessor().su.runWaitFor("cat " + filePath);
-        } else {
-            cr = new CMDProcessor().sh.runWaitFor("cat " + filePath);
-        }
-        if (cr.success())
-            return cr.stdout;
-        return null;
+        String command = new String("cat " + filePath);
+        return useSu ? CMDProcessor.runSuCommand(command).getStdout()
+                : CMDProcessor.runShellCommand(command).getStdout();
     }
 
-    public static boolean writeOneLine(String fname, String value) {
+    public static boolean writeOneLine(String filename, String value) {
+        FileWriter fileWriter = null;
         try {
-            FileWriter fw = new FileWriter(fname);
-            try {
-                fw.write(value);
-            } finally {
-                fw.close();
-            }
+            fileWriter = new FileWriter(filename);
+            fileWriter.write(value);
         } catch (IOException e) {
-            String Error = "Error writing to " + fname + ". Exception: ";
+            String Error = "Error writing { " + value + " } to file: " + filename;
             Log.e(TAG, Error, e);
             return false;
+        } finally {
+            if (fileWriter != null) {
+                try {
+                    fileWriter.close();
+                } catch (IOException ignored) {
+                    // failed to close writer
+                }
+            }
         }
         return true;
     }
@@ -193,11 +204,9 @@ public class Helpers {
         if (aux != null) {
             schedulers = new String[aux.length];
             for (int i = 0; i < aux.length; i++) {
-                if (aux[i].charAt(0) == '[') {
-                    schedulers[i] = aux[i].substring(1, aux[i].length() - 1);
-                } else {
-                    schedulers[i] = aux[i];
-                }
+                schedulers[i] = aux[i].charAt(0) == '['
+                        ? aux[i].substring(1, aux[i].length() - 1)
+                        : aux[i];
             }
         }
         return schedulers;
@@ -227,92 +236,86 @@ public class Helpers {
 
     /**
      * Long toast message
-     * 
-     * @param c Application Context
+     *
+     * @param context Application Context
      * @param msg Message to send
      */
-    public static void msgLong(final Context c, final String msg) {
-        if (c != null && msg != null) {
-            Toast.makeText(c, msg.trim(), Toast.LENGTH_LONG).show();
+    public static void msgLong(Context context, String msg) {
+        if (context != null && msg != null) {
+            Toast.makeText(context, msg.trim(), Toast.LENGTH_LONG).show();
         }
     }
 
     /**
      * Short toast message
-     * 
-     * @param c Application Context
+     *
+     * @param context Application Context
      * @param msg Message to send
      */
-    public static void msgShort(final Context c, final String msg) {
-        if (c != null && msg != null) {
-            Toast.makeText(c, msg.trim(), Toast.LENGTH_SHORT).show();
+    public static void msgShort(Context context, String msg) {
+        if (context != null && msg != null) {
+            Toast.makeText(context, msg.trim(), Toast.LENGTH_SHORT).show();
         }
     }
 
     /**
      * Long toast message
-     * 
-     * @param c Application Context
+     *
+     * @param context Application Context
      * @param msg Message to send
      */
-    public static void sendMsg(final Context c, final String msg) {
-        if (c != null && msg != null) {
-            msgLong(c, msg);
+    public static void sendMsg(Context context, String msg) {
+        if (context != null && msg != null) {
+            msgLong(context, msg);
         }
     }
 
     /**
      * Return a timestamp
-     * 
-     * @param c Application Context
+     *
+     * @param context Application Context
      */
-    public static String getTimestamp(final Context context) {
-        String timestamp;
-        timestamp = "unknown";
+    @SuppressWarnings("UnnecessaryFullyQualifiedName")
+    public static String getTimestamp(Context context) {
+        String timestamp = "unknown";
         Date now = new Date();
         java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(context);
         java.text.DateFormat timeFormat = android.text.format.DateFormat.getTimeFormat(context);
         if (dateFormat != null && timeFormat != null) {
-            timestamp = dateFormat.format(now) + " " + timeFormat.format(now);
+            timestamp = dateFormat.format(now) + ' ' + timeFormat.format(now);
         }
         return timestamp;
     }
 
-    public static boolean isPackageInstalled(final String packageName,
-            final PackageManager pm)
-    {
-        String mVersion;
+    public static boolean isPackageInstalled(String packageName, PackageManager pm) {
         try {
-            mVersion = pm.getPackageInfo(packageName, 0).versionName;
-            if (mVersion.equals(null)) {
+            String mVersion = pm.getPackageInfo(packageName, 0).versionName;
+            if (mVersion == null) {
                 return false;
             }
-        } catch (NameNotFoundException e) {
+        } catch (NameNotFoundException notFound) {
+            Log.e(TAG, "Package could not be found!", notFound);
             return false;
         }
         return true;
     }
 
     public static void restartSystemUI() {
-        new CMDProcessor().su.run("pkill -TERM -f com.android.systemui");
+        CMDProcessor.startSuCommand("pkill -TERM -f com.android.systemui");
     }
 
     public static void setSystemProp(String prop, String val) {
-        new CMDProcessor().su.run("setprop " + prop + " " + val);
+        CMDProcessor.startSuCommand("setprop " + prop + " " + val);
     }
 
     public static String getSystemProp(String prop, String def) {
-        String result = getSystemProp(prop);
-        return result == null ? def : result;
-    }
-
-    private static String getSystemProp(String prop) {
-        CommandResult cr = new CMDProcessor().sh.runWaitFor("getprop " + prop);
-        if (cr.success()) {
-            return cr.stdout;
-        } else {
-            return null;
+        String result = null;
+        try {
+            result = SystemProperties.get(prop, def);
+        } catch (IllegalArgumentException iae) {
+            Log.e(TAG, "Failed to get prop: " + prop);
         }
+        return result == null ? def : result;
     }
 
     /*
@@ -324,9 +327,8 @@ public class Helpers {
      */
     public static boolean mountSystem(String read_value) {
         String REMOUNT_CMD = "busybox mount -o %s,remount -t yaffs2 /dev/block/mtdblock1 /system";
-        final CMDProcessor cmd = new CMDProcessor();
         Log.d(TAG, "Remounting /system " + read_value);
-        return cmd.su.runWaitFor(String.format(REMOUNT_CMD, read_value)).success();
+        return CMDProcessor.runSuCommand(String.format(REMOUNT_CMD, read_value)).success();
     }
     
     /*

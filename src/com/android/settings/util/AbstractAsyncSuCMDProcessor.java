@@ -1,15 +1,10 @@
-
 package com.android.settings.util;
 
 import android.os.AsyncTask;
 
-import com.android.settings.objects.EasyPair;
-import com.android.settings.util.CMDProcessor;
-import com.android.settings.util.Helpers;
-
 /**
  * An abstract implentation of AsyncTask
- * 
+ *
  * since our needs are simple send a command, perform a task when we finish
  * this implentation requires you send the command as String...
  * in the .execute(String) so you can send String[] of commands if needed
@@ -30,8 +25,6 @@ import com.android.settings.util.Helpers;
 public abstract class AbstractAsyncSuCMDProcessor extends AsyncTask<String, Void, String> {
     // if /system needs to be mounted before command
     private boolean mMountSystem;
-    // su terminal we execute on
-    private CMDProcessor mTerm;
     // return if we recieve a null command or empty command
     public final String FAILURE = "failed_no_command";
 
@@ -67,8 +60,7 @@ public abstract class AbstractAsyncSuCMDProcessor extends AsyncTask<String, Void
         if (params[0] == null || params[0].trim().equals(""))
             return FAILURE;
 
-        mTerm = new CMDProcessor();
-        EasyPair<String, String> pairedOutput = new EasyPair<String, String>(FAILURE, FAILURE);
+        String stdout = null;
 
         // conditionally enforce mounting
         if (mMountSystem) {
@@ -78,25 +70,26 @@ public abstract class AbstractAsyncSuCMDProcessor extends AsyncTask<String, Void
             // process all commands ***DO NOT SEND null OR ""; you have been warned***
             for (int i = 0; params.length > i; i++) {
                 // always watch for null and empty strings, lazy devs :/
-                if (params[i] != null && !params[i].trim().equals(""))
-                    pairedOutput = mTerm.su.runWaitFor(params[i]).getOutput();
-                else
+                if (params[i] != null && !params[i].trim().equals("")) {
+                    stdout = CMDProcessor.runSuCommand(params[i]).getStdout();
+                } else {
                     // bail because of careless devs
                     return FAILURE;
+                }
             }
         // always unmount
         } finally {
             if (mMountSystem)
                 Helpers.getMount("ro");
         }
-        // return the last commmand result output EasyPair<stdout, stderr>
-        return pairedOutput.getFirst();
+        // return the stdout from the command
+        return stdout;
     }
 
     /**
      * <p>Runs on the UI thread after {@link #doInBackground}. The
      * specified result is the value returned by {@link #doInBackground}.</p>
-     * 
+     *
      * <p>This method won't be invoked if the task was cancelled.</p>
      *
      * You MUST @Override this method if you don't need the result

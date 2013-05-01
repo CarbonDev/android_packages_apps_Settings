@@ -39,10 +39,10 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.android.settings.R;
+import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.util.Helpers;
 import com.android.settings.util.CMDProcessor;
-import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.util.CMDProcessor.CommandResult;
+import com.android.settings.util.CommandResult;
 
 public class DensityChanger extends SettingsPreferenceFragment
                 implements OnPreferenceChangeListener {
@@ -222,7 +222,7 @@ public class DensityChanger extends SettingsPreferenceFragment
 
     private void setLcdDensity(int newDensity) {
         Helpers.getMount("rw");
-        new CMDProcessor().su.runWaitFor("busybox sed -i 's|ro.sf.lcd_density=.*|"
+        CMDProcessor.runSuCommand("busybox sed -i 's|ro.sf.lcd_density=.*|"
                 + "ro.sf.lcd_density" + "=" + newDensity + "|' " + "/system/build.prop");
         Helpers.getMount("ro");
     }
@@ -239,35 +239,35 @@ public class DensityChanger extends SettingsPreferenceFragment
             String gms = "/data/data/com.google.android.gms/";
             String gsf = "/data/data/com.google.android.gsf/";
 
-            CommandResult cr = new CMDProcessor().su.runWaitFor("ls " + vending);
-            CommandResult cr_gms = new CMDProcessor().su.runWaitFor("ls " + gms);
-            CommandResult cr_gsf = new CMDProcessor().su.runWaitFor("ls " + gsf);
+            CommandResult cr = CMDProcessor.runSuCommand("ls " + vending);
+            CommandResult cr_gms = CMDProcessor.runSuCommand("ls " + gms);
+            CommandResult cr_gsf = CMDProcessor.runSuCommand("ls " + gsf);
 
-            if (cr.stdout == null || cr_gms.stdout == null || cr_gsf.stdout == null)
+            if (cr.getStdout() == null || cr_gms.getStdout() == null || cr_gsf.getStdout() == null)
                 return false;
 
-            for (String dir : cr.stdout.split("\n")) {
+            for (String dir : cr.getStdout().split("\n")) {
                 if (!dir.equals("lib")) {
                     String c = "rm -r " + vending + dir;
-                    if (!new CMDProcessor().su.runWaitFor(c).success())
+                    if (!CMDProcessor.runSuCommand(c).success())
                         return false;
                 }
             }
 
-            for (String dir_gms : cr_gms.stdout.split("\n")) {
+            for (String dir_gms : cr_gms.getStdout().split("\n")) {
                 if (!dir_gms.equals("lib")) {
                     String c_gms = "rm -r " + gms + dir_gms;
                     // Log.i(TAG, c);
-                    if (!new CMDProcessor().su.runWaitFor(c_gms).success())
+                    if (!CMDProcessor.runSuCommand(c_gms).success())
                         return false;
                 }
             }
 
-            for (String dir_gsf : cr_gsf.stdout.split("\n")) {
+            for (String dir_gsf : cr_gsf.getStdout().split("\n")) {
                 if (!dir_gsf.equals("lib")) {
                     String c_gsf = "rm -r " + gsf + dir_gsf;
                     // Log.i(TAG, c);
-                    if (!new CMDProcessor().su.runWaitFor(c_gsf).success())
+                    if (!CMDProcessor.runSuCommand(c_gsf).success())
                         return false;
                 }
             }
