@@ -4600,14 +4600,14 @@
     <string name="lockscreen_see_through_summary">Allows you to see your homescreen behind the lock screen including apps.</string>
     <string name="lockscreen_all_widgets_title">Allow all widgets</string>
     <string name="lockscreen_all_widgets_summary">Warning: Some widgets are not intended to be used on the lockscreen. Do not blame the widget maker or Carbon if your widget misbehaves. Choose responsibly!</string>
-    <string name="lockscreen_minimize_challenge_title">Minimize lockscreen challenge</string>
+    <string name="lockscreen_minimize_challenge_title">Maximize lockscreen widget</string>
+    <string name="lockscreen_minimize_challenge_summary">Set whether the lockscreen widget is maximized when the screen is turned on.</string>
     <string name="lockscreen_battery_title">Lockscreen battery percentage</string>
     <string name="volume_music_controls_title">Volume music controls</string>
     <string name="volume_rocker_wake_title">Volume wake</string>
     <string name="lockscreen_unlimited_widgets_title">Allow unlimited widgets</string>
     <string name="lockscreen_text_color_summary">Set the lockscreen text color</string>
     <string name="lockscreen_battery_summary">Always show battery percentage on the lockscreen</string>
-    <string name="lockscreen_minimize_challenge_summary">Set whether the lockscreen challenge is minimized when the screen is turned on.</string>
     <string name="lockscreen_camera_widget_title">Toggle camera widget</string>
     <string name="lockscreen_camera_widget_summary">Allows you to turn on or off the camera widget on the lockscreen.</string>
 
