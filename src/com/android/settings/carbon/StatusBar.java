@@ -31,6 +31,7 @@ import android.util.Log;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.util.Helpers;
 import com.android.settings.Utils;
 
 public class StatusBar extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
@@ -190,16 +191,19 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
                 mHiddenStatusbarPulldown.setChecked(false);
             }
             mHiddenStatusbarPulldown.setEnabled(isStatusBarAutoHideChecked);
+            Helpers.restartSystemUI();
             return true;
         } else if (mHiddenStatusbarPulldown.equals(preference)) {
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.HIDDEN_STATUSBAR_PULLDOWN,
                     ((Boolean) newValue).booleanValue() ? 1 : 0);
+            Helpers.restartSystemUI();
             return true;
         } else if (preference == mHiddenStatusbarPulldownTimeout) {
             int val = Integer.parseInt((String) newValue);
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.HIDDEN_STATUSBAR_PULLDOWN_TIMEOUT, val);
+            Helpers.restartSystemUI();
             return true;
         }
         return false;
