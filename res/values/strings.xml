@@ -5939,16 +5939,5 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Sound settings, power notifications label for ringtone == none -->
     <string name="power_notifications_ringtone_silent">Silent</string>
 
-    <!-- Persist Installer -->
-    <string name="title_installer">Persistence Settings</string>
-    <string name="header_summary_installer">@null</string>
-    <string name="persist_options">Persistence</string>
-    <string name="persist_enable">Enable Persistence</string>
-    <string name="persist_enable_summary">Enable data to persist across installs</string>
-    <string name="persist_prop_density">Persist Density</string>
-    <string name="persist_prop_density_summary">Persist LCD density</string>
-    <string name="persist_file_hosts">Persist Hosts</string>
-    <string name="persist_file_hosts_summary">Persist hosts file</string>
-
     <!-- **** CARBON ADDITIONS END **** -->
 </resources>
