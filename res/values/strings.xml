@@ -4868,6 +4868,7 @@
     <string name="toggleFlashlight">Flashlight</string>
     <string name="toggleLockScreen">Lockscreen</string>
     <string name="toggleWimax">WiMAX</string>
+    <string name="toggleNfc">NFC</string>
 
     <!-- Screen security - Screen security   -->
     <string name="screen_security_category">Screen Security</string>
