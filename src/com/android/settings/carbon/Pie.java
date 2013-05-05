@@ -174,7 +174,6 @@ public class Pie extends SettingsPreferenceFragment
             Settings.System.putInt(mContext.getContentResolver(),
                     Settings.System.PIE_CONTROLS, mPieControls.isChecked() ? 1 : 0);
             checkControls();
-            Helpers.restartSystemUI();
         } else if (preference == mPieNotifi) {
             Settings.System.putInt(mContext.getContentResolver(),
                     Settings.System.PIE_NOTIFICATIONS, mPieNotifi.isChecked() ? 1 : 0);
