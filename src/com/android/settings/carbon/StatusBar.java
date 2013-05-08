@@ -25,12 +25,14 @@ import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
+import android.preference.TwoStatePreference;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.util.Log;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.util.Helpers;
 import com.android.settings.Utils;
 
 public class StatusBar extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
@@ -45,7 +47,10 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private static final String KEY_MMS_BREATH = "mms_breath";
     private static final String KEY_MISSED_CALL_BREATH = "missed_call_breath";
     private static final String KEY_NOTIFICATION_BEHAVIOUR = "notifications_behaviour";
-    private static final String STATUSBAR_HIDDEN = "statusbar_hidden";
+    private static final CharSequence PREF_HIDE_STATUSBAR = "hide_statusbar";
+    private static final CharSequence PREF_STATUS_BAR_AUTO_NOTIFICATION = "status_bar_auto_notification";
+    private static final CharSequence PREF_HIDDEN_STATUSBAR_PULLDOWN = "hidden_statusbar_pulldown";
+    private static final CharSequence PREF_HIDDEN_STATUSBAR_PULLDOWN_TIMEOUT = "hidden_statusbar_pulldown_timeout";
 
     private ListPreference mStatusBarCmSignal;
     private CheckBoxPreference mStatusBarBrightnessControl;
@@ -56,10 +61,14 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private CheckBoxPreference mMMSBreath;
     private CheckBoxPreference mMissedCallBreath;
     private ListPreference mNotificationsBeh;
-    private CheckBoxPreference mStatusBarHide;
+    private ListPreference mHideStatusBar;
+    private ListPreference mHiddenStatusbarPulldownTimeout;
 
     private ContentResolver mCr;
     private PreferenceScreen mPrefSet;
+    private static ContentResolver mContentResolver;
+
+    private static int mBarBehaviour;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -71,6 +80,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mContext = getActivity();
         mPrefSet = getPreferenceScreen();
         mCr = getContentResolver();
+        mContentResolver = getContentResolver();
 
         mStatusBarBrightnessControl = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_BRIGHTNESS_CONTROL);
         mStatusBarCmSignal = (ListPreference) prefSet.findPreference(STATUS_BAR_SIGNAL);
@@ -117,9 +127,18 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
                 mNotificationsBeh.setSummary(mNotificationsBeh.getEntry());
         mNotificationsBeh.setOnPreferenceChangeListener(this);
 
-        mStatusBarHide = (CheckBoxPreference) findPreference(STATUSBAR_HIDDEN);
-        mStatusBarHide.setChecked(Settings.System.getBoolean(mCr,
-                Settings.System.STATUSBAR_HIDDEN, false));
+        mHideStatusBar = (ListPreference) findPreference(PREF_HIDE_STATUSBAR);
+        int mBarBehaviour = Settings.System.getInt(mContentResolver,
+                Settings.System.HIDE_STATUSBAR, 0);
+        mHideStatusBar.setValue(Integer.toString(Settings.System.getInt(mContentResolver,
+                Settings.System.HIDE_STATUSBAR, mBarBehaviour)));
+        mHideStatusBar.setOnPreferenceChangeListener(this);
+
+        mHiddenStatusbarPulldownTimeout = (ListPreference) findPreference(PREF_HIDDEN_STATUSBAR_PULLDOWN_TIMEOUT);
+        mHiddenStatusbarPulldownTimeout.setOnPreferenceChangeListener(this);
+        mHiddenStatusbarPulldownTimeout.setValue(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.HIDDEN_STATUSBAR_PULLDOWN_TIMEOUT, 5000) + "");
+        mHiddenStatusbarPulldownTimeout.setEnabled(mBarBehaviour == 3 || mBarBehaviour == 4);
 
         mPrefCategoryGeneral = (PreferenceCategory) findPreference(STATUS_BAR_CATEGORY_GENERAL);
 
@@ -159,9 +178,24 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             int index = mNotificationsBeh.findIndexOfValue(val);
             mNotificationsBeh.setSummary(mNotificationsBeh.getEntries()[index]);
             return true;
+        } else if (preference == mHideStatusBar) {
+            int mBarBehaviour = Integer.valueOf((String) newValue);
+            int index = mHideStatusBar.findIndexOfValue((String) newValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.HIDE_STATUSBAR, mBarBehaviour);
+            mHideStatusBar.setSummary(mHideStatusBar.getEntries()[index]);
+            Helpers.restartSystemUI();
+            return true;
+        } else if (preference == mHiddenStatusbarPulldownTimeout) {
+            int val = Integer.parseInt((String) newValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.HIDDEN_STATUSBAR_PULLDOWN_TIMEOUT, val);
+            Helpers.restartSystemUI();
+            return true;
         }
         return false;
     }
+
 
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         boolean value;
@@ -182,11 +216,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         } else if (preference == mMissedCallBreath) {
             Settings.System.putInt(mContext.getContentResolver(), Settings.System.MISSED_CALL_BREATH, 
                     mMissedCallBreath.isChecked() ? 1 : 0);
-            return true;
-        } else if (preference == mStatusBarHide) {
-            boolean checked = ((CheckBoxPreference)preference).isChecked();
-            Settings.System.putBoolean(getActivity().getContentResolver(),
-                    Settings.System.STATUSBAR_HIDDEN, checked ? true : false);
             return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);

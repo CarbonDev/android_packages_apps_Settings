@@ -4656,12 +4656,21 @@
     <!-- Transparency -->
     <string name="transparency_dialog_title">Transparency settings</string>
     <string name="transparency_dialog_linked_transparency">Link statusbar &amp; navbar alpha</string>
-    <string name="transparency_dialog_transparency_sb_and_nv">Statusbar and navigation bar</string>
+    <string name="transparency_dialog_transparency_sb_and_nv">Statusbar &amp; navigation bar</string>
     <string name="transparency_dialog_statusbar">Statusbar</string>
     <string name="transparency_dialog_navbar">Navigation bar</string>
     <string name="transparency_dialog_match_keyguard_alpha">Match lockscreen alpha</string>
     <string name="transparency_dialog_transparency">Homescreen alpha</string>
     <string name="transparency_dialog_transparency_keyguard">Lockscreen alpha</string>
+    <string name="statusbar_behaviour">Statusbar hide &amp; seek</string>
+    <string name="statusbar_visible">Show statusbar</string>
+    <string name="statusbar_hide_title">Hide statusbar</string>
+    <string name="statusbar_hide_summary">Choose from 3 different statusbar behaviours</string>
+    <string name="statusbar_notification">Auto hide (reveal on incoming notifications)</string>
+    <string name="statusbar_pulldown">Pulldown statusbar when hidden</string>
+    <string name="statusbar_pulldown_notification">Pulldown  statusbar when hidden &amp; auto hide</string>
+    <string name="hidden_statusbar_pulldown_timeout_title">Hidden statusbar pulldown timeout</string>
+    <string name="hidden_statusbar_pulldown_timeout_summary">Timeout for hidden statusbar window</string>
 
     <!-- Profiles Settings  -->
     <string name="profiles_settings_title">Profiles</string>
@@ -5338,8 +5347,6 @@
     <string name="navbar_widgets_delete">Delete Widget</string>
     <string name="navigation_bar_menu_arrow_keys_title">Menu Arrow Keys</string>
     <string name="navigation_bar_menu_arrow_keys_summary">Show arrow keys in the navbar while typing</string>
-    <string name="statusbar_hide_title">Hide Statusbar</string>
-    <string name="statusbar_hide_summary">Allow Statusbar to be hidden</string>
     <string name="navigation_bar_alpha_title">Statusbar and navbar opacity</string>
     <string name="navbar_hide_enable_title">Hidden Navbar Enable</string>
     <string name="drag_handle_opacity_title">Drag Handle Opacity</string>
