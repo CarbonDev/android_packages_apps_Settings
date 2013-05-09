@@ -26,6 +26,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
@@ -49,19 +50,25 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements Di
     private static final int MENU_HELP = Menu.FIRST + 100;
 
     private SettingsDialogFragment mDialogFragment;
+    protected boolean hasVibration = false;
     protected ContentResolver mContentRes;
 
     private String mHelpUrl;
 
     @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         mContext = getActivity();
         mContentRes = getActivity().getContentResolver();
         // Prepare help url and enable menu if necessary
         int helpResource = getHelpResource();
         if (helpResource != 0) {
             mHelpUrl = getResources().getString(helpResource);
+        }
+
+        Vibrator mVibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        if (mVibrator != null && mVibrator.hasVibrator()) {
+            hasVibration = true;
         }
     }
 
@@ -113,8 +120,8 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements Di
     }
 
     /*
-     * The name is intentionally made different from Activity#finish(), so that
-     * users won't misunderstand its meaning.
+     * The name is intentionally made different from Activity#finish(), so that users won't
+     * misunderstand its meaning.
      */
     public final void finishFragment() {
         getActivity().onBackPressed();
@@ -155,7 +162,6 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements Di
     }
 
     // Dialog management
-
     protected void showDialog(int dialogId) {
         if (mDialogFragment != null) {
             Log.e(TAG, "Old dialog fragment not null!");
@@ -179,9 +185,8 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements Di
     }
 
     /**
-     * Sets the OnCancelListener of the dialog shown. This method can only be
-     * called after showDialog(int) and before removeDialog(int). The method
-     * does nothing otherwise.
+     * Sets the OnCancelListener of the dialog shown. This method can only be called after
+     * showDialog(int) and before removeDialog(int). The method does nothing otherwise.
      */
     protected void setOnCancelListener(DialogInterface.OnCancelListener listener) {
         if (mDialogFragment != null) {
@@ -190,9 +195,8 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements Di
     }
 
     /**
-     * Sets the OnDismissListener of the dialog shown. This method can only be
-     * called after showDialog(int) and before removeDialog(int). The method
-     * does nothing otherwise.
+     * Sets the OnDismissListener of the dialog shown. This method can only be called after
+     * showDialog(int) and before removeDialog(int). The method does nothing otherwise.
      */
     protected void setOnDismissListener(DialogInterface.OnDismissListener listener) {
         if (mDialogFragment != null) {
