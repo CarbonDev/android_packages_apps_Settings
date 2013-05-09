@@ -113,6 +113,7 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     private static final String PREF_SHOW_OVERFLOW = "show_overflow";
     private static final String KEY_BACKGROUND_PREF = "lockscreen_background";
     private static final String KEY_HARDWARE_KEYS = "hardware_keys";
+    private static final String KEY_CLEAR_RECENTS_POSITION = "clear_recents_position";
     private static final String KEY_HALO_ENABLED = "halo_enabled";
     private static final String KEY_HALO_STATE = "halo_state";
     private static final String KEY_HALO_HIDE = "halo_hide";
@@ -135,6 +136,7 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     CheckBoxPreference mPowerButtonTorch;
     CheckBoxPreference mShowActionOverflow;
     ListPreference mCustomBackground;
+    ListPreference mClearPosition;
     private ListPreference mHaloState;
     private CheckBoxPreference mHaloEnabled;
     private CheckBoxPreference mHaloHide;
@@ -202,6 +204,13 @@ public class InterfaceSettings extends SettingsPreferenceFragment
 
         mRamBar = findPreference(KEY_RECENTS_RAM_BAR);
         updateRamBar();
+
+        mClearPosition = (ListPreference) findPreference(KEY_CLEAR_RECENTS_POSITION);
+        int ClearSide = Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.CLEAR_RECENTS_POSITION, 0);
+        mClearPosition.setValue(String.valueOf(ClearSide));
+        mClearPosition.setSummary(mClearPosition.getEntry());
+        mClearPosition.setOnPreferenceChangeListener(this);
 
         mNotificationManager = INotificationManager.Stub.asInterface(
                 ServiceManager.getService(Context.NOTIFICATION_SERVICE));
@@ -549,6 +558,13 @@ public class InterfaceSettings extends SettingsPreferenceFragment
         } else if (preference == mCustomBackground) {
             int selection = mCustomBackground.findIndexOfValue(newValue.toString());
             return handleBackgroundSelection(selection);
+        } else if (preference == mClearPosition) {
+            int side = Integer.valueOf((String) newValue);
+            int index = mClearPosition.findIndexOfValue((String) newValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.CLEAR_RECENTS_POSITION, side);
+            mClearPosition.setSummary(mClearPosition.getEntries()[index]);
+            return true;
         }
         return false;
     }

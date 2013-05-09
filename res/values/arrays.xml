@@ -2402,5 +2402,15 @@
         <item>@string/profile_trigger_notrigger</item>
     </string-array>
 
+    <!-- Clear Recents position -->
+    <string-array name="clear_recents_position_entries" translatable="false">
+        <item>@string/clear_recents_position_left</item>
+        <item>@string/clear_recents_position_right</item>
+    </string-array>
+    <string-array name="clear_recents_position_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
     <!-- **** CARBON EDITS END **** -->
 </resources>
