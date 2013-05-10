@@ -5334,6 +5334,8 @@
     <string name="navbar_widgets_delete">Delete Widget</string>
     <string name="navigation_bar_menu_arrow_keys_title">Menu Arrow Keys</string>
     <string name="navigation_bar_menu_arrow_keys_summary">Show arrow keys in the navbar while typing</string>
+    <string name="statusbar_hide_title">Hide Statusbar</string>
+    <string name="statusbar_hide_summary">Allow Statusbar to be hidden</string>
     <string name="navigation_bar_alpha_title">Statusbar and navbar opacity</string>
     <string name="navbar_hide_enable_title">Hidden Navbar Enable</string>
     <string name="drag_handle_opacity_title">Drag Handle Opacity</string>
@@ -5915,22 +5917,12 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="notification_convert_sound_to_vibration_title">Notification conversion</string>
     <string name="notification_convert_sound_to_vibration_summary">Sounds to vibrations during vibrate mode</string>
 
-    <!-- Auto Hide Statusbar -->
-    <string name="auto_hide_statusbar">Auto Hide Statusbar</string>
-    <string name="auto_hide_statusbar_summary">Statusbar hides itself when there are no notifications</string>
-
     <!-- Safe headset volume restore checkbox -->
     <string name="safe_headset_volume_title">Safe headset volume</string>
     <string name="safe_headset_volume_summary">Prevent loud volume levels when headset is first plugged in</string>
 
     <!-- Permissions Management -->
     <string name="permissions_settings_title">Permissions</string>
-
-    <!-- Hidden Statusbar Pulldown -->
-    <string name="hidden_statusbar_pulldown_title">Hidden Statusbar Pulldown</string>
-    <string name="hidden_statusbar_pulldown_summary">Allows Statusbar to be pulled down when hidden</string>
-    <string name="hidden_statusbar_pulldown_timeout_title">Hidden Statusbar Pulldown Timeout</string>
-    <string name="hidden_statusbar_pulldown_timeout_summary">Timeout for hidden Statusbar window</string>
 
 	<!-- Category title for power sound notification specific Settings.
          [CHAR LIMIT=40] -->

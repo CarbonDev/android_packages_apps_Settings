@@ -31,7 +31,6 @@ import android.util.Log;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.util.Helpers;
 import com.android.settings.Utils;
 
 public class StatusBar extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
@@ -46,9 +45,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private static final String KEY_MMS_BREATH = "mms_breath";
     private static final String KEY_MISSED_CALL_BREATH = "missed_call_breath";
     private static final String KEY_NOTIFICATION_BEHAVIOUR = "notifications_behaviour";
-    private static final String STATUS_BAR_AUTO_HIDE = "status_bar_auto_hide";
-    private static final String HIDDEN_STATUSBAR_PULLDOWN = "hidden_statusbar_pulldown";
-    private static final String HIDDEN_STATUSBAR_PULLDOWN_TIMEOUT = "hidden_statusbar_pulldown_timeout";
+    private static final String STATUSBAR_HIDDEN = "statusbar_hidden";
 
     private ListPreference mStatusBarCmSignal;
     private CheckBoxPreference mStatusBarBrightnessControl;
@@ -59,11 +56,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private CheckBoxPreference mMMSBreath;
     private CheckBoxPreference mMissedCallBreath;
     private ListPreference mNotificationsBeh;
-    private CheckBoxPreference mStatusBarAutoHide;
-    private CheckBoxPreference mHiddenStatusbarPulldown;
-    ListPreference mHiddenStatusbarPulldownTimeout;
-
-    private boolean isStatusBarAutoHideChecked = false;
+    private CheckBoxPreference mStatusBarHide;
 
     private ContentResolver mCr;
     private PreferenceScreen mPrefSet;
@@ -124,22 +117,9 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
                 mNotificationsBeh.setSummary(mNotificationsBeh.getEntry());
         mNotificationsBeh.setOnPreferenceChangeListener(this);
 
-        isStatusBarAutoHideChecked = Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.AUTO_HIDE_STATUSBAR, 0) == 1;
-        mStatusBarAutoHide = (CheckBoxPreference) findPreference(STATUS_BAR_AUTO_HIDE);
-        mStatusBarAutoHide.setChecked(isStatusBarAutoHideChecked);
-        mStatusBarAutoHide.setOnPreferenceChangeListener(this);
-
-        mHiddenStatusbarPulldown = (CheckBoxPreference) findPreference(HIDDEN_STATUSBAR_PULLDOWN);
-        mHiddenStatusbarPulldown.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.HIDDEN_STATUSBAR_PULLDOWN, 0) == 1);
-        mHiddenStatusbarPulldown.setEnabled(isStatusBarAutoHideChecked);
-        mHiddenStatusbarPulldown.setOnPreferenceChangeListener(this);
-
-        mHiddenStatusbarPulldownTimeout = (ListPreference) findPreference(HIDDEN_STATUSBAR_PULLDOWN_TIMEOUT);
-        mHiddenStatusbarPulldownTimeout.setOnPreferenceChangeListener(this);
-        mHiddenStatusbarPulldownTimeout.setValue(Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.HIDDEN_STATUSBAR_PULLDOWN_TIMEOUT, 10000) + "");
+        mStatusBarHide = (CheckBoxPreference) findPreference(STATUSBAR_HIDDEN);
+        mStatusBarHide.setChecked(Settings.System.getBoolean(mCr,
+                Settings.System.STATUSBAR_HIDDEN, false));
 
         mPrefCategoryGeneral = (PreferenceCategory) findPreference(STATUS_BAR_CATEGORY_GENERAL);
 
@@ -179,32 +159,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             int index = mNotificationsBeh.findIndexOfValue(val);
             mNotificationsBeh.setSummary(mNotificationsBeh.getEntries()[index]);
             return true;
-        } else if (mStatusBarAutoHide.equals(preference)) {
-            isStatusBarAutoHideChecked = ((Boolean) newValue).booleanValue();
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.AUTO_HIDE_STATUSBAR,
-                    (isStatusBarAutoHideChecked ? 1 : 0));
-            // if auto hide statusbar gets turned off, hidden statusbar pulldown gets turned off and disabled
-            if (!isStatusBarAutoHideChecked) {
-                Settings.System.putInt(getActivity().getContentResolver(),
-                        Settings.System.AUTO_HIDE_STATUSBAR, 0);
-                mHiddenStatusbarPulldown.setChecked(false);
-            }
-            mHiddenStatusbarPulldown.setEnabled(isStatusBarAutoHideChecked);
-            Helpers.restartSystemUI();
-            return true;
-        } else if (mHiddenStatusbarPulldown.equals(preference)) {
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.HIDDEN_STATUSBAR_PULLDOWN,
-                    ((Boolean) newValue).booleanValue() ? 1 : 0);
-            Helpers.restartSystemUI();
-            return true;
-        } else if (preference == mHiddenStatusbarPulldownTimeout) {
-            int val = Integer.parseInt((String) newValue);
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.HIDDEN_STATUSBAR_PULLDOWN_TIMEOUT, val);
-            Helpers.restartSystemUI();
-            return true;
         }
         return false;
     }
@@ -228,6 +182,11 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         } else if (preference == mMissedCallBreath) {
             Settings.System.putInt(mContext.getContentResolver(), Settings.System.MISSED_CALL_BREATH, 
                     mMissedCallBreath.isChecked() ? 1 : 0);
+            return true;
+        } else if (preference == mStatusBarHide) {
+            boolean checked = ((CheckBoxPreference)preference).isChecked();
+            Settings.System.putBoolean(getActivity().getContentResolver(),
+                    Settings.System.STATUSBAR_HIDDEN, checked ? true : false);
             return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
