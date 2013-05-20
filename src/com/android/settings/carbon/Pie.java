@@ -53,6 +53,8 @@ public class Pie extends SettingsPreferenceFragment
     private static final String PIE_STICK = "pie_stick";
     private static final String PIE_NOTIFICATIONS = "pie_notifications";
     private static final String PIE_LASTAPP = "pie_lastapp";
+    private static final String PIE_KILLTASK = "pie_killtask";
+    private static final String PIE_APPWINDOW = "pie_appwindow";
     private static final String PIE_MENU = "pie_menu";
     private static final String PIE_SEARCH = "pie_search";
     private static final String PIE_RESTART = "pie_restart_launcher";
@@ -66,6 +68,8 @@ public class Pie extends SettingsPreferenceFragment
     private CheckBoxPreference mPieNotifi;
     private CheckBoxPreference mPieControls;
     private CheckBoxPreference mPieLastApp;
+    private CheckBoxPreference mPieKillTask;
+    private CheckBoxPreference mPieAppWindow;
     private CheckBoxPreference mPieMenu;
     private CheckBoxPreference mPieSearch;
     private CheckBoxPreference mPieStick;
@@ -145,7 +149,15 @@ public class Pie extends SettingsPreferenceFragment
 
         mPieLastApp = (CheckBoxPreference) prefSet.findPreference(PIE_LASTAPP);
         mPieLastApp.setChecked(Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.PIE_LAST_APP, 0) == 1);
+                Settings.System.PIE_LAST_APP, 1) == 1);
+
+        mPieKillTask = (CheckBoxPreference) prefSet.findPreference(PIE_KILLTASK);
+        mPieKillTask.setChecked(Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.PIE_KILL_TASK, 1) == 1);
+
+        mPieAppWindow = (CheckBoxPreference) prefSet.findPreference(PIE_APPWINDOW);
+        mPieAppWindow.setChecked(Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.PIE_APP_WINDOW, 1) == 1);
 
         mPieMenu = (CheckBoxPreference) prefSet.findPreference(PIE_MENU);
         mPieMenu.setChecked(Settings.System.getInt(mContext.getContentResolver(),
@@ -180,6 +192,12 @@ public class Pie extends SettingsPreferenceFragment
         } else if (preference == mPieLastApp) {
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.PIE_LAST_APP, mPieLastApp.isChecked() ? 1 : 0);
+        } else if (preference == mPieKillTask) {
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.PIE_KILL_TASK, mPieKillTask.isChecked() ? 1 : 0);
+        } else if (preference == mPieAppWindow) {
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.PIE_APP_WINDOW, mPieAppWindow.isChecked() ? 1 : 0);
         } else if (preference == mPieMenu) {
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.PIE_MENU, mPieMenu.isChecked() ? 1 : 0);

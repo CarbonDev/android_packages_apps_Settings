@@ -88,6 +88,11 @@
             android:title="@string/pie_center_title"
             android:summary="@string/pie_center_summary" />
 
+        <CheckBoxPreference
+            android:key="pie_restart_launcher"
+            android:title="@string/pie_restart_launcher_title"
+            android:summary="@string/pie_restart_launcher_summary" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -110,9 +115,14 @@
             android:summary="@string/pie_lastapp_summary" />
 
         <CheckBoxPreference
-            android:key="pie_restart_launcher"
-            android:title="@string/pie_restart_launcher_title"
-            android:summary="@string/pie_restart_launcher_summary" />
+            android:key="pie_killtask"
+            android:title="@string/pie_killtask_title"
+            android:summary="@string/pie_killtask_summary" />
+
+        <CheckBoxPreference
+            android:key="pie_appwindow"
+            android:title="@string/pie_appwindow_title"
+            android:summary="@string/pie_appwindow_summary" />
 
     </PreferenceCategory>
 

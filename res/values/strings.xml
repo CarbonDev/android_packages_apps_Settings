@@ -4783,17 +4783,21 @@
     <string name="pie_trigger_big">Big</string>
     <string name="pie_trigger_huge">Huge (Default)</string>
     <string name="pie_notifications_title">Enable chevron targets</string>
-    <string name="pie_notifications_summary">Enabling, will let the Notification panels and QuickSettings active when swipe.</string>
+    <string name="pie_notifications_summary">Enabling will let the Notification panel and QuickSettings activate when swiped</string>
     <string name="pie_menu_title">Show menu button always</string>
     <string name="pie_menu_summary">Whether or not the menu button will appear when unneeded</string>
     <string name="pie_search_title">Show search button</string>
     <string name="pie_search_summary">Access to GoogleNow via Pie</string>
     <string name="pie_lastapp_title">Last app button</string>
     <string name="pie_lastapp_summary">Enable last app button on Pie</string>
+    <string name="pie_killtask_title">Kill task button</string>
+    <string name="pie_killtask_summary">Enable kill task button on Pie</string>
+    <string name="pie_appwindow_title">App window button</string>
+    <string name="pie_appwindow_summary">Enable app window button on Pie (configure app window in Ribbon settings)</string>
     <string name="pie_stick_title">Prevent rotation</string>
     <string name="pie_stick_summary">If checked Pie will stay in place no matter which orientation</string>
-    <string name="pie_restart_launcher_title">Restart Launcher</string>
-    <string name="pie_restart_launcher_summary">Changing screensize can have adverse effects. This option allows your launcher to regain sanity, the cost is a slight blackout (recommended)</string>
+    <string name="pie_restart_launcher_title">Restart launcher</string>
+    <string name="pie_restart_launcher_summary">Allows your launcher to regain sanity after a screensize change (recommended)</string>
     <string name="all_color">Custom Colors</string>
     <string name="stock_color">Default Colors</string>
 
