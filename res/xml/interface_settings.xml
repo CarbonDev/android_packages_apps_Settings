@@ -9,6 +9,14 @@
             android:key="custom_carrier_label"
             android:title="@string/custom_carrier_label_title" />
 
+        <ListPreference
+            android:key="lockscreen_background"
+            android:persistent="false"
+            android:dialogTitle="@string/lockscreen_custom_background_title"
+            android:title="@string/lockscreen_custom_background_title"
+            android:entries="@array/lockscreen_background_entries"
+            android:entryValues="@array/lockscreen_background_values" />
+
         <Preference
             android:fragment="com.android.settings.carbon.NotificationDrawerStyle"
             android:key="notification_style"
@@ -113,14 +121,6 @@
             android:key="system_power_crt_screen_on"
             android:summary="@string/system_power_crt_screen_on_summary"
             android:title="@string/system_power_crt_screen_on_title" />
-
-        <ListPreference
-            android:key="lockscreen_background"
-            android:persistent="false"
-            android:dialogTitle="@string/lockscreen_custom_background_title"
-            android:title="@string/lockscreen_custom_background_title"
-            android:entries="@array/lockscreen_background_entries"
-            android:entryValues="@array/lockscreen_background_values" />
 
         <ListPreference
             android:key="pref_low_battery_warning_policy"
