@@ -52,6 +52,11 @@
         android:defaultValue="true" />
 
     <SwitchPreference
+        android:key="show_navbar_hide"
+        android:title="@string/title_show_navbar_hide"
+        android:defaultValue="false" />
+
+    <SwitchPreference
         android:key="power_menu_torch"
         android:title="@string/power_menu_torch_title"
         android:defaultValue="false" />
@@ -59,11 +64,6 @@
     <SwitchPreference
         android:key="power_menu_user"
         android:title="@string/power_menu_user_title"
-        android:defaultValue="false" />
-
-    <SwitchPreference
-        android:key="show_navbar_hide"
-        android:title="@string/title_show_navbar_hide"
         android:defaultValue="false" />
 
 </PreferenceScreen>

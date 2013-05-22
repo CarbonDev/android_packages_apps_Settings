@@ -64,9 +64,9 @@
             android:ringtoneType="ringtone" />
 
     <CheckBoxPreference
-         android:key="vibrate_when_ringing"
-         android:title="@string/vibrate_when_ringing_title"
-         android:persistent="false" />
+            android:key="vibrate_when_ringing"
+            android:title="@string/vibrate_when_ringing_title"
+            android:persistent="false" />
 
     <com.android.settings.IncreasingRingPreference
             android:key="increasing_ring"
@@ -87,38 +87,12 @@
             android:persistent="false"
             android:ringtoneType="notification" />
 
-    <CheckBoxPreference
-            android:key="notification_convert_sound_to_vibration"
-            android:title="@string/notification_convert_sound_to_vibration_title"
-            android:summary="@string/notification_convert_sound_to_vibration_summary"
-            android:defaultValue="false" />
+    <ListPreference
+            android:key="emergency_tone"
+            android:title="@string/emergency_tone_title"
+            android:entries="@array/emergency_tone_entries"
+            android:entryValues="@array/emergency_tone_values" />
 
-    <CheckBoxPreference
-        android:key="volume_keys_control_ring_stream"
-        android:title="@string/volume_keys_control_ring_stream"
-        android:summary="@string/volume_keys_control_ring_stream_summary"
-        android:defaultValue="false" />
-
-    <CheckBoxPreference
-            android:key="dtmf_tone"
-            android:title="@string/dtmf_tone_enable_title"
-            android:defaultValue="true" />
-
-    <CheckBoxPreference
-            android:key="sound_effects"
-            android:title="@string/sound_effects_enable_title"
-            android:defaultValue="true" />
-
-    <CheckBoxPreference
-            android:key="lock_sounds"
-            android:title="@string/lock_sounds_enable_title"
-            android:defaultValue="true" />
-
-    <CheckBoxPreference
-            android:key="haptic_feedback"
-            android:title="@string/haptic_feedback_enable_title"
-            android:defaultValue="true" />
-    
     <CheckBoxPreference
             android:key="camera_sounds"
             android:title="@string/camera_sounds_title"
@@ -126,10 +100,32 @@
             android:defaultValue="true" />
 
     <CheckBoxPreference
-        android:key="lock_volume_keys"
-        android:title="@string/sound_lock_volume_keys_title"
-        android:summary="@string/sound_lock_volume_keys_summary"
-        android:persistent="false" />
+            android:key="dtmf_tone"
+            android:title="@string/dtmf_tone_enable_title"
+            android:defaultValue="true" />
+
+    <CheckBoxPreference
+            android:key="lock_volume_keys"
+            android:title="@string/sound_lock_volume_keys_title"
+            android:summary="@string/sound_lock_volume_keys_summary"
+            android:persistent="false" />
+
+    <CheckBoxPreference
+            android:key="volume_keys_control_ring_stream"
+            android:title="@string/volume_keys_control_ring_stream"
+            android:summary="@string/volume_keys_control_ring_stream_summary"
+            android:defaultValue="false" />
+
+    <CheckBoxPreference
+            android:key="notification_convert_sound_to_vibration"
+            android:title="@string/notification_convert_sound_to_vibration_title"
+            android:summary="@string/notification_convert_sound_to_vibration_summary"
+            android:defaultValue="false" />
+
+    <CheckBoxPreference
+            android:key="lock_sounds"
+            android:title="@string/lock_sounds_enable_title"
+            android:defaultValue="true" />
 		
     <CheckBoxPreference
             android:key="swap_volume_buttons"
@@ -137,10 +133,14 @@
             android:summary="@string/swap_volume_keys_summary" />
 
     <CheckBoxPreference
-            android:key="volbtn_music_controls"
-            android:title="@string/volbtn_music_controls_title"
-            android:summary="@string/volbtn_music_controls_summary"
-            android:persistent="false" />
+            android:key="sound_effects"
+            android:title="@string/sound_effects_enable_title"
+            android:defaultValue="true" />
+
+    <CheckBoxPreference
+            android:key="haptic_feedback"
+            android:title="@string/haptic_feedback_enable_title"
+            android:defaultValue="true" />
 
     <CheckBoxPreference
             android:key="volume_adjust_sounds"
@@ -148,11 +148,11 @@
             android:summary="@string/volume_adjust_sounds_enable_summary"
             android:persistent="true" />
 
-    <ListPreference
-            android:key="emergency_tone"
-            android:title="@string/emergency_tone_title"
-            android:entries="@array/emergency_tone_entries"
-            android:entryValues="@array/emergency_tone_values" />
+    <CheckBoxPreference
+            android:key="volbtn_music_controls"
+            android:title="@string/volbtn_music_controls_title"
+            android:summary="@string/volbtn_music_controls_summary"
+            android:persistent="false" />
 
     <!-- Dock -->
     <PreferenceCategory

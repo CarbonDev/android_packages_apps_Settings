@@ -31,14 +31,6 @@
             android:title="@string/alt_resolver_title"
             android:defaultValue="false" />
 
-        <ListPreference
-            android:key="lockscreen_background"
-            android:persistent="false"
-            android:dialogTitle="@string/lockscreen_custom_background_title"
-            android:title="@string/lockscreen_custom_background_title"
-            android:entries="@array/lockscreen_background_entries"
-            android:entryValues="@array/lockscreen_background_values" />
-
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -103,6 +95,15 @@
         android:key="options"
         android:title="@string/miscellaneous_options_title">
 
+        <PreferenceScreen
+           android:key="lock_clock"
+           android:title="@string/lock_clock_title"
+           android:summary="@string/lock_clock_summary">
+           <intent android:action="android.intent.action.MAIN"
+                   android:targetPackage="com.cyanogenmod.lockclock"
+                   android:targetClass="com.cyanogenmod.lockclock.preference.Preferences" />
+        </PreferenceScreen>
+
         <CheckBoxPreference
             android:key="system_power_crt_screen_off"
             android:summary="@string/system_power_crt_screen_off_summary"
@@ -112,6 +113,14 @@
             android:key="system_power_crt_screen_on"
             android:summary="@string/system_power_crt_screen_on_summary"
             android:title="@string/system_power_crt_screen_on_title" />
+
+        <ListPreference
+            android:key="lockscreen_background"
+            android:persistent="false"
+            android:dialogTitle="@string/lockscreen_custom_background_title"
+            android:title="@string/lockscreen_custom_background_title"
+            android:entries="@array/lockscreen_background_entries"
+            android:entryValues="@array/lockscreen_background_values" />
 
         <ListPreference
             android:key="pref_low_battery_warning_policy"
