@@ -5942,6 +5942,13 @@ desired screen brightness. Selecting \'Split\' allows you to to duplicate one li
 two in order to insert additional control points. \'Remove\' deletes the selected line.
     </string>
 
+    <string name="auto_brightness_sensitivity_title">Adjustment sensitivity</string>
+    <string name="auto_brightness_sensitivity_verylow">Very low</string>
+    <string name="auto_brightness_sensitivity_low">Low</string>
+    <string name="auto_brightness_sensitivity_medium">Medium</string>
+    <string name="auto_brightness_sensitivity_high">High</string>
+    <string name="auto_brightness_sensitivity_veryhigh">Very high</string>
+
     <!-- Lock volume keys -->
     <string name="sound_lock_volume_keys_title">Lock volume keys</string>
     <string name="sound_lock_volume_keys_summary">Prevents accidental unset of silent mode by pressing volume keys</string>
