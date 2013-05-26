@@ -4958,14 +4958,13 @@
 
     <!-- Display : Rotation  -->
     <string name="display_rotation_title">Rotation</string>
-    <string name="display_rotation_enabled">Enabled</string>
     <string name="display_rotation_disabled">Disabled</string>
-    <string name="display_rotation_unit">Degrees</string>
-    <string name="display_rotation_category_title">Rotation Modes</string>
-    <string name="display_rotation_0_title">0 Degrees</string>
-    <string name="display_rotation_90_title">90 Degrees</string>
-    <string name="display_rotation_180_title">180 Degrees</string>
-    <string name="display_rotation_270_title">270 Degrees</string>
+    <string name="display_rotation_unit">degrees</string>
+    <string name="display_rotation_category_title">Rotation modes</string>
+    <string name="display_rotation_0_title">0 degrees</string>
+    <string name="display_rotation_90_title">90 degrees</string>
+    <string name="display_rotation_180_title">180 degrees</string>
+    <string name="display_rotation_270_title">270 degrees</string>
 
     <string name="increasing_ring_title">Ascending ringtone</string>
     <!-- Sound settings screen, the caption of the checkbox for making incoming calls increase in volume -->
@@ -5666,9 +5665,11 @@
     <string name="status_bar_notif_count_summary">Display number of pending notifications</string>
 
     <!-- Wakeup options -->
-    <string name="display_category_wakeup_options_title">Wakeup options</string>
-    <string name="pref_volume_wake_title">Volume rocker wake</string>
-    <string name="pref_volume_wake_summary">Pressing the volume rocker up/down will wake the device</string>
+    <string name="display_category_wakeup_options_title">Wake-up options</string>
+    <string name="pref_volume_wake_title">Volume rocker</string>
+    <string name="pref_volume_wake_summary">Pressing the volume rocker up or down will wake your device</string>
+    <string name="pref_home_wake_title">Home button</string>
+    <string name="pref_home_wake_summary">Pressing the home button will wake your device</string>
 
     <!-- Setting checkbox summary for displaying USB debugging notification -->
     <string name="adb_notify">USB debugging notify</string>
