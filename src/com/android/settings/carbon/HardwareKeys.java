@@ -49,6 +49,8 @@ public class HardwareKeys extends SettingsPreferenceFragment implements
     private static final String HARDWARE_KEYS_ASSIST_LONG_PRESS = "hardware_keys_assist_long_press";
     private static final String HARDWARE_KEYS_APP_SWITCH_PRESS = "hardware_keys_app_switch_press";
     private static final String HARDWARE_KEYS_APP_SWITCH_LONG_PRESS = "hardware_keys_app_switch_long_press";
+    private static final String HARDWARE_KEYS_CAMERA_PRESS = "hardware_keys_camera_press";
+    private static final String HARDWARE_KEYS_CAMERA_LONG_PRESS = "hardware_keys_camera_long_press";
 
     // Available custom actions to perform on a key press.
     // Must match values for KEY_HOME_LONG_PRESS_ACTION in:
@@ -67,6 +69,7 @@ public class HardwareKeys extends SettingsPreferenceFragment implements
     private static final int ACTION_KILL_APP = 11;
     private static final int ACTION_LAST_APP = 12;
     private static final int ACTION_CUSTOM_APP = 13;
+    private static final int ACTION_CAMERA = 14;
 
     // Masks for checking presence of hardware keys.
     // Must match values in frameworks/base/core/res/res/values/config.xml
@@ -75,6 +78,7 @@ public class HardwareKeys extends SettingsPreferenceFragment implements
     private static final int KEY_MASK_MENU = 0x04;
     private static final int KEY_MASK_ASSIST = 0x08;
     private static final int KEY_MASK_APP_SWITCH = 0x10;
+    private static final int KEY_MASK_CAMERA = 0x20;
 
     private CheckBoxPreference mEnableCustomBindings;
     private ListPreference mHomePressAction;
@@ -87,6 +91,8 @@ public class HardwareKeys extends SettingsPreferenceFragment implements
     private ListPreference mAssistLongPressAction;
     private ListPreference mAppSwitchPressAction;
     private ListPreference mAppSwitchLongPressAction;
+    private ListPreference mCameraPressAction;
+    private ListPreference mCameraLongPressAction;
 
     private ShortcutPickerHelper mPicker;
     private Preference mCustomAppPreference;
@@ -102,6 +108,7 @@ public class HardwareKeys extends SettingsPreferenceFragment implements
         final boolean hasMenuKey = (deviceKeys & KEY_MASK_MENU) != 0;
         final boolean hasAssistKey = (deviceKeys & KEY_MASK_ASSIST) != 0;
         final boolean hasAppSwitchKey = (deviceKeys & KEY_MASK_APP_SWITCH) != 0;
+        final boolean hasCameraKey = (deviceKeys & KEY_MASK_CAMERA) != 0;
 
         addPreferencesFromResource(R.xml.hardware_keys);
         PreferenceScreen prefSet = getPreferenceScreen();
@@ -130,6 +137,10 @@ public class HardwareKeys extends SettingsPreferenceFragment implements
                 HARDWARE_KEYS_APP_SWITCH_PRESS);
         mAppSwitchLongPressAction = (ListPreference) prefSet.findPreference(
                 HARDWARE_KEYS_APP_SWITCH_LONG_PRESS);
+        mCameraPressAction = (ListPreference) prefSet.findPreference(
+                HARDWARE_KEYS_CAMERA_PRESS);
+        mCameraLongPressAction = (ListPreference) prefSet.findPreference(
+                HARDWARE_KEYS_CAMERA_LONG_PRESS);
         PreferenceCategory bindingsCategory = (PreferenceCategory) prefSet.findPreference(
                 HARDWARE_KEYS_CATEGORY_BINDINGS);
 
@@ -327,6 +338,44 @@ public class HardwareKeys extends SettingsPreferenceFragment implements
             bindingsCategory.removePreference(mAppSwitchLongPressAction);
         }
 
+        if (hasCameraKey) {
+            String cameraPressAction = Settings.System.getString(getContentResolver(),
+                    Settings.System.KEY_CAMERA_ACTION);
+            if (cameraPressAction == null)
+                cameraPressAction = Integer.toString(ACTION_CAMERA);
+
+            try {
+                Integer.parseInt(cameraPressAction);
+                mCameraPressAction.setValue(cameraPressAction);
+                mCameraPressAction.setSummary(mCameraPressAction.getEntry());
+            } catch (NumberFormatException e) {
+                mCameraPressAction.setValue(Integer.toString(ACTION_CUSTOM_APP));
+                mCameraPressAction.setSummary(mPicker.getFriendlyNameForUri(cameraPressAction));
+            }
+
+            mCameraPressAction.setOnPreferenceChangeListener(this);
+
+            String cameraLongPressAction = Settings.System.getString(getContentResolver(),
+                    Settings.System.KEY_CAMERA_LONG_PRESS_ACTION);
+            if (cameraLongPressAction == null)
+                cameraLongPressAction = Integer.toString(ACTION_NOTHING);
+
+            try {
+                Integer.parseInt(cameraLongPressAction);
+                mCameraLongPressAction.setValue(cameraLongPressAction);
+                mCameraLongPressAction.setSummary(mCameraLongPressAction.getEntry());
+            } catch (NumberFormatException e) {
+                mCameraLongPressAction.setValue(Integer.toString(ACTION_CUSTOM_APP));
+                mCameraLongPressAction.setSummary(mPicker.getFriendlyNameForUri(cameraLongPressAction));
+            }
+
+            mCameraLongPressAction.setOnPreferenceChangeListener(this);
+        } else {
+            bindingsCategory.removePreference(mCameraPressAction);
+            bindingsCategory.removePreference(mCameraLongPressAction);
+        }
+        // All done buttons
+
         mEnableCustomBindings.setChecked((Settings.System.getInt(getActivity().
                 getApplicationContext().getContentResolver(),
                 Settings.System.HARDWARE_KEY_REBINDING, 0) == 1));
@@ -409,6 +458,20 @@ public class HardwareKeys extends SettingsPreferenceFragment implements
                 Settings.System.putInt(getContentResolver(),
                         Settings.System.KEY_APP_SWITCH_LONG_PRESS_ACTION, value);
                 return true;
+            } else if (preference == mCameraPressAction) {
+                int index = mCameraPressAction.findIndexOfValue((String) newValue);
+                mCameraPressAction.setSummary(
+                        mCameraPressAction.getEntries()[index]);
+                Settings.System.putInt(getContentResolver(),
+                        Settings.System.KEY_CAMERA_ACTION, value);
+                return true;
+            } else if (preference == mCameraLongPressAction) {
+                int index = mCameraLongPressAction.findIndexOfValue((String) newValue);
+                mCameraLongPressAction.setSummary(
+                        mCameraLongPressAction.getEntries()[index]);
+                Settings.System.putInt(getContentResolver(),
+                        Settings.System.KEY_CAMERA_LONG_PRESS_ACTION, value);
+                return true;
             }
         }
         return false;
@@ -455,6 +518,12 @@ public class HardwareKeys extends SettingsPreferenceFragment implements
         } else if (preference == mAppSwitchLongPressAction) {
             Settings.System.putString(getContentResolver(),
                     Settings.System.KEY_APP_SWITCH_LONG_PRESS_ACTION, uri);
+        } else if (preference == mCameraPressAction) {
+            Settings.System.putString(getContentResolver(),
+                    Settings.System.KEY_CAMERA_ACTION, uri);
+        } else if (preference == mCameraLongPressAction) {
+            Settings.System.putString(getContentResolver(),
+                    Settings.System.KEY_CAMERA_LONG_PRESS_ACTION, uri);
         }
         preference.setSummary(friendlyName);
     }
