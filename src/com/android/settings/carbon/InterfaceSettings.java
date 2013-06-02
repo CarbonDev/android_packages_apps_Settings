@@ -268,8 +268,6 @@ public class InterfaceSettings extends SettingsPreferenceFragment
         }
 
         if (isTabletUI(mContext)) {
-            mStatusbarSliderPreference.setEnabled(false);
-            mStatusBarHide.setEnabled(false);
         } else {
             mHideExtras.setEnabled(false);
         }

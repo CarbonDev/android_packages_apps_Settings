@@ -51,6 +51,7 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements Di
     private static final int MENU_HELP = Menu.FIRST + 100;
 
     private SettingsDialogFragment mDialogFragment;
+    protected boolean hasTorch;
     protected boolean hasVibration = false;
     protected ContentResolver mContentRes;
 
@@ -59,6 +60,7 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements Di
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        hasTorch = getResources().getBoolean(R.bool.has_led_flash);
         mContext = getActivity();
         mContentRes = getActivity().getContentResolver();
         // Prepare help url and enable menu if necessary
