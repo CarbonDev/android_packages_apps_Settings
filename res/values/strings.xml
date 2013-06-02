@@ -4547,8 +4547,8 @@
     <string name="notification_drawer_title">Notification drawer</string>
     <string name="notification_style_title">Notification drawer style</string>
     <string name="notification_style_summary">Change your notification drawer style</string>
-    <string name="notification_show_wifi_ssid_title">Show Wifi network name</string>
-    <string name="notification_show_wifi_ssid_summary">Display the name of the currently connected Wifi network</string>
+    <string name="notification_show_wifi_ssid_title">Show wifi network name</string>
+    <string name="notification_show_wifi_ssid_summary">Display the name of the currently connected wifi network</string>
 
     <!-- Notification drawer background -->
     <string name="notification_wallpaper_title">Notification drawer background</string>
@@ -5281,10 +5281,6 @@
     <string name="hardware_keys_assist_long_press_title">Longpress Search Key</string>
     <string name="hardware_keys_app_switch_press_title">Press Appswitch Key</string>
     <string name="hardware_keys_app_switch_long_press_title">Longpress Appswitch Key</string>
-    <string name="hardware_keys_show_overflow_title">Show Action Overflow</string>
-    <string name="hardware_keys_show_overflow_summary">Display the 3-dot overflow menu button within apps</string>
-    <string name="hardware_keys_show_overflow_toast_enable">The action overflow button may not be visible until apps are restarted</string>
-    <string name="hardware_keys_show_overflow_toast_disable">The action overflow button may not be hidden until apps are restarted</string>
     <string name="hardware_keys_action_nothing">No action</string>
     <string name="hardware_keys_action_home">Home button</string>
     <string name="hardware_keys_action_back">Back button</string>
@@ -5671,8 +5667,8 @@
     <!-- Warning for Adb over Network -->
     <string name="adb_over_network_warning">WARNING: When ADB over network is enabled, your phone is open for intrusions on all connected networks, including GSM data network!\n\nOnly use this feature when you are connected on trusted networks.\n\nDo you really want to enable this function?</string>
 
-    <string name="lockscreen_buttons_title">Button actions</string>
-    <string name="lockscreen_buttons_summary">View or change lockscreen button actions</string>
+    <string name="lockscreen_buttons_title">Lockscreen button actions</string>
+    <string name="lockscreen_buttons_summary">Assign lonpress actions to the hardware keys</string>
     <string name="lockscreen_long_press_back_title">Longpress back Key</string>
     <string name="lockscreen_long_press_home_title">Longpress home Key</string>
     <string name="lockscreen_long_press_menu_title">Longpress menu Key</string>
@@ -6006,6 +6002,12 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="lockscreen_buttons_previous">Previous song</string>
     <string name="lockscreen_buttons_playpause">Play/Pause music</string>
     <string name="lockscreen_buttons_toggle_sound">Toggle sound</string>
+
+    <!-- Menu UI Overflow toggle -->
+    <string name="show_overflow_title">Menu UI overflow</string>
+    <string name="show_overflow_summary">Display the 3-dot overflow menu button within apps</string>
+    <string name="show_overflow_toast_enable">The menu overflow button may not be visible until apps are restarted</string>
+    <string name="show_overflow_toast_disable">The menu overflow button may not be hidden until apps are restarted</string>
 
     <!-- **** CARBON ADDITIONS END **** -->
 </resources>

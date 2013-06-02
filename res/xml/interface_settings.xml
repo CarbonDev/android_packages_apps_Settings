@@ -17,6 +17,12 @@
             android:entries="@array/lockscreen_background_entries"
             android:entryValues="@array/lockscreen_background_values" />
 
+        <CheckBoxPreference
+            android:key="show_overflow"
+            android:title="@string/show_overflow_title"
+            android:summary="@string/show_overflow_summary"
+            android:defaultValue="false" />
+
         <Preference
             android:fragment="com.android.settings.carbon.NotificationDrawerStyle"
             android:key="notification_style"
@@ -53,15 +59,15 @@
             android:entryValues="@array/user_mode_ui_values" />
 
         <CheckBoxPreference
+            android:key="dual_pane"
+            android:title="@string/dual_pane"
+            android:summary="@string/dual_pane_summary" />
+
+        <CheckBoxPreference
             android:key="hide_extras"
             android:title= "@string/hide_extras"
             android:summary= "@string/hide_extras_summary"
             android:defaultValue="false" />
-
-        <CheckBoxPreference
-            android:key="dual_pane"
-            android:title="@string/dual_pane"
-            android:summary="@string/dual_pane_summary" />
 
         <Preference
             android:key="lcd_density_setup"
