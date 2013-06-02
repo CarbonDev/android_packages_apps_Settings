@@ -265,7 +265,7 @@ public class Navbar extends SettingsPreferenceFragment implements
             prefs.removePreference(mEnableNavigationBar);
         }
         PreferenceGroup pg = (PreferenceGroup) prefs.findPreference("advanced_cat");
-        if (isTablet(mContext)) {
+        if (isTabletUI(mContext)) {
             mNavigationBarHeight.setTitle(R.string.system_bar_height_title);
             mNavigationBarHeight.setSummary(R.string.system_bar_height_summary);
             mNavigationBarHeightLandscape.setTitle(R.string.system_bar_height_landscape_title);
@@ -279,6 +279,11 @@ public class Navbar extends SettingsPreferenceFragment implements
             pg.removePreference(mWidthPort);
             pg.removePreference(mWidthLand);
             pg.removePreference(mWidthHelp);
+            if (isPhabletUI(mContext)) { // Phablets don't have NavBar onside 
+                pg.removePreference(mNavigationBarWidth);
+            } else {
+                pg.removePreference(mNavigationBarHeightLandscape);
+            }
         }
 
         if (Integer.parseInt(menuDisplayLocation.getValue()) == 4) {
@@ -574,7 +579,7 @@ public class Navbar extends SettingsPreferenceFragment implements
 
     public void refreshSettings() {
         refreshButtons();
-        if (!isTablet(mContext)) {
+        if (!isTabletUI(mContext)) {
             mDragHandleOpacity.setEnabled(mNavBarHideEnable.isChecked());
             mDragHandleWidth.setEnabled(mNavBarHideEnable.isChecked());
             mNavBarHideTimeout.setEnabled(mNavBarHideEnable.isChecked());

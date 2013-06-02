@@ -267,6 +267,13 @@ public class InterfaceSettings extends SettingsPreferenceFragment
             getPreferenceScreen().removePreference(mShowWifiName);
         }
 
+        if (isTabletUI(mContext)) {
+            mStatusbarSliderPreference.setEnabled(false);
+            mStatusBarHide.setEnabled(false);
+        } else {
+            mHideExtras.setEnabled(false);
+        }
+
         setHasOptionsMenu(true);
     }
 
