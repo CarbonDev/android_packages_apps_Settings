@@ -5360,7 +5360,7 @@
     <string name="statusbar_hide_summary">Allow Statusbar to be hidden</string>
     <string name="navigation_bar_alpha_title">Statusbar and navbar opacity</string>
     <string name="navbar_hide_enable_title">Hidden navbar enable</string>
-    <string name="systembar_hide_enable_title">Hidden systembar Eeable</string>
+    <string name="systembar_hide_enable_title">Hidden systembar Enable</string>
     <string name="drag_handle_opacity_title">Drag handle opacity</string>
     <string name="drag_handle_width_title">Drag handle width</string>
     <string name="title_navbar_timeout">Hidden navbar timeout</string>
