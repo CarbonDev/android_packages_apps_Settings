@@ -5976,5 +5976,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="show_overflow_toast_enable">The menu overflow button may not be visible until apps are restarted</string>
     <string name="show_overflow_toast_disable">The menu overflow button may not be hidden until apps are restarted</string>
 
+	<!-- Delete apn confirmation dialog message -->
+    <string name="confirm_delete_apn">The APN will be deleted.</string>
+
     <!-- **** CARBON ADDITIONS END **** -->
 </resources>
