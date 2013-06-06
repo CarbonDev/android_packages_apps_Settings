@@ -5973,6 +5973,13 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
 	<!-- Delete apn confirmation dialog message -->
     <string name="confirm_delete_apn">The APN will be deleted.</string>
+    
+    <string name="profile_trigger_title_wifi">Wi-Fi triggers for <xliff:g id="profile">%s</xliff:g></string>
+    <string name="profile_trigger_configure">Configure trigger</string>
+    <string name="profile_trigger_wifi">Wi-Fi triggers</string>
+    <string name="profile_trigger_connect">On connect</string>
+    <string name="profile_trigger_disconnect">On disconnect</string>
+    <string name="profile_trigger_notrigger">No trigger</string>
 
     <!-- **** CARBON ADDITIONS END **** -->
 </resources>
