@@ -18,15 +18,12 @@ package com.android.settings.carbon;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Fragment;
 import android.app.SearchManager;
 import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.Intent.ShortcutIconResource;
-import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -36,33 +33,39 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.os.UserHandle;
-import android.preference.PreferenceFragment;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.*;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.*;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
-
-import static com.android.internal.util.carbon.AwesomeConstants.*;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Spinner;
+import android.widget.Switch;
+import android.widget.TextView;
+import android.widget.Toast;
 import com.android.internal.util.carbon.LockScreenHelpers;
 import com.android.internal.widget.multiwaveview.GlowPadView;
 import com.android.internal.widget.multiwaveview.TargetDrawable;
-import com.android.settings.util.ShortcutPickerHelper;
-import com.android.settings.R;
-import com.android.settings.util.Helpers;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.SettingsActivity;
+import com.android.settings.R;
+import com.android.settings.util.ShortcutPickerHelper;
 import net.margaritov.preference.colorpicker.ColorPickerDialog;
 
-import java.util.ArrayList;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.net.URISyntaxException;
-import java.lang.NumberFormatException;
+import java.util.ArrayList;
+
+import static com.android.internal.util.carbon.AwesomeConstants.*;
 
 public class Lockscreens extends SettingsPreferenceFragment implements
         ShortcutPickerHelper.OnPickListener, ColorPickerDialog.OnColorChangedListener,
@@ -83,7 +86,7 @@ public class Lockscreens extends SettingsPreferenceFragment implements
     private View mLockscreenOptions;
     private boolean mIsLandscape;
 
-    private Switch mGlowTorchSwitch;
+    private Spinner mGlowTorchSwitch;
     private Switch mLongPressStatus;
     private Switch mLockBatterySwitch;
     private Switch mLockRotateSwitch;
@@ -215,6 +218,30 @@ public class Lockscreens extends SettingsPreferenceFragment implements
             }
         });
 
+        mGlowTorchText = ((TextView) getActivity()
+                .findViewById(R.id.lockscreen_glow_torch_id));
+        mGlowTorchText.setOnClickListener(mGlowTorchTextListener);
+        mGlowTorchSwitch = (Spinner) getActivity().findViewById(R.id.glow_torch_switch);
+        ArrayAdapter<CharSequence> spinnerAdapter = new ArrayAdapter<CharSequence>(
+                getActivity(), android.R.layout.simple_spinner_item);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        final String[] entries = getResources().getStringArray(
+                R.array.pref_lockscreen_glowtorch_entries);
+        for (int i = 0; i < entries.length ; i++) {
+            spinnerAdapter.add(entries[i]);
+        }
+        mGlowTorchSwitch.setAdapter(spinnerAdapter);
+        mGlowTorchSwitch.post(new Runnable() {
+            public void run() {
+                mGlowTorchSwitch.setOnItemSelectedListener(new TorchListener());
+            }
+        });
+
+        if (!hasTorch) {
+            mGlowTorchText.setVisibility(View.GONE);
+            mGlowTorchSwitch.setVisibility(View.GONE);
+        }
+
         mLockBatteryText = ((TextView) getActivity().findViewById(R.id.lockscreen_battery_id));
         mLockBatteryText.setOnClickListener(mLockBatteryTextListener);
         mLockBatterySwitch = (Switch) getActivity().findViewById(R.id.lockscreen_battery_switch);
@@ -328,24 +355,6 @@ public class Lockscreens extends SettingsPreferenceFragment implements
                     }
                 });
 
-        mGlowTorchText = ((TextView) getActivity()
-                .findViewById(R.id.lockscreen_glow_torch_id));
-        mGlowTorchText.setOnClickListener(mGlowTorchTextListener);
-        mGlowTorchSwitch = (Switch) getActivity().findViewById(R.id.glow_torch_switch);
-        mGlowTorchSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton v, boolean checked) {
-                Settings.System.putBoolean(cr, Settings.System.LOCKSCREEN_GLOW_TORCH,
-                        checked);
-                updateDrawables();
-            }
-        });
-
-        if (!hasTorch) {
-            mGlowTorchText.setVisibility(View.GONE);
-            mGlowTorchSwitch.setVisibility(View.GONE);
-        }
-
         mLongPressText = ((TextView) getActivity()
                 .findViewById(R.id.lockscreen_target_longpress_id));
         mLongPressText.setOnClickListener(mLongPressTextListener);
@@ -360,6 +369,19 @@ public class Lockscreens extends SettingsPreferenceFragment implements
         });
         updateSwitches();
         updateDrawables();
+    }
+
+    public class TorchListener implements OnItemSelectedListener {
+        public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+            final String[] values = getResources().getStringArray(
+                    R.array.pref_lockscreen_glowtorch_values);
+            int val = Integer.parseInt((String) values[pos]);
+            Settings.System.putInt(cr, Settings.System.LOCKSCREEN_GLOW_TORCH, val);
+            updateDrawables();
+        }
+        public void onNothingSelected(AdapterView<?> parent) {
+            // Do nothing.
+        }
     }
 
     private TextView.OnClickListener mLockTextColorTextListener = new TextView.OnClickListener() {
@@ -453,6 +475,8 @@ public class Lockscreens extends SettingsPreferenceFragment implements
     };
 
     private void updateSwitches() {
+        mGlowTorchSwitch.setSelection(Settings.System.getInt(cr,
+                Settings.System.LOCKSCREEN_GLOW_TORCH, 0));
         mLockBatterySwitch.setChecked(Settings.System.getBoolean(cr,
                 Settings.System.LOCKSCREEN_ALWAYS_SHOW_BATTERY, false));
         mLockRotateSwitch.setChecked(Settings.System.getBoolean(cr,
@@ -463,8 +487,6 @@ public class Lockscreens extends SettingsPreferenceFragment implements
                 Settings.System.LOCKSCREEN_HIDE_INITIAL_PAGE_HINTS, false));
         mLockMinimizeChallangeSwitch.setChecked(Settings.System.getBoolean(cr,
                 Settings.System.LOCKSCREEN_MAXIMIZE_WIDGETS, false));
-        mGlowTorchSwitch.setChecked(Settings.System.getBoolean(cr,
-                Settings.System.LOCKSCREEN_GLOW_TORCH, false));
         mLockCarouselSwitch.setChecked(Settings.System.getBoolean(cr,
                 Settings.System.LOCKSCREEN_USE_WIDGET_CONTAINER_CAROUSEL, false));
         mLockCameraSwitch.setChecked(Settings.System.getBoolean(cr,
@@ -649,8 +671,9 @@ public class Lockscreens extends SettingsPreferenceFragment implements
                         .fromFile(new File(mContext.getFilesDir(), iconName)).getPath();
 
                 File f = new File(selectedImageUri.getPath());
-                if (f.exists())
+                if (f.exists()) {
                     f.delete();
+                }
 
                 Toast.makeText(
                         mContext,
@@ -876,13 +899,18 @@ public class Lockscreens extends SettingsPreferenceFragment implements
 
     private void updateVisiblity(boolean visible) {
         if (visible) {
-            mGlowTorchText.setVisibility(View.VISIBLE);
-            mGlowTorchSwitch.setVisibility(View.VISIBLE);
+            if (hasTorch) {
+                mGlowTorchText.setVisibility(View.VISIBLE);
+                mGlowTorchSwitch.setVisibility(View.VISIBLE);
+            }
             mLongPressStatus.setVisibility(View.VISIBLE);
             mLockBatterySwitch.setVisibility(View.VISIBLE);
             mLockRotateSwitch.setVisibility(View.VISIBLE);
             mLockPageHintSwitch.setVisibility(View.VISIBLE);
-            mLockMinimizeChallangeSwitch.setVisibility(View.VISIBLE);
+            if (!isSW600DPScreen(mContext)) {
+                mLockMinimizeChallangeSwitch.setVisibility(View.VISIBLE);
+                mLockMinimizeChallangeText.setVisibility(View.VISIBLE);
+            }
             mLockCarouselSwitch.setVisibility(View.VISIBLE);
             mLockCameraSwitch.setVisibility(View.VISIBLE);
             mLockSeeThroughSwitch.setVisibility(View.VISIBLE);
@@ -891,7 +919,6 @@ public class Lockscreens extends SettingsPreferenceFragment implements
             mLockBatteryText.setVisibility(View.VISIBLE);
             mLockRotateText.setVisibility(View.VISIBLE);
             mLockPageHintText.setVisibility(View.VISIBLE);
-            mLockMinimizeChallangeText.setVisibility(View.VISIBLE);
             mLockCarouselText.setVisibility(View.VISIBLE);
             mLockCameraText.setVisibility(View.VISIBLE);
             mLockSeeThroughText.setVisibility(View.VISIBLE);
