@@ -817,8 +817,6 @@ public class WifiConfigController implements TextWatcher,
             } else {
                 mView.findViewById(R.id.wifi_advanced_fields).setVisibility(View.GONE);
             }
-        } else if (view.getId() == R.id.wifi_auto_connect_togglebox) {
-            mAutoConnect = ((CheckBox) view).isChecked();
         } else if (view.getId() == R.id.wifi_ibss_checkbox) {
             if (((CheckBox) view).isChecked()) {
                 mView.findViewById(R.id.wifi_ibss_freq_fields).setVisibility(View.VISIBLE);
