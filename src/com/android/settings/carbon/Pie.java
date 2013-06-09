@@ -186,6 +186,15 @@ public class Pie extends SettingsPreferenceFragment
         mPieTrigger.setEnabled(pieCheck);
         mPieGap.setEnabled(pieCheck);
         mPieNotifi.setEnabled(pieCheck);
+        mPieAngle.setEnabled(pieCheck);
+        mPieStick.setEnabled(pieCheck);
+        mPieCenter.setEnabled(pieCheck);
+        mPieRestart.setEnabled(pieCheck);
+        mPieMenu.setEnabled(pieCheck);
+        mPieSearch.setEnabled(pieCheck);
+        mPieAppWindow.setEnabled(pieCheck);
+        mPieLastApp.setEnabled(pieCheck);
+        mPieKillTask.setEnabled(pieCheck);
     }
 
     @Override
