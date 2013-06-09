@@ -1012,10 +1012,10 @@
 
     <!-- Volume Overlay options. -->
     <string-array name="volume_overlay_entries">
-        <item>Single</item>
-        <item>Expandable</item>
-        <item>Expanded</item>
-        <item>None</item>
+        <item>@string/volume_overlay_single</item>
+        <item>@string/volume_overlay_expandable</item>
+        <item>@string/volume_overlay_expanded</item>
+        <item>@string/volume_overlay_none</item>
     </string-array>
 
     <!-- Values for Volume Overlay. Do not translate. -->
@@ -2009,10 +2009,10 @@
     </string-array>
 
     <string-array name="battery_bar_entries">
-        <item>Hide</item>
-        <item>Statusbar</item>
-        <item>Top of navbar</item>
-        <item>Bottom of navbar</item>
+        <item>@string/hide</item>
+        <item>@string/statusbar</item>
+        <item>@string/top_of_navbar</item>
+        <item>@string/bottom_of_navbar</item>
     </string-array>
 
     <string-array name="battery_bar_values" translatable="false">
@@ -2023,8 +2023,8 @@
     </string-array>
 
     <string-array name="battery_bar_style_entries">
-        <item>Regular</item>
-        <item>Center-mirrored</item>
+        <item>@string/regular</item>
+        <item>@string/center_mirrored</item>
     </string-array>
 
     <string-array name="battery_bar_style_values" translatable="false">
@@ -2239,10 +2239,10 @@
 
     <!-- Notification Behavior -->
     <string-array name="notifs_beh_entries">
-        <item>Normal</item>
-        <item>Never expand</item>
-        <item>Always expand</item>
-        <item>Old style</item>
+        <item>@string/notification_behaviour_normal</item>
+        <item>@string/notification_behaviour_neverexpand</item>
+        <item>@string/notification_behaviour_alwaysexpand</item>
+        <item>@string/notification_behaviour_oldstyle</item>
     </string-array>
     <string-array name="notifs_beh_values" translatable="false">
         <item>0</item>
