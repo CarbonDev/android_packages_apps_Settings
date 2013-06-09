@@ -5146,7 +5146,7 @@
     <!-- Sound settings screen -->
     <string name="volume_overlay_title">Volume panel style</string>
     <string name="volume_overlay_single">Single</string>
-    <string name="volume_overlay_expandable"<Expandable</string>
+    <string name="volume_overlay_expandable">Expandable</string>
     <string name="volume_overlay_expanded">Expanded</string>
     <string name="volume_overlay_none">None</string>
     <string name="volbtn_music_controls_title">Volume rocker music controls</string>
