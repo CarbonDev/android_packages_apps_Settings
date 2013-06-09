@@ -4763,7 +4763,7 @@
     <string name="pie_size_title">Pie size</string>
     <string name="pie_size_summary">Define Pie controls size</string>
     <string name="pie_size_small">Small</string>
-    <string name="pie_size_default">Normal (Default)</string>
+    <string name="pie_size_default">Normal (default)</string>
     <string name="pie_size_large">Large</string>
     <string name="pie_size_gigantic">Gigantic</string>
     <string name="pie_angle_title">Pie angle</string>
@@ -5292,7 +5292,7 @@
 
     <!-- Navigation Bar -->
     <string name="navigation_bar">Navigation bar</string>
-    <string name="navbar_hide">NavBar hide Ootions</string>
+    <string name="navbar_hide">NavBar hide Options</string>
     <string name="navbar_option_cat">Options</string>
     <string name="navbar_button_cat">Buttons</string>
     <string name="navbar_color_cat">Colors and transparency</string>
@@ -5931,16 +5931,11 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Permissions Management -->
     <string name="permissions_settings_title">Permissions</string>
 
-	<!-- Category title for power sound notification specific Settings.
-         [CHAR LIMIT=40] -->
+    <!-- Category title for power sound notification specific Settings. -->
     <string name="power_notifications_category_title">Power sounds</string>
-    <!-- Sound settings, power notifications enable/disable, setting check box label -->
     <string name="power_notifications_enable_title">Enable</string>
-    <!-- Sound settings, power notifications vibrate enable/disable, setting check box label -->
     <string name="power_notifications_vibrate_title">Vibrate</string>
-    <!-- Sound settings, power notifications ringtone selection, preference label -->
     <string name="power_notifications_ringtone_title">Notification sound</string>
-    <!-- Sound settings, power notifications label for ringtone == none -->
     <string name="power_notifications_ringtone_silent">Silent</string>
 
     <!-- Lockscreen longpress actions -->
