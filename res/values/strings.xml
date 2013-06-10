@@ -5209,6 +5209,7 @@
 
     <!-- Statusbar | Toggles -->
     <string name="title_statusbar_toggles">Statusbar toggles</string>
+    <string name="toggles_display_close">Close</string>
     <string name="toggles_layout_title">Toggle Layout</string>
     <string name="toggles_per_row_title">Toggles per row</string>
     <string name="toggles_per_row_summary">Choose how many toggles to show per row</string>
