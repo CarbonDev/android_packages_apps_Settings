@@ -2118,7 +2118,7 @@
     <string name="pie_center_title">Centrage</string>
     <string name="pie_center_summary">Toujours afficher le Pie au milieu de l\'aire d\'activation, plutôt qu\'à l\'endroit où est votre doigt.</string>
     <string name="pie_notifications_title">Activer les chevrons</string>
-    <string name="pie_notifications_summary">Les chevrons permettent d'afficher les notifications ou réglages rapides avec un swipe</string>
+    <string name="pie_notifications_summary">Les chevrons permettent d\'afficher les notifications ou réglages rapides avec un swipe</string>
     <string name="pie_menu_title">Bouton Menu persistant</string>
     <string name="pie_menu_summary">Toujours afficher le bouton Menu, même lorsqu\'il n\'est pas nécessaire.</string>
     <string name="pie_search_title">Bouton Recherche</string>
