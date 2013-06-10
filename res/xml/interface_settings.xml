@@ -82,7 +82,7 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:key="kardware_keys_options"
+        android:key="hardware_keys_options"
         android:title="@string/hardware_keys_options_title">
 
         <PreferenceScreen
