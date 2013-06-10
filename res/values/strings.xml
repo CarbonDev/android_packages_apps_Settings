@@ -5660,11 +5660,11 @@
     <!-- Warning for Adb over Network -->
     <string name="adb_over_network_warning">WARNING: When ADB over network is enabled, your phone is open for intrusions on all connected networks, including GSM data network!\n\nOnly use this feature when you are connected on trusted networks.\n\nDo you really want to enable this function?</string>
 
-    <string name="lockscreen_buttons_title">Lockscreen button actions</string>
-    <string name="lockscreen_buttons_summary">Assign lonpress actions to the hardware keys</string>
-    <string name="lockscreen_long_press_back_title">Longpress back Key</string>
-    <string name="lockscreen_long_press_home_title">Longpress home Key</string>
-    <string name="lockscreen_long_press_menu_title">Longpress menu Key</string>
+    <string name="lockscreen_buttons_title">Button actions</string>
+    <string name="lockscreen_buttons_summary">View or change lock screen button actions</string>
+    <string name="lockscreen_long_press_back_title">Long press back button</string>
+    <string name="lockscreen_long_press_home_title">Long press home button</string>
+    <string name="lockscreen_long_press_menu_title">Long press menu button</string>
     <string name="lockscreen_long_press_assist_title">Long press search button</string>
     <string name="lockscreen_long_press_app_switch_title">Long press app switch button</string>
     <string name="lockscreen_long_press_camera_title">Long press camera button</string>
@@ -5937,19 +5937,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="power_notifications_vibrate_title">Vibrate</string>
     <string name="power_notifications_ringtone_title">Notification sound</string>
     <string name="power_notifications_ringtone_silent">Silent</string>
-
-    <!-- Lockscreen longpress actions -->
-    <string name="lockscreen_buttons_title">Button actions</string>
-    <string name="lockscreen_buttons_summary">View or change lock screen button actions</string>
-    <string name="lockscreen_long_press_back_title">Long press back button</string>
-    <string name="lockscreen_long_press_home_title">Long press home button</string>
-    <string name="lockscreen_long_press_menu_title">Long press menu button</string>
-    <string name="lockscreen_buttons_no_action">No action</string>
-    <string name="lockscreen_buttons_flashlight">Torch</string>
-    <string name="lockscreen_buttons_next">Next song</string>
-    <string name="lockscreen_buttons_previous">Previous song</string>
-    <string name="lockscreen_buttons_playpause">Play/Pause music</string>
-    <string name="lockscreen_buttons_toggle_sound">Toggle sound</string>
 
     <!-- Menu UI Overflow toggle -->
     <string name="show_overflow_title">Menu UI overflow</string>
