@@ -3097,7 +3097,7 @@
 
     <!-- Power button torch -->
     <string name="power_button_torch_title">Torche sur bouton Power</string>
-    <string name="power_button_torch_summary">ATTENTION: Cette fonction peux ne pas bien fonctionner avec les appareils Nexus et ceux qui n'ont pas de batterie amovible. A utiliser à vos propres risques ! Maintenir Power pour allumer le flash, relacher pour éteindre.</string>
+    <string name="power_button_torch_summary">ATTENTION: Cette fonction peux ne pas bien fonctionner avec les appareils Nexus et ceux qui n\'ont pas de batterie amovible. A utiliser à vos propres risques ! Maintenir Power pour allumer le flash, relacher pour éteindre.</string>
 
     <!-- Automatic brightness customization -->
     <string name="light_sensor_current_value">Valeur actuelle du capteur de lumière\u00A0: <xliff:g id="light_level">%d</xliff:g> lux</string>
