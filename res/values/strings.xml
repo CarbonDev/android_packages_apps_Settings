@@ -2626,7 +2626,8 @@
         <li>Disabled apps</li>\n
         <li>Disabled app notifications</li>\n
         <li>Default applications for actions</li>\n
-        <li>Background data restrictions for apps</li>\n\n
+        <li>Background data restrictions for apps</li>\n
+        <li>Privacy guard</li>\n\n
         You will not lose any app data.</string>
     <!-- [CHAR LIMIT=25] Manage applications screen, menu item.  Confirmation button of dialog to confirm resetting user's app preferences. -->
     <string name="reset_app_preferences_button">Reset apps</string>
@@ -4964,6 +4965,13 @@
     <string name="sms_security_check_limit_title">SMS message limit</string>
     <string name="sms_security_check_limit_summary">Display an alert dialog to prevent applications from sending SMS messages too frequently. Current limit: %d messages in 15 minutes</string>
     <string name="sms_security_check_limit_default">30 (Default)</string>
+
+    <!-- Privacy Guard -->
+    <string name="privacy_guard_switch_label">Enable Privacy Guard</string>
+    <string name="privacy_guard_dlg_title">Enable Privacy Guard?</string>
+    <string name="privacy_guard_dlg_text">When Privacy Guard is enabled, the app will not be able to access personal data such as contacts, messages, or call logs.</string>
+    <string name="privacy_guard_default_title">Privacy Guard</string>
+    <string name="privacy_guard_default_summary">Enable Privacy Guard by default for newly-installed apps</string>
 
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>
