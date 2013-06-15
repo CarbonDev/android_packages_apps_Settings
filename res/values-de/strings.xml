@@ -2493,5 +2493,349 @@
     <string name="volume_key_cursor_control_off">Deaktiviert</string>
     <string name="volume_key_cursor_control_on">Lautstärkewippe oben/unten bewegt den Cursor nach links/rechts</string>
     <string name="volume_key_cursor_control_on_reverse">Lautstärkewippe oben/unten bewegt den Cursor nach rechts/links</string>
+    
+        
+         <!-- **** CARBON ADDITIONS START **** -->
 
-</resources>
+    <!-- About Carbon -->
+    <string name="about_carbon_settings_title">Über das CarbonRom Team</string>
+    <string name="about_carbon_title">CarbonRom</string>
+    <string name="app_name">CarbonRom</string>
+    <string name="carbon_dev">CarbonDev</string>
+    <string name="contributors_title">Contributors</string>
+    <string name="devs_title">Treffe das CarbonDev team</string>
+    <string name="donate_carbon">http://goo.gl/2Nieg</string>
+    <string name="github_carbon">https://github.com/CarbonDev</string>
+    <string name="carbon">CarbonRom JB 4.2.2</string>
+    <string name="carbon_links">Social media</string>
+    <string name="carbon_goo_title">Goo.im Download Seite</string>
+    <string name="carbon_goo_summary">Besuche unsere Goo.im Downloadseite für die neusten Builds</string>
+    <string name="carbon_source_title">Github sources</string>
+    <string name="carbon_source_summary">Open source für alle zugänglich @ www.github.com/CarbonDev</string>
+    <string name="carbon_irc_title">Trefft und auf unserem IRC</string>
+    <string name="carbon_irc_summary">#teamcarbon @ irc.freenode.net</string>
+    <string name="carbon_facebook_title">Facebookseite </string>
+    <string name="carbon_facebook_summary">Folgt uns auf Facebook</string>
+    <string name="carbon_twitter_title">Twitter</string>
+    <string name="carbon_twitter_summary">Folge uns auf Twitter</string>
+    <string name="carbon_googleplus_title">Google+ community</string>
+    <string name="carbon_googleplus_summary">Treten Sie unserer G+ community bei</string>
+    <string name="title_about">Die Mitglieder von Carbon</string>
+
+    <string name="ok">OK</string>
+    <string name="save">Speichern</string>
+
+    <!-- Activity titles defined in AndroidManifest.xml -->
+    <string name="title_navbar">Navigation</string>
+    <string name="title_navring">Navigation Ring</string>
+
+    <!-- Quiet hours -->
+    <string name="quiet_hours_title">Stille Stunden</string>
+    <string name="quiet_hours_summary">Stellen Sie die Zeit ein wann Ihr Gerät stumm sein soll</string>
+    <string name="quiet_hours_note_title">Vorsicht!</string>
+    <string name="quiet_hours_note_summary">Eingehende Anrufe werden in den Stillen Stunden nicht beeinflusst</string>
+    <string name="quiet_hours_enabled">Aktivierung von den Stillen Stunden</string>
+    <string name="quiet_hours_enabled_on">Stille Stunden sind aktiviert</string>
+    <string name="quiet_hours_enabled_off">Benachrichtigung funktioniert normal</string>
+    <string name="quiet_hours_start">Start von Stille Stunden</string>
+    <string name="quiet_hours_start_summary">Wann soll das Stille-Stunden Feature starten</string>
+    <string name="quiet_hours_end">Ende der Stillen Stunden</string>
+    <string name="quiet_hours_end_summary">Wann sollen die Stillen Stunden aufhören</string>
+    <string name="quiet_hours_mute">Nachrichten stumm stellen</string>
+    <string name="quiet_hours_mute_on">Töne sind stumm geschalten</string>
+    <string name="quiet_hours_mute_off">Töne sind wie immer</string>
+    <string name="quiet_hours_still">Vibrationen deaktivieren</string>
+    <string name="quiet_hours_still_on">Gerät wird nicht vibrieren</string>
+    <string name="quiet_hours_still_off">Gerät wird normal vibrieren</string>
+    <string name="quiet_hours_dim">Benachrichtigungslicht deaktivieren</string>
+    <string name="quiet_hours_dim_on">Benachrichtigungslicht ist aus</string>
+    <string name="quiet_hours_dim_off">Benachrichtigungslicht ist normal</string>
+    <string name="quiet_hours_haptic">Deaktivieren von dem Haptic feedback</string>
+    <string name="quiet_hours_haptic_on">Haptic feedback ist deaktiviert</string>
+    <string name="quiet_hours_haptic_off">Haptic feedback ist wie immer</string>
+    <string name="quiet_hours_active_from">Aktiv von</string>
+    <string name="quiet_hours_active_to">bis</string>
+    
+    <!-- Carbon Links -->
+    <!-- Settings main menu category heading. [CHAR LIMIT=40] -->
+    <string name="header_category_carbon_links">Carbon</string>
+    <string name="carbon_settings_title">Carbon</string>
+    <string name="performance_title">Performance</string>
+    <string name="themes_settings_title">Themen</string>
+
+    <!-- Carbon Settings (submenu) -->
+    <string name="interface_title">Oberfläche</string>
+    <string name="lock_screen_title">Sperrbildschirm</string>
+    <string name="navbar_title">Navigation</string>
+    <string name="power_menu_title">Power Menü</string>
+    <string name="power_widget_title">Power widgets</string>
+    <string name="status_bar_title">Statusbar</string>
+    <string name="toggles_title">Statusbar toggles</string>
+    
+    <!-- Notification Drawer -->
+    <string name="notification_drawer_title">Notification drawer</string>
+    <string name="notification_style_title">Notification drawer Stil</string>
+    <string name="notification_style_summary">Bearbeite den Notification drawer Stil</string>
+    <string name="notification_show_wifi_ssid_title">Zeige den Wifi-Netzwerk Name</string>
+    <string name="notification_show_wifi_ssid_summary">Zeige den Namen des derzeitigen verbundenen Wifi-Netzwerkes</string>
+
+    <!-- Notification drawer background -->
+    <string name="notification_wallpaper_title">Notification drawer Hintergrund</string>
+    <string name="notification_wallpaper_landscape_title">Verschiedene landscape Hintergründe</string>
+    <string name="notification_background_color_fill">Farben ausfüllung</string>
+    <string name="notification_background_custom_image">Benutzerdefiniertes Bild</string>
+    <string name="notification_background_default_wallpaper">Standart Hintergrund</string>
+    <string name="notification_drawer_custom_background_dialog_title">Wähle eine Farbe</string>
+    <string name="notif_wallpaper_alpha_title">Benachrichtigungs-Hintergrund Transparenz</string>
+    <string name="notif_alpha_title">Benachrichtigungsreihen Transperenz</string>
+
+    <!-- UI Mode -->
+    <string name="user_mode_ui">UI Modus</string>
+    <string name="user_mode_ui_summary">In welchem Stil die Navbar bzw. Statusbar angezeigt werden soll\Änderungen führen zu einem Neustart der Statusbar</string>
+    <string name="phone_mode_ui">Phone - NavBar zur Seite im landscape mode</string>
+    <string name="tablet_mode_ui">Tablet - NavBar und Statusbar zusammen kombiniert</string>
+    <string name="phablet_mode_ui">Phablet - NavBar bleibt am Boden im landscape mode</string>
+    <string name="hide_extras">Verstecke Extras</string>
+    <string name="hide_extras_summary">Verstecke SystemBar Sachen wie den compat-mode button(Benötigt einen UI restart)</string>
+    
+    <!-- Menu Strings -->
+    <string name="menu_nav_bar_reset">Reset nav bar</string>
+    <string name="menu_ribbon_reset">Reset ribbon</string>
+    <string name="menu_ribbon_rearrange">Rearrange ribbon</string>
+    <string name="menu_ribbon_toggles">Setup toggles</string>
+    <string name="menu_ribbon_toggles_error">Toggles are only available for the left and right swipe ribbons.</string>
+
+    <!-- Lockscreen Vibrate -->
+    <string name="lockscreen_vibrate_enabled_title">Vibrate</string>
+    <string name="lockscreen_vibrate_enabled_head">Vibrate when unlocking device</string>
+
+    <!-- Lockscreen Battery -->
+    <string name="lockscreen_battery_status_title">Battery Status</string>
+    <string name="lockscreen_battery_status_charging">Only When Charging</string>
+    <string name="lockscreen_battery_status_alwayson">Always On</string>
+
+    <!-- Lockscreen Customization -->
+    <string name="lockscreen_maximize_widgets_title">Maximiere die Widgets</string>
+    <string name="lockscreen_maximize_widgets_summary">Zeige Widgets maximiert und den unlock minimiert</string>
+    <string name="lockscreen_hide_initial_page_hints_title">Ausblenden von Seiten Hinweisen</string>
+    <string name="lockscreen_hide_initial_page_hints_summary">Festlegen, ob Hinweise für linke und rechte Widgets dargestellt werden, wenn der Bildschirm eingeschaltet ist.</string>
+    <string name="lockscreen_use_widget_container_carousel_title">Aktivierung des widget carousels</string>
+    <string name="lockscreen_use_widget_container_carousel_summary">Verwenden Sie eine Karussell Animation beim Wechsel zwischen Lockscreen Widgets.</string>
+    <string name="lockscreen_auto_rotate_title">Erlaube Sperrbildschirmdrehung</string>
+    <string name="lockscreen_auto_rotate_summary">Der Sperrbildschirm wird sich mit der Gerätsrotation bewegen. Dies ist unabhängig von den Auto-Rotation Einstellungen in den Bildschirmeinstellungen</string>
+    <string name="lockscreen_text_color_title">Sperrbildschirm Textfare</string>
+    <string name="lockscreen_quick_unlock_control_title">Schnelle Pin Eingabe Entsperrung</string>
+    <string name="lockscreen_quick_unlock_control_summary">Entsperren durch Eingabe des Pins ohne OK zu drücken</string>
+    <string name="lockscreen_see_through_title">Sperrbildschirm durchsichtig</string>
+    <string name="lockscreen_see_through_summary">Erlaubt Ihnen den HomeScreen bzw. Apps hinter dem Sperrbildschirm zu sehen.</string>
+    <string name="lockscreen_all_widgets_title">Erlaube alle Widgets</string>
+    <string name="lockscreen_all_widgets_summary">Warnung: Manche Widgets sind nicht für den Sperrbildschirm vorhergesehen, also bitte nicht bei Uns oder den Widgetmachern beschweren!</string>
+    <string name="lockscreen_minimize_challenge_title">Sperrbilschirm Widget maximieren</string>
+    <string name="lockscreen_minimize_challenge_summary">Bestimme ob das Sperrbildschirm Widget bei eingeschaltetem Bildschirm maximiert ist.</string>
+    <string name="lockscreen_battery_title">Sperrbildschirm Batterie Anzeige</string>
+    <string name="volume_music_controls_title">Lautstärketasten Musik Kontrolle</string>
+    <string name="volume_rocker_wake_title">Volume wake</string>
+    <string name="lockscreen_unlimited_widgets_title">Erlaube unendlich Widgets</string>
+    <string name="lockscreen_text_color_summary">Wählen sie die Sperrbilschirm Text Farbe</string>
+    <string name="lockscreen_battery_summary">Zeige immer den Batteriestatus im Sperrbildschirm an</string>
+    <string name="lockscreen_camera_widget_title">Toggle Kamera widget</string>
+    <string name="lockscreen_camera_widget_summary">Ein- bzw- Ausschalten des Kamerawidgets im Sperrbildschirm.</string>
+    
+    <!-- String for IconPicker -->
+    <string name="icon_picker_title">Icon Source</string>
+    <string name="icon_picker_system_icons_title">System Icons</string>
+    <string name="icon_picker_gallery_title">Gallery</string>
+    <string name="icon_picker_pack_title">Icon Pack</string>
+    <string name="choose_app">Wähle eine App</string>
+    <string name="icon_picker_type">Wähle ein Icon Typ:</string>
+    <string name="icon_default">Standart</string>
+    <string name="icon_presets">System Icons</string>
+    <string name="icon_custom">Gallerie</string>
+
+    <!-- Transparency -->
+    <string name="transparency_dialog_title">Transparenz Einstellungen</string>
+    <string name="transparency_dialog_linked_transparency">Link statusbar &amp; navbar alpha</string>
+    <string name="transparency_dialog_transparency_sb_and_nv">Statusbar und navigation bar</string>
+    <string name="transparency_dialog_statusbar">Statusbar</string>
+    <string name="transparency_dialog_navbar">Navigation bar</string>
+    <string name="transparency_dialog_match_keyguard_alpha">Passe Sperrbildschrim alpha an</string>
+    <string name="transparency_dialog_transparency">Homescreen alpha</string>
+    <string name="transparency_dialog_transparency_keyguard">Sperrbildschirm alpha</string>
+    
+    <!-- Pie controls -->
+    <string name="pie_controls_title">Pie controls</string>
+    <string name="pie_controls_summary">Allows navigation and status report</string>
+    <string name="pie_targets_title">Ziele</string>
+    <string name="pie_gravity_title">Pie Position</string>
+    <string name="pie_gravity_summary">Wähle wo der Pie sein soll</string>
+    <string name="pie_gravity_top">Oben</string>
+    <string name="pie_gravity_bottom">Unten</string>
+    <string name="pie_gravity_right">Rechts</string>
+    <string name="pie_gravity_left">Links</string>
+    <string name="pie_mode_title">Pie Stil</string>
+    <string name="pie_mode_summary">Bestimme wie sich Animationen und Statusergänzungen verhalten</string>
+    <string name="pie_mode_bare">Bare</string>
+    <string name="pie_mode_quick">Schnell</string>
+    <string name="pie_mode_default">Standart</string>
+    <string name="pie_mode_slow">Langsam</string>
+    <string name="pie_size_title">Pie Größe</string>
+    <string name="pie_size_summary">Definiere Pie Controlls Größe</string>
+    <string name="pie_size_small">klein</string>
+    <string name="pie_size_default">@string/pie_mode_default</string>
+    <string name="pie_size_large">groß</string>
+    <string name="pie_size_gigantic">gigantisch</string>
+    <string name="pie_color_title">Pie Farben Einstellungen</string>
+    <string name="pie_color_style_title">Pie Farbe Stil</string>
+    <string name="pie_background_title">Hintergrundfarbe</string>
+    <string name="pie_select_title">Auswahl Farbe</string>
+    <string name="pie_outlines_title">Außenlinien Farbe</string>
+    <string name="pie_status_clock_title">Uhr Farbe</string>
+    <string name="pie_status_title">Status Farbe</string>
+    <string name="pie_chevron_left_title">Linker Winkel Farbe</string>
+    <string name="pie_chevron_right_title">Rechter Winkel Farbe</string>
+    <string name="pie_juice_title">Batterieanteil Farbe</string>
+    <string name="pie_button_color_title">Tasten Farbe</string>
+    <string name="pie_gap_title">Pie Lücken Abstand</string>
+    <string name="pie_gap_summary">Wähle den Abstand der Lücken des Pie</string>
+    <string name="pie_gap_none">Kein</string>
+    <string name="pie_gap_small">klein (standart)</string>
+    <string name="pie_gap_big">groß</string>
+    <string name="pie_gap_huge">gigantisch</string>
+    <string name="pie_center_title">Pie im Zentrum</string>
+    <string name="pie_center_summary">Wenn nicht ausgewählt , erscheint der Kuchen wo deine Finger das Dispaly berühren</string>
+    <string name="pie_trigger_title">Trigger Größe</string>
+    <string name="pie_trigger_summary">Bestimme die größe der Fläche welche den Kuchen aktiviert</string>
+    <string name="pie_trigger_small">klein</string>
+    <string name="pie_trigger_normal">normal</string>
+    <string name="pie_trigger_big">groß</string>
+    <string name="pie_trigger_huge">gigantisch (standart)</string>
+    <string name="pie_notifications_title">Aktiviere Winkel Ziele</string>
+    <string name="pie_notifications_summary">Lässt den Notification panel und die Quicksettings aktiv beim drüberstreichen.</string>
+    <string name="pie_menu_title">Menü Taste immer anzeigen</string>
+    <string name="pie_menu_summary">Bestimmt nb die Menü-Taste erscheint, wenn Sie nicht benötigt wird</string>
+    <string name="pie_search_title">Zeige Suchtaste</string>
+    <string name="pie_search_summary">Zugang zu Google Now durch den Kuchen</string>
+    <string name="pie_lastapp_title">Letzte App Taste</string>
+    <string name="pie_lastapp_summary">Aktiviert die Letzte App Taste</string>
+    <string name="pie_killtask_title">Kill task Taste</string>
+    <string name="pie_killtask_summary">Aktiviere die kill task Taste im Pie</string>
+    <string name="pie_appwindow_title">App Fenster Taste</string>
+    <string name="pie_appwindow_summary">Aktiviere die Fenster Taste (einstellbar in den Ribbon Einstellungen)</string>
+    <string name="pie_stick_title">Verhindere Rotation</string>
+    <string name="pie_stick_summary">Wenn aktiviert bleibt der Kuche an seiner Stelle unabhängig von der Displayausrichtung</string>
+    <string name="pie_restart_launcher_title">Restart Launcher</string>
+    <string name="pie_restart_launcher_summary">Bringt den Launchers wieder zur Vernunft nach einer Bildschirmgröße Änderung  (empfohlen)</string>
+    <string name="all_color">Benutzerdefinierte Farben</string>
+    <string name="stock_color">Standart Farben</string>
+
+    <!-- Color Picker -->
+    <string name="dialog_color_picker">Farbauswahl</string>
+    <string name="press_color_to_apply">Wähle eine Farbe</string>
+    <string name="arrow_right">→</string>
+    <string name="arrow_down">↓</string>
+    <string name="hex">Hex:</string>
+    <string name="hex_hint">#FF000000</string>
+    <string name="set">Set</string>
+    <string name="ics_color">!!!</string>
+
+    <!-- Sound settings screen, setting option name to pick ringtone (a list dialog comes up)-->
+    <string name="soundtone_title">Benachrichtigungston</string>
+    <string name="soundtone_summary">""</string>
+    
+    <!-- Status bar | Clock -->
+    <string name="status_bar_clock">Uhr und Datum</string>
+    <string name="status_bar_clock_title">Uhr und Datum Stil</string>
+    <string name="clock_options">Uhr Optionen</string>
+    <string name="clock_title_enable">Uhr Ausrichtung</string>
+    <string name="clock_enabled">Aktiviert</string>
+    <string name="clock_disabled">Deaktiviert</string>
+    <string name="clock_color_title">Uhr Farbe</string>
+    <string name="status_bar_show_clock_title">Zeige Uhr</string>
+    <string name="status_bar_am_pm_title">AM/PM Stil</string>
+    <string name="status_bar_am_pm_info">24-stunden Uhr aktiviert</string>
+    <string name="enable_clock_weekday">Tag der Woche</string>
+    <string name="enable_clock_weekday_summary">Zeige Wochentag vor der Uhr</string>
+    <string name="right_clock">Uhr rechts</string>
+    <string name="center_clock">Uhr im Zentrum</string>
+    <string name="dont_show">Nicht Anzeigen</string>
+    <string name="clock_date_display">Datum</string>
+    <string name="clock_date_display_summary">Zeige benutzerdefiniertes Datum vor der Uhr</string>
+    <string name="clock_date_style">Datum Stil</string>
+    <string name="clock_date_format">Datum Format</string>
+    <string name="clock_date_string_edittext_title">Muss in folgender Form sein MM/dd/yy</string>
+    <string name="clock_date_string_edittext_summary">Enter string</string>
+    <string name="title_clock_doubleclick">Doppelklick Aktionen Uhr</string>
+    <string name="title_clock_longclick">lang-klick Aktion</string>
+    <string name="title_clock_shortclick">kurz-klick Aktion</string>
+    <string name="alarm">Alarme</string>
+    <string name="nothing">nichts</string>
+    <string name="today">Kalender für Heute</string>
+    <string name="event">Kalender neues Event</string>
+    <string name="voiceassist">Sprachkommando</string
+    
+    <!-- Notification Shortcuts -->
+    <string name="notification_shortcuts_grouptitle">Shortcuts</string>
+    <string name="notification_shortcuts_settings_title">Benachrichtigungs shortcuts</string>
+    <string name="notification_shortcuts_settings_summary">Zeige Shortcuts im Benachrichtigungsfenster</string>
+    <string name="notification_shortcuts_empty_title">leer</string>
+    <string name="notification_shortcuts_edit_title">Bearbeite Shortcut</string>
+    <string name="notification_shortcuts_edit_msg">Wähle oder ändere die gewünschte App oder das Icon</string>
+    <string name="notification_shortcuts_reset_title">Entferne alle Shortcuts</string>
+    <string name="notification_shortcuts_category_reset_title">Reset</string>
+    <string name="notification_shortcuts_title">Shortcuts</string>
+    <string name="notification_shortcuts_icon_picker_stock_icons_title">Standart icons</string>
+    <string name="notification_shortcuts_quantity_title">Anzahl der shortcuts</string>
+    <string name="notification_shortcuts_quantity_summary">Anzahl der zu sehenden shortcuts</string>
+    <string name="notification_shortcuts_move_text">Reihenfolge ändern</string>
+    <string name="notification_shortcuts_move_up">Moved <xliff:g id="app_name">%s</xliff:g> up a slot</string>
+    <string name="notification_shortcuts_move_down">Moved <xliff:g id="app_name">%s</xliff:g> down a slot</string>
+    <string name="notification_shortcuts_color_title">Shortcut Icon Farbe</string>
+    <string name="notification_shortcuts_color_summary">Wähle eine Farbe für die shortcut icons</string>
+    <string name="notification_shortcuts_colorize_toggle_title">Färbe die app icons</string>
+    <string name="notification_shortcuts_colorize_toggle_summary">Färbe das app icon mit der gewählten Farbe</string>
+    <string name="notification_shortcuts_hide_carrier_title">Verstecke den Mobilfunkbetreibername (z.B Vodafone)</string>
+
+    <!-- Interface -->
+    <string name="hardware_keys_options_title">Hardware Tasten</string>
+    <string name="miscellaneous_options_title">Verschiedenes</string>
+    <string name="custom_carrier_label_title">Mobilfunkbetreibername</string>
+    <string name="custom_carrier_label_explain">Fügen Sie ein individuellen Mobilfunkbetreibername ein. Keine Angabe lässt den originalen Mobilfunkbetreibername.</string>
+    <string name="custom_carrier_label_notset">Kein benutzerdefinierter Mobilfunkbetreibername gesetzt</string>
+    <string name="lcd_density_title">LCD density</string>
+    <string name="lcd_density_summary">unbekannt</string>
+    <string name="dual_pane">Dualpannel Modus</string>
+    <string name="dual_pane_summary">Starte die Einstellungen neu um die Änderungen zu sehen</string>
+    <string name="wakeup_when_plugged_unplugged_title">Aufwachen bei Ladegerät</string>
+    <string name="wakeup_when_plugged_unplugged_summary">Gerät wacht auf wenn ein Ladegerät angeschlossen oder entfernt wurde</string>
+
+    <!-- LCD Density -->
+    <string name="dpi">DPI</string>
+    <string name="current_lcd_density">"Momentane LCD Density: "</string>
+    <string name="lcd_density_wizard">LCD Density Wechsler Anleitung</string>
+    <string name="follow_through_title">Bis zum Ende lesen!</string>
+    <string name="follow_through_summary">Stelle Sie sicher,dass Sie alle Punkte durchgehen und das Sie erst, wenn Sie ein Punkt bearbeitet haben, den nächsten bearbeiten.</string>
+    <string name="stock_density_title">1. Wählen Sie die normale LCD Density für Ihr Gerät.</string>
+    <string name="stock_density_summary">Tablets und ältere Handys benutzen 160. Die meisten Handys benutzen 240. Das Galaxy Nexus benutzt 320 als standart Wert.</string>
+    <string name="stock_density_changed_summary">"Density geändert zu: "</string>
+    <string name="reboot_title">2. Neustarten!</string>
+    <string name="reboot_summary">Kommen Sie nach dem Neustart zurück und fahren sie mit dem Bearbeiten der nächsten Punkte fort.</string>
+    <string name="clear_market_data_title">3. Löschen Sie alle Google Play Store daten.</string>
+    <string name="clear_market_data_summary">Dieser Punkt löscht alle Daten vom Play Store,dessen Diensten und der Framework der Google Play Diensten.</string>
+    <string name="clear_market_data_cleared">Daten erfolgreich gelöscht</string>
+    <string name="clear_market_data_donot_cleared">"Daten konnten nicht gelöscht werden, bitte löschen Sie die Daten manuell!"</string>
+    <string name="reboot_cleardata_title">4. Neustarten!</string>
+    <string name="reboot_cleardata_summary">Kommen Sie nach dem Neustart zurück und fahren sie mit dem Bearbeiten der nächsten Punkte fort!</string>
+    <string name="open_market_title">5. Öffnen Sie den Play Store und klicken Sie akzeptieren</string>
+    <string name="open_market_summary">Drücken Sie die zurück taste wenn Sie Punkt 5 bearbeitet haben, um wieder hier her zurück zu kommen.</string>
+    <string name="open_market_summary_could_not_open">"Der Play Store konnte nicht geöffnet werden! Wenn Sie sicher sind das der Play Store installiert ist , öffnen Sie ihn manuell."</string>
+    <string name="custom_density_title">6. Ändern Sie den Density Wert zu Ihrem Wunschwert!</string>
+    <string name="custom_density_summary">Falls Sie Probleme mit Apps oder deren Kompabilität haben,kehren Sie hier her zurück und Bearbeiten Sie alle Punkte neu.</string>
+    <string name="custom_density_summary_invalid">"UNGÜLTIGE DENSITY!"</string>
+    <string name="custom_density">Benutzerdefiniert</string>
+    <string name="set_custom_density_title">Wählen Sie einen benutzerdefinierten Wert</string>
+    <string name="set_custom_density_set">Wählen</string>
+    <string name="custom_density_dialog_title">"ACHTUNG!"</string>
+    <string name="custom_density_dialog_summary">"Das Wechseln der LCD density kann zu unerwarteten Problemen mit Apps führen.Falls Sie Probleme mit Apps oder deren Kompabilität haben,kehren Sie hier her zurück und Bearbeiten Sie alle Punkte neu. </string>
+    <string name="custom_density_dialog_button_got">Verstanden!</string>
+    <string name="custom_density_dialog_button_reboot">Jetzt Neustarten</string> 
+</resources> 
