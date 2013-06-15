@@ -2837,5 +2837,110 @@
     <string name="custom_density_dialog_title">"ACHTUNG!"</string>
     <string name="custom_density_dialog_summary">"Das Wechseln der LCD density kann zu unerwarteten Problemen mit Apps führen.Falls Sie Probleme mit Apps oder deren Kompabilität haben,kehren Sie hier her zurück und Bearbeiten Sie alle Punkte neu. </string>
     <string name="custom_density_dialog_button_got">Verstanden!</string>
-    <string name="custom_density_dialog_button_reboot">Jetzt Neustarten</string> 
+    <string name="custom_density_dialog_button_reboot">Jetzt Neustarten</string>
+    
+    <!-- HALO -->
+    <string name="halo_options_title">HALO</string>
+    <string name="halo_hide_title">Nach Aktivität HALO verstecken</string>
+    <string name="halo_hide_summary">HALO wird bei eingehenden Benachrichtigungen erscheinen und sich nach kurzer Zeit wieder verstecken</string>
+    <string name="halo_reversed_title">HALO umkehren</string>
+    <string name="halo_reversed_summary">Bewirbt sich um Aufgabenumschaltung und bewegende Gesten</string>
+    <string name="halo_state_title">HALO Politik</string>
+    <string name="halo_state_summary">Ermöglicht schwarz/weiß Auflistung der Meldungen</string>
+    <string name="halo_state_black">Schwarze Liste</string>
+    <string name="halo_state_white">Weiße Liste</string>
+    <string name="halo_pause_title">Pausiere aktive App</string>
+    <string name="halo_pause_summary">Beim Öffnen einer App mit HALO wir die darunter liegende App pausiert</string>
+    
+    <!-- Hardware keys -->
+    <string name="hardware_keys_title">Hardware Tasten</string>
+    <string name="hardware_keys_bindings_title">Tasten Aktion</string>
+    <string name="hardware_keys_enable_custom_title">Aktiviere benutzerdefinierte Aktion</string>
+    <string name="hardware_keys_home_press_title">Home Taste</string>
+    <string name="hardware_keys_home_long_press_title">Home Taste (lange gedrückt)</string>
+    <string name="hardware_keys_back_press_title">Zurück Taste</string>
+    <string name="hardware_keys_back_long_press_title">Zurück Taste (lange gedrückt)</string>
+    <string name="hardware_keys_menu_press_title">Menu Taste</string>
+    <string name="hardware_keys_menu_long_press_title">Menu Taste (lange gedrückt)</string>
+    <string name="hardware_keys_assist_press_title">Suche Taste</string>
+    <string name="hardware_keys_assist_long_press_title">Suche Taste (lange gedrückt)</string>
+    <string name="hardware_keys_app_switch_press_title">App wechsel Taste</string>
+    <string name="hardware_keys_app_switch_long_press_title">App wechsel Taste (lange gedrückt)</string>
+    <string name="hardware_keys_camera_press_title">Kamera Taste</string>
+    <string name="hardware_keys_camera_long_press_title">Kamera Taste (lange gedrückt)</string>
+    <string name="hardware_keys_action_nothing">Keine Aktion</string>
+    <string name="hardware_keys_action_home">Home Taste</string>
+    <string name="hardware_keys_action_back">Zurück Taste</string>
+    <string name="hardware_keys_action_menu">Öffne/Schließe Menü</string>
+    <string name="hardware_keys_action_app_switch">letzte Apps Wechsler</string>
+    <string name="hardware_keys_action_search">Such Assistent</string>
+    <string name="hardware_keys_action_voice_search">Sprachsuche</string>
+    <string name="hardware_keys_action_in_app_search">In-app Suche</string>
+    <string name="hardware_keys_action_power">Bildschirm aus</string>
+    <string name="hardware_keys_action_notifications">Benachrichtigungen</string>
+    <string name="hardware_keys_action_expanded">Erweiterter Desktop toggle</string>
+    <string name="hardware_keys_action_kill_app">Kill App</string>
+    <string name="hardware_keys_action_last_app">Wechsel zu letzter App</string>
+    <string name="hardware_keys_action_custom_app">Benutzerdefinierte App</string>
+    <string name="hardware_keys_action_camera">Kamera</string>
+    
+    <!-- Breathing Notifications -->
+    <string name="status_bar_breathing_notifs_title">Atmende Benachrichtigungen Effekt</string>
+    <string name="mms_breath">Atmender Effekt für ungelesene SMS</string>
+    <string name="mms_breath_summary">Ungelesene SMS wird mit einem Atem-Effekt in der Statusbar angezeigt</string>
+    <string name="missed_call_breath">Atmender Effekt für verpasste Anrufe </string>
+    <string name="missed_call_breath_summary">Verpasste Anrufe werden mit einem Atem-Effekt in der Statusbar angezeigt</string>
+
+    <!-- Notification Behaviour -->
+    <string name="notification_behaviour_title">Benachrichtigungs Verhalten</string>
+    <string name="notification_behaviour_normal">Normal</string>
+    <string name="notification_behaviour_neverexpand">Nie ausweiten</string>
+    <string name="notification_behaviour_alwaysexpand">Immer ausweiten</string>
+    <string name="notification_behaviour_oldstyle">Alter Stil</string>
+    
+    <!-- Low battery indicator options -->
+    <string name="pref_low_battery_warning_policy_title">Niedriger Akkustand Warnung</string>
+    <string name="pref_low_battery_warning_policy_dialog_title">Warnung geben bei niedrigem Batteriestand mit:</string>
+    <string name="low_battery_warning_policy_popup_sound">Pop-up und Ton</string>
+    <string name="low_battery_warning_policy_notif_sound">Benachrichtigung und Ton</string>
+    <string name="low_battery_warning_policy_popup">Nur Pop-up Dialog</string>
+    <string name="low_battery_warning_policy_notif">Nur Benachrichtigung</string>
+    <string name="low_battery_warning_policy_sound">Nur Ton</string>
+    <string name="low_battery_warning_policy_disabled">Warnung Ausschalten</string>
+
+    <!-- Status bar notification icon opacity -->
+    <string name="status_bar_icon_opacity">Benachrichtigungs Icon Opazität</string>
+    <string name="status_bar_icon_opacity_summary">Definiert die Opazität der Benachrichtigungs Icons in der Statusbar</string>
+
+    <!-- Alternate default app picker -->
+    <string name="alt_resolver_title">Use alternate default app picker</string>
+
+    <!-- Power button torch -->
+    <string name="power_button_torch_title">Power button torch</string>
+    <string name="power_button_torch_summary">WARNING: This feature may not work well for Nexus devices and those with nonremovable batteries. Use at your own risk! Hold power key with screen off to enable torch. Release to disable.</string>
+    
+    <!-- TRDS Settings -->
+    <string name="trds_settings_title">Dark UI</string>
+    
+    <!-- Lock volume keys -->
+    <string name="sound_lock_volume_keys_title">Sperre Lautstärke Tasten</string>
+    <string name="sound_lock_volume_keys_summary">Verhindert das ungewollte Ändern der Lautstärke bei versehentlicher Betätigung der Lautstärke Tasten im Stumm Modus</string>
+    
+    <!-- Permissions Management -->
+    <string name="permissions_settings_title">Berechtigungen</string>
+    
+    <!-- Category title for power sound notification specific Settings. -->
+    <string name="power_notifications_category_title">Power Sounds</string>
+    <string name="power_notifications_enable_title">Einschalten</string>
+    <string name="power_notifications_vibrate_title">Vibrieren</string>
+    <string name="power_notifications_ringtone_title">Benachrichtigungston</string>
+    <string name="power_notifications_ringtone_silent">Still</string>
+    
+    <!-- Menu UI Overflow toggle -->
+    <string name="show_overflow_title">Menü UI Überlauf</string>
+    <string name="show_overflow_summary">Zeige die 3-dot Überlauf Menü Taste in Apps</string>
+    <string name="show_overflow_toast_enable">Die 3-dot Menü Überlauf Taste kann erst nach einem App-Neustart angezeigt werden</string>
+    <string name="show_overflow_toast_disable">Die 3-dot Menü Überlauf Taste kann erst nach einem App-Neustart versteckt werden werden</string>
+    
+    <!-- **** CARBON ADDITIONS END **** -->
 </resources> 
