@@ -2771,7 +2771,7 @@
     <string name="nothing">nichts</string>
     <string name="today">Kalender für Heute</string>
     <string name="event">Kalender neues Event</string>
-    <string name="voiceassist">Sprachkommando</string
+    <string name="voiceassist">Sprachkommando</string>
     
     <!-- Notification Shortcuts -->
     <string name="notification_shortcuts_grouptitle">Shortcuts</string>
