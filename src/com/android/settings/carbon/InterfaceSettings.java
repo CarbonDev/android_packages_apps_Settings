@@ -113,7 +113,7 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     private static final String PREF_SHOW_OVERFLOW = "show_overflow";
     private static final String KEY_BACKGROUND_PREF = "lockscreen_background";
     private static final String KEY_HARDWARE_KEYS = "hardware_keys";
-    private static final String KEY_HALO_ENABLED = "halo_enabled"
+    private static final String KEY_HALO_ENABLED = "halo_enabled";
     private static final String KEY_HALO_STATE = "halo_state";
     private static final String KEY_HALO_HIDE = "halo_hide";
     private static final String KEY_HALO_REVERSED = "halo_reversed";
