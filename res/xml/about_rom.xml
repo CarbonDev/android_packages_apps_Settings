@@ -7,6 +7,12 @@
 		android:key="carbon"
 		android:title="@string/carbon_links">
 
+        <PreferenceScreen android:key="changelog"
+            android:title="@string/changelog_title"
+            android:summary="@string/changelog_summary"
+            android:fragment="com.android.settings.carbon.ChangeLog" >
+        </PreferenceScreen>
+
 		<Preference
 			android:key="carbonrom_goo"
 			android:title="@string/carbon_goo_title"
