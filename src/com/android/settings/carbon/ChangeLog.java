@@ -19,23 +19,10 @@ package com.android.settings.carbon;
 import com.android.settings.R;
 
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Config;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.Toast;
 import android.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ScrollView;
-import android.widget.TextView;
-import android.view.ViewGroup;
 import android.content.Intent;
 import android.content.ComponentName;
 import android.content.Context;
-
-import com.android.internal.app.AlertActivity;
-import com.android.internal.app.AlertController;
 
 public class ChangeLog extends Fragment {
 
