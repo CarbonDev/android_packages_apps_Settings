@@ -24,6 +24,13 @@
         android:icon="@drawable/ic_settings_about_carbon"
         android:fragment="com.android.settings.carbon.About" />
 
+	<!-- Halo -->
+	<PreferenceScreen
+        android:id="@+id/halo_settings"
+        android:title="@string/halo_settings_title"
+        android:icon="@drawable/ic_carbon_halo"
+        android:fragment="com.android.settings.carbon.Halo" />
+
     <!-- Interface -->
     <PreferenceScreen
         android:id="@+id/interface_settings"
@@ -71,8 +78,7 @@
         android:id="@+id/ribbon_targets"
         android:fragment="com.android.settings.carbon.RibbonTargets"
         android:icon="@drawable/ic_rom_control_ribbon"
-        android:title="@string/ribbon_settings_title"
-        android:summary="@string/ribbon_settings_summary" />
+        android:title="@string/ribbon_settings_title" />
 
     <!-- Statusbar -->
     <PreferenceScreen

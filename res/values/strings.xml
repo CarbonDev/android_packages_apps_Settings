@@ -5274,7 +5274,7 @@
     <string name="both_collapse">Both click and long click</string>
 
     <!-- HALO -->
-    <string name="halo_options_title">HALO</string>
+    <string name="halo_settings_title">HALO</string>
     <string name="halo_enabled_title">Enable HALO</string>
     <string name="halo_enabled_summary">If checked enable HALO feature (floating window on recent apps would not be affected)</string>
     <string name="halo_hide_title">Hide HALO after activity</string>
@@ -5437,7 +5437,6 @@
 
    <!-- Ribbon -->
     <string name="ribbon_settings_title">Ribbons</string>
-    <string name="ribbon_settings_summary">@null</string>
     <string name="title_ribbon">Ribbons</string>
     <string name="ribbon_dialog_arrange_title">Ribbon layout</string>
     <string name="ribbon_chooser_instructions">Select which Ribbon to setup.</string>
