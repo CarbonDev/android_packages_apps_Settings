@@ -67,6 +67,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private static final String KEY_VISIBLE_ERROR_PATTERN = "visible_error_pattern";
     private static final String KEY_VISIBLE_DOTS = "visibledots";
     private static final String KEY_QUICK_UNLOCK = "lockscreen_quick_unlock_control";
+    private static final String KEY_VISIBLE_GESTURE = "visiblegesture";
     private static final String KEY_SECURITY_CATEGORY = "security_category";
     private static final String KEY_DEVICE_ADMIN_CATEGORY = "device_admin_category";
     private static final String KEY_LOCK_AFTER_TIMEOUT = "lock_after_timeout";
@@ -108,6 +109,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private CheckBoxPreference mVisibleErrorPattern;
     private CheckBoxPreference mVisibleDots;
     private CheckBoxPreference mQuickUnlock;
+    private CheckBoxPreference mVisibleGesture;
 
     private CheckBoxPreference mShowPassword;
 
@@ -189,6 +191,9 @@ public class SecuritySettings extends SettingsPreferenceFragment
                 case DevicePolicyManager.PASSWORD_QUALITY_ALPHANUMERIC:
                 case DevicePolicyManager.PASSWORD_QUALITY_COMPLEX:
                     resid = R.xml.security_settings_password;
+                    break;
+                case DevicePolicyManager.PASSWORD_QUALITY_GESTURE_WEAK:
+                    resid = R.xml.security_settings_gesture;
                     break;
             }
         }
@@ -323,6 +328,9 @@ public class SecuritySettings extends SettingsPreferenceFragment
         // visible pattern
         mVisiblePattern = (CheckBoxPreference) root.findPreference(KEY_VISIBLE_PATTERN);
 
+        // visible gesture
+            mVisibleGesture = (CheckBoxPreference) root.findPreference(KEY_VISIBLE_GESTURE);
+
         // visible error pattern
         mVisibleErrorPattern = (CheckBoxPreference) root.findPreference(KEY_VISIBLE_ERROR_PATTERN);
 
@@ -332,7 +340,10 @@ public class SecuritySettings extends SettingsPreferenceFragment
         // Quick Unlock for PIN and Password Lockscreens
         mQuickUnlock = (CheckBoxPreference) root.findPreference(KEY_QUICK_UNLOCK);
 
-        // lock instantly on power key press
+       // visible gesture
+        mVisibleGesture = (CheckBoxPreference) root.findPreference(KEY_VISIBLE_GESTURE);
+
+       // lock instantly on power key press
         mPowerButtonInstantlyLocks = (CheckBoxPreference) root.findPreference(
                 KEY_POWER_INSTANTLY_LOCKS);
 
@@ -355,6 +366,9 @@ public class SecuritySettings extends SettingsPreferenceFragment
                 securityCategory.removePreference(mVisiblePattern);
                 securityCategory.removePreference(mVisibleErrorPattern);
                 securityCategory.removePreference(mVisibleDots);
+            }
+            if (securityCategory != null && mVisibleGesture != null) {
+                securityCategory.removePreference(root.findPreference(KEY_VISIBLE_GESTURE));
             }
         }
 
@@ -705,6 +719,8 @@ public class SecuritySettings extends SettingsPreferenceFragment
         } else if (KEY_QUICK_UNLOCK.equals(key)) {
             Settings.System.putBoolean(getContentResolver(),
                  Settings.System.LOCKSCREEN_QUICK_UNLOCK_CONTROL, isToggled(preference));
+        } else if (KEY_VISIBLE_GESTURE.equals(key)) {
+            lockPatternUtils.setVisibleGestureEnabled(isToggled(preference));
         } else if (KEY_POWER_INSTANTLY_LOCKS.equals(key)) {
             lockPatternUtils.setPowerButtonInstantlyLocks(isToggled(preference));
         } else if (preference == mSlideLockDelayToggle) {
