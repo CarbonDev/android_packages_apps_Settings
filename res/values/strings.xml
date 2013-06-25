@@ -5278,6 +5278,9 @@
     <string name="halo_state_white">White list</string>
     <string name="halo_pause_title">Pause active app</string>
     <string name="halo_pause_summary">When opening an app with HALO the underlying app will get paused</string>
+    <string name="halo_circle_color_title">Circle color</string>
+    <string name="halo_bubble_color_title">Speech bubble color</string>
+    <string name="halo_bubble_text_color_title">Speech bubble text color</string>
 
     <!-- Hardware keys -->
     <string name="hardware_keys_title">Hardware keys</string>
