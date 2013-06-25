@@ -121,7 +121,9 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     private static final String KEY_HALO_HIDE = "halo_hide";
     private static final String KEY_HALO_REVERSED = "halo_reversed";
     private static final String KEY_HALO_PAUSE = "halo_pause";
+    private static final String KEY_HALO_COLORS = "halo_colors";
     private static final String KEY_HALO_CIRCLE_COLOR = "halo_circle_color";
+    private static final String KEY_HALO_EFFECT_COLOR = "halo_effect_color";
     private static final String KEY_HALO_BUBBLE_COLOR = "halo_bubble_color";
     private static final String KEY_HALO_BUBBLE_TEXT_COLOR = "halo_bubble_text_color";
 
@@ -136,6 +138,7 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     CheckBoxPreference mCrtOn;
     CheckBoxPreference mHideExtras;
     ColorPickerPreference mHaloCircleColor;
+    ColorPickerPreference mHaloEffectColor;
     ColorPickerPreference mHaloBubbleColor;
     ColorPickerPreference mHaloBubbleTextColor;
     ListPreference mUserModeUI;
@@ -147,6 +150,7 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     ListPreference mCustomBackground;
     ListPreference mClearPosition;
     private ListPreference mHaloState;
+    private CheckBoxPreference mHaloColors;
     private CheckBoxPreference mHaloEnabled;
     private CheckBoxPreference mHaloHide;
     private CheckBoxPreference mHaloReversed;
@@ -244,6 +248,13 @@ public class InterfaceSettings extends SettingsPreferenceFragment
         mHaloPause = (CheckBoxPreference) prefSet.findPreference(KEY_HALO_PAUSE);
         mHaloPause.setChecked(Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.HALO_PAUSE, isLowRAM) == 1);
+
+        mHaloColors = (CheckBoxPreference) prefSet.findPreference(PREF_HALO_COLORS);
+        mHaloColors.setChecked(Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.HALO_COLORS, 0) == 1);
+
+        mHaloEffectColor = (ColorPickerPreference) findPreference(KEY_HALO_EFFECT_COLOR);
+        mHaloEffectColor.setOnPreferenceChangeListener(this);
 
         mHaloCircleColor = (ColorPickerPreference) findPreference(KEY_HALO_CIRCLE_COLOR);
         mHaloCircleColor.setOnPreferenceChangeListener(this);
@@ -466,6 +477,11 @@ public class InterfaceSettings extends SettingsPreferenceFragment
             Settings.System.putInt(mContext.getContentResolver(),
                     Settings.System.HALO_PAUSE,
                     mHaloPause.isChecked() ? 1 : 0);
+        } else if (preference == mHaloColors) {
+            Settings.System.putInt(mContext.getContentResolver(),
+                    Settings.System.HALO_COLORS, mHaloColors.isChecked()
+                    ? 1 : 0);
+            Helpers.restartSystemUI();
         } else if (preference == mUseAltResolver) {
             Settings.System.putBoolean(getActivity().getContentResolver(),
                     Settings.System.ACTIVITY_RESOLVER_USE_ALT,
@@ -590,6 +606,15 @@ public class InterfaceSettings extends SettingsPreferenceFragment
             int intHex = ColorPickerPreference.convertToColorInt(hex);
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.HALO_CIRCLE_COLOR, intHex);
+            return true;
+        } else if (preference == mHaloEffectColor) {
+            String hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(newValue)));
+            preference.setSummary(hex);
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.HALO_EFFECT_COLOR, intHex);
+            Helpers.restartSystemUI();
             return true;
         } else if (preference == mHaloBubbleColor) {
             String hex = ColorPickerPreference.convertToARGB(
