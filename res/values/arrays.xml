@@ -2042,6 +2042,18 @@
         <item>@string/bottom_of_navbar</item>
     </string-array>
 
+    <!-- Toggle tile background style -->
+    <string-array name="tile_background_style_entries">
+        <item>@string/tile_background_random</item>
+        <item>@string/tile_background_color_fill</item>
+        <item>@string/tile_background_default</item>
+    </string-array>
+    <string-array name="tile_background_style_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
     <string-array name="battery_bar_values" translatable="false">
         <item>0</item>
         <item>1</item>

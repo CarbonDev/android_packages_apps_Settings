@@ -5271,6 +5271,7 @@
     <string name="click_collapse">On click</string>
     <string name="long_collapse">On long click</string>
     <string name="both_collapse">Both click and long click</string>
+    <string name="custom_toggle_colors">Custom colors</string>
 
     <!-- HALO -->
     <string name="halo_settings_title">HALO</string>
@@ -5293,6 +5294,29 @@
     <string name="halo_bubble_text_color_title">Speech bubble text color</string>
     <string name="halo_effect_color_title">Effect color</string>
     <string name="halo_effect_color_summary">Requires a systemui restart</string>
+
+    <!-- Tile background style and text color -->
+    <string name="tile_background_style_title">Tile background style</string>
+    <string name="tile_background_style_summary">Lets you choose from random, color fill or default background for tiles</string>
+    <string name="tile_background_color_title">Set tile background color</string>
+    <string name="tile_background_pressed_color_title">Set tile pressed background color</string>
+    <string name="tile_background_random">Random colors</string>
+    <string name="tile_background_color_fill">Color fill</string>
+    <string name="tile_background_default">Default background</string>
+    <string name="tile_custom_background_dialog_title">Tile background style</string>
+    <string name="tile_text_color_title">Set tile text color</string>
+
+    <!-- Random colors -->
+    <string name="random_colors">Random colors</string>
+    <string name="random_colors_title">Set random colors</string>
+    <string name="random_colors_summary">Allows you to select your own random colors</string>
+    <string name="random_colors_reset_title">Reset random colors</string>
+    <string name="color_one">Color one</string>
+    <string name="color_two">Color two</string>
+    <string name="color_three">Color three</string>
+    <string name="color_four">Color four</string>
+    <string name="color_five">Color five</string>
+    <string name="color_six">Color six</string>
 
     <!-- Hardware keys -->
     <string name="hardware_keys_title">Hardware keys</string>

@@ -54,6 +54,7 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements Di
     protected boolean hasTorch;
     protected boolean hasVibration = false;
     protected ContentResolver mContentRes;
+    protected ContentResolver mContentAppRes;
 
     private String mHelpUrl;
 
@@ -63,6 +64,7 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements Di
         hasTorch = getResources().getBoolean(R.bool.has_led_flash);
         mContext = getActivity();
         mContentRes = getActivity().getContentResolver();
+        mContentAppRes = mContext.getContentResolver();
         // Prepare help url and enable menu if necessary
         int helpResource = getHelpResource();
         if (helpResource != 0) {

@@ -51,6 +51,41 @@
         android:title="@string/screenshot_delay_title" />
 
     <PreferenceCategory
+        android:key="custom_colors"
+        android:title="@string/custom_toggle_colors">
+
+		<ListPreference
+			android:key="tile_background_style"
+			android:entries="@array/tile_background_style_entries"
+			android:entryValues="@array/tile_background_style_values"
+			android:title="@string/tile_background_style_title"
+			android:summary="@string/tile_background_style_summary" />
+
+		<Preference
+			android:key="random_colors"
+			android:title="@string/random_colors_title"
+			android:summary="@string/random_colors_summary" />
+
+		<net.margaritov.preference.colorpicker.ColorPickerPreference
+			android:key="tile_background_color"
+			android:title="@string/tile_background_color_title"
+			android:defaultValue="0xff000000"
+			alphaSlider="true" />
+
+		<net.margaritov.preference.colorpicker.ColorPickerPreference
+			android:key="tile_background_pressed_color"
+			android:title="@string/tile_background_pressed_color_title"
+			android:defaultValue="0xff161616"
+			alphaSlider="true" />
+
+		<net.margaritov.preference.colorpicker.ColorPickerPreference
+			android:key="tile_text_color"
+			android:title="@string/tile_text_color_title"
+			android:defaultValue="0xffffffff" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="custom_toggle"
         android:title="@string/custom_toggle_cat">
 
