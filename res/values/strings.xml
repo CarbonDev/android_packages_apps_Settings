@@ -5349,6 +5349,7 @@
     <string name="hardware_keys_action_last_app">Switch to last app</string>
     <string name="hardware_keys_action_custom_app">Custom app</string>
     <string name="hardware_keys_action_camera">Camera</string>
+    <string name="hardware_keys_action_quicksettings">Quicksettings panel</string>
 
     <!-- Navigation Bar -->
     <string name="navigation_bar">Navigation bar</string>
@@ -5567,6 +5568,7 @@
     <string name="kill_app">Kill app</string>
     <string name="lastapp">Last app</string>
     <string name="power">Screen off</string>
+    <string name="quicksettings">Quicksettings panel</string>
     <string name="notifications">Notifications</string>
     <string name="custom_app">Custom app</string>
     <string name="menu_power">Power menu</string>
