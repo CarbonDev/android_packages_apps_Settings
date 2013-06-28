@@ -6039,5 +6039,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="auto_hide_statusbar">Auto Hide statusbar</string>
     <string name="auto_hide_statusbar_summary">Statusbar hides itself when there are no notifications</string>
 
+    <!-- Statusbar Quick Peek -->
+    <string name="statusbar_quick_peek_title">Quick peek</string>
+    <string name="statusbar_quick_peek_summary">Peek at the statusbar when hidden by swiping down from top edge of screen</string>
+
     <!-- **** CARBON ADDITIONS END **** -->
 </resources>
