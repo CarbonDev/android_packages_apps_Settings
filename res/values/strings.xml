@@ -4811,6 +4811,10 @@
     <string name="pie_killtask_summary">Enable kill task button on Pie</string>
     <string name="pie_appwindow_title">App window button</string>
     <string name="pie_appwindow_summary">Enable app window button on Pie (configure app window in Ribbon settings)</string>
+    <string name="pie_actnotif_title">Action notifications button</string>
+    <string name="pie_actnotif_summary">Expand notifications button on Pie</string>
+    <string name="pie_actqs_title">Action quicksettings button</string>
+    <string name="pie_actqs_summary">Expand quicksettings button on Pie</string>
     <string name="pie_stick_title">Prevent rotation</string>
     <string name="pie_stick_summary">If checked Pie will stay in place no matter which orientation</string>
     <string name="pie_restart_launcher_title">Restart launcher</string>

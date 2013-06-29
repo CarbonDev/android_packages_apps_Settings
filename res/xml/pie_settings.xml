@@ -132,6 +132,16 @@
             android:title="@string/pie_appwindow_title"
             android:summary="@string/pie_appwindow_summary" />
 
+        <CheckBoxPreference
+            android:key="pie_actnotif"
+            android:title="@string/pie_actnotif_title"
+            android:summary="@string/pie_actnotif_summary" />
+
+        <CheckBoxPreference
+            android:key="pie_actqs"
+            android:title="@string/pie_actqs_title"
+            android:summary="@string/pie_actqs_summary" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>

@@ -56,6 +56,8 @@ public class Pie extends SettingsPreferenceFragment
     private static final String PIE_LASTAPP = "pie_lastapp";
     private static final String PIE_KILLTASK = "pie_killtask";
     private static final String PIE_APPWINDOW = "pie_appwindow";
+    private static final String PIE_ACTNOTIF = "pie_actnotif";
+    private static final String PIE_ACTQS = "pie_actqs";
     private static final String PIE_MENU = "pie_menu";
     private static final String PIE_SEARCH = "pie_search";
     private static final String PIE_RESTART = "pie_restart_launcher";
@@ -72,6 +74,8 @@ public class Pie extends SettingsPreferenceFragment
     private CheckBoxPreference mPieLastApp;
     private CheckBoxPreference mPieKillTask;
     private CheckBoxPreference mPieAppWindow;
+    private CheckBoxPreference mPieActNotif;
+    private CheckBoxPreference mPieActQs;
     private CheckBoxPreference mPieMenu;
     private CheckBoxPreference mPieSearch;
     private CheckBoxPreference mPieStick;
@@ -167,6 +171,14 @@ public class Pie extends SettingsPreferenceFragment
         mPieAppWindow.setChecked(Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.PIE_APP_WINDOW, 1) == 1);
 
+        mPieActNotif = (CheckBoxPreference) prefSet.findPreference(PIE_ACTNOTIF);
+        mPieActNotif.setChecked(Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.PIE_ACT_NOTIF, 1) == 1);
+
+        mPieActQs = (CheckBoxPreference) prefSet.findPreference(PIE_ACTQS);
+        mPieActQs.setChecked(Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.PIE_ACT_QS, 1) == 1);
+
         mPieMenu = (CheckBoxPreference) prefSet.findPreference(PIE_MENU);
         mPieMenu.setChecked(Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.PIE_MENU, 1) == 1);
@@ -192,9 +204,11 @@ public class Pie extends SettingsPreferenceFragment
         mPieRestart.setEnabled(pieCheck);
         mPieMenu.setEnabled(pieCheck);
         mPieSearch.setEnabled(pieCheck);
-        mPieAppWindow.setEnabled(pieCheck);
         mPieLastApp.setEnabled(pieCheck);
         mPieKillTask.setEnabled(pieCheck);
+        mPieAppWindow.setEnabled(pieCheck);
+        mPieActNotif.setEnabled(pieCheck);
+        mPieActQs.setEnabled(pieCheck);
     }
 
     @Override
@@ -215,6 +229,12 @@ public class Pie extends SettingsPreferenceFragment
         } else if (preference == mPieAppWindow) {
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.PIE_APP_WINDOW, mPieAppWindow.isChecked() ? 1 : 0);
+        } else if (preference == mPieActNotif) {
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.PIE_ACT_NOTIF, mPieActNotif.isChecked() ? 1 : 0);
+        } else if (preference == mPieActQs) {
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.PIE_ACT_QS, mPieActQs.isChecked() ? 1 : 0);
         } else if (preference == mPieMenu) {
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.PIE_MENU, mPieMenu.isChecked() ? 1 : 0);
