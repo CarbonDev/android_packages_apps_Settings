@@ -5411,8 +5411,6 @@
     <string name="navbar_widgets_delete">Delete Widget</string>
     <string name="navigation_bar_menu_arrow_keys_title">Menu arrow keys</string>
     <string name="navigation_bar_menu_arrow_keys_summary">Show arrow keys in the navbar while typing</string>
-    <string name="statusbar_hide_title">Hide Statusbar</string>
-    <string name="statusbar_hide_summary">Allow Statusbar to be hidden</string>
     <string name="navigation_bar_alpha_title">Statusbar and navbar opacity</string>
     <string name="navbar_hide_enable_title">Hidden navbar enable</string>
     <string name="systembar_hide_enable_title">Hidden systembar Enable</string>
@@ -6035,13 +6033,16 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="privacy_guard_default_title">Privacy Guard</string>
     <string name="privacy_guard_default_summary">Enable Privacy Guard by default for newly-installed apps</string>
 
-    <!-- Auto-Hide Status Bar -->
-    <string name="auto_hide_statusbar">Auto Hide statusbar</string>
-    <string name="auto_hide_statusbar_summary">Statusbar hides itself when there are no notifications</string>
-
     <!-- Statusbar Quick Peek -->
     <string name="statusbar_quick_peek_title">Quick peek</string>
     <string name="statusbar_quick_peek_summary">Peek at the statusbar when hidden by swiping down from top edge of screen</string>
+
+    <!-- Statusbar behaviour -->
+    <string name="statusbar_behaviour_title">Statusbar behaviour</string>
+    <string name="statusbar_behaviour_summary">Choose from three different statusbar behaviours</string>
+    <string name="statusbar_show">Show statusbar</string>
+    <string name="statusbar_hide">Hide statusbar</string>
+    <string name="statusbar_auto">Auto hide statusbar</string>
 
     <!-- **** CARBON ADDITIONS END **** -->
 </resources>
