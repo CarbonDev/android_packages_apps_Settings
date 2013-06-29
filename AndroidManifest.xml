@@ -1541,6 +1541,9 @@
 
         <!-- Carbon Activities Start -->
         <activity android:name=".carbon.About" />
+        <activity android:name=".carbon.CarbonSettings" />
+        <activity android:name=".carbon.ChangeLog" />
+        <activity android:name=".carbon.Halo" />
         <activity android:name=".carbon.InterfaceSettings" />
         <activity android:name=".carbon.Lockscreens" />
         <activity android:name=".carbon.LockscreenButtons" />
@@ -1558,8 +1561,6 @@
         <activity android:name=".carbon.StatusBarBattery" />
         <activity android:name=".carbon.StatusBarClockStyle" />
         <activity android:name=".carbon.StatusBarToggles" />
-        <activity android:name=".carbon.ChangeLog" />
-        <activity android:name=".carbon.Halo" />
 
         <activity android:name="Settings$CarbonSettingsActivity"
                 android:label="@string/carbon_settings_title"
@@ -1573,14 +1574,6 @@
                 android:value="com.android.settings.carbon.CarbonSettings" />
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
                 android:resource="@id/carbon_settings" />
-        </activity>
-
-        <activity android:name=".carbon.CarbonSettings"
-            android:label="CarbonSettings" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
         </activity>
 
         <activity android:name="Settings$HaloActivity"
@@ -1608,7 +1601,7 @@
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="com.android.settings.carbon.Pie" />
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
-                android:resource="@id/carbon_settings" />
+                android:resource="@id/pie_controls" />
         </activity>
 
         <activity android:name="Settings$QuietHoursSettingsActivity"

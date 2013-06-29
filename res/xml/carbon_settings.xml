@@ -17,7 +17,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/carbon_settings_title">
 
-    <!-- About CarbonRom -->
+    <!-- About Carbon -->
     <PreferenceScreen
         android:id="@+id/about_rom"
         android:title="@string/title_about"
