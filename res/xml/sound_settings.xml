@@ -111,6 +111,13 @@
             android:defaultValue="true" />
 
     <CheckBoxPreference
+            android:key="notification_vibrate_during_calls"
+            android:title="@string/notification_vibrate_during_calls_title"
+            android:summary="@string/notification_vibrate_during_calls_summary"
+            android:persistent="false"
+            android:defaultValue="false" />
+
+    <CheckBoxPreference
             android:key="lock_volume_keys"
             android:title="@string/sound_lock_volume_keys_title"
             android:summary="@string/sound_lock_volume_keys_summary"
