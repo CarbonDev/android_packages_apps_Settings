@@ -1692,6 +1692,7 @@
         <item>@string/square_battery</item>
         <item>@string/gear_battery</item>
         <item>@string/cm_battery</item>
+        <item>@string/carbon_battery</item>
         <item>@string/dont_show</item>
     </string-array>
 
@@ -1708,6 +1709,7 @@
         <item>9</item>
         <item>10</item>
         <item>11</item>
+        <item>12</item>
     </string-array>
 
     <string-array name="circle_battery_animation_speed_entries" >
