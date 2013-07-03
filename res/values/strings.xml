@@ -6129,5 +6129,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="profile_networkmode_3g">3G</string>
     <string name="profile_networkmode_2g3g">2G/3G</string>
 
+    <!-- vibrate during phone calls -->
+    <string name="notification_vibrate_during_calls_title">Vibrate during call</string>
+    <string name="notification_vibrate_during_calls_summary">Incoming notifications will softly vibrate during phone calls</string>
+
     <!-- **** CARBON ADDITIONS END **** -->
 </resources>
