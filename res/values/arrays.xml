@@ -2459,5 +2459,13 @@
         <item>3</item>
     </string-array>
 
+    <!-- GPS source selection -->
+    <string-array name="location_entries_gps_source">
+        <item>Use Internal GPS</item>
+    </string-array>
+    <string-array name="location_values_gps_source" translatable="false">
+        <item>0</item>
+    </string-array>
+
     <!-- **** CARBON EDITS END **** -->
 </resources>
