@@ -5871,6 +5871,10 @@
     <string name="ram_bar_button_help">Help</string>
     <string name="ram_bar_button_reset">Reset colors</string>
 
+    <!-- Recents RAM circle -->
+    <string name="circle_ram_title">Recents RAM circle</string>
+    <string name="circle_ram_summary">Adds a circular meter surrounding the clear recents button</string>    
+
     <!-- Stylus Gestures -->
     <string name="gestures_settings_title">Stylus gestures</string>
     <string name="category_spen_title">Stylus gestures</string>

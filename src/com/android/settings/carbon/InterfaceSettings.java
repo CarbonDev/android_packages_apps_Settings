@@ -98,6 +98,7 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     private static final String KEY_LOCK_CLOCK = "lock_clock";
     private static final String PREF_CUSTOM_CARRIER_LABEL = "custom_carrier_label";
     private static final String KEY_RECENTS_RAM_BAR = "recents_ram_bar";
+    private static final String KEY_RECENTS_RAM_CIRCLE = "recents_ram_circle";
     private static final String KEY_DUAL_PANE = "dual_pane";
     private static final String PREF_WAKEUP_WHEN_PLUGGED_UNPLUGGED = "wakeup_when_plugged_unplugged";
     private static final String PREF_NOTIFICATION_SHOW_WIFI_SSID = "notification_show_wifi_ssid";
@@ -122,6 +123,7 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     CheckBoxPreference mCrtOff;
     CheckBoxPreference mCrtOn;
     CheckBoxPreference mHideExtras;
+    CheckBoxPreference mRamCircle;
     ListPreference mUserModeUI;
     Context mContext;
     ListPreference mLowBatteryWarning;
@@ -191,6 +193,10 @@ public class InterfaceSettings extends SettingsPreferenceFragment
 
         mRamBar = findPreference(KEY_RECENTS_RAM_BAR);
         updateRamBar();
+
+        mRamCircle = (CheckBoxPreference) findPreference(KEY_RECENTS_RAM_CIRCLE);
+        mRamCircle.setChecked(Settings.System.getBoolean(mContext.getContentResolver(),
+                Settings.System.RECENTS_RAM_CIRCLE, false));
 
         mClearPosition = (ListPreference) findPreference(KEY_CLEAR_RECENTS_POSITION);
         int ClearSide = Settings.System.getInt(getActivity().getContentResolver(),
@@ -360,6 +366,11 @@ public class InterfaceSettings extends SettingsPreferenceFragment
         } else if (preference == mLcdDensity) {
             ((PreferenceActivity) getActivity())
             .startPreferenceFragment(new DensityChanger(), true);
+            return true;
+        } else if (preference == mRamCircle) {
+            Settings.System.putBoolean(getActivity().getContentResolver(),
+                    Settings.System.RECENTS_RAM_CIRCLE,
+                    ((CheckBoxPreference) preference).isChecked());
             return true;
         } else if (preference == mDualPane) {
             Settings.System.putInt(getActivity().getContentResolver(),
