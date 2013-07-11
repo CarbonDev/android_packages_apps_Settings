@@ -2446,15 +2446,17 @@
     </string-array>
 
     <!-- Statusbar behavior -->
-    <string-array name="status_bar_behaviour_entries" translatable="false">
+    <string-array name="status_bar_behavior_entries" translatable="false">
         <item>@string/statusbar_show</item>
         <item>@string/statusbar_hide</item>
         <item>@string/statusbar_auto</item>
+        <item>@string/statusbar_auto_no_notif</item>
     </string-array>
-    <string-array name="status_bar_behaviour_values" translatable="false">
+    <string-array name="status_bar_behavior_values" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
+        <item>3</item>
     </string-array>
 
     <!-- **** CARBON EDITS END **** -->

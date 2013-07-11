@@ -6125,12 +6125,14 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="statusbar_quick_peek_title">Quick peek</string>
     <string name="statusbar_quick_peek_summary">Peek at the statusbar when hidden by swiping down from top edge of screen</string>
 
-    <!-- Statusbar behaviour -->
-    <string name="statusbar_behaviour_title">Statusbar behaviour</string>
-    <string name="statusbar_behaviour_summary">Choose from three different statusbar behaviours</string>
-    <string name="statusbar_show">Show statusbar</string>
-    <string name="statusbar_hide">Hide statusbar</string>
-    <string name="statusbar_auto">Auto hide statusbar</string>
+    <!-- Statusbar behavior -->
+    <string name="statusbar_behavior_title">Statusbar behavior</string>
+    <string name="statusbar_show">Show</string>
+    <string name="statusbar_hide">Hide</string>
+    <string name="statusbar_auto">Auto hide: no clearable notifications</string>
+    <string name="statusbar_auto_no_notif">Auto hide: no notifications</string>
+    <string name="statusbar_summary_auto_nonperm">Auto hide statusbar if no non-permanent notifications are present</string>
+    <string name="statusbar_summary_auto_all">Auto hide statusbar if no notifications are present</string>
 
     <!-- Profile network mode -->
     <string name="profile_networkmode_2g">2G</string>
