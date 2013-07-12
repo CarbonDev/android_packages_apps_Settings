@@ -115,7 +115,11 @@
             carbon:nameDev="Andy Fried"
             carbon:twitterHandle="andyfried3" />
             
-
+		<com.android.settings.widgets.DeveloperPreference
+            android:title="Bionic Beast"
+            carbon:nameDev="Bionic Beast"
+            carbon:twitterHandle="akhalil7993" />
+            
 	</PreferenceCategory>
 
 	<PreferenceCategory
