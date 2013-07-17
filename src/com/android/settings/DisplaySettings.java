@@ -73,7 +73,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_POWER_CRT_SCREEN_OFF = "system_power_crt_screen_off";
     private static final String KEY_WAKE_WHEN_PLUGGED_OR_UNPLUGGED = "wake_when_plugged_or_unplugged";
     private static final String KEY_WAKEUP_CATEGORY = "category_wakeup_options";
-    private static final String KEY_HOME_WAKE = "pref_home_wake";
+    private static final String KEY_BUTTON_WAKE = "pref_wakeon_button";
     private static final String KEY_VOLUME_WAKE = "pref_volume_wake";
 
     private static final String CATEGORY_LIGHTS = "lights_prefs";
@@ -92,10 +92,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private CheckBoxPreference mAccelerometer;
     private FontDialogPreference mFontSizePref;
-    private CheckBoxPreference mHomeWake;
     private CheckBoxPreference mVolumeWake;
     private PreferenceScreen mDisplayRotationPreference;
     private ListPreference mCrtMode;
+    private ListPreference mButtonWake;
     private CheckBoxPreference mCrtOff;
     private CheckBoxPreference mWakeWhenPluggedOrUnplugged;
 
@@ -228,14 +228,18 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             mWifiDisplayPreference = null;
         }
 
-        // Home button wake
-        mHomeWake = (CheckBoxPreference) findPreference(KEY_HOME_WAKE);
-        if (mHomeWake != null) {
+        // Button wake
+        mButtonWake = (ListPreference) findPreference(KEY_BUTTON_WAKE);
+        if (mButtonWake != null) {
             if (!getResources().getBoolean(R.bool.config_show_homeWake)) {
-                getPreferenceScreen().removePreference(mHomeWake);
+                //no home button, don't allow user to disable power button either
+                getPreferenceScreen().removePreference(mButtonWake);
             } else {
-                mHomeWake.setChecked(Settings.System.getInt(resolver,
-                        Settings.System.HOME_WAKE_SCREEN, 1) == 1);
+                int buttonWakeValue = Settings.System.getInt(resolver,
+                        Settings.System.BUTTON_WAKE_SCREEN, 2);
+                mButtonWake.setValue(String.valueOf(buttonWakeValue));
+                mButtonWake.setSummary(getResources().getString(R.string.pref_wakeon_button_summary, mButtonWake.getEntry()));
+                mButtonWake.setOnPreferenceChangeListener(this);
             }
         }
 
@@ -508,10 +512,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             Settings.Global.putInt(getContentResolver(),
                     Settings.Global.WAKE_WHEN_PLUGGED_OR_UNPLUGGED,
                     mWakeWhenPluggedOrUnplugged.isChecked() ? 1 : 0);
-        } else if (preference == mHomeWake) {
-            Settings.System.putInt(getContentResolver(), Settings.System.HOME_WAKE_SCREEN,
-                    mHomeWake.isChecked() ? 1 : 0);
-            return true;
         } else if (preference == mVolumeWake) {
             Settings.System.putInt(getContentResolver(), Settings.System.VOLUME_WAKE_SCREEN,
                     mVolumeWake.isChecked() ? 1 : 0);
@@ -531,6 +531,13 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.SYSTEM_POWER_CRT_MODE, crtMode);
             mCrtMode.setSummary(mCrtMode.getEntries()[index]);
+            return true;
+        } else if (preference == mButtonWake) {
+            int buttonWakeValue = Integer.valueOf((String) objValue);
+            int index = mButtonWake.findIndexOfValue((String) objValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.BUTTON_WAKE_SCREEN, buttonWakeValue);
+            mButtonWake.setSummary(getResources().getString(R.string.pref_wakeon_button_summary, mButtonWake.getEntries()[index]));
             return true;
         } else if (preference == mScreenTimeoutPreference) {
             int value = Integer.parseInt((String) objValue);
