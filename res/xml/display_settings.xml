@@ -76,6 +76,12 @@
                 android:summary="@string/adaptive_backlight_summary"
                 android:defaultValue="true" />
 
+        <CheckBoxPreference
+            android:key="wake_when_plugged_or_unplugged"
+            android:title="@string/wake_when_plugged_or_unplugged_title"
+            android:summary="@string/wake_when_plugged_or_unplugged_summary"
+            android:defaultValue="false" />
+
         <PreferenceCategory
             android:key="lights_prefs"
             android:title="@string/lights_category_title">
