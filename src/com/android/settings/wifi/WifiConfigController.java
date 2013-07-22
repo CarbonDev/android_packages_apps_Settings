@@ -68,7 +68,7 @@ import java.util.List;
  * share the logic for controlling buttons, text fields, etc.
  */
 public class WifiConfigController implements TextWatcher,
-        View.OnClickListener, AdapterView.OnItemSelectedListener, OnCheckedChangeListener {
+        AdapterView.OnItemSelectedListener, OnCheckedChangeListener {
     private static final String KEYSTORE_SPACE = WifiConfiguration.KEYSTORE_URI;
 
     private static final String PHASE2_PREFIX = "auth=";
@@ -173,7 +173,7 @@ public class WifiConfigController implements TextWatcher,
         mProxySettingsSpinner = (Spinner) mView.findViewById(R.id.proxy_settings);
         mProxySettingsSpinner.setOnItemSelectedListener(this);
         mIbssView = (CheckBox) mView.findViewById(R.id.wifi_ibss_checkbox);
-        mIbssView.setOnClickListener(this);
+        mIbssView.setOnCheckedChangeListener(this);
         mIbssFreqSpinner = (Spinner) mView.findViewById(R.id.wifi_ibss_freq);
 
         if (mAccessPoint == null) { // new network
