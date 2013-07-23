@@ -44,6 +44,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 
 import com.android.internal.view.RotationPolicy;
+import com.android.settings.cyanogenmod.DisplayColor;
 import com.android.settings.DreamSettings;
 
 import java.util.ArrayList;
@@ -62,6 +63,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_SCREEN_SAVER = "screensaver";
     private static final String KEY_WIFI_DISPLAY = "wifi_display";
     private static final String KEY_BATTERY_LIGHT = "battery_light";
+    private static final String KEY_DISPLAY_COLOR = "color_calibration";
 
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
 
@@ -140,6 +142,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             }
         }
 
+        if (!DisplayColor.isSupported()) {
+            removePreference(KEY_DISPLAY_COLOR);
+        }
 
         mDisplayManager = (DisplayManager)getActivity().getSystemService(
                 Context.DISPLAY_SERVICE);
