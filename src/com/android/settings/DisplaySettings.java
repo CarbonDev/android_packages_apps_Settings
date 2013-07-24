@@ -471,7 +471,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         if (KEY_SCREEN_TIMEOUT.equals(key)) {
             int value = Integer.parseInt((String) objValue);
             try {
-                Settings.System.putInt(getContentResolver(), SCREEN_OFF_TIMEOUT, value);
+                Settings.System.putInt(getActivity().getContentResolver(), Settings.System.SCREEN_OFF_TIMEOUT, value);
                 updateTimeoutPreferenceDescription(value);
             } catch (NumberFormatException e) {
                 Log.e(TAG, "could not persist screen timeout setting", e);
