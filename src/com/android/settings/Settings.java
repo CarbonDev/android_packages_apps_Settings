@@ -59,7 +59,10 @@ import com.android.settings.blacklist.BlacklistSettings;
 import com.android.settings.bluetooth.BluetoothEnabler;
 import com.android.settings.bluetooth.BluetoothSettings;
 import com.android.settings.carbon.TRDSEnabler;
+import com.android.settings.profiles.AppGroupConfig;
+import com.android.settings.profiles.ProfileConfig;
 import com.android.settings.profiles.ProfileEnabler;
+import com.android.settings.profiles.ProfilesSettings;
 import com.android.settings.wfd.WifiDisplaySettings;
 import com.android.settings.wifi.WifiEnabler;
 import com.android.settings.wifi.WifiSettings;
@@ -392,6 +395,9 @@ public class Settings extends PreferenceActivity
                 BluetoothSettings.class.getName().equals(fragmentName) ||
                 DreamSettings.class.getName().equals(fragmentName) ||
                 BlacklistSettings.class.getName().equals(fragmentName) ||
+                ProfilesSettings.class.getName().equals(fragmentName) ||
+                ProfileConfig.class.getName().equals(fragmentName) ||
+                AppGroupConfig.class.getName().equals(fragmentName) ||
                 ToggleAccessibilityServicePreferenceFragment.class.getName().equals(fragmentName)) {
             intent.putExtra(EXTRA_UI_OPTIONS, ActivityInfo.UIOPTION_SPLIT_ACTION_BAR_WHEN_NARROW);
         }
