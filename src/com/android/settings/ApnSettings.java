@@ -176,13 +176,13 @@ public class ApnSettings extends SettingsPreferenceFragment implements
                 String key = cursor.getString(ID_INDEX);
                 String type = cursor.getString(TYPES_INDEX);
 
-                ApnPreference pref = new ApnPreference(this);
+                ApnPreference pref = new ApnPreference(getActivity());
 
                 pref.setKey(key);
                 pref.setTitle(name);
                 pref.setSummary(apn);
                 pref.setPersistent(false);
-                pref.setOnPreferenceChangeListener(getActivity());
+                pref.setOnPreferenceChangeListener(this);
 
                 boolean selectable = ((type == null) || !type.equals("mms"));
                 pref.setSelectable(selectable);

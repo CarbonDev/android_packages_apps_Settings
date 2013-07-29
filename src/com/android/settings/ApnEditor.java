@@ -21,6 +21,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ContentUris;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -235,7 +236,7 @@ public class ApnEditor extends SettingsPreferenceFragment
         mCursor = qCursor.loadInBackground();
         mCursor.moveToFirst();
 
-        mTelephonyManager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+        mTelephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
 
         fillUi();
         setHasOptionsMenu(true);

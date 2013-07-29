@@ -394,6 +394,8 @@ public class SecuritySettings extends SettingsPreferenceFragment
         if (mNotificationAccess != null) {
             final int total = NotificationAccessSettings.getListenersCount(mPM);
             if (total == 0) {
+                PreferenceGroup deviceAdminCategory= (PreferenceGroup)
+                        root.findPreference(KEY_DEVICE_ADMIN_CATEGORY);
                 if (deviceAdminCategory != null) {
                     deviceAdminCategory.removePreference(mNotificationAccess);
                 }
