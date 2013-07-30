@@ -4604,6 +4604,7 @@
     <!-- Carbon Links  -->
     <!-- Settings main menu category heading. [CHAR LIMIT=40] -->
     <string name="header_category_carbon_links">Carbon</string>
+    <string name="carbon_fibers_title">Carbon Fibers</string>
 
     <!-- Launcher settings  -->
     <string name="launcher_settings_title">Launcher</string>
