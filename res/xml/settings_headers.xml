@@ -224,7 +224,7 @@
     <!-- Performance -->
     <header
         android:id="@+id/performance_settings"
-        android:fragment="com.android.settings.cyanogenmod.PerformanceSettings"
+        android:fragment="com.android.settings.carbon.PerformanceSettings"
         android:icon="@drawable/ic_settings_performance"
         android:title="@string/performance_settings_title" />
 

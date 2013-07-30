@@ -1654,7 +1654,7 @@
 
         <!-- Carbon activities Start -->
 
-        <activity android:name=".cyanogenmod.PerformanceSettings" />
+        <activity android:name=".carbon.PerformanceSettings" />
 
         <activity android:name=".profiles.ProfilesSettings" />
 
@@ -1710,7 +1710,7 @@
             </intent-filter>
         </receiver>
 
-        <receiver android:name=".cyanogenmod.BootReceiver" android:enabled="true">
+        <receiver android:name=".carbon.BootReceiver" android:enabled="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
