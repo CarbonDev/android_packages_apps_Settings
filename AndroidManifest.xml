@@ -1580,6 +1580,10 @@
             android:theme="@style/CryptKeeperBlankTheme"
         />
 
+        <activity android:name=".cyanogenmod.AutoBrightnessSetup"
+                android:excludeFromRecents="true"
+                android:theme="@*android:style/Theme.Holo.Dialog.Alert" />
+
         <activity android:name="Settings$DataUsageSummaryActivity"
                 android:label="@string/data_usage_summary_title"
                 android:taskAffinity=""
