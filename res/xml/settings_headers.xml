@@ -67,7 +67,7 @@
             android:title="@string/carbon_fibers_title">
         <intent
                 android:action="android.intent.action.MAIN"
-                android:targetClass="com.carbon.settings.CRSettingsActivity"
+                android:targetClass="com.carbon.settings.CrSettingsActivity"
                 android:targetPackage="com.carbon.settings" />
     </header>
 
