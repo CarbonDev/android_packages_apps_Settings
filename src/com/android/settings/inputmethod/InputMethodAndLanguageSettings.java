@@ -200,7 +200,15 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
             mVolumeKeyCursorControl.setSummary(mVolumeKeyCursorControl.getEntry());
         }
 
-        mStatusBarImeSwitcher = (CheckBoxPreference) findPreference(KEY_IME_SWITCHER);
+        // Enable or disable mStatusBarImeSwitcher based on boolean value: config_show_cmIMESwitcher
+        final Preference keyImeSwitcherPref = findPreference(KEY_IME_SWITCHER);
+        if (keyImeSwitcherPref != null) {
+            if (!getResources().getBoolean(com.android.internal.R.bool.config_show_cmIMESwitcher)) {
+                getPreferenceScreen().removePreference(keyImeSwitcherPref);
+            } else {
+                mStatusBarImeSwitcher = (CheckBoxPreference) keyImeSwitcherPref;
+            }
+        }
 
         mHandler = new Handler();
         mSettingsObserver = new SettingsObserver(mHandler, getActivity());
@@ -290,8 +298,10 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
             }
         }
 
-        mStatusBarImeSwitcher.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.STATUS_BAR_IME_SWITCHER, 1) != 0);
+        if (mStatusBarImeSwitcher != null) {
+            mStatusBarImeSwitcher.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
+                    Settings.System.STATUS_BAR_IME_SWITCHER, 1) != 0);
+        }
 
         // Hard keyboard
         if (!mHardKeyboardPreferenceList.isEmpty()) {
