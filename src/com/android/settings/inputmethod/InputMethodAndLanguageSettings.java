@@ -65,6 +65,7 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
     private static final String KEY_USER_DICTIONARY_SETTINGS = "key_user_dictionary_settings";
     private static final String PREF_DISABLE_FULLSCREEN_KEYBOARD = "disable_fullscreen_keyboard";
     private static final String VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
+    private static final String KEY_IME_SWITCHER = "status_bar_ime_switcher";
     private static final String TAG = "AdvancedInputSettings";
     // false: on ICS or later
     private static final boolean SHOW_INPUT_METHOD_SWITCHER_SETTINGS = false;
@@ -97,6 +98,7 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
     private Intent mIntentWaitingForResult;
     private CheckBoxPreference mDisableFullscreenKeyboard;
     private ListPreference mVolumeKeyCursorControl;
+    private CheckBoxPreference mStatusBarImeSwitcher;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -198,6 +200,8 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
             mVolumeKeyCursorControl.setSummary(mVolumeKeyCursorControl.getEntry());
         }
 
+        mStatusBarImeSwitcher = (CheckBoxPreference) findPreference(KEY_IME_SWITCHER);
+
         mHandler = new Handler();
         mSettingsObserver = new SettingsObserver(mHandler, getActivity());
     }
@@ -286,6 +290,9 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
             }
         }
 
+        mStatusBarImeSwitcher.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.STATUS_BAR_IME_SWITCHER, 1) != 0);
+
         // Hard keyboard
         if (!mHardKeyboardPreferenceList.isEmpty()) {
             for (int i = 0; i < sHardKeyboardKeys.length; ++i) {
@@ -343,6 +350,10 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
             boolean checked = ((CheckBoxPreference) preference).isChecked();
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.DISABLE_FULLSCREEN_KEYBOARD, checked ? 1 : 0);
+            return true;
+        } else if (preference == mStatusBarImeSwitcher) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.STATUS_BAR_IME_SWITCHER, mStatusBarImeSwitcher.isChecked() ? 1 : 0);
             return true;
         } else if (preference instanceof PreferenceScreen) {
             if (preference.getFragment() != null) {
