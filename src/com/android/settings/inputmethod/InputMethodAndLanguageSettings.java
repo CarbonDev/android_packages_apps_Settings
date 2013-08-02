@@ -69,6 +69,7 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
     private static final String KEY_IME_SWITCHER = "status_bar_ime_switcher";
     private static final String KEYBOARD_ROTATION_TOGGLE = "keyboard_rotation_toggle";
     private static final String KEYBOARD_ROTATION_TIMEOUT = "keyboard_rotation_timeout";
+    private static final String SHOW_ENTER_KEY = "show_enter_key";
     private static final String TAG = "AdvancedInputSettings";
     // false: on ICS or later
     private static final boolean SHOW_INPUT_METHOD_SWITCHER_SETTINGS = false;
@@ -106,6 +107,7 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
     private CheckBoxPreference mStatusBarImeSwitcher;
     private CheckBoxPreference mKeyboardRotationToggle;
     private ListPreference mKeyboardRotationTimeout;
+    private CheckBoxPreference mShowEnterKey;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -225,6 +227,10 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         mKeyboardRotationTimeout.setOnPreferenceChangeListener(this);
         updateRotationTimeout(Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.KEYBOARD_ROTATION_TIMEOUT, KEYBOARD_ROTATION_TIMEOUT_DEFAULT));
+
+        mShowEnterKey = (CheckBoxPreference) findPreference(SHOW_ENTER_KEY);
+        mShowEnterKey.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.FORMAL_TEXT_INPUT, 0) == 1);
 
         mHandler = new Handler();
         mSettingsObserver = new SettingsObserver(mHandler, getActivity());
@@ -406,6 +412,10 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
                     Settings.System.KEYBOARD_ROTATION_TIMEOUT,
                     mKeyboardRotationToggle.isChecked() ? KEYBOARD_ROTATION_TIMEOUT_DEFAULT : 0);
             updateRotationTimeout(KEYBOARD_ROTATION_TIMEOUT_DEFAULT);
+            return true;
+        } else if (preference == mShowEnterKey) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.FORMAL_TEXT_INPUT, mShowEnterKey.isChecked() ? 1 : 0);
             return true;
         } else if (preference instanceof PreferenceScreen) {
             if (preference.getFragment() != null) {
