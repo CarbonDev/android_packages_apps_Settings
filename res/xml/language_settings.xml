@@ -67,6 +67,18 @@
                 android:persistent="false"/>
     </PreferenceCategory>
 
+    <!-- Advanced options -->
+    <PreferenceCategory android:key="advanced_category"
+            android:title="@string/langinput_advanced_category" >
+
+        <CheckBoxPreference
+                android:key="disable_fullscreen_keyboard"
+                android:title="@string/disable_fullscreen_keyboard_title"
+                android:summary="@string/disable_fullscreen_keyboard_summary"
+                android:defaultValue="false" />
+
+    </PreferenceCategory>
+
     <PreferenceCategory android:key="voice_category"
             android:title="@string/voice_category" >
 

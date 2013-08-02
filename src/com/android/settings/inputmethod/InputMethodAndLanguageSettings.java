@@ -38,14 +38,17 @@ import android.os.Handler;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
+import android.provider.Settings.SettingNotFoundException;
 import android.provider.Settings.System;
 import android.text.TextUtils;
 import android.view.InputDevice;
 import android.view.inputmethod.InputMethodInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -60,6 +63,8 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
     private static final String KEY_CURRENT_INPUT_METHOD = "current_input_method";
     private static final String KEY_INPUT_METHOD_SELECTOR = "input_method_selector";
     private static final String KEY_USER_DICTIONARY_SETTINGS = "key_user_dictionary_settings";
+    private static final String PREF_DISABLE_FULLSCREEN_KEYBOARD = "disable_fullscreen_keyboard";
+    private static final String TAG = "AdvancedInputSettings";
     // false: on ICS or later
     private static final boolean SHOW_INPUT_METHOD_SWITCHER_SETTINGS = false;
 
@@ -89,6 +94,7 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
     @SuppressWarnings("unused")
     private SettingsObserver mSettingsObserver;
     private Intent mIntentWaitingForResult;
+    private CheckBoxPreference mDisableFullscreenKeyboard;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -177,6 +183,10 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         if (scp != null) {
             scp.setFragmentIntent(this, intent);
         }
+
+        mDisableFullscreenKeyboard = (CheckBoxPreference) findPreference(PREF_DISABLE_FULLSCREEN_KEYBOARD);
+        mDisableFullscreenKeyboard.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.DISABLE_FULLSCREEN_KEYBOARD, 0) == 1);
 
         mHandler = new Handler();
         mSettingsObserver = new SettingsObserver(mHandler, getActivity());
@@ -319,7 +329,12 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         if (Utils.isMonkeyRunning()) {
             return false;
         }
-        if (preference instanceof PreferenceScreen) {
+        if (preference == mDisableFullscreenKeyboard) {
+            boolean checked = ((CheckBoxPreference) preference).isChecked();
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.DISABLE_FULLSCREEN_KEYBOARD, checked ? 1 : 0);
+            return true;
+        } else if (preference instanceof PreferenceScreen) {
             if (preference.getFragment() != null) {
                 // Fragment will be handled correctly by the super class.
             } else if (KEY_CURRENT_INPUT_METHOD.equals(preference.getKey())) {
