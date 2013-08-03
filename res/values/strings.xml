@@ -4554,7 +4554,7 @@
     <!-- Text to display in regulatory info screen (from device overlay). -->
     <string name="regulatory_info_text"></string>
 
-    <!-- CARBON EDITS START -->
+    <!-- **** CARBON ADDITIONS **** -->
 
     <string name="ok">OK</string>
 
@@ -5021,7 +5021,7 @@
     <string name="select_contact">Select contact</string>
 
     <!-- Language & input -->
-    <string name="langinput_advanced_category">Advanced</string>
+    <string name="langinput_advanced_category">General</string>
     <string name="disable_fullscreen_keyboard_title">Disable fullscreen keyboard</string>
     <string name="disable_fullscreen_keyboard_summary">Landscape keyboard will never take up entire screen</string>
     <string name="volume_key_cursor_control_title">Volume key cursor control</string>
@@ -5033,10 +5033,13 @@
     <string name="keyboard_rotation_toggle_title">Auto keyboard rotation</string>
     <string name="keyboard_rotation_toggle_summary">Force auto-rotate when keyboard is shown</string>
     <string name="keyboard_rotation_timeout_title">Auto-rotate timeout</string>
-    <string name="keyboard_rotation_timeout_summary">Disables auto-rotate sensor <xliff:g id="rotate_timeout">%1$s</xliff:g> seconds after keyboard is hidden<string>
-    <string name="keyboard_rotation_dialog">Note: This feature forces auto-rotate to turn on temporarily while the keyboard is out.  It has no effect when auto-rotate is already enabled.</string>
+    <string name="keyboard_rotation_timeout_summary">Disables auto-rotate sensor <xliff:g id="rotate_timeout">%1$s</xliff:g> seconds after keyboard is hidden</string>
+    <string name="keyboard_rotation_dialog">Note: This feature forces auto-rotate to turn on temporarily while the keyboard is out. It has no effect when auto-rotate is already enabled.</string>
     <string name="show_enter_key_title">Show enter key</string>
-    <string name="show_enter_key_summary">Force keyboard to show enter instead of emoticon key</string> 
+    <string name="show_enter_key_summary">Force keyboard to show enter instead of emoticon key</string>
 
-    <!-- **** CYANOGENMOD ADDITIONS END **** -->
+    <!-- Setting checkbox summary for displaying USB debugging notification -->
+    <string name="adb_notify">USB debugging notify</string>
+    <string name="adb_notify_summary">Display a notification when USB debugging is connected</string>
+
 </resources>

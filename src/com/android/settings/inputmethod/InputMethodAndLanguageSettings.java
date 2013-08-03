@@ -241,7 +241,7 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
             timeout = KEYBOARD_ROTATION_TIMEOUT_DEFAULT;
         mKeyboardRotationTimeout.setValue(Integer.toString(timeout));
         mKeyboardRotationTimeout.setSummary(getString(R.string.keyboard_rotation_timeout_summary, mKeyboardRotationTimeout.getEntry()));
-    )
+    }
 
     private void updateInputMethodSelectorSummary(int value) {
         String[] inputMethodSelectorTitles = getResources().getStringArray(
@@ -493,7 +493,7 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
             mVolumeKeyCursorControl.setSummary(mVolumeKeyCursorControl.getEntries()[index]);
             return true;
         } else if (preference == mKeyboardRotationTimeout) {
-            int timeout = Integer.parseInt((String) objValue);
+            int timeout = Integer.parseInt((String) value);
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.KEYBOARD_ROTATION_TIMEOUT, timeout);
             updateRotationTimeout(timeout);

@@ -67,39 +67,17 @@
                 android:persistent="false"/>
     </PreferenceCategory>
 
-    <!-- Advanced options -->
     <PreferenceCategory android:key="advanced_category"
             android:title="@string/langinput_advanced_category" >
 
         <CheckBoxPreference
-                android:key="disable_fullscreen_keyboard"
-                android:title="@string/disable_fullscreen_keyboard_title"
-                android:summary="@string/disable_fullscreen_keyboard_summary"
-                android:defaultValue="false" />
-
-            <ListPreference
-                android:key="volume_key_cursor_control"
-                android:persistent="false"
-                android:dialogTitle="@string/volume_key_cursor_control_title"
-                android:title="@string/volume_key_cursor_control_title"
-                android:entries="@array/volume_key_cursor_control_entries"
-                android:entryValues="@array/volume_key_cursor_control_values" />
-
-            <CheckBoxPreference
-                android:key="status_bar_ime_switcher"
-                android:title="@string/ime_switcher_notify"
-                android:summary="@string/ime_switcher_notify_summary"
-                android:defaultValue="true"
-                android:persistent="false" />
-
-            <CheckBoxPreference
                 android:key="keyboard_rotation_toggle"
                 android:title="@string/keyboard_rotation_toggle_title"
                 android:summary="@string/keyboard_rotation_toggle_summary"
                 android:defaultValue="false"
                 android:persistent="false" />
 
-            <ListPreference
+        <ListPreference
                 android:key="keyboard_rotation_timeout"
                 android:persistent="false"
                 android:dialogTitle="@string/keyboard_rotation_timeout_title"
@@ -108,11 +86,32 @@
                 android:entryValues="@array/keyboard_rotation_timeout_values"
                 android:dependency="keyboard_rotation_toggle" />
 
-           <CheckBoxPreference
-               android:key="show_enter_key"
-               android:title="@string/show_enter_key_title"
-               android:summary="@string/show_enter_key_summary"
-               android:persistent="false" />
+        <CheckBoxPreference
+                android:key="disable_fullscreen_keyboard"
+                android:title="@string/disable_fullscreen_keyboard_title"
+                android:summary="@string/disable_fullscreen_keyboard_summary"
+                android:defaultValue="false" />
+
+        <CheckBoxPreference
+                android:key="status_bar_ime_switcher"
+                android:title="@string/ime_switcher_notify"
+                android:summary="@string/ime_switcher_notify_summary"
+                android:defaultValue="true"
+                android:persistent="false" />
+
+        <CheckBoxPreference
+                android:key="show_enter_key"
+                android:title="@string/show_enter_key_title"
+                android:summary="@string/show_enter_key_summary"
+                android:persistent="false" />
+
+        <ListPreference
+                android:key="volume_key_cursor_control"
+                android:persistent="false"
+                android:dialogTitle="@string/volume_key_cursor_control_title"
+                android:title="@string/volume_key_cursor_control_title"
+                android:entries="@array/volume_key_cursor_control_entries"
+                android:entryValues="@array/volume_key_cursor_control_values" />
 
     </PreferenceCategory>
 
