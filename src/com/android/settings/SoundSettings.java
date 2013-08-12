@@ -457,8 +457,8 @@ public class SoundSettings extends SettingsPreferenceFragment implements
                     mWaiverDialog = new AlertDialog.Builder(getActivity())
                             .setMessage(R.string.carbon_waiver_body)
                             .setTitle(R.string.carbon_waiver_title)
-                            .setPositiveButton(R.string.ok, this)
-                            .setNegativeButton(R.string.cancel, this)
+                            .setPositiveButton(android.R.string.ok, this)
+                            .setNegativeButton(android.R.string.cancel, this)
                             .show();
                     mWaiverDialog.setOnDismissListener(this);
                 } else {
