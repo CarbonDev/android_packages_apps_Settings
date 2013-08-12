@@ -69,13 +69,4 @@
     <!-- Minimum width for the popup for updating a user's photo. -->
     <dimen name="update_user_photo_popup_min_width">300dip</dimen>
 
-    <!-- Light settings dialog -->
-    <dimen name="dialog_light_settings_width">400dip</dimen>
-
-    <dimen name="auto_brightness_preview_text_size">8dip</dimen>
-    <dimen name="auto_brightness_preview_stroke_width">1dip</dimen>
-    <dimen name="auto_brightness_preview_marker_size">3dip</dimen>
-    <dimen name="auto_brightness_preview_grid_margin">3dip</dimen>
-    <dimen name="auto_brightness_dialog_more_button_size">48dp</dimen>
-
 </resources>
