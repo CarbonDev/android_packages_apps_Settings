@@ -75,8 +75,8 @@
                 android:persistent="false" />
 
     <PreferenceCategory
-        android:key="category_animation_options"
-        android:title="@string/display_category_animation_options_title" >
+        android:key="category_additional_options"
+        android:title="@string/display_additional_title" >
 
         <CheckBoxPreference
             android:key="system_power_crt_screen_off"
@@ -90,6 +90,12 @@
             android:entries="@array/entries_system_power_crt_mode"
             android:entryValues="@array/values_system_power_crt_mode"
             android:dependency="system_power_crt_screen_off" />
+
+       <CheckBoxPreference
+            android:key="wake_when_plugged_or_unplugged"
+            android:title="@string/wake_when_plugged_or_unplugged_title"
+            android:summary="@string/wake_when_plugged_or_unplugged_summary"
+            android:defaultValue="false" />
 
     </PreferenceCategory>
 
