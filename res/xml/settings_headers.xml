@@ -244,6 +244,13 @@
         android:icon="@drawable/ic_action_permission"
         android:title="@string/superuser" />
 
+    <!-- Privacy -->
+    <header
+        android:fragment="com.android.settings.applications.AppOpsSummary"
+        android:icon="@drawable/ic_privacy_guard"
+        android:title="@string/appops_settings_title"
+        android:id="@+id/appops_settings" />
+
     <!-- About Device -->
     <header
         android:id="@+id/about_settings"

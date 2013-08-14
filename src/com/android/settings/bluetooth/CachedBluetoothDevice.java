@@ -63,6 +63,8 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
     private boolean mLocalNapRoleConnected;
 
     private boolean mVisible;
+    // Whether device is unpaired and out of range
+    private boolean mRemovable;
 
     private int mPhonebookPermissionChoice;
 
@@ -315,6 +317,7 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
                     if (Utils.D) {
                         Log.d(TAG, "Command sent successfully:REMOVE_BOND " + describe(null));
                     }
+                    setRemovable(true);
                 } else if (Utils.V) {
                     Log.v(TAG, "Framework rejected command immediately:REMOVE_BOND " +
                             describe(null));
@@ -397,11 +400,19 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
         return mVisible;
     }
 
+    boolean isRemovable () {
+        return mRemovable;
+    }
+
     void setVisible(boolean visible) {
         if (mVisible != visible) {
             mVisible = visible;
             dispatchAttributesChanged();
         }
+    }
+
+    void setRemovable(boolean removable) {
+        mRemovable = removable;
     }
 
     int getBondState() {

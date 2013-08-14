@@ -617,4 +617,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="carbon_waiver_title">Waiver</string>
     <string name="carbon_waiver_body">Changing this setting may be against your state or government laws.\n\nIn selecting \'OK\' below, you acknowledge this warning and waive, indemnify and hold harmless CarbonDev and its contributors from all legal liabilities.</string>
 
+    <string name="ok">OK</string>
+
 </resources>
