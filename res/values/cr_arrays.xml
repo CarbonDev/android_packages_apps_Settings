@@ -20,10 +20,10 @@
 
     <!-- Volume Overlay options. -->
     <string-array name="volume_overlay_entries">
-        <item>Single</item>
-        <item>Expandable</item>
-        <item>Expanded</item>
-        <item>None</item>
+        <item>@string/volume_overlay_single</item>
+        <item>@string/volume_overlay_expandable</item>
+        <item>@string/volume_overlay_expanded</item>
+        <item>@string/volume_overlay_none</item>
     </string-array>
 
     <!-- Values for Volume Overlay. Do not translate. -->
@@ -65,7 +65,7 @@
 
     <!-- Performance settings -->
     <string-array name="pref_zram_size_entries">
-        <item>Disabled</item>
+        <item>@string/disabled</item>
         <item>10%</item>
         <item>18% (default)</item>
         <item>26%</item>
@@ -296,8 +296,8 @@
     </string-array>
 
     <string-array name="entries_flash_widget">
-        <item>Normal</item>
-        <item>High</item>
+        <item>@string/pref_flash_mode_normal</item>
+        <item>@string/pref_flash_mode_high</item>
     </string-array>
 
     <string-array name="values_flash_widget" translatable="false">
@@ -306,7 +306,7 @@
     </string-array>
 
     <string-array name="haptic_feedback_entries">
-        <item>Use global setting</item>
+        <item>@string/expanded_haptic_feedback_global</item>
         <item>On</item>
         <item>Off</item>
     </string-array>
