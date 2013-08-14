@@ -370,6 +370,10 @@
 
     <!-- Sound settings screen -->
     <string name="volume_overlay_title">Volume panel style</string>
+    <string name="volume_overlay_single">Single</string>
+    <string name="volume_overlay_expandable">Expandable</string>
+    <string name="volume_overlay_expanded">Expanded</string>
+    <string name="volume_overlay_none">None</string>
     <string name="volume_ring_only_description">Ringtone</string>
     <string name="ring_mode_title">Ring mode</string>
     <string name="ring_mode_normal">Normal</string>
@@ -422,7 +426,10 @@
     <string name="cm_sound_mode_sound">Sound</string>
     <string name="cm_sound_mode_soundVibrate">Sound + Vibrate</string>
     <string name="pref_flash_mode_title">Flash mode</string>
+    <string name="pref_flash_mode_normal">Normal</string>
+    <string name="pref_flash_mode_high">High</string>
     <string name="expanded_haptic_feedback_title">Haptic feedback</string>
+    <string name="expanded_haptic_feedback_global">Use global setting</string>
 
     <!-- Kill app long-press back -->
     <string name="kill_app_longpress_back">Kill app back button</string>
@@ -483,7 +490,7 @@
     <string name="blacklist_private_numbers_summary"><xliff:g id="type">%s</xliff:g> from private numbers</string>
     <string name="blacklist_unknown_numbers_title">Unknown numbers</string>
     <string name="blacklist_unknown_numbers_summary"><xliff:g id="type">%s</xliff:g> from numbers not in the contact list</string>
-	<string name="blacklist_summary_type_nothing">Don\'t block calls or messages</string>
+    <string name="blacklist_summary_type_nothing">Don\'t block calls or messages</string>
     <string name="blacklist_summary_type_calls_only">Block incoming calls</string>
     <string name="blacklist_summary_type_messages_only">Block incoming messages</string>
     <string name="blacklist_summary_type_calls_and_messages">Block incoming calls and messages</string>
@@ -618,5 +625,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="carbon_waiver_body">Changing this setting may be against your state or government laws.\n\nIn selecting \'OK\' below, you acknowledge this warning and waive, indemnify and hold harmless CarbonDev and its contributors from all legal liabilities.</string>
 
     <string name="ok">OK</string>
+    <string name="disabled">Disabled</string>
 
 </resources>
