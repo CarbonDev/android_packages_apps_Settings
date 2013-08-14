@@ -64,20 +64,22 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final int FALLBACK_SCREEN_TIMEOUT_VALUE = 30000;
 
     private static final String KEY_SCREEN_TIMEOUT = "screen_timeout";
-    private static final String KEY_NOTIFICATION_PULSE = "notification_pulse";
+    private static final String KEY_FONT_SIZE = "font_size";
     private static final String KEY_SCREEN_SAVER = "screensaver";
     private static final String KEY_WIFI_DISPLAY = "wifi_display";
     private static final String KEY_DISPLAY_ROTATION = "display_rotation";
     private static final String KEY_LOCKSCREEN_ROTATION = "lockscreen_rotation";
     private static final String KEY_ADAPTIVE_BACKLIGHT = "adaptive_backlight";
-    private static final String KEY_BATTERY_LIGHT = "battery_light";
     private static final String KEY_DISPLAY_COLOR = "color_calibration";
     private static final String KEY_POWER_CRT_MODE = "system_power_crt_mode";
     private static final String KEY_POWER_CRT_SCREEN_OFF = "system_power_crt_screen_off";
     private static final String KEY_WAKE_WHEN_PLUGGED_OR_UNPLUGGED = "wake_when_plugged_or_unplugged";
-    private static final String KEY_DISPLAY_ROTATION = "display_rotation";
     private static final String KEY_WAKEUP_CATEGORY = "category_wakeup_options";
     private static final String KEY_VOLUME_WAKE = "pref_volume_wake";
+
+    private static final String CATEGORY_LIGHTS = "lights_prefs";
+    private static final String KEY_NOTIFICATION_PULSE = "notification_pulse";
+    private static final String KEY_BATTERY_LIGHT = "battery_light";
 
     // Strings used for building the summary
     private static final String ROTATION_ANGLE_0 = "0";
@@ -90,10 +92,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private DisplayManager mDisplayManager;
 
     private CheckBoxPreference mAccelerometer;
-    private WarnedListPreference mFontSizePref;
+    private FontDialogPreference mFontSizePref;
     private CheckBoxPreference mVolumeWake;
-    private PreferenceScreen mNotificationPulse;
-    private PreferenceScreen mBatteryPulse;
     private PreferenceScreen mDisplayRotationPreference;
     private ListPreference mCrtMode;
     private CheckBoxPreference mCrtOff;
@@ -108,6 +108,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private Preference mWifiDisplayPreference;
 
     private boolean mIsCrtOffChecked = false;
+
+    private PreferenceScreen mNotificationPulse;
+    private PreferenceScreen mBatteryPulse;
 
     private CheckBoxPreference mAdaptiveBacklight;
 
@@ -187,26 +190,32 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         updateTimeoutPreferenceDescription(currentTimeout);
         updateDisplayRotationPreferenceDescription();
 
-        mFontSizePref = (WarnedListPreference) findPreference(KEY_FONT_SIZE);
+        mFontSizePref = (FontDialogPreference) findPreference(KEY_FONT_SIZE);
         mFontSizePref.setOnPreferenceChangeListener(this);
         mFontSizePref.setOnPreferenceClickListener(this);
-        mNotificationPulse = (PreferenceScreen) findPreference(KEY_NOTIFICATION_PULSE);
-        if (mNotificationPulse != null) {
-            if (!getResources().getBoolean(com.android.internal.R.bool.config_intrusiveNotificationLed)) {
-                getPreferenceScreen().removePreference(mNotificationPulse);
-            } else {
-                updateLightPulseDescription();
-            }
-        }
 
-        mBatteryPulse = (PreferenceScreen) findPreference(KEY_BATTERY_LIGHT);
-        if (mBatteryPulse != null) {
-            if (getResources().getBoolean(
-                    com.android.internal.R.bool.config_intrusiveBatteryLed) == false) {
-                getPreferenceScreen().removePreference(mBatteryPulse);
-            } else {
-                updateBatteryPulseDescription();
+        boolean hasNotificationLed = res.getBoolean(
+                com.android.internal.R.bool.config_intrusiveNotificationLed);
+        boolean hasBatteryLed = res.getBoolean(
+                com.android.internal.R.bool.config_intrusiveBatteryLed);
+        PreferenceCategory lightPrefs = (PreferenceCategory) findPreference(CATEGORY_LIGHTS);
+
+        if (hasNotificationLed || hasBatteryLed) {
+            mBatteryPulse = (PreferenceScreen) findPreference(KEY_BATTERY_LIGHT);
+            mNotificationPulse = (PreferenceScreen) findPreference(KEY_NOTIFICATION_PULSE);
+
+            // Battery light is only for primary user
+            if (UserHandle.myUserId() != UserHandle.USER_OWNER || !hasBatteryLed) {
+                lightPrefs.removePreference(mBatteryPulse);
+                mBatteryPulse = null;
             }
+
+            if (!hasNotificationLed) {
+                lightPrefs.removePreference(mNotificationPulse);
+                mNotificationPulse = null;
+            }
+        } else {
+            getPreferenceScreen().removePreference(lightPrefs);
         }
 
         if (!DisplayColor.isSupported()) {
@@ -348,61 +357,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         screenTimeoutPreference.setEnabled(revisedEntries.size() > 0);
     }
 
-    private void updateLightPulseDescription() {
-        if (Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.NOTIFICATION_LIGHT_PULSE, 0) == 1) {
-            mNotificationPulse.setSummary(getString(R.string.notification_light_enabled));
-        } else {
-            mNotificationPulse.setSummary(getString(R.string.notification_light_disabled));
-        }
-    }
-
-    private void updateBatteryPulseDescription() {
-        if (Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.BATTERY_LIGHT_ENABLED, 1) == 1) {
-            mBatteryPulse.setSummary(getString(R.string.notification_light_enabled));
-        } else {
-            mBatteryPulse.setSummary(getString(R.string.notification_light_disabled));
-        }
-     }
-
-    int floatToIndex(float val) {
-        String[] indices = getResources().getStringArray(R.array.entryvalues_font_size);
-        float lastVal = Float.parseFloat(indices[0]);
-        for (int i = 1; i < indices.length; i++) {
-            float thisVal = Float.parseFloat(indices[i]);
-            if (val < (lastVal + (thisVal-lastVal)*.5f)) {
-                return i - 1;
-            }
-            lastVal = thisVal;
-        }
-        return indices.length - 1;
-    }
-    
-    public void readFontSizePreference(ListPreference pref) {
-        try {
-            mCurConfig.updateFrom(ActivityManagerNative.getDefault().getConfiguration());
-        } catch (RemoteException e) {
-            Log.w(TAG, "Unable to retrieve font size");
-        }
-
-        // mark the appropriate item in the preferences list
-        int index = floatToIndex(mCurConfig.fontScale);
-        pref.setValueIndex(index);
-
-        // report the current size in the summary text
-        final Resources res = getResources();
-        String[] fontSizeNames = res.getStringArray(R.array.entries_font_size);
-        pref.setSummary(String.format(res.getString(R.string.summary_font_size),
-                fontSizeNames[index]));
-    }
-
     @Override
     public void onResume() {
         super.onResume();
         updateDisplayRotationPreferenceDescription();
-        updateLightPulseDescription();
-        updateBatteryPulseDescription();
 
         RotationPolicy.registerRotationPolicyListener(getActivity(),
                 mRotationPolicyListener);
@@ -458,6 +416,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         readFontSizePreference(mFontSizePref);
         updateScreenSaverSummary();
         updateWifiDisplaySummary();
+        updateLightPulseSummary();
+        updateBatteryPulseSummary();
     }
 
     private void updateScreenSaverSummary() {
@@ -482,6 +442,47 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     break;
             }
         }
+    }
+
+    private void updateLightPulseSummary() {
+        if (mNotificationPulse != null) {
+            if (Settings.System.getInt(getActivity().getContentResolver(),
+                    Settings.System.NOTIFICATION_LIGHT_PULSE, 0) == 1) {
+                mNotificationPulse.setSummary(R.string.notification_light_enabled);
+            } else {
+                mNotificationPulse.setSummary(R.string.notification_light_disabled);
+            }
+        }
+    }
+
+    private void updateBatteryPulseSummary() {
+        if (mBatteryPulse != null) {
+            if (Settings.System.getInt(getActivity().getContentResolver(),
+                    Settings.System.BATTERY_LIGHT_ENABLED, 1) == 1) {
+                mBatteryPulse.setSummary(R.string.notification_light_enabled);
+            } else {
+                mBatteryPulse.setSummary(R.string.notification_light_disabled);
+            }
+        }
+    }
+
+    /**
+     * Reads the current font size and sets the value in the summary text
+     */
+    public void readFontSizePreference(Preference pref) {
+        try {
+            mCurConfig.updateFrom(ActivityManagerNative.getDefault().getConfiguration());
+        } catch (RemoteException e) {
+            Log.w(TAG, "Unable to retrieve font size");
+        }
+
+        // report the current size in the summary text
+        final Resources res = getResources();
+        String fontDesc = FontDialogPreference.getFontSizeDescription(res, mCurConfig.fontScale);
+        int scalePercent = (int) (100.0f * mCurConfig.fontScale);
+
+        pref.setSummary(String.format(res.getString(R.string.summary_font_size),
+                fontDesc, scalePercent));
     }
 
     public void writeFontSizePreference(Object objValue) {
@@ -516,6 +517,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
+    @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         if (preference == mCrtMode) {
             int crtMode = Integer.valueOf((String) objValue);
