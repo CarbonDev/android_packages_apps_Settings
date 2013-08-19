@@ -24,6 +24,7 @@ import android.os.SystemProperties;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+import com.android.settings.DisplaySettings;
 import com.android.settings.R;
 import com.android.settings.Utils;
 
@@ -65,6 +66,8 @@ public class BootReceiver extends BroadcastReceiver {
                 SystemProperties.set(KSM_SETTINGS_PROP, "false");
             }
         }
+
+        DisplaySettings.restore(ctx);
     }
 
     private void initFreqCapFiles(Context ctx)
