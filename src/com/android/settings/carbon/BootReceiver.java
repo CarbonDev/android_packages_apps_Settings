@@ -24,6 +24,7 @@ import android.os.SystemProperties;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+import com.android.settings.DisplaySettings;
 import com.android.settings.Utils;
 
 import java.util.Arrays;
@@ -64,6 +65,11 @@ public class BootReceiver extends BroadcastReceiver {
                 SystemProperties.set(KSM_SETTINGS_PROP, "false");
             }
         }
+
+        /* Restore the hardware tunable values */
+        DisplayColor.restore(ctx);
+        VibratorIntensity.restore(ctx);
+        DisplaySettings.restore(ctx);
     }
 
     private void configureCPU(Context ctx) {

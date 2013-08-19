@@ -52,6 +52,8 @@ import com.android.settings.cyanogenmod.DisplayColor;
 import com.android.settings.DreamSettings;
 import com.android.settings.R;
 
+import org.cyanogenmod.hardware.AdaptiveBacklight;
+
 import java.util.ArrayList;
 
 public class DisplaySettings extends SettingsPreferenceFragment implements
@@ -65,6 +67,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_NOTIFICATION_PULSE = "notification_pulse";
     private static final String KEY_SCREEN_SAVER = "screensaver";
     private static final String KEY_WIFI_DISPLAY = "wifi_display";
+    private static final String KEY_DISPLAY_ROTATION = "display_rotation";
+    private static final String KEY_LOCKSCREEN_ROTATION = "lockscreen_rotation";
+    private static final String KEY_ADAPTIVE_BACKLIGHT = "adaptive_backlight";
     private static final String KEY_BATTERY_LIGHT = "battery_light";
     private static final String KEY_DISPLAY_COLOR = "color_calibration";
     private static final String KEY_POWER_CRT_MODE = "system_power_crt_mode";
@@ -103,6 +108,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private Preference mWifiDisplayPreference;
 
     private boolean mIsCrtOffChecked = false;
+
+    private CheckBoxPreference mAdaptiveBacklight;
 
     private boolean electronBeamFadesConfig;
 
@@ -225,6 +232,12 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 mVolumeWake.setChecked(Settings.System.getInt(resolver,
                         Settings.System.VOLUME_WAKE_SCREEN, 0) == 1);
             }
+        }
+
+        mAdaptiveBacklight = (CheckBoxPreference) findPreference(KEY_ADAPTIVE_BACKLIGHT);
+        if (!AdaptiveBacklight.isSupported()) {
+            getPreferenceScreen().removePreference(mAdaptiveBacklight);
+            mAdaptiveBacklight = null;
         }
 
     }
@@ -405,6 +418,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             mWifiDisplayStatus = mDisplayManager.getWifiDisplayStatus();
         }
 
+        if (mAdaptiveBacklight != null) {
+            mAdaptiveBacklight.setChecked(AdaptiveBacklight.isEnabled());
+        }
+
         updateState();
     }
 
@@ -492,6 +509,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(), Settings.System.VOLUME_WAKE_SCREEN,
                     mVolumeWake.isChecked() ? 1 : 0);
             return true;
+        } else if (preference == mAdaptiveBacklight) {
+            return AdaptiveBacklight.setEnabled(mAdaptiveBacklight.isChecked());
         }
 
         return super.onPreferenceTreeClick(preferenceScreen, preference);
@@ -543,5 +562,21 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             }
         }
         return false;
+    }
+
+    /**
+     * Restore the properties associated with this preference on boot
+     * @param ctx A valid context
+     */
+    public static void restore(Context ctx) {
+        if (AdaptiveBacklight.isSupported()) {
+            final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ctx);
+            final boolean enabled = prefs.getBoolean(KEY_ADAPTIVE_BACKLIGHT, true);
+            if (!AdaptiveBacklight.setEnabled(enabled)) {
+                Log.e(TAG, "Failed to restore adaptive backlight settings.");
+            } else {
+                Log.d(TAG, "Adaptive backlight settings restored.");
+            }
+        }
     }
 }

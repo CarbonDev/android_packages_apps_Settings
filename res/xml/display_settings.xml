@@ -84,6 +84,12 @@
             android:summary="@string/system_power_crt_screen_off_summary"
             android:title="@string/system_power_crt_screen_off_title" />
 
+        <CheckBoxPreference
+            android:key="adaptive_backlight"
+            android:title="@string/adaptive_backlight_title"
+            android:summary="@string/adaptive_backlight_summary"
+            android:defaultValue="true" />
+
         <ListPreference
             android:key="system_power_crt_mode"
             android:dialogTitle="@string/system_power_crt_mode_dialog_title"
@@ -94,9 +100,9 @@
 
     </PreferenceCategory>
 
-        <PreferenceCategory
-            android:key="category_wakeup_options"
-            android:title="@string/display_category_wakeup_options_title"/>
+    <PreferenceCategory
+        android:key="category_wakeup_options"
+        android:title="@string/display_category_wakeup_options_title">
 
         <CheckBoxPreference
             android:key="pref_volume_wake"
@@ -109,5 +115,7 @@
             android:title="@string/wake_when_plugged_or_unplugged_title"
             android:summary="@string/wake_when_plugged_or_unplugged_summary"
             android:defaultValue="false" />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>
