@@ -71,7 +71,6 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
     private static final String KEYBOARD_ROTATION_TIMEOUT = "keyboard_rotation_timeout";
     private static final String SHOW_ENTER_KEY = "show_enter_key";
     private static final String TAG = "AdvancedInputSettings";
-    private static final String VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
     private static final String KEY_STYLUS_GESTURES = "stylus_gestures";
 
     // false: on ICS or later
@@ -193,7 +192,7 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         // remove stylus preference for non stylus devices 
         if (!getResources().getBoolean(com.android.internal.R.bool.config_stylusGestures)) {
             getPreferenceScreen().removePreference(findPreference(KEY_STYLUS_GESTURES));
-            mStylusIconEnabled = null;
+            //mStylusIconEnabled = null;
         }
 
         // Spell Checker
