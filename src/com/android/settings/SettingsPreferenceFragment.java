@@ -26,6 +26,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
@@ -314,6 +315,14 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements Di
             Log.w(TAG, "Parent isn't PreferenceActivity, thus there's no way to launch the "
                     + "given Fragment (name: " + fragmentClass + ", requestCode: " + requestCode
                     + ")");
+            return false;
+        }
+    }
+
+    protected boolean isCheckBoxPrefernceChecked(Preference p) {
+        if(p instanceof CheckBoxPreference) {
+            return ((CheckBoxPreference) p).isChecked();
+        } else {
             return false;
         }
     }
