@@ -21,6 +21,7 @@
     <!-- Category title for headset specific Settings.
          [CHAR LIMIT=40] -->
     <string name="headset_category_title">Headset</string>
+    <string name="lights_category_title">Lights</string>
 
     <!-- Quiet hours -->
     <string name="quiet_hours_title">Quiet hours</string>
