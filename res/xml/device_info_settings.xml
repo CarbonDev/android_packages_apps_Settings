@@ -41,6 +41,16 @@
                     android:targetClass="com.android.settings.deviceinfo.Status" />
         </PreferenceScreen>
 
+        <!-- Anonymous statistics - (CMStats) -->
+        <PreferenceScreen
+            android:key="carbonstats"
+            android:title="@string/anonymous_statistics_title"
+            android:summary="@string/anonymous_statistics_summary" >
+            <intent android:action="android.intent.action.MAIN"
+                    android:targetPackage="android.romstats"
+                    android:targetClass="android.romstats.AnonymousStats" />
+        </PreferenceScreen>
+
         <!-- Legal Information -->
         <PreferenceScreen
                 android:key="container"

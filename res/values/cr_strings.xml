@@ -701,4 +701,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Delete apn confirmation dialog message -->
     <string name="confirm_delete_apn">The APN will be deleted.</string>
 
+    <!-- Carbon Stats -->
+    <string name="anonymous_statistics_title">Carbon statistics</string>
+    <string name="anonymous_statistics_summary">Help make Carbon better by opting into anonymous statistics reporting</string>
+
 </resources>
