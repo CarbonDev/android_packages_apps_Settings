@@ -48,7 +48,6 @@ import android.util.Log;
 
 import com.android.internal.view.RotationPolicy;
 import com.android.settings.cyanogenmod.DisplayRotation;
-import com.android.settings.cyanogenmod.DisplayColor;
 import com.android.settings.DreamSettings;
 import com.android.settings.R;
 
@@ -70,7 +69,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_DISPLAY_ROTATION = "display_rotation";
     private static final String KEY_LOCKSCREEN_ROTATION = "lockscreen_rotation";
     private static final String KEY_ADAPTIVE_BACKLIGHT = "adaptive_backlight";
-    private static final String KEY_DISPLAY_COLOR = "color_calibration";
     private static final String KEY_POWER_CRT_MODE = "system_power_crt_mode";
     private static final String KEY_POWER_CRT_SCREEN_OFF = "system_power_crt_screen_off";
     private static final String KEY_WAKE_WHEN_PLUGGED_OR_UNPLUGGED = "wake_when_plugged_or_unplugged";
@@ -216,10 +214,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             }
         } else {
             getPreferenceScreen().removePreference(lightPrefs);
-        }
-
-        if (!DisplayColor.isSupported()) {
-            removePreference(KEY_DISPLAY_COLOR);
         }
 
         mDisplayManager = (DisplayManager)getActivity().getSystemService(
