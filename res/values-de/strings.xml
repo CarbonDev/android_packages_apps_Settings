@@ -1973,7 +1973,7 @@
 
     <!-- Anonymous Statistics - Preview -->
     <string name="preview_id_title">Eindeutige ID</string>
-    <string name="preview_device_title">Gerät</string>
+    <string name="preview_device_title">Ger�t</string>
     <string name="preview_version_title">Version</string>
     <string name="preview_country_title">Land</string>
     <string name="preview_carrier_title">Anbieter</string>
@@ -1990,7 +1990,7 @@
 
     <!-- System Interface settings -->
     <string name="system_settings_title">System</string>
-    <string name="system_interface_title">Systemoberfläche</string>
+    <string name="system_interface_title">Systemoberfl�che</string>
 
     <!-- Notification Drawer -->
     <string name="notification_drawer_title">Benachrichtigungsanzeige</string>
@@ -2022,8 +2022,8 @@
     <!-- Profiles settings -->
     <string name="profiles_settings_title">Profile</string>
     <string name="profiles_general_title">Allgemein</string>
-    <string name="profiles_add">Hinzufügen</string>
-    <string name="profile_menu_delete">Löschen</string>
+    <string name="profiles_add">Hinzuf�gen</string>
+    <string name="profile_menu_delete">Entfernen</string>
     <string name="profile_settings_title">Profil</string>
     <string name="profile_empty_list_profiles_off">Profile einschalten, um sie konfigurieren und nutzen zu können.</string>
 
@@ -2088,10 +2088,10 @@
     <string name="profile_appgroups_title">App-Gruppen</string>
     <string name="profile_applist_title">Apps</string>
     <string name="profile_new_appgroup">Neue App-Gruppe</string>
-    <string name="profile_delete_appgroup">App-Gruppe wirklich komplett löschen?</string>
+    <string name="profile_delete_appgroup">App-Gruppe wirklich komplett entfernen?</string>
     <string name="profile_appgroup_name_prompt">Name der neuen App-Gruppe</string>
     <string name="profile_appgroup_name_title">Name</string>
-    <string name="profile_add_app">App hinzufügen</string>
+    <string name="profile_add_app">App hinzuf�gen</string>
     <string name="profile_delete_app">App entfernen</string>
 
     <!-- Add application dialog box title -->
@@ -2167,7 +2167,7 @@
     <string name="performance_settings_warning">Diese Optionen beeinflussen die Leistung des Systems. Die Optionen sind zum Experimentieren gedacht - bitte keine Fehler melden, wenn die Standardeinstellungen geändert wurden.</string>
 
     <!-- Performance Settings - Processor settings title -->
-    <string name="processor_title">Prozessor</string>
+    <string name="processor_title">CPU</string>
 
     <!-- Performance Settings - Processor settings summary -->
     <string name="processor_summary">Governor und Taktfrequenzen ändern</string>
