@@ -34,6 +34,7 @@ import android.os.Bundle;
 import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.preference.CheckBoxPreference;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
@@ -46,7 +47,8 @@ import com.android.internal.telephony.TelephonyProperties;
 import com.android.settings.nfc.NfcEnabler;
 import com.android.settings.NsdEnabler;
 
-public class WirelessSettings extends SettingsPreferenceFragment {
+public class WirelessSettings extends SettingsPreferenceFragment
+    implements Preference.OnPreferenceChangeListener {
     private static final String TAG = "WirelessSettings";
 
     private static final String KEY_TOGGLE_AIRPLANE = "toggle_airplane";
@@ -60,6 +62,7 @@ public class WirelessSettings extends SettingsPreferenceFragment {
     private static final String KEY_MANAGE_MOBILE_PLAN = "manage_mobile_plan";
     private static final String KEY_TOGGLE_NSD = "toggle_nsd"; //network service discovery
     private static final String KEY_CELL_BROADCAST_SETTINGS = "cell_broadcast_settings";
+    private static final String KEY_NFC_POLLING_MODE = "nfc_polling_mode";
     private static final String KEY_SHOW_LTE_OR_FOURGEE = "show_lte_or_fourgee";
 
     public static final String EXIT_ECM_RESULT = "exit_ecm_result";
@@ -68,6 +71,7 @@ public class WirelessSettings extends SettingsPreferenceFragment {
     private AirplaneModeEnabler mAirplaneModeEnabler;
     private CheckBoxPreference mAirplaneModePreference;
     private CheckBoxPreference mShowLTEorFourGee;
+    private ListPreference mNfcPollingMode;
     private NfcEnabler mNfcEnabler;
     private NfcAdapter mNfcAdapter;
     private NsdEnabler mNsdEnabler;
@@ -103,6 +107,18 @@ public class WirelessSettings extends SettingsPreferenceFragment {
         }
         // Let the intents be launched by the Preference manager
         return super.onPreferenceTreeClick(preferenceScreen, preference);
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference == mNfcPollingMode) {
+            int newVal = Integer.parseInt((String) newValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.NFC_POLLING_MODE, newVal);
+            updateNfcPolling();
+            return true;
+        }
+        return false;
     }
 
     private String mManageMobilePlanMessage;
@@ -210,8 +226,14 @@ public class WirelessSettings extends SettingsPreferenceFragment {
         PreferenceScreen androidBeam = (PreferenceScreen) findPreference(KEY_ANDROID_BEAM_SETTINGS);
         CheckBoxPreference nsd = (CheckBoxPreference) findPreference(KEY_TOGGLE_NSD);
 
+        mNfcPollingMode = (ListPreference) findPreference(KEY_NFC_POLLING_MODE);
+        mNfcPollingMode.setOnPreferenceChangeListener(this);
+        mNfcPollingMode.setValue((Settings.System.getInt(activity.getContentResolver(),
+                Settings.System.NFC_POLLING_MODE, 3)) + "");
+        updateNfcPolling();
+
         mAirplaneModeEnabler = new AirplaneModeEnabler(activity, mAirplaneModePreference);
-        mNfcEnabler = new NfcEnabler(activity, nfc, androidBeam);
+        mNfcEnabler = new NfcEnabler(activity, nfc, androidBeam, mNfcPollingMode);
 
         // Remove NSD checkbox by default
         getPreferenceScreen().removePreference(nsd);
@@ -257,6 +279,7 @@ public class WirelessSettings extends SettingsPreferenceFragment {
         mNfcAdapter = NfcAdapter.getDefaultAdapter(activity);
         if (mNfcAdapter == null) {
             getPreferenceScreen().removePreference(nfc);
+            getPreferenceScreen().removePreference(mNfcPollingMode);
             getPreferenceScreen().removePreference(androidBeam);
             mNfcEnabler = null;
         }
@@ -321,6 +344,25 @@ public class WirelessSettings extends SettingsPreferenceFragment {
     private boolean deviceSupportsLTE() {
         return (TelephonyManager.getLteOnCdmaModeStatic() == PhoneConstants.LTE_ON_CDMA_TRUE
                     || TelephonyManager.getLteOnGsmModeStatic() != 0);
+    }
+
+    private void updateNfcPolling() {
+        int resId;
+        String value = Settings.System.getString(getContentResolver(),
+                Settings.System.NFC_POLLING_MODE);
+        String[] pollingArray = getResources().getStringArray(R.array.nfc_polling_mode_values);
+
+        if (pollingArray[0].equals(value)) {
+            resId = R.string.nfc_polling_mode_screen_off;
+            mNfcPollingMode.setValueIndex(0);
+        } else if (pollingArray[1].equals(value)) {
+            resId = R.string.nfc_polling_mode_screen_locked;
+            mNfcPollingMode.setValueIndex(1);
+        } else {
+            resId = R.string.nfc_polling_mode_screen_unlocked;
+            mNfcPollingMode.setValueIndex(2);
+        }
+        mNfcPollingMode.setSummary(getResources().getString(resId));
     }
 
     @Override
