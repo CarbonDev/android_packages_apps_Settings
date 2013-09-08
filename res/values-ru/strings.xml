@@ -2414,9 +2414,6 @@
     <string name="cmupdate_settings_title">Обновление CyanogenMod</string>
     <string name="cmupdate_settings_summary">Проверка и установка доступных обновлений</string>
 
-    <!-- Advanced, Device specific (DeviceParts) settings -->
-    <string name="advanced_settings_title">Расширенные настройки</string>
-
     <!-- Whether to display IME switcher notifcation -->
     <string name="ime_switcher_notify">Уведомление о выборе</string>
     <string name="ime_switcher_notify_summary">Показывать уведомление выбора способа ввода</string>
