@@ -18,6 +18,19 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- NFC settings. -->
+    <string-array name="nfc_polling_mode_entries">
+       <item>@string/nfc_polling_mode_screen_off</item>
+       <item>@string/nfc_polling_mode_screen_locked</item>
+       <item>@string/nfc_polling_mode_screen_unlocked</item>
+    </string-array>
+
+    <string-array name="nfc_polling_mode_values">
+       <item>1</item>
+       <item>2</item>
+       <item>3</item>
+    </string-array>
+
     <!-- Volume Overlay options. -->
     <string-array name="volume_overlay_entries">
         <item>@string/volume_overlay_single</item>
