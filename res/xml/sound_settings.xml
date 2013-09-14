@@ -105,10 +105,10 @@
             android:defaultValue="true" />
 
     <CheckBoxPreference
-        android:key="lock_volume_keys"
-        android:title="@string/sound_lock_volume_keys_title"
-        android:summary="@string/sound_lock_volume_keys_summary"
-        android:persistent="false" />
+            android:key="lock_volume_keys"
+            android:title="@string/sound_lock_volume_keys_title"
+            android:summary="@string/sound_lock_volume_keys_summary"
+            android:persistent="false" />
 		
     <CheckBoxPreference
             android:key="camera_sounds"
@@ -121,6 +121,13 @@
             android:title="@string/volume_adjust_sounds_enable_title"
             android:summary="@string/volume_adjust_sounds_enable_summary"
             android:persistent="true" />
+
+    <ListPreference
+            android:key="less_notification_sounds"
+            android:title="@string/less_notification_sounds_title"
+            android:summary="@string/less_notification_sounds_summary"
+            android:entries="@array/less_notification_sounds_entries"
+            android:entryValues="@array/less_notification_sounds_values" />
 
     <ListPreference
             android:key="emergency_tone"

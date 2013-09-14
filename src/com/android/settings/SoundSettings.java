@@ -91,6 +91,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private static final String KEY_LOCK_VOLUME_KEYS = "lock_volume_keys";
     private static final String KEY_CAMERA_SOUNDS = "camera_sounds";
     private static final String PROP_CAMERA_SOUND = "persist.sys.camera-sound";
+    private static final String PREF_LESS_NOTIFICATION_SOUNDS = "less_notification_sounds";
 
     private static final String RING_MODE_NORMAL = "normal";
     private static final String RING_MODE_VIBRATE = "vibrate";
@@ -107,6 +108,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private CheckBoxPreference mVibrateWhenRinging;
     private ListPreference mVolumeOverlay;
     private ListPreference mRingMode;
+    private ListPreference mAnnoyingNotifications;
     private CheckBoxPreference mDtmfTone;
     private CheckBoxPreference mSoundEffects;
     private CheckBoxPreference mHapticFeedback;
@@ -222,14 +224,17 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         mDtmfTone.setPersistent(false);
         mDtmfTone.setChecked(Settings.System.getInt(resolver,
                 Settings.System.DTMF_TONE_WHEN_DIALING, 1) != 0);
+
         mSoundEffects = (CheckBoxPreference) findPreference(KEY_SOUND_EFFECTS);
         mSoundEffects.setPersistent(false);
         mSoundEffects.setChecked(Settings.System.getInt(resolver,
                 Settings.System.SOUND_EFFECTS_ENABLED, 1) != 0);
+
         mHapticFeedback = (CheckBoxPreference) findPreference(KEY_HAPTIC_FEEDBACK);
         mHapticFeedback.setPersistent(false);
         mHapticFeedback.setChecked(Settings.System.getInt(resolver,
                 Settings.System.HAPTIC_FEEDBACK_ENABLED, 1) != 0);
+
         mLockSounds = (CheckBoxPreference) findPreference(KEY_LOCK_SOUNDS);
         mLockSounds.setPersistent(false);
         mLockSounds.setChecked(Settings.System.getInt(resolver,
@@ -248,6 +253,12 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         mVolumeAdjustSounds.setPersistent(false);
         mVolumeAdjustSounds.setChecked(Settings.System.getInt(resolver,
                 Settings.System.VOLUME_ADJUST_SOUNDS_ENABLED, 1) != 0);
+
+        mAnnoyingNotifications = (ListPreference) findPreference(PREF_LESS_NOTIFICATION_SOUNDS);
+        mAnnoyingNotifications.setOnPreferenceChangeListener(this);
+        int notificationThreshold = Settings.System.getInt(resolver,
+                Settings.System.MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD, 0);
+        mAnnoyingNotifications.setValue(Integer.toString(notificationThreshold));
 
         mHeadsetConnectPlayer = (CheckBoxPreference) findPreference(KEY_HEADSET_CONNECT_PLAYER);
         mHeadsetConnectPlayer.setChecked(Settings.System.getInt(resolver,
@@ -517,6 +528,10 @@ public class SoundSettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(),
                     Settings.System.MODE_VOLUME_OVERLAY, value);
             mVolumeOverlay.setSummary(mVolumeOverlay.getEntries()[index]);
+        } else if (preference == mAnnoyingNotifications) {
+            final int val = Integer.valueOf((String) objValue);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD, val);
         }
 
         return true;
