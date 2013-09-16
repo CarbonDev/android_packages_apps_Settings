@@ -49,6 +49,7 @@ import com.android.settings.NsdEnabler;
 
 public class WirelessSettings extends SettingsPreferenceFragment
     implements Preference.OnPreferenceChangeListener {
+
     private static final String TAG = "WirelessSettings";
 
     private static final String KEY_TOGGLE_AIRPLANE = "toggle_airplane";
