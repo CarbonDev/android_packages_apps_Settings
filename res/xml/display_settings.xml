@@ -61,15 +61,15 @@
         android:title="@string/display_additional_title" >
 
         <CheckBoxPreference
-            android:key="system_power_crt_screen_off"
-            android:summary="@string/system_power_crt_screen_off_summary"
-            android:title="@string/system_power_crt_screen_off_title" />
-
-        <CheckBoxPreference
             android:key="adaptive_backlight"
             android:title="@string/adaptive_backlight_title"
             android:summary="@string/adaptive_backlight_summary"
             android:defaultValue="true" />
+
+        <CheckBoxPreference
+            android:key="system_power_crt_screen_off"
+            android:summary="@string/system_power_crt_screen_off_summary"
+            android:title="@string/system_power_crt_screen_off_title" />
 
         <ListPreference
             android:key="system_power_crt_mode"

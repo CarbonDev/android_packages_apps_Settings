@@ -78,6 +78,12 @@
         android:icon="@drawable/ic_settings_trds"
         android:title="@string/trds_settings_title" />
 
+    <!-- Launcher -->
+    <header
+        android:id="@+id/launcher_settings"
+        android:title="@string/launcher_settings_title"
+        android:icon="@drawable/ic_settings_launcher" />
+
     <!-- Performance -->
     <header
         android:id="@+id/performance_settings"

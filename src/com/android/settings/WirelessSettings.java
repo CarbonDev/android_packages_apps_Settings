@@ -40,7 +40,6 @@ import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
-import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.telephony.TelephonyProperties;
 import com.android.settings.nfc.NfcEnabler;
@@ -63,14 +62,12 @@ public class WirelessSettings extends SettingsPreferenceFragment
     private static final String KEY_TOGGLE_NSD = "toggle_nsd"; //network service discovery
     private static final String KEY_CELL_BROADCAST_SETTINGS = "cell_broadcast_settings";
     private static final String KEY_NFC_POLLING_MODE = "nfc_polling_mode";
-    private static final String KEY_SHOW_LTE_OR_FOURGEE = "show_lte_or_fourgee";
 
     public static final String EXIT_ECM_RESULT = "exit_ecm_result";
     public static final int REQUEST_CODE_EXIT_ECM = 1;
 
     private AirplaneModeEnabler mAirplaneModeEnabler;
     private CheckBoxPreference mAirplaneModePreference;
-    private CheckBoxPreference mShowLTEorFourGee;
     private ListPreference mNfcPollingMode;
     private NfcEnabler mNfcEnabler;
     private NfcAdapter mNfcAdapter;
@@ -99,11 +96,6 @@ public class WirelessSettings extends SettingsPreferenceFragment
             return true;
         } else if (preference == findPreference(KEY_MANAGE_MOBILE_PLAN)) {
             onManageMobilePlanClick();
-        } else if (preference == mShowLTEorFourGee) {
-            Settings.System.putBoolean(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.SHOW_LTE_OR_FOURGEE,
-                    ((CheckBoxPreference) preference).isChecked());
-            return true;
         }
         // Let the intents be launched by the Preference manager
         return super.onPreferenceTreeClick(preferenceScreen, preference);
@@ -332,19 +324,6 @@ public class WirelessSettings extends SettingsPreferenceFragment
             Preference ps = findPreference(KEY_CELL_BROADCAST_SETTINGS);
             if (ps != null) root.removePreference(ps);
         }
-
-        mShowLTEorFourGee = (CheckBoxPreference) findPreference(KEY_SHOW_LTE_OR_FOURGEE);
-        mShowLTEorFourGee.setChecked(Settings.System.getBoolean(getActivity().
-                getApplicationContext().getContentResolver(),
-                    Settings.System.SHOW_LTE_OR_FOURGEE, false));
-        if (!deviceSupportsLTE()) {
-            getPreferenceScreen().removePreference(mShowLTEorFourGee);
-        }
-    }
-
-    private boolean deviceSupportsLTE() {
-        return (TelephonyManager.getLteOnCdmaModeStatic() == PhoneConstants.LTE_ON_CDMA_TRUE
-                    || TelephonyManager.getLteOnGsmModeStatic() != 0);
     }
 
     private void updateNfcPolling() {
