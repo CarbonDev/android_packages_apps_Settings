@@ -38,6 +38,7 @@ public class NfcEnabler implements Preference.OnPreferenceChangeListener {
     private final CheckBoxPreference mCheckbox;
     private final ListPreference mNfcPollingMode;
     private final PreferenceScreen mAndroidBeam;
+    private final ListPreference mNfcPollingMode;
     private final NfcAdapter mNfcAdapter;
     private final IntentFilter mIntentFilter;
 

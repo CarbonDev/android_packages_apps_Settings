@@ -1983,6 +1983,9 @@
     <!-- Launcher settings #CM -->
     <string name="launcher_settings_title">Рабочий стол</string>
 
+    <!-- TRDS Settings -->
+    <string name="trds_settings_title">Тёмный Carbon</string>
+
     <!-- Themes settings #CM -->
     <string name="themes_settings_title">Темы</string>
 
@@ -2449,6 +2452,18 @@
     <string name="pref_volume_wake_title">Пробуждение громкостью</string>
     <string name="pref_volume_wake_summary">Нажатие кнопок громче/тише пробуждает устройство. Предназначено для устройств с труднонажимаемой кнопкой питания</string>
 
+    <!-- Profile Settings sound modes labels -->
+    <string name="sound_mode">Режим уведомления</string>
+    <string name="ringer_mode">Режим звонка</string>
+    <string name="lights_mode">Облегчённый режим</string>
+    <string name="vibrate_mode">Режим вибрации</string>
+    <string name="choose_soundtone">Звук уведомления</string>
+    <string name="choose_ringtone">Мелодия телефона</string>
+
+    <!-- Safe headset volume restore checkbox -->
+    <string name="safe_headset_volume_title">Безопасная громкость при подключении гарнитуры</string>
+    <string name="safe_headset_volume_summary">Предотвращать чрезмерную громкость при первом подключении гарнитуры</string>
+
     <!-- Setting checkbox summary for displaying USB debugging notification -->
     <string name="adb_notify">Уведомление об отладке по USB</string>
     <string name="adb_notify_summary">Показывать уведомление о включённом режиме отладки по USB</string>
@@ -2523,6 +2538,47 @@
     <string name="volume_key_cursor_control_off">Выключено</string>
     <string name="volume_key_cursor_control_on">Кнопка громкости +/- двигает курсор влево/вправо</string>
     <string name="volume_key_cursor_control_on_reverse">Кнопка громкости +/- двигает курсор вправо/влево</string>
+
+    <!-- Display : Animation options -->
+    <string name="system_power_crt_screen_off_title">Анимация отключения</string>
+    <string name="system_power_crt_screen_off_summary">Анимация выключения ЭЛТ-монитора при отключении экрана</string>
+    <string name="system_power_crt_mode_title">Режим анимации</string>
+    <string name="system_power_crt_mode_dialog_title">Показывать анимацию</string>
+    <string name="system_power_crt_mode_horizontal">Горизонтально в портретном режиме</string>
+    <string name="system_power_crt_mode_vertical">Вертикально в портретном режиме</string>
+    <string name="system_power_crt_mode_both">В зависимости от поворота экрана</string>
+
+    <!-- Privacy Guard -->
+    <string name="privacy_guard_switch_label">Включить защиту личных данных</string>
+    <string name="privacy_guard_dlg_title">Включить защиту личных данных?</string>
+    <string name="privacy_guard_dlg_text">При включении защиты приложение не будет иметь доступа к личным данным, вроде контактов, сообщений или журнала звонков.</string>
+    <string name="privacy_guard_dlg_system_app_text">При включении защиты личных данных для предустановленного приложения оно становится неспособным получать или предоставлять доступ к личным данным. Это может вызвать некорректную работу других приложений.</string>
+    <string name="privacy_guard_default_title">Включено по умолчанию</string>
+    <string name="privacy_guard_default_summary">Защита личных данных по умолчанию для новых приложений</string>
+    <string name="privacy_guard_manager_title">Менеджер защиты личных данных</string>
+    <string name="privacy_guard_manager_summary">Выберите приложения, у которых есть доступ к вашим личным данным</string>
+    <string name="privacy_guard_no_user_apps">Приложения не обнаружены</string>
+    <string name="privacy_guard_filter_does_not_match">Не обнаружено приложений с разрешениями на доступ к личным данным</string>
+    <string name="privacy_guard_help_title">Справка</string>
+    <string name="privacy_guard_reset_title">Сбросить</string>
+    <string name="privacy_guard_help_text">Выберите, для каких приложений будет включен Менеджер защиты. Выбранные приложения не будут иметь доступа к личным данным, вроде контактов, сообщений или журнала звонков. Долгое нажатие на пункт вызывает окно информации о приложении.\n\nПо умолчанию показываются только пользовательские приложения. Для показа предустановленных или фильтрации имеющих критичные разрешения приложений выбирайте сооветствующие пункты меню.</string>
+    <string name="privacy_guard_manager_show_system_apps">Показывать предустановленные приложения</string>
+    <string name="privacy_guard_manager_filter_permissions">Фильтр разрешений</string>
+
+    <!-- Setting checkbox title for root access -->
+    <string name="root_access">Root доступ</string>
+    <string name="root_access_warning_title">Разрешить root доступ?</string>
+    <string name="root_access_warning_message">Позволять приложениям получать root доступ может быть очень опасным и ставит под угрозу безопасность вашей системы!</string>
+    <string name="root_access_none">Выключен</string>
+    <string name="root_access_apps">Только приложения</string>
+    <string name="root_access_adb">Только ADB</string>
+    <string name="root_access_all">Приложения и ADB</string>
+
+   <!-- MediaScanner behavior on boot -->
+    <string name="media_scanner_on_boot_title">Поведение MediaScanner при загрузке</string>
+    <string name="media_scanner_on_boot_enabled">Сканировать медиа</string>
+    <string name="media_scanner_on_boot_ask">Спрашивать (уведомление)</string>
+    <string name="media_scanner_on_boot_disabled">Не сканировать медиа</string>
 
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>
