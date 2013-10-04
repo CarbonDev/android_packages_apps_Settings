@@ -559,6 +559,7 @@
     <string name="wifi_scan_notify_remember_choice" msgid="5340097010842405981">"No volver a mostrar"</string>
     <string name="wifi_setting_sleep_policy_title" msgid="5149574280392680092">"Usar Wi-Fi en suspensión"</string>
     <string name="wifi_setting_sleep_policy_error" msgid="8174902072673071961">"Error al cambiar la configuración"</string>
+    <string name="wifi_setting_priority_title">Prioridad Wi-Fi </string>
     <string name="wifi_suspend_optimizations" msgid="1220174276403689487">"Optimización de Wi‑Fi"</string>
     <string name="wifi_suspend_optimizations_summary" msgid="4151428966089116856">"Minimizar uso de batería con Wi-Fi activado"</string>
     <string name="wifi_add_network" msgid="6234851776910938957">"Añadir red"</string>
@@ -701,6 +702,8 @@
     <string name="sound_effects_enable_title" msgid="1171590821131077296">"Sonar al tocar"</string>
     <string name="lock_sounds_enable_title" msgid="450098505659399520">"Sonido en pantalla de bloqueo"</string>
     <string name="haptic_feedback_enable_title" msgid="2438293710530828760">"Vibrar al tocar"</string>
+   <string name="camera_sounds_title">Silenciar disparador cámara</string>
+    <string name="camera_sounds_summary">AVISO: Deshabilitar el sonido del disparador es ilegal en algunos paises!</string>
     <string name="audio_record_proc_title" msgid="4271091199976457534">"Supresión de ruido"</string>
     <string name="volume_media_description" msgid="7949355934788807863">"Música, vídeos, juegos, y otros archivos multimedia"</string>
     <string name="volume_ring_description" msgid="5936851631698298989">"Tono y notificaciones"</string>
@@ -1902,4 +1905,5 @@
     <string name="user_image_take_photo" msgid="1280274310152803669">"Hacer foto"</string>
     <string name="user_image_choose_photo" msgid="7940990613897477057">"Seleccionar foto de la galería"</string>
     <string name="regulatory_info_text" msgid="5623087902354026557"></string>
+    <string name="appops_settings_title">Privacidad de aplicaciones</string>
 </resources>

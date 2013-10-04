@@ -292,7 +292,7 @@
     <string name="pref_purgeable_assets_summary">Permite liberar más RAM cuando se necesita(requiere reinicio)</string>
 
     <!-- Performance Settings : 16bpp Alpha -->
-    <string name="pref_use_16bpp_alpha_title">transparencia 16bit</string>
+    <string name="pref_use_16bpp_alpha_title">Transparencia 16bit</string>
     <string name="pref_use_16bpp_alpha_summary">Mejor rendimiento pero peor calidad de los gráficos. Puede causar problemas en la visualización(requiere reinicio)</string>
 
     <string name="increasing_ring_title">Tono de llamada ascendente</string>
@@ -332,7 +332,7 @@
     <!-- Display settings screen, notification light settings -->
     <string name="notification_pulse_title">Led de notificación</string>
     <string name="notification_light_general_title">General</string>
-    <string name="notification_light_applist_title">Applicaciones</string>
+    <string name="notification_light_applist_title">Aplicaciones</string>
     <string name="notification_light_phonelist_title">Teléfono</string>
     <string name="notification_light_use_custom">Usar valores personalizados</string>
     <string name="notification_light_enabled">Habilitado</string>
@@ -385,7 +385,7 @@
     <string name="volume_overlay_expanded">Desplegado</string>
     <string name="volume_overlay_none">Ninguno</string>
     <string name="volume_ring_only_description">Tono de llamada</string>
-    <string name="ring_mode_title">Modo de tono de llamada</string>
+    <string name="ring_mode_title">Modo de Sonido</string>
     <string name="ring_mode_normal">Normal</string>
     <string name="ring_mode_vibrate">Vibrar</string>
     <string name="ring_mode_mute">Silencio</string>
@@ -531,7 +531,7 @@
     <string name="development_tools_title">Lanzar herramientas</string>
 
     <!-- TRDS Settings -->
-    <string name="trds_settings_title">Oscuridad Carbon</string>
+    <string name="trds_settings_title">Dark Carbon</string>
 
     <!-- Wireless display -->
     <string name="pref_wifi_disable_hdcp_title">Omitir negociación HDCP</string>
@@ -608,7 +608,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Display -->
     <string name="display_additional_title">Adicional</string>
     <!-- CRT animations -->
-    <string name="system_power_crt_screen_off_title">CRT apgado pantalla</string>
+    <string name="system_power_crt_screen_off_title">CRT apagado pantalla</string>
     <string name="system_power_crt_screen_off_summary">Al apaga la pantalla se reproducira una animación Electron Beam</string>
     <string name="system_power_crt_mode_title">Modo animación CRT</string>
     <string name="system_power_crt_mode_dialog_title">Mostrar animación CRT</string>
@@ -727,7 +727,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="selinux_enable_warning">Vas a habilitar SEAndroid en tu dispositivo, un mecanismo de seguridad avanzado.\n\nEsta opción existe solamente para depuración y probablemente tu dispositivo no esté preparada para ello, lo que puede causar partes del hardware dejen de funcionar. ¿Estás seguro de querer continuar?</string>
 
     <!-- Swap volume buttons when the screen is rotated -->
-    <string name="swap_volume_buttons_title">Intercambiar botones de volumen</string>
+    <string name="swap_volume_buttons_title">Intercambiar botones de vol.</string>
     <string name="swap_volume_buttons_summary">Intercambiar botones de volumen cuando la pantalla está girada</string>
 
     <!-- Delete apn confirmation dialog message -->
@@ -747,8 +747,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="less_notification_sounds_summary">Configurar sonidos de notificación para que solamente suenen una vez en un periodo determinado de tiempo</string>
 
     <!-- convert sound to vibration -->
-    <string name="notification_convert_sound_to_vibration_title">Vibrar cuando llegue una notificación</string>
-    <string name="notification_convert_sound_to_vibration_summary">En modo vibración todas las notificaciones vibrarán sin tener en cuenta la configuración iondividual de cada aplicación</string>
+    <string name="notification_convert_sound_to_vibration_title">Vibración de notificaciones</string>
+    <string name="notification_convert_sound_to_vibration_summary">En modo vibración todas las notificaciones vibrarán sin tener en cuenta la configuración individual de cada aplicación</string>
 
     <!-- Category title for power sound notification specific Settings.
          [CHAR LIMIT=40] -->
