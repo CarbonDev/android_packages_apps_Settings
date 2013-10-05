@@ -620,4 +620,8 @@ equiring confirmation</string>
     <string name="screen_recorder_bitrate_20000000">20000000</string>
     <string name="screen_recorder_bitrate_50000000">50000000</string>
     <string name="screen_recorder_bitrate_100000000">100000000</string>
+
+    <!-- GPS download data over wi-fi only -->
+    <string name="gps_download_data_wifi_only">Download GPS assisted data only over Wi-Fi networks</string>
+
 </resources>

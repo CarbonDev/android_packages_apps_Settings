@@ -27,6 +27,7 @@ import android.util.Log;
 import com.android.settings.DisplaySettings;
 import com.android.settings.R;
 import com.android.settings.Utils;
+import com.android.settings.location.LocationSettings;
 
 import java.util.Arrays;
 import java.util.List;
@@ -68,6 +69,7 @@ public class BootReceiver extends BroadcastReceiver {
         }
 
         DisplaySettings.restore(ctx);
+        LocationSettings.restore(ctx);
     }
 
     private void initFreqCapFiles(Context ctx)
