@@ -752,6 +752,11 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <string name="lock_before_unlock_title">Show slider before secure unlock</string>
     <string name="lock_before_unlock_summary">Show slider lockscreen before secure unlock mechanism</string>
+    <string name="lock_numpad_random_title">Change the order of PIN pad numbers</string>
+    <string name="lock_numpad_random_dialog_title">PIN pad random order</string>
+    <string name="lock_numpad_random_off">Disabled</string>
+    <string name="lock_numpad_random_always">Always</string>
+    <string name="lock_numpad_random_on_request">On request</string>
 
     <!-- Limit notification sounds -->
     <string name="less_notification_sounds_title">Limit notification sounds</string>
