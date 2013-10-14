@@ -361,11 +361,14 @@
     <string name="unlock_set_unlock_pin_summary" msgid="907878650556383388">"Seguridad media-alta"</string>
     <string name="unlock_set_unlock_password_title" msgid="8775603825675090937">"Contraseña"</string>
     <string name="unlock_set_unlock_password_summary" msgid="8856220848940929546">"Seguridad alta"</string>
+    <string name="unlock_set_unlock_gesture_title">Gesto</string>
+    <string name="unlock_set_unlock_gesture_summary">Seguridad baja, experimental</string>
     <string name="unlock_set_unlock_disabled_summary" msgid="2120729867788851674">"Desactivado por el administrador, política de encriptación o almacenamiento de credenciales"</string>
     <string name="unlock_set_unlock_mode_off" msgid="5881952274566013651">"Ninguno"</string>
     <string name="unlock_set_unlock_mode_none" msgid="5660014471997663139">"Deslizar"</string>
     <string name="unlock_set_unlock_mode_biometric_weak" msgid="3008473624490350142">"Desbloqueo facial"</string>
     <string name="unlock_set_unlock_mode_pattern" msgid="7837270780919299289">"Patrón"</string>
+    <string name="unlock_set_unlock_mode_gesture">Gesto</string>
     <string name="unlock_set_unlock_mode_pin" msgid="3541326261341386690">"PIN"</string>
     <string name="unlock_set_unlock_mode_password" msgid="1203938057264146610">"Contraseña"</string>
     <string name="unlock_disable_lock_title" msgid="1427036227416979120">"Desactivar bloqueo pantalla"</string>
@@ -1019,16 +1022,19 @@
     <string name="settings_safetylegal_activity_loading" msgid="8059022597639516348">"Cargando…"</string>
     <string name="lockpassword_choose_your_password_header" msgid="8624900666929394990">"Selecciona tu contraseña"</string>
     <string name="lockpassword_choose_your_pattern_header" msgid="6949761069941694050">"Elige un patrón"</string>
-    <string name="lockpassword_choose_your_pin_header" msgid="7598849519816138302">"Selecciona tu PIN"</string>
+    <string name="lockpassword_choose_your_gesture_header">Dibuja el gesto</string>
+    <string name="lockpassword_choose_your_pin_header" msgid="7598849519816138302">"Elige tu PIN"</string>
     <string name="lockpassword_confirm_your_password_header" msgid="6308478184889846633">"Confirma tu contraseña"</string>
     <string name="lockpassword_confirm_your_pattern_header" msgid="7543433733032330821">"Confirma el patrón"</string>
-    <string name="lockpassword_confirm_your_pin_header" msgid="49038294648213197">"Confirma el número PIN"</string>
+    <string name="lockpassword_confirm_your_pin_header" msgid="49038294648213197">"Confirma el PIN"</string>
+    <string name="lockpassword_confirm_your_gesture_header">Confirma el gesto</string>
     <string name="lockpassword_confirm_passwords_dont_match" msgid="6850677112663979120">"Las contraseñas no coinciden"</string>
     <string name="lockpassword_confirm_pins_dont_match" msgid="4757532830594400147">"Los números PIN no coinciden"</string>
     <string name="lockpassword_choose_lock_generic_header" msgid="3811438094903786145">"Método de desbloqueo"</string>
     <string name="lockpassword_password_set_toast" msgid="4875050283108629383">"La contraseña se ha establecido."</string>
-    <string name="lockpassword_pin_set_toast" msgid="6011826444725291475">"El PIN se ha establecido."</string>
-    <string name="lockpassword_pattern_set_toast" msgid="6867259621331406236">"El patrón se ha establecido."</string>
+    <string name="lockpassword_pin_set_toast" msgid="6011826444725291475">"PIN establecido."</string>
+    <string name="lockpassword_pattern_set_toast" msgid="6867259621331406236">"Patrón establecido."</string>
+    <string name="lockpassword_gesture_set_toast">Gesto establecido</string>
     <string name="lock_settings_title" msgid="335025124489630932">"Seguridad de la pantalla"</string>
     <string name="lockpattern_change_lock_pattern_label" msgid="5679630792003440352">"Cambiar patrón desbloqueo"</string>
     <string name="lockpattern_change_lock_pin_label" msgid="266707138486731661">"Cambiar PIN de desbloqueo"</string>
@@ -1057,10 +1063,34 @@
     <string name="lockpattern_too_many_failed_confirmation_attempts_header" msgid="819903817323783498">"Se han realizado demasiados intentos incorrectos."</string>
     <string name="lockpattern_too_many_failed_confirmation_attempts_footer" msgid="6759029360597122873">"Espera <xliff:g id="NUMBER">%d</xliff:g> segundos y vuelve a intentarlo."</string>
     <string name="activity_not_found" msgid="5551664692991605325">"La aplicación no está instalada en el teléfono."</string>
+    <string name="lockgesture_change_lock_pattern_label">Cambiar gesto de desbloqueo</string>
+    <string name="lockgesture_change_lock_pin_label">Cambiar pin de desbloqueo</string>
+    <string name="lockgesture_need_to_unlock">Confirmar gesto guardado</string>
+    <string name="lockgesture_need_to_unlock_wrong">Probar otra vez:</string>
+    <string name="lockgesture_recording_intro_header">Dibuja un gesto de desbloqueo:</string>
+    <string name="lockgesture_recording_intro_footer">Usar menú para ayuda.</string>
+    <string name="lockgesture_recording_inprogress">Levantar el dedo al terminar.</string>
+    <string name="lockgesture_pattern_entered_header">Gesto guardado.</string>
+    <string name="lockgesture_need_to_confirm">Dibujar el gesto otra vez para confirmar:</string>
+    <string name="lockgesture_pattern_confirmed_header">Nuevo gesto de desbloqueo:</string>
+    <string name="lockgesture_confirm_button_text">Confirmar</string>
+    <string name="lockgesture_restart_button_text">Dibujar de nuevo</string>
+    <string name="lockgesture_retry_button_text">Reintentar</string>
+    <string name="lockgesture_continue_button_text">Continuar</string>
+    <string name="lockgesture_settings_title">Gesto de desbloqueo</string>
+    <string name="lockgesture_settings_enable_title">Requiere gesto</string>
+    <string name="lockgesture_settings_enable_summary">Debe dibujar un gesto para desbloquear la pantalla</string>
+    <string name="lockgesture_settings_enable_visible_pattern_title">Hacer el gesto visible</string>
+    <string name="lockgesture_settings_enable_power_button_instantly_locks">Botón de encendido bloquea inmediatamente</string>
+    <string name="lockgesture_settings_choose_lock_pattern">Establecer gesto de desbloqueo</string>
+    <string name="lockgesture_settings_change_lock_pattern">Cambiar gesto de desbloqueo</string>
+    <string name="lockgesture_settings_help_how_to_record">Cómo dibujar un gesto de desbloqueo</string>
+    <string name="lockgesture_too_many_failed_confirmation_attempts_header">Demasiados intentos incorrectos!</string>
+    <string name="lockgesture_too_many_failed_confirmation_attempts_footer">Probar de nuevo en <xliff:g id="number">%d</xliff:g> segundos.</string>
     <string name="manageapplications_settings_title" msgid="7041951105633616745">"Administrar aplicaciones"</string>
     <string name="manageapplications_settings_summary" msgid="1794401500935451259">"Administrar y eliminar aplicaciones instaladas"</string>
     <string name="applications_settings" msgid="1721442176406964682">"Aplicaciones"</string>
-    <string name="applications_settings_summary" msgid="6683465446264515367">"Administrar aplicaciones y configurar accesos directos de inicio rápido"</string>
+    <string name="applications_settings_sum	mary" msgid="6683465446264515367">"Administrar aplicaciones y configurar accesos directos de inicio rápido"</string>
     <string name="applications_settings_header" msgid="1014813055054356646">"Ajustes de aplicación"</string>
     <string name="install_applications" msgid="4872012136210802181">"Orígenes desconocidos"</string>
     <string name="install_unknown_applications" msgid="176855644862942064">"Permitir la instalación de aplicaciones de origen desconocido"</string>
