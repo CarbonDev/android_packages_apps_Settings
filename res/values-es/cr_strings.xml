@@ -751,6 +751,11 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <string name="lock_before_unlock_title">Mostrar deslizador antes del desbloqueo seguro</string>
     <string name="lock_before_unlock_summary">Mostrar deslizandor previo a la pantalla de desbloqueo seguro (pin, patrón...)</string>
+    <string name="lock_numpad_random_title">Cambiar orden de números en pantalla de PIN</string>
+    <string name="lock_numpad_random_dialog_title">Orden aleatorio de los números</string>
+    <string name="lock_numpad_random_off">Deshabilitado</string>
+    <string name="lock_numpad_random_always">Siempre</string>
+    <string name="lock_numpad_random_on_request">Bajo petición</string>
 
     <!-- Limit notification sounds -->
     <string name="less_notification_sounds_title">Limitar sonidos de notificación</string>
