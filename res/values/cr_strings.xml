@@ -791,5 +791,5 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Advanced reboot options -->
     <string name="advanced_reboot_title">Advanced reboot</string>
-    <string name="advanced_reboot_summary">Hide options for rebooting into recovery or bootloader while on lockscreen</string>
+    <string name="advanced_reboot_summary">Show entries for rebooting into recovery or bootloader</string>
 </resources>
