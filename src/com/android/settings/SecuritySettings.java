@@ -88,10 +88,15 @@ public class SecuritySettings extends RestrictedSettingsFragment
     private static final String KEY_NOTIFICATION_ACCESS = "manage_notification_access";
     private static final String PACKAGE_MIME_TYPE = "application/vnd.android.package-archive";
 
+
     // CyanogenMod Additions
     private static final String KEY_APP_SECURITY_CATEGORY = "app_security";
     private static final String KEY_BLACKLIST = "blacklist";
     private static final String KEY_SMS_SECURITY_CHECK_PREF = "sms_security_check_limit";
+
+    // Omni Additions
+    private static final String LOCKSCREEN_QUICK_UNLOCK_CONTROL = "lockscreen_quick_unlock_control";
+
 
     private PackageManager mPM;
     private DevicePolicyManager mDPM;
@@ -127,6 +132,9 @@ public class SecuritySettings extends RestrictedSettingsFragment
     public SecuritySettings() {
         super(null /* Don't ask for restrictions pin on creation. */);
     }
+
+    // Omni Additions
+    private CheckBoxPreference mQuickUnlockScreen;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -291,6 +299,14 @@ public class SecuritySettings extends RestrictedSettingsFragment
                 }
                 mEnableKeyguardWidgets.setEnabled(!disabled);
             }
+        }
+
+        // Quick unlock
+        mQuickUnlockScreen = (CheckBoxPreference) root.findPreference(LOCKSCREEN_QUICK_UNLOCK_CONTROL);
+        if (mQuickUnlockScreen  != null) {
+            mQuickUnlockScreen.setChecked(Settings.System.getInt(getContentResolver(), 
+                    Settings.System.LOCKSCREEN_QUICK_UNLOCK_CONTROL, 0) == 1);
+            mQuickUnlockScreen.setOnPreferenceChangeListener(this);
         }
 
         // Show password
@@ -614,6 +630,9 @@ public class SecuritySettings extends RestrictedSettingsFragment
             lockPatternUtils.setVisiblePatternEnabled(isToggled(preference));
         } else if (KEY_POWER_INSTANTLY_LOCKS.equals(key)) {
             lockPatternUtils.setPowerButtonInstantlyLocks(isToggled(preference));
+        } else if (preference == mQuickUnlockScreen) {
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.LOCKSCREEN_QUICK_UNLOCK_CONTROL, isToggled(preference) ? 1 : 0);
         } else if (preference == mShowPassword) {
             Settings.System.putInt(getContentResolver(), Settings.System.TEXT_SHOW_PASSWORD,
                     mShowPassword.isChecked() ? 1 : 0);
