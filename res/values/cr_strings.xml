@@ -313,7 +313,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- CARBON Settings  -->
     <!-- Settings main menu category heading. Interface (Launcher, Themes, System). [CHAR LIMIT=40] -->
-    <string name="header_category_carbon">CARBON</string>
+    <string name="header_category_carbon">Personalization</string>
 
     <!-- Themes settings -->
     <string name="themes_settings_title">Themes</string>
