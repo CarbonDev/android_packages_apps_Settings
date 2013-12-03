@@ -90,7 +90,6 @@ public class SecuritySettings extends RestrictedSettingsFragment
     // CyanogenMod Additions
     private static final String KEY_APP_SECURITY_CATEGORY = "app_security";
     private static final String KEY_BLACKLIST = "blacklist";
-    private static final String KEY_SMS_SECURITY_CHECK_PREF = "sms_security_check_limit";
 
     private PackageManager mPM;
     private DevicePolicyManager mDPM;
@@ -119,7 +118,6 @@ public class SecuritySettings extends RestrictedSettingsFragment
 
     // CyanogenMod Additions
     private PreferenceScreen mBlacklist;
-    private ListPreference mSmsSecurityCheck;
 
     public SecuritySettings() {
         super(null /* Don't ask for restrictions pin on creation. */);
@@ -329,19 +327,13 @@ public class SecuritySettings extends RestrictedSettingsFragment
         // App security settings
         addPreferencesFromResource(R.xml.security_settings_app_cyanogenmod);
         mBlacklist = (PreferenceScreen) root.findPreference(KEY_BLACKLIST);
-        mSmsSecurityCheck = (ListPreference) root.findPreference(KEY_SMS_SECURITY_CHECK_PREF);
+
         // Determine options based on device telephony support
-        if (pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY)) {
-            mSmsSecurityCheck = (ListPreference) root.findPreference(KEY_SMS_SECURITY_CHECK_PREF);
-            mSmsSecurityCheck.setOnPreferenceChangeListener(this);
-            int smsSecurityCheck = Integer.valueOf(mSmsSecurityCheck.getValue());
-            updateSmsSecuritySummary(smsSecurityCheck);
-        } else {
+        if (!pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY)) {
             // No telephony, remove dependent options
             PreferenceGroup appCategory = (PreferenceGroup)
                     root.findPreference(KEY_APP_SECURITY_CATEGORY);
             appCategory.removePreference(mBlacklist);
-            appCategory.removePreference(mSmsSecurityCheck);
         }
 
         mNotificationAccess = findPreference(KEY_NOTIFICATION_ACCESS);
@@ -442,11 +434,6 @@ public class SecuritySettings extends RestrictedSettingsFragment
         if (mWarnInstallApps != null) {
             mWarnInstallApps.dismiss();
         }
-    }
-
-    private void updateSmsSecuritySummary(int selection) {
-        String message = getString(R.string.sms_security_check_limit_summary, selection);
-        mSmsSecurityCheck.setSummary(message);
     }
 
     private void setupLockAfterPreference() {
@@ -655,11 +642,6 @@ public class SecuritySettings extends RestrictedSettingsFragment
                 Log.e("SecuritySettings", "could not persist lockAfter timeout setting", e);
             }
             updateLockAfterPreferenceSummary();
-        } else if (preference == mSmsSecurityCheck) {
-            int smsSecurityCheck = Integer.valueOf((String) value);
-            Settings.Global.putInt(getContentResolver(),
-                    Settings.Global.SMS_OUTGOING_CHECK_MAX_COUNT, smsSecurityCheck);
-            updateSmsSecuritySummary(smsSecurityCheck);
         }
         return true;
     }

@@ -436,11 +436,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     multiple font sizes in a limited amount of space. -->
     <string name="font_size_sample">Sample</string>
 
-    <!-- Sms security limit -->
-    <string name="sms_security_check_limit_title">SMS message limit</string>
-    <string name="sms_security_check_limit_summary">Display an alert dialog to prevent applications from sending SMS messages too frequently. Current limit: %d messages in 15 minutes</string>
-    <string name="sms_security_check_limit_default">30 (Default)</string>
-
     <!-- Category title for Charging sounds (Power state change) specific Settings.
          [CHAR LIMIT=40] -->
     <string name="power_notifications_category_title">Charging sounds</string>
@@ -454,4 +449,5 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="power_notifications_ringtone_title">Notification sound</string>
     <!-- Sound settings, charging sounds label for ringtone == none -->
     <string name="power_notifications_ringtone_silent">Silent</string>
+
 </resources>
