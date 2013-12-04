@@ -463,6 +463,7 @@ equiring confirmation</string>
     <!-- Delete apn confirmation dialog message -->
     <string name="confirm_delete_apn">The APN will be deleted.</string>
 
+<<<<<<< HEAD:res/values/cr_strings.xml
     <!-- Lockscreen widget settings -->
     <string name="lockscreen_widgets_title">Widgets</string>
     <string name="lockscreen_camera_widget_title">Enable camera widget</string>
@@ -490,4 +491,9 @@ equiring confirmation</string>
     <string name="low_battery_warning_policy_sound">Sound only</string>
     <string name="battery_prefs_title">Options</string>
     <string name="battery_stats_title">Statistics</string>
+
+    <!-- AOSP dummy strings -->
+    <string name="experimental_webview"></string>
+    <string name="experimental_webview_summary"></string>
+
 </resources>
