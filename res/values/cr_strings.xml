@@ -463,7 +463,6 @@ equiring confirmation</string>
     <!-- Delete apn confirmation dialog message -->
     <string name="confirm_delete_apn">The APN will be deleted.</string>
 
-<<<<<<< HEAD:res/values/cr_strings.xml
     <!-- Lockscreen widget settings -->
     <string name="lockscreen_widgets_title">Widgets</string>
     <string name="lockscreen_camera_widget_title">Enable camera widget</string>
