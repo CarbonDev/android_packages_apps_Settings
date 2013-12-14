@@ -36,6 +36,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.nfc.NfcAdapter;
@@ -95,6 +96,7 @@ import com.android.settings.profiles.AppGroupConfig;
 import com.android.settings.profiles.ProfileConfig;
 import com.android.settings.profiles.ProfileEnabler;
 import com.android.settings.profiles.ProfilesSettings;
+import com.android.settings.slim.themes.ThemeEnabler;
 import com.android.settings.tts.TextToSpeechSettings;
 import com.android.settings.users.UserSettings;
 import com.android.settings.vpn2.VpnSettings;
@@ -142,6 +144,8 @@ public class Settings extends PreferenceActivity
     private Header mCurrentHeader;
     private Header mParentHeader;
     private boolean mInLocalHeaderSwitch;
+
+    private int mCurrentState = 0;
 
     // Show only these settings for restricted users
     private int[] SETTINGS_FOR_RESTRICTED = {
@@ -837,6 +841,7 @@ public class Settings extends PreferenceActivity
         private final BluetoothEnabler mBluetoothEnabler;
         private final ProfileEnabler mProfileEnabler;
         private final LocationEnabler mLocationEnabler;
+        public static ThemeEnabler mThemeEnabler;
         private AuthenticatorHelper mAuthHelper;
         private DevicePolicyManager mDevicePolicyManager;
 
@@ -852,12 +857,14 @@ public class Settings extends PreferenceActivity
         private LayoutInflater mInflater;
 
         static int getHeaderType(Header header) {
-            if (header.fragment == null && header.intent == null) {
+            if (header.fragment == null && header.intent == null
+                    && header.id != R.id.theme_settings) {
                 return HEADER_TYPE_CATEGORY;
             } else if (header.id == R.id.wifi_settings
                     || header.id == R.id.bluetooth_settings
                     || header.id == R.id.profiles_settings
-                    || header.id == R.id.location_settings) {
+                    || header.id == R.id.location_settings
+                    || header.id == R.id.theme_settings) {
                 return HEADER_TYPE_SWITCH;
             } else if (header.id == R.id.security_settings) {
                 return HEADER_TYPE_BUTTON;
@@ -905,6 +912,7 @@ public class Settings extends PreferenceActivity
             mBluetoothEnabler = new BluetoothEnabler(context, new Switch(context));
             mProfileEnabler = new ProfileEnabler(context, new Switch(context));
             mLocationEnabler = new LocationEnabler(context, new Switch(context));
+            mThemeEnabler = new ThemeEnabler(context, new Switch(context));
             mDevicePolicyManager = dpm;
         }
 
@@ -980,6 +988,8 @@ public class Settings extends PreferenceActivity
                         mProfileEnabler.setSwitch(holder.switch_);
                     } else if (header.id == R.id.location_settings) {
                         mLocationEnabler.setSwitch(holder.switch_);
+                    } else if (header.id == R.id.theme_settings) {
+                        mThemeEnabler.setSwitch(holder.switch_);
                     }
                     updateCommonHeaderView(header, holder);
                     break;
@@ -1055,6 +1065,7 @@ public class Settings extends PreferenceActivity
             mBluetoothEnabler.resume();
             mProfileEnabler.resume();
             mLocationEnabler.resume();
+            mThemeEnabler.resume();
         }
 
         public void pause() {
@@ -1062,6 +1073,7 @@ public class Settings extends PreferenceActivity
             mBluetoothEnabler.pause();
             mProfileEnabler.pause();
             mLocationEnabler.pause();
+            mThemeEnabler.resume();
         }
     }
 
@@ -1122,6 +1134,16 @@ public class Settings extends PreferenceActivity
         mAuthenticatorHelper.updateAuthDescriptions(this);
         mAuthenticatorHelper.onAccountsUpdated(this, accounts);
         invalidateHeaders();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        if (newConfig.uiThemeMode != mCurrentState && HeaderAdapter.mThemeEnabler != null) {
+            mCurrentState = newConfig.uiThemeMode;
+            HeaderAdapter.mThemeEnabler.setSwitchState();
+        }
     }
 
     public static void requestHomeNotice() {
