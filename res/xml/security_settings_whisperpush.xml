@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2012 The CyanogenMod Project
+<!-- Copyright (C) 2013 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -17,18 +17,12 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory
-        android:key="app_security"
-        android:title="@string/app_security_title">
-
-        <ListPreference
-            android:key="sms_security_check_limit"
-            android:dialogTitle="@string/sms_security_check_limit_title"
-            android:title="@string/sms_security_check_limit_title"
-            android:entries="@array/sms_security_check_limit_entries"
-            android:entryValues="@array/sms_security_check_limit_values"
-            android:defaultValue="30" />
-
-    </PreferenceCategory>
+    <Preference
+        android:key="whisperpush"
+        android:title="@string/whisperpush_title"
+        android:summary="@string/whisperpush_summary">
+        <intent android:targetPackage="org.whispersystems.whisperpush"
+            android:targetClass="org.whispersystems.whisperpush.ui.PreferenceActivity" />
+    </Preference>
 
 </PreferenceScreen>
