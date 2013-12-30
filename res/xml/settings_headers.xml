@@ -61,6 +61,17 @@
     <!-- CARBON -->
     <header android:title="@string/header_category_carbon" />
 
+    <!-- Carbon Customizations -->
+    <header
+        android:id="@+id/carbon_fibers"
+        android:icon="@drawable/ic_settings_carbon_fibers"
+        android:title="@string/carbon_fibers_title" >
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.carbon.fibers"
+            android:targetClass="com.carbon.fibers.SettingsActivity" />
+    </header>
+
     <!-- Performance -->
     <header
         android:id="@+id/performance_settings"
@@ -77,17 +88,6 @@
             android:action="android.intent.action.MAIN"
             android:targetPackage="com.tmobile.themechooser"
             android:targetClass="com.tmobile.themechooser.ThemeChooser" />
-    </header>
-
-    <!-- Carbon Customizations -->
-    <header
-        android:id="@+id/carbon_fibers"
-        android:icon="@drawable/empty_icon"
-        android:title="@string/radio_controls_title" >
-        <intent
-            android:action="android.intent.action.MAIN"
-            android:targetPackage="com.carbon.fibers"
-            android:targetClass="com.carbon.fibers.SettingsActivity" />
     </header>
 
     <!-- DEVICE -->

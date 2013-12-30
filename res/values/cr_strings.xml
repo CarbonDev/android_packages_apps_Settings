@@ -332,6 +332,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Settings main menu category heading. Interface (Launcher, Themes, System). [CHAR LIMIT=40] -->
     <string name="header_category_carbon">Personalization</string>
 
+    <string name="carbon_fibers_title">Carbon Fibers</string>
+
     <!-- Themes settings -->
     <string name="themes_settings_title">Themes</string>
 
