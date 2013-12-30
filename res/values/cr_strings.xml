@@ -534,6 +534,8 @@ equiring confirmation</string>
     <!-- USB Mass Storage -->
     <string name="usb_mass_storage_title">Mass storage (UMS)</string>
     <string name="usb_mass_storage_summary">Lets you transfer any files between your computer and your SD card by mounting it as a flash device</string>
+    <string name="storage_rescan_media">Rescan media for the storage volume</string>
+    <string name="storage_rescan_media_complete">Scan completed</string>
 
     <!-- Message of dialog confirming that user wants to restart their device with a new runtime -->
     <string name="custom_runtime_warning_title">Warning</string>
