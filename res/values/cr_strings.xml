@@ -17,6 +17,7 @@
 
     <!-- General strings -->
     <string name="enabled">Enabled</string>
+    <string name="volume">Volume</string>
 
     <!-- Wi-Fi region code -->
     <string name="wifi_setting_countrycode_title">Wi-Fi region code</string>

@@ -21,7 +21,7 @@
 
     <PreferenceCategory
             android:key="category_volume"
-            android:title="@string/title_tile_volume"/>
+            android:title="@string/volume"/>
 
     <com.android.settings.RingerVolumePreference
             android:key="ring_volume"
