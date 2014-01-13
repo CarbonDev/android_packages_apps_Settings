@@ -2082,6 +2082,26 @@
         <service android:name="com.carbon.fibers.service.ExternalCommandService"
             android:exported="false" />
 
+        <!-- BatterySaverMode Methods -->
+        <receiver
+            android:name="com.carbon.fibers.fragments.batterysaver.BootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name="com.carbon.fibers.fragments.batterysaver.BatterySaverReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED"></action>
+                <action android:name="android.intent.action.TIME_CHANGED"></action>
+                <action android:name="android.intent.action.DATE_CHANGED"></action>
+                <action android:name="android.intent.action.BATTERY_SERVICES"></action>
+                <action android:name="com.carbon.fibers.fragments.batterysaver.SCHEDULE_BATTERY_SAVER"/>
+            </intent-filter>
+        </receiver>
+        <!-- End of BatterySaverMode Methods -->
+
         <!-- End of Carbon Application Methods -->
 
         <receiver android:name=".widget.SettingsAppWidgetProvider"
