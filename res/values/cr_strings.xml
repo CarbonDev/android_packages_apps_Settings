@@ -47,6 +47,10 @@
     <string name="increasing_ring_interval_5seconds">5 seconds</string>
     <string name="increasing_ring_interval_10seconds">10 seconds</string>
 
+    <!-- Sound settings screen, setting check box label -->
+    <string name="camera_sounds_title">Camera shutter sound</string>
+    <string name="camera_sounds_summary">WARNING: Disabling the camera shutter sound is illegal in some areas!</string>
+
     <!-- Profiles settings -->
     <string name="profiles_settings_title">Profiles</string>
     <string name="profiles_add">Add</string>
