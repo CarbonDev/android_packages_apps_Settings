@@ -91,7 +91,6 @@ public class SecuritySettings extends RestrictedSettingsFragment
 
     // CyanogenMod Additions
     private static final String KEY_APP_SECURITY_CATEGORY = "app_security";
-    private static final String KEY_UNLOCK_CATEGORY = "unlock_category";
     private static final String KEY_BLACKLIST = "blacklist";
     private static final String KEY_SMS_SECURITY_CHECK_PREF = "sms_security_check_limit";
 
@@ -264,30 +263,6 @@ public class SecuritySettings extends RestrictedSettingsFragment
         // Append the rest of the settings
         addPreferencesFromResource(R.xml.security_settings_misc);
 
-        final int deviceKeys = getResources().getInteger(
-                    com.android.internal.R.integer.config_deviceHardwareKeys);
-        final int KEY_MASK_HOME = 0x01;
-        final int KEY_MASK_MENU = 0x04;
-        CheckBoxPreference menuUnlock = (CheckBoxPreference)
-                    findPreference(Settings.System.MENU_UNLOCK_SCREEN);
-        CheckBoxPreference homeUnlock = (CheckBoxPreference)
-                    findPreference(Settings.System.HOME_UNLOCK_SCREEN);
-        PreferenceGroup unlockCategory = (PreferenceGroup)
-                    root.findPreference(KEY_UNLOCK_CATEGORY);
-
-        if ((deviceKeys & KEY_MASK_MENU) == 0 && (deviceKeys & KEY_MASK_HOME) == 0) {
-            root.removePreference(unlockCategory);
-        } else {
-            // Hide the MenuUnlock setting if no menu button is available
-            if ((deviceKeys & KEY_MASK_MENU) == 0) {
-                unlockCategory.removePreference(menuUnlock);
-            }
-            // Hide the HomeUnlock setting if no home button is available
-            if ((deviceKeys & KEY_MASK_HOME) == 0) {
-                unlockCategory.removePreference(homeUnlock);
-            }
-        }
-
         // Do not display SIM lock for devices without an Icc card
         TelephonyManager tm = TelephonyManager.getDefault();
         if (!mIsPrimary || !tm.hasIccCard()) {
@@ -354,7 +329,7 @@ public class SecuritySettings extends RestrictedSettingsFragment
         }
 
         // Application install
-        PreferenceGroup deviceAdminCategory = (PreferenceGroup)
+        PreferenceGroup deviceAdminCategory= (PreferenceGroup)
                 root.findPreference(KEY_DEVICE_ADMIN_CATEGORY);
         mToggleAppInstallation = (CheckBoxPreference) findPreference(
                 KEY_TOGGLE_INSTALL_APPLICATIONS);

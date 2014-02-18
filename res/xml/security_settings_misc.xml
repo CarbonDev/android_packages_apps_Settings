@@ -36,23 +36,6 @@
                 android:persistent="false"/>
     </PreferenceCategory>
 
-    <PreferenceCategory
-            android:key="unlock_category"
-            android:title="@string/security_unlock_category"
-            android:persistent="false">
-
-        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
-                android:key="menu_unlock_screen"
-                android:title="@string/unlock_menu_unlock_title"
-                android:summary="@string/unlock_menu_unlock_summary" />
-
-        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
-                android:key="home_unlock_screen"
-                android:title="@string/unlock_home_unlock_title"
-                android:summary="@string/unlock_home_unlock_summary" />
-
-    </PreferenceCategory>
-
     <PreferenceCategory android:key="device_admin_category"
             android:title="@string/device_admin_title"
             android:persistent="false">
