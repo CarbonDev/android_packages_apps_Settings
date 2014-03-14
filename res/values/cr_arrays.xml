@@ -78,10 +78,10 @@
         <item>vibrate</item>
         <item>mute</item>
     </string-array>
-    
+
     <!-- Volume step options. -->
     <string-array name="volume_steps_entries" translatable="false">
-		<item>@string/volume_steps_60</item>
+        <item>@string/volume_steps_60</item>
         <item>@string/volume_steps_45</item>
         <item>@string/volume_steps_30</item>
         <item>@string/volume_steps_15</item>
