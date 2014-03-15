@@ -98,15 +98,20 @@
             android:title="@string/lights_category_title">
 
             <PreferenceScreen
-                android:key="notification_pulse"
-                android:title="@string/notification_pulse_title"
-                android:fragment="com.android.settings.notificationlight.NotificationLightSettings" />
-
-            <PreferenceScreen
                 android:key="battery_light"
                 android:title="@string/battery_light_title"
                 android:fragment="com.android.settings.notificationlight.BatteryLightSettings" />
 
         </PreferenceCategory>
+
+        <!-- Notifications -->
+        <PreferenceCategory
+            android:key="notification_category"
+            android:title="@string/notification_category"/>
+
+        <CheckBoxPreference
+            android:key="notification_peek"
+            android:title="@string/notification_peek_title"
+            android:summary="@string/notification_peek_summary" />
 
 </PreferenceScreen>
