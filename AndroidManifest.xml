@@ -1725,6 +1725,20 @@
 
         <!-- CyanogenMod activities Start -->
 
+        <activity android:name="Settings$QuickSettingsConfigActivity"
+                android:label="@string/tile_picker_title"
+                android:taskAffinity=""
+                android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.carbon.fibers.fragments.sb.QuickSettingsTiles" />
+        </activity>
+
+        <activity android:name="com.carbon.fibers.fragments.sb.QuickSettingsTiles" />
+
         <activity android:name=".carbon.AutoBrightnessSetup"
                 android:excludeFromRecents="true"
                 android:theme="@*android:style/Theme.Holo.Dialog.Alert" />
@@ -1952,6 +1966,96 @@
             android:name=".slim.themes.ThemeSettings"
             android:label="@string/theme_settings_title" >
         </activity>
+
+        <!-- Carbon Application Methods -->
+        <activity android:name="com.carbon.fibers.SettingsActivity" />
+
+        <activity
+            android:name="com.carbon.fibers.fragments.ButtonSettings"
+            android:label="@string/button_settings" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.carbon.fibers.SHORTCUT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.carbon.fibers.fragments.ls.KeyguardSettings"
+            android:label="@string/keyguard_title" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.carbon.fibers.SHORTCUT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.carbon.fibers.fragments.ui.InterfaceSettings"
+            android:label="@string/user_interface" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.carbon.fibers.SHORTCUT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.carbon.fibers.fragments.navbar.NavbarTab"
+            android:label="@string/navbar_cat" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.carbon.fibers.SHORTCUT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.carbon.fibers.fragments.pie.PieTab"
+            android:label="@string/pie_control_title" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.carbon.fibers.SHORTCUT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.carbon.fibers.fragments.sb.SbSettings"
+            android:label="@string/status_bar_title" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="com.carbon.fibers.SHORTCUT" />
+            </intent-filter>
+        </activity>
+        <activity
+ 	    android:name="com.carbon.fibers.ShareToClipboard"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+ 	    android:label="@string/title_clipboard_share" >
+            <intent-filter>
+ 	         <action android:name="android.intent.action.SEND"/>
+
+ 	         <category android:name="android.intent.category.ALTERNATIVE"/>
+ 	         <category android:name="android.intent.category.DEFAULT"/>
+
+ 	         <data android:mimeType="text/*" />
+            </intent-filter>
+        </activity>
+        <activity
+ 	    android:name="com.carbon.fibers.CreateShortcut"
+            android:theme="@style/Theme.CreateShortCut" >
+ 	  <intent-filter>
+               <action android:name="android.intent.action.CREATE_SHORTCUT" />
+
+  	       <category android:name="android.intent.category.DEFAULT" />
+          </intent-filter>
+        </activity>
+        <receiver
+            android:name="com.carbon.fibers.service.ChangeFastChargeStateReceiver" >
+            <intent-filter>
+                <action android:name="com.carbon.fibers.ACTION_CHANGE_FCHARGE_STATE" />
+            </intent-filter>
+        </receiver>
+        <service android:name="com.carbon.fibers.service.ExternalCommandService"
+            android:exported="false" />
+
+        <!-- End of Carbon Application Methods -->
 
         <receiver android:name=".widget.SettingsAppWidgetProvider"
                 android:label="@string/gadget_title"

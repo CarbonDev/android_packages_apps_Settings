@@ -79,7 +79,7 @@
         android:title="@string/carbon_fibers_title" >
         <intent
             android:action="android.intent.action.MAIN"
-            android:targetPackage="com.carbon.fibers"
+            android:targetPackage="com.android.settings"
             android:targetClass="com.carbon.fibers.SettingsActivity" />
     </header>
 
