@@ -26,10 +26,6 @@
             android:summary="@string/unlock_set_unlock_mode_pattern"
             android:persistent="false"/>
 
-        <CheckBoxPreference
-            android:key="visiblepattern"
-            android:title="@string/lockpattern_settings_enable_visible_pattern_title"/>
-
         <ListPreference
             android:key="lock_after_timeout"
             android:title="@string/lock_after_timeout"
@@ -37,6 +33,15 @@
             android:entries="@array/lock_after_timeout_entries"
             android:entryValues="@array/lock_after_timeout_values"
             android:persistent="false"/>
+
+        <CheckBoxPreference
+            android:key="lock_before_unlock"
+            android:title="@string/lock_before_unlock_title"
+            android:summary="@string/lock_before_unlock_summary" />
+
+        <CheckBoxPreference
+            android:key="visiblepattern"
+            android:title="@string/lockpattern_settings_enable_visible_pattern_title"/>
 
         <CheckBoxPreference
             android:key="power_button_instantly_locks"
