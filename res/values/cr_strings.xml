@@ -372,6 +372,12 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <string name="app_security_title">App security</string>
 
+    <!-- Keyguard allow rotation -->
+    <string name="lockscreen_rotation_title">Lockscreen rotation</string>
+    <string name="lockscreen_rotation_portrait">Portrait only</string>
+    <string name="lockscreen_rotation_landscape">Landscape only</string>
+    <string name="lockscreen_rotation_summary_extra">(display rotation dependant)</string>
+
     <!-- Setting checkbox title for root access -->
     <string name="root_access">Root access</string>
     <string name="root_access_warning_title">Allow root access?</string>
