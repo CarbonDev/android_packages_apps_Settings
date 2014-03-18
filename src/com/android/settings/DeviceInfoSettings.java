@@ -32,6 +32,8 @@ import android.telephony.MSimTelephonyManager;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.android.settings.deviceinfo.msim.MSimStatus;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileReader;
@@ -118,7 +120,7 @@ public class DeviceInfoSettings extends RestrictedSettingsFragment {
 
         if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
             findPreference(KEY_STATUS).getIntent().setClassName(
-                    "com.android.settings","com.android.settings.deviceinfo.MSimStatus");
+                    getActivity().getPackageName(), MSimStatus.class.getName());
         }
 
         // Remove selinux information if property is not present
