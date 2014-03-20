@@ -50,6 +50,12 @@
             android:key="category_automation_effects"
             android:title="@string/automation_effects_title"/>
 
+    <!-- Sound Packages -->
+    <PreferenceScreen
+        android:key="sound_packages"
+        android:fragment="com.android.settings.sounds.SoundPackageSettings"
+        android:title="@string/sound_packages_title" />
+
     <!-- Quiet hours -->
     <PreferenceScreen
             android:key="quiet_hours"

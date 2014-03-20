@@ -51,6 +51,15 @@
     <string name="camera_sounds_title">Camera shutter sound</string>
     <string name="camera_sounds_summary">WARNING: Disabling the camera shutter sound is illegal in some areas!</string>
 
+    <!-- Sound themes -->
+    <string name="sound_packages_title">Sound packs</string>
+    <string name="install_sound_pack_title">Install sound pack</string>
+    <string name="install_sound_pack_summary">Install new sound packs added in SoundPacks folder on the internal storage</string>
+    <string name="select_sound_pack_title">Select sound pack</string>
+    <string name="select_sound_pack_summary">Select the active sound pack</string>
+    <string name="default_sound_pack">Default (System)</string>
+    <string name="error_pack_install">Error while installing the sound pack</string>
+
     <!-- Profiles settings -->
     <string name="profiles_settings_title">Profiles</string>
     <string name="profiles_add">Add</string>
