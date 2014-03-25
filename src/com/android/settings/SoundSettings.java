@@ -70,7 +70,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private static final String KEY_VOLUME_OVERLAY = "volume_overlay";
     private static final String KEY_RING_MODE = "ring_mode";
     private static final String KEY_VIBRATE = "vibrate_when_ringing";
-    private static final String KEY_VOLUME_STEPS = "volume_steps";
     private static final String KEY_RING_VOLUME = "ring_volume";
     private static final String KEY_INCREASING_RING = "increasing_ring";
     private static final String KEY_MUSICFX = "musicfx";
@@ -123,7 +122,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private Preference mMusicFx;
     private Preference mRingtonePreference;
     private Preference mNotificationPreference;
-    private PreferenceScreen mVolumeSteps;
     private PreferenceScreen mQuietHours;
 
     private Runnable mRingtoneLookupRunnable;
@@ -200,8 +198,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements
             // device with fixed volume policy, do not display volumes submenu
             getPreferenceScreen().removePreference(findPreference(KEY_RING_VOLUME));
         }
-
-        mVolumeSteps = (PreferenceScreen) findPreference(KEY_VOLUME_STEPS);
 
         mQuietHours = (PreferenceScreen) findPreference(KEY_QUIET_HOURS);
         if (Settings.System.getInt(resolver, Settings.System.QUIET_HOURS_ENABLED, 0) == 1) {
