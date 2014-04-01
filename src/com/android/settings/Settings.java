@@ -373,7 +373,7 @@ public class Settings extends PreferenceActivity
         PolicyNativeFragment.class.getName(),
         com.android.settings.cyanogenmod.PrivacySettings.class.getName(),
         com.carbon.fibers.fragments.sb.QuickSettingsTiles.class.getName(),
-        com.android.settings.cyanogenmod.QuietHours.class.getName()
+        com.android.settings.carbon.QuietHours.class.getName()
     };
 
     @Override
