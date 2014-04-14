@@ -28,6 +28,7 @@ import com.android.settings.DisplaySettings;
 import com.android.settings.R;
 import com.android.settings.Utils;
 import com.android.settings.location.LocationSettings;
+import com.carbon.fibers.fragments.VibratorIntensity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -70,6 +71,7 @@ public class BootReceiver extends BroadcastReceiver {
 
         DisplaySettings.restore(ctx);
         LocationSettings.restore(ctx);
+        VibratorIntensity.restore(ctx);
     }
 
     private void initFreqCapFiles(Context ctx)
