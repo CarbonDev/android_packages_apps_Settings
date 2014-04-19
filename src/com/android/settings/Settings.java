@@ -77,7 +77,6 @@ import com.android.settings.applications.ProcessStatsUi;
 import com.android.settings.blacklist.BlacklistSettings;
 import com.android.settings.bluetooth.BluetoothEnabler;
 import com.android.settings.bluetooth.BluetoothSettings;
-import com.android.settings.carbon.PerformanceSettings;
 import com.android.settings.cyanogenmod.superuser.PolicyNativeFragment;
 import com.android.settings.deviceinfo.Memory;
 import com.android.settings.deviceinfo.UsbSettings;
@@ -370,7 +369,6 @@ public class Settings extends PreferenceActivity
         ApnSettings.class.getName(),
         HomeSettings.class.getName(),
         ProfilesSettings.class.getName(),
-        PerformanceSettings.class.getName(),
         PolicyNativeFragment.class.getName(),
         com.android.settings.cyanogenmod.PrivacySettings.class.getName(),
         com.carbon.fibers.fragments.sb.QuickSettingsTiles.class.getName(),
@@ -652,6 +650,10 @@ public class Settings extends PreferenceActivity
                     }
                 }
             } else if (id == R.id.development_settings) {
+                if (!showDev) {
+                    target.remove(i);
+                }
+            } else if (id == R.id.performance_controls) {
                 if (!showDev) {
                     target.remove(i);
                 }
@@ -1231,6 +1233,7 @@ public class Settings extends PreferenceActivity
     public static class UsbSettingsActivity extends Settings { /* empty */ }
     public static class TrustedCredentialsSettingsActivity extends Settings { /* empty */ }
     public static class PaymentSettingsActivity extends Settings { /* empty */ }
+    public static class PerformanceSettingsActivity extends Settings { /* empty */ }
     public static class PrintSettingsActivity extends Settings { /* empty */ }
     public static class PrintJobSettingsActivity extends Settings { /* empty */ }
     public static class ApnSettingsActivity extends Settings { /* empty */ }
