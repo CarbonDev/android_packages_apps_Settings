@@ -740,6 +740,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Title for the accessibility preference to home button to answers a call. [CHAR LIMIT=35] -->
     <string name="accessibility_home_button_answers_call_prerefence_title">Home button answers call</string>
 
+    <!-- Toggle switch title for enabling battery saver connections. [CHAR LIMIT=32] -->
+    <string name="data_usage_enable_batterysaver">Battery saver</string>
+
     <!-- Themes -->
     <string name="theme_settings_title">Dark Carbon</string>
     <string name="theme_auto_mode_title">Switch theme</string>
