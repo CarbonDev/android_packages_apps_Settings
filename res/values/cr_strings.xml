@@ -561,6 +561,12 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="lockscreen_widget_frame_title">Disable widget frames</string>
     <string name="lockscreen_widget_frame_summary">Disable widget background frames</string>
 
+    <!-- Shake sensitivity -->
+    <string name="shake_sensitivity_title">Shake sensitivity</string>
+    <string name="shake_sensitivity_summary">Global sensitivity of all shake preferences</string>
+    <string name="shake_sensitivity_less_sensitive">Less sensitive</string>
+    <string name="shake_sensitivity_more_sensitive">More sensitive</string>
+
     <!-- Shake to secure -->
     <string name="shake_to_secure_title">Shake the lockscreen to enable security</string>
     <string name="shake_to_secure_summary">Security will be disabled after each successful unlock</string>
