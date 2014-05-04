@@ -68,4 +68,8 @@
     <!-- This is used to define screen color's contrast progress bar maximum value -->
     <integer name="maximum_contrast_value" translatable="false">360</integer>
 
+    <!-- Multi SIM Tune Away/Priority Subscription Support. Some device RILs do not support this.
+         Setting to false will disable Tune Away/Priority Subscription support -->
+    <bool name="config_HasTuneAway">false</bool>
+
 </resources>
