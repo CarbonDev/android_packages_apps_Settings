@@ -83,24 +83,29 @@
                 android:defaultValue="true" />
 
         <CheckBoxPreference
-            android:key="wake_when_plugged_or_unplugged"
-            android:title="@string/wake_when_plugged_or_unplugged_title"
-            android:summary="@string/wake_when_plugged_or_unplugged_summary"
-            android:defaultValue="false" />
+                android:key="wake_when_plugged_or_unplugged"
+                android:title="@string/wake_when_plugged_or_unplugged_title"
+                android:summary="@string/wake_when_plugged_or_unplugged_summary"
+                android:defaultValue="false" />
 
         <CheckBoxPreference
-            android:key="double_tap_wake_gesture"
-            android:title="@string/double_tap_to_wake_title"
-            android:defaultValue="false" />
+                android:key="double_tap_wake_gesture"
+                android:title="@string/double_tap_to_wake_title"
+                android:defaultValue="false" />
 
         <PreferenceCategory
             android:key="lights_prefs"
             android:title="@string/lights_category_title">
 
             <PreferenceScreen
-                android:key="battery_light"
-                android:title="@string/battery_light_title"
-                android:fragment="com.android.settings.notificationlight.BatteryLightSettings" />
+                    android:key="notification_pulse"
+                    android:title="@string/notification_pulse_title"
+                    android:fragment="com.android.settings.notificationlight.NotificationLightSettings" />
+
+            <PreferenceScreen
+                    android:key="battery_light"
+                    android:title="@string/battery_light_title"
+                    android:fragment="com.android.settings.notificationlight.BatteryLightSettings" />
 
         </PreferenceCategory>
 
@@ -110,8 +115,8 @@
             android:title="@string/notification_category"/>
 
         <CheckBoxPreference
-            android:key="notification_peek"
-            android:title="@string/notification_peek_title"
-            android:summary="@string/notification_peek_summary" />
+                android:key="notification_peek"
+                android:title="@string/notification_peek_title"
+                android:summary="@string/notification_peek_summary" />
 
 </PreferenceScreen>

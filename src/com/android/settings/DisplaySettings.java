@@ -162,11 +162,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         mWakeWhenPluggedOrUnplugged =
                 (CheckBoxPreference) findPreference(KEY_WAKE_WHEN_PLUGGED_OR_UNPLUGGED);
 
-
         mNotificationPeek = (CheckBoxPreference) findPreference(KEY_PEEK);
         mNotificationPeek.setPersistent(false);
 
-        boolean hasNotificationLed = getResources().getBoolean(
+        boolean hasNotificationLed = res.getBoolean(
                 com.android.internal.R.bool.config_intrusiveNotificationLed);
         boolean hasBatteryLed = res.getBoolean(
                 com.android.internal.R.bool.config_intrusiveBatteryLed);
@@ -449,9 +448,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             return true;
         } else if (preference == mTapToWake) {
             return TapToWake.setEnabled(mTapToWake.isChecked());
-        } else if (preference == mAccelerometer) {
-            RotationPolicy.setRotationLockForAccessibility(
-                    getActivity(), !mAccelerometer.isChecked());
         } else if (preference == mNotificationPeek) {
             Settings.System.putInt(getContentResolver(), Settings.System.PEEK_STATE,
                     mNotificationPeek.isChecked() ? 1 : 0);
