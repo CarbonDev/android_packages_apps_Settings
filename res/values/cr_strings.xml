@@ -15,6 +15,9 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- About Carbon string -->
+    <string name="about_carbon_title">About CarbonROM</string>
+
     <!--Notification category-->
     <string name="notification_category">Notifications</string>
 
