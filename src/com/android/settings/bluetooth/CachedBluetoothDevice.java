@@ -16,7 +16,6 @@
 
 package com.android.settings.bluetooth;
 
-import android.bluetooth.BluetoothUuid;
 import android.bluetooth.BluetoothClass;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothProfile;
@@ -65,8 +64,6 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
 
     private boolean mVisible;
 
-    private boolean mDeviceRemove;
-
     private int mPhonebookPermissionChoice;
 
     private int mMessagePermissionChoice;
@@ -109,8 +106,6 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
 
     // See mConnectAttempted
     private static final long MAX_UUID_DELAY_FOR_AUTO_CONNECT = 5000;
-
-    private static final long MAX_HOGP_DELAY_FOR_AUTO_CONNECT = 30000;
 
     /** Auto-connect after pairing only if locally initiated. */
     private boolean mConnectAfterPairing;
@@ -354,7 +349,6 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
                         mDevice.setAlias(null);
                         Log.d(TAG, "Command sent successfully:REMOVE_BOND " + describe(null));
                     }
-                    setRemovable(true);
                 } else if (Utils.V) {
                     Log.v(TAG, "Framework rejected command immediately:REMOVE_BOND " +
                             describe(null));
@@ -412,14 +406,6 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
                 mName = mDevice.getAddress();
             } else {
                 mName = name;
-            }
-            dispatchAttributesChanged();
-        }
-    }
-    void setAliasName(String name) {
-        if (!mName.equals(name)) {
-            if (!TextUtils.isEmpty(name)) {
-                mName = name;
                 mDevice.setAlias(name);
             }
             dispatchAttributesChanged();
@@ -448,22 +434,12 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
         return mVisible;
     }
 
-    boolean isRemovable () {
-        return mDeviceRemove;
-   }
-
-
     void setVisible(boolean visible) {
         if (mVisible != visible) {
             mVisible = visible;
             dispatchAttributesChanged();
         }
     }
-
-    void setRemovable(boolean removable) {
-        mDeviceRemove = removable;
-    }
-
 
     int getBondState() {
         return mDevice.getBondState();
@@ -553,22 +529,18 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
      */
     void onUuidChanged() {
         updateProfiles();
-        ParcelUuid[] uuids = mDevice.getUuids();
-        long timeout = MAX_UUID_DELAY_FOR_AUTO_CONNECT;
-        Log.d(TAG, "onUuidChanged: Time since last connect"
+
+        if (DEBUG) {
+            Log.e(TAG, "onUuidChanged: Time since last connect"
                     + (SystemClock.elapsedRealtime() - mConnectAttempted));
+        }
 
         /*
          * If a connect was attempted earlier without any UUID, we will do the
          * connect now.
          */
-        if(BluetoothUuid.isUuidPresent(uuids, BluetoothUuid.Hogp))
-        {
-            timeout = MAX_HOGP_DELAY_FOR_AUTO_CONNECT;
-        }
-        Log.d(TAG, "onUuidChanged timeout value="+timeout);
         if (!mProfiles.isEmpty()
-                && (mConnectAttempted + timeout) > SystemClock
+                && (mConnectAttempted + MAX_UUID_DELAY_FOR_AUTO_CONNECT) > SystemClock
                         .elapsedRealtime()) {
             connectWithoutResettingTimer(false);
         }
@@ -588,42 +560,16 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
             saveMessageRejectTimes();
             Log.v(TAG,"onBondingstate none: isPairing : " + mLocalAdapter.checkPairingState());
         }
+ 
+        refresh();
 
-        if(DEBUG) Log.d(TAG, "onBondingStateChanged" + bondState);
-
-        switch (bondState) {
-            case BluetoothDevice.BOND_NONE:
-                mLocalAdapter.setPairingState(false);
-                mProfiles.clear();
-                mConnectAfterPairing = false;  // cancel auto-connect
-                // fall through
-
-            case BluetoothDevice.BOND_BONDING:
-                //Sometimes Remote device is unpaired by itself & try to connect again.
-                //so permission should be reset for that particular device.
-                setPhonebookPermissionChoice(ACCESS_UNKNOWN);
-                setMessagePermissionChoice(ACCESS_UNKNOWN);
-                mPhonebookRejectedTimes = 0;
-                savePhonebookRejectTimes();
-                mMessageRejectedTimes = 0;
-                saveMessageRejectTimes();
-
-                refresh();
-                break;
-
-            case BluetoothDevice.BOND_BONDED:
-                mLocalAdapter.setPairingState(false);
-                if (mDevice.isBluetoothDock()) {
-                    onBondingDockConnect();
-                } else if (mConnectAfterPairing) {
-                    connect(false);
-                }
-                mConnectAfterPairing = false;
-                Log.v(TAG,"BondState bonded: isPairing : " + mLocalAdapter.checkPairingState());
-                break;
-
-            default:
-                Log.e(TAG, "Incorrect Bond State received");
+        if (bondState == BluetoothDevice.BOND_BONDED) {
+            if (mDevice.isBluetoothDock()) {
+                onBondingDockConnect();
+            } else if (mConnectAfterPairing) {
+                connect(false);
+            }
+            mConnectAfterPairing = false;
         }
     }
 
