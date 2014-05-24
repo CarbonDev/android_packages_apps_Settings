@@ -844,4 +844,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="update_recovery_title">Update recovery</string>
     <string name="update_recovery_summary">Update recovery when installing system updates</string>
 
+    <!--Blacklist-->
+    <string name="blacklist_button_title">Blacklist</string>
+    <string name="peek_blacklist_label">Blacklist from peek</string>
+    <string name="floating_blacklist_label">Blacklist from floating mode</string>
+
 </resources>
