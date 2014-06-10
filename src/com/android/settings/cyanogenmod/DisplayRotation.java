@@ -19,20 +19,24 @@ package com.android.settings.cyanogenmod;
 import android.database.ContentObserver;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.UserHandle;
 import android.preference.CheckBoxPreference;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 
+import com.android.internal.util.slim.DeviceUtils;
 import com.android.internal.view.RotationPolicy;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
-public class DisplayRotation extends SettingsPreferenceFragment {
+public class DisplayRotation extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
     private static final String TAG = "DisplayRotation";
 
     private static final String KEY_ACCELEROMETER = "accelerometer";
+    private static final String KEY_LOCKSCREEN_ROTATION = "lockscreen_rotation";
     private static final String ROTATION_0_PREF = "display_rotation_0";
     private static final String ROTATION_90_PREF = "display_rotation_90";
     private static final String ROTATION_180_PREF = "display_rotation_180";
@@ -43,6 +47,7 @@ public class DisplayRotation extends SettingsPreferenceFragment {
     private CheckBoxPreference mRotation90Pref;
     private CheckBoxPreference mRotation180Pref;
     private CheckBoxPreference mRotation270Pref;
+    private ListPreference mLockscreenRotation;
 
     public static final int ROTATION_0_MODE = 1;
     public static final int ROTATION_90_MODE = 2;
@@ -64,8 +69,26 @@ public class DisplayRotation extends SettingsPreferenceFragment {
 
         PreferenceScreen prefSet = getPreferenceScreen();
 
-        mAccelerometer = (CheckBoxPreference) findPreference(KEY_ACCELEROMETER);
+        mAccelerometer = (CheckBoxPreference) prefSet.findPreference(KEY_ACCELEROMETER);
         mAccelerometer.setPersistent(false);
+
+        // LockScreen Rotation
+        mLockscreenRotation = (ListPreference) prefSet.findPreference(KEY_LOCKSCREEN_ROTATION);
+        if (mLockscreenRotation != null) {
+            boolean defaultVal = !DeviceUtils.isPhone(getActivity());
+            int userVal = Settings.System.getIntForUser(getContentResolver(),
+                    Settings.System.LOCKSCREEN_ROTATION_ENABLED, defaultVal ? 1 : 0,
+                    UserHandle.USER_CURRENT);
+            mLockscreenRotation.setValue(String.valueOf(userVal));
+            if (userVal == 0) {
+                mLockscreenRotation.setSummary(mLockscreenRotation.getEntry());
+            } else {
+                mLockscreenRotation.setSummary(mLockscreenRotation.getEntry()
+                        + " " + getResources().getString(
+                        R.string.lockscreen_rotation_summary_extra));
+            }
+            mLockscreenRotation.setOnPreferenceChangeListener(this);
+        }
 
         mRotation0Pref = (CheckBoxPreference) prefSet.findPreference(ROTATION_0_PREF);
         mRotation90Pref = (CheckBoxPreference) prefSet.findPreference(ROTATION_90_PREF);
@@ -137,8 +160,7 @@ public class DisplayRotation extends SettingsPreferenceFragment {
     }
 
     @Override
-    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
-            Preference preference) {
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         if (preference == mAccelerometer) {
             RotationPolicy.setRotationLockForAccessibility(getActivity(),
                     !mAccelerometer.isChecked());
@@ -157,5 +179,24 @@ public class DisplayRotation extends SettingsPreferenceFragment {
         }
 
         return super.onPreferenceTreeClick(preferenceScreen, preference);
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object value) {
+        if (preference == mLockscreenRotation) {
+            int userVal = Integer.valueOf((String) value);
+            Settings.System.putIntForUser(getContentResolver(),
+                    Settings.System.LOCKSCREEN_ROTATION_ENABLED,
+                    userVal, UserHandle.USER_CURRENT);
+            mLockscreenRotation.setValue(String.valueOf(value));
+            if (userVal == 0) {
+                mLockscreenRotation.setSummary(mLockscreenRotation.getEntry());
+            } else {
+                mLockscreenRotation.setSummary(mLockscreenRotation.getEntry()
+                        + " " + getResources().getString(
+                        R.string.lockscreen_rotation_summary_extra));
+            }
+        }
+        return true;
     }
 }

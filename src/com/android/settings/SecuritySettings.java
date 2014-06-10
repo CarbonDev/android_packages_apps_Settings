@@ -48,8 +48,8 @@ import android.telephony.MSimTelephonyManager;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
-import com.android.internal.widget.LockPatternUtils;
 import com.android.internal.util.slim.DeviceUtils;
+import com.android.internal.widget.LockPatternUtils;
 import com.android.settings.R;
 
 import java.util.ArrayList;
@@ -73,7 +73,6 @@ public class SecuritySettings extends RestrictedSettingsFragment
     private static final String KEY_DEVICE_ADMIN_CATEGORY = "device_admin_category";
     private static final String KEY_LOCK_AFTER_TIMEOUT = "lock_after_timeout";
     private static final String KEY_OWNER_INFO_SETTINGS = "owner_info_settings";
-    private static final String KEY_LOCKSCREEN_ROTATION = "lockscreen_rotation";
     private static final String KEY_ENABLE_WIDGETS = "keyguard_enable_widgets";
     private static final String KEY_INTERFACE_SETTINGS = "lock_screen_settings";
     private static final String KEY_TARGET_SETTINGS = "lockscreen_targets";
@@ -141,7 +140,6 @@ public class SecuritySettings extends RestrictedSettingsFragment
     private ListPreference mShakeTimer;
     private CheckBoxPreference mLockBeforeUnlock;
     private CheckBoxPreference mVisibleGesture;
-    private ListPreference mLockscreenRotation;
 
     private Preference mNotificationAccess;
     private Preference mLockInterface;
@@ -409,24 +407,6 @@ public class SecuritySettings extends RestrictedSettingsFragment
             mQuickUnlockScreen.setChecked(Settings.System.getInt(getContentResolver(), 
                     Settings.System.LOCKSCREEN_QUICK_UNLOCK_CONTROL, 0) == 1);
             mQuickUnlockScreen.setOnPreferenceChangeListener(this);
-        }
-
-        // LockScreen Rotation
-        mLockscreenRotation = (ListPreference) root.findPreference(KEY_LOCKSCREEN_ROTATION);
-        if (mLockscreenRotation != null) {
-            boolean defaultVal = !DeviceUtils.isPhone(getActivity());
-            int userVal = Settings.System.getIntForUser(getContentResolver(),
-                    Settings.System.LOCKSCREEN_ROTATION_ENABLED, defaultVal ? 1 : 0,
-                    UserHandle.USER_CURRENT);
-            mLockscreenRotation.setValue(String.valueOf(userVal));
-            if (userVal == 0) {
-                mLockscreenRotation.setSummary(mLockscreenRotation.getEntry());
-            } else {
-                mLockscreenRotation.setSummary(mLockscreenRotation.getEntry()
-                        + " " + getResources().getString(
-                        R.string.lockscreen_rotation_summary_extra));
-            }
-            mLockscreenRotation.setOnPreferenceChangeListener(this);
         }
 
         // Show password
@@ -925,19 +905,6 @@ public class SecuritySettings extends RestrictedSettingsFragment
                     Settings.Secure.LOCK_BEFORE_UNLOCK,
                     ((Boolean) value) ? 1 : 0);
             shouldEnableTargets();
-        } else if (preference == mLockscreenRotation) {
-            int userVal = Integer.valueOf((String) value);
-            Settings.System.putIntForUser(getContentResolver(),
-                    Settings.System.LOCKSCREEN_ROTATION_ENABLED,
-                    userVal, UserHandle.USER_CURRENT);
-            mLockscreenRotation.setValue(String.valueOf(value));
-            if (userVal == 0) {
-                mLockscreenRotation.setSummary(mLockscreenRotation.getEntry());
-            } else {
-                mLockscreenRotation.setSummary(mLockscreenRotation.getEntry()
-                        + " " + getResources().getString(
-                        R.string.lockscreen_rotation_summary_extra));
-            }
         }
         return true;
     }
