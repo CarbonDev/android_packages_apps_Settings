@@ -840,8 +840,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Bluetooth accept all Filestypes -->
     <string name="bluetooth_accept_all_files">Accept all file types</string>
 
-    <!-- Settings checkbox for updating CM recovery on boot -->
-    <string name="update_recovery_title">Update CM recovery</string>
+    <!-- Settings checkbox for updating recovery on boot -->
+    <string name="update_recovery_title">Update recovery</string>
     <string name="update_recovery_summary">Update recovery when installing system updates</string>
 
 </resources>
