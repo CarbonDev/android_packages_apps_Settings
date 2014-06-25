@@ -876,4 +876,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Keep the referenced menu string consistent with status_bar_notification_spam_item_title in frameworks/base/packages/SystemUI -->
     <string name="no_filters_title">No filters set. To filter a notification, long press it and choose \'Ignore messages like this\'.</string>
 
+    <!-- High touch sensitivity -->
+    <string name="high_touch_sensitivity_title">High touch sensitivity</string>
+    <string name="high_touch_sensitivity_summary">Increase the screen\'s sensitivity so you can touch it while wearing gloves</string>
 </resources>
