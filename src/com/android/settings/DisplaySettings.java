@@ -151,7 +151,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
         mColorEnhancement = (CheckBoxPreference) findPreference(KEY_COLOR_ENHANCEMENT);
         if (!isColorEnhancementSupported()) {
-            advancedPrefs.removePreference(mColorEnhancement);
+            getPreferenceScreen().removePreference(mColorEnhancement);
             mColorEnhancement = null;
         }
 
