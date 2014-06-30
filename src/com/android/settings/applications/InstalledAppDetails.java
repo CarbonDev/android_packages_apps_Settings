@@ -148,6 +148,7 @@ public class InstalledAppDetails extends Fragment
     private Button mBlacklistButton;
     private CompoundButton mNotificationSwitch;
     private CompoundButton mPrivacyGuardSwitch;
+    private CompoundButton mHeadsUpSwitch;
 
     private PackageMoveObserver mPackageMoveObserver;
     private AppOpsManager mAppOps;
@@ -442,6 +443,17 @@ public class InstalledAppDetails extends Fragment
         }
     }
 
+    private void initHeadsUpButton() {
+        boolean enabled = mPm.getHeadsUpSetting(mAppEntry.info.packageName);
+        mHeadsUpSwitch.setChecked(enabled);
+        if (isThisASystemPackage() || !mNotificationSwitch.isChecked()) {
+            mHeadsUpSwitch.setEnabled(false);
+        } else {
+            mHeadsUpSwitch.setEnabled(true);
+            mHeadsUpSwitch.setOnCheckedChangeListener(this);
+        }
+    }
+
     private void initPrivacyGuardButton() {
         if (mPrivacyGuardSwitch == null) {
             return;
@@ -488,7 +500,7 @@ public class InstalledAppDetails extends Fragment
 
         mRootView = view;
         mComputingStr = getActivity().getText(R.string.computing_size);
-        
+
         // Set default values on sizes
         mTotalSize = (TextView)view.findViewById(R.id.total_size_text);
         mAppSize = (TextView)view.findViewById(R.id.application_size_text);
@@ -507,7 +519,7 @@ public class InstalledAppDetails extends Fragment
         mForceStopButton.setText(R.string.force_stop);
         mUninstallButton = (Button)btnPanel.findViewById(R.id.right_button);
         mForceStopButton.setEnabled(false);
-        
+
         // Get More Control button panel
         View moreCtrlBtns = view.findViewById(R.id.more_control_buttons_panel);
         mBlacklistButton = (Button)moreCtrlBtns.findViewById(R.id.left_button);
@@ -518,20 +530,21 @@ public class InstalledAppDetails extends Fragment
         View data_buttons_panel = view.findViewById(R.id.data_buttons_panel);
         mClearDataButton = (Button) data_buttons_panel.findViewById(R.id.right_button);
         mMoveAppButton = (Button) data_buttons_panel.findViewById(R.id.left_button);
-        
+
         // Cache section
         mCacheSize = (TextView) view.findViewById(R.id.cache_size_text);
         mClearCacheButton = (Button) view.findViewById(R.id.clear_cache_button);
 
         mActivitiesButton = (Button)view.findViewById(R.id.clear_activities_button);
-        
+
         // Screen compatibility control
         mScreenCompatSection = view.findViewById(R.id.screen_compatibility_section);
         mAskCompatibilityCB = (CheckBox)view.findViewById(R.id.ask_compatibility_cb);
         mEnableCompatibilityCB = (CheckBox)view.findViewById(R.id.enable_compatibility_cb);
-        
+
         mNotificationSwitch = (CompoundButton) view.findViewById(R.id.notification_switch);
         mPrivacyGuardSwitch = (CompoundButton) view.findViewById(R.id.privacy_guard_switch);
+        mHeadsUpSwitch = (CompoundButton) view.findViewById(R.id.heads_up_switch);
 
         mBlacklistDialogView = inflater.inflate(R.layout.blacklist_dialog, null);
         mPeekBlacklist = (CheckBox) mBlacklistDialogView.findViewById(R.id.peek_blacklist);
@@ -948,6 +961,10 @@ public class InstalledAppDetails extends Fragment
             initPrivacyGuardButton();
         }
 
+        // only setup heads up if we didn't get uninstalled
+        if (!mMoveInProgress) {
+            initHeadsUpButton();
+        }
         return true;
     }
 
@@ -1357,6 +1374,10 @@ public class InstalledAppDetails extends Fragment
                 case DLG_DISABLE_NOTIFICATIONS:
                     // Re-enable the checkbox
                     getOwner().mNotificationSwitch.setChecked(true);
+                    // Give access to heads up checkbox.
+                    if (getOwner().mHeadsUpSwitch != null) {
+                        getOwner().mHeadsUpSwitch.setEnabled(true);
+                    }
                     break;
                 case DLG_PRIVACY_GUARD:
                     // Re-enable the checkbox
@@ -1443,8 +1464,14 @@ public class InstalledAppDetails extends Fragment
             final boolean enable = mNotificationSwitch.isChecked();
             mNotificationManager.setNotificationsEnabledForPackage(
                     mAppEntry.info.packageName, mAppEntry.info.uid, enabled);
+            if (mHeadsUpSwitch != null) {
+                mHeadsUpSwitch.setEnabled(enable);
+            }
         } catch (android.os.RemoteException ex) {
             mNotificationSwitch.setChecked(!enabled); // revert
+            if (mHeadsUpSwitch != null) {
+                mHeadsUpSwitch.setEnabled(!enabled);
+            }
         }
     }
 
@@ -1590,6 +1617,8 @@ public class InstalledAppDetails extends Fragment
             setPeekState(isChecked);
         } else if (buttonView == mFloatingBlacklist) {
             setFloatingModeState(isChecked);
+        } else if (buttonView == mHeadsUpSwitch) {
+            mPm.setHeadsUpSetting(packageName, isChecked);
         }
     }
 }

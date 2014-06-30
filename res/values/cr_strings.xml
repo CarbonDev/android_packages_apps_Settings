@@ -862,4 +862,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="app_moving_reboot_now_button">Reboot now</string>
     <string name="app_moving_reboot_later_button">Reboot later</string>
 
+    <!-- Heads up -->
+    <string name="heads_up_switch_label">Enable heads up notification</string>
 </resources>
