@@ -4989,4 +4989,9 @@
     <string name="saturation_str">Saturation: <xliff:g id="saturation_value">%1$s</xliff:g></string>
     <string name="contrast_str">Contrast: <xliff:g id="contrast_value">%1$s</xliff:g></string>
     <string name="intensity_str">Intensity: <xliff:g id="intensity_str_value">%1$s</xliff:g></string>
+    
+    <!-- OpenDelta  -->
+    <public type="string" name="system_update_settings_list_item_title" id="0x7f0c06d7" />
+    <public type="string" name="system_update_settings_list_item_summary" id="0x7f0c06d8" />
+ 
 </resources>
