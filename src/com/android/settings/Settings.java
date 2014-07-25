@@ -64,7 +64,6 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.Switch;
 import android.widget.TextView;
-
 import com.android.internal.util.ArrayUtils;
 import com.android.settings.ActivityPicker;
 import com.android.settings.accessibility.AccessibilitySettings;
@@ -76,10 +75,10 @@ import com.android.settings.accounts.ManageAccountsSettings;
 import com.android.settings.applications.AppOpsSummary;
 import com.android.settings.applications.ManageApplications;
 import com.android.settings.applications.ProcessStatsUi;
+import com.android.settings.carbon.superuser.PolicyNativeFragment;
 import com.android.settings.blacklist.BlacklistSettings;
 import com.android.settings.bluetooth.BluetoothEnabler;
 import com.android.settings.bluetooth.BluetoothSettings;
-import com.android.settings.cyanogenmod.superuser.PolicyNativeFragment;
 import com.android.settings.deviceinfo.Memory;
 import com.android.settings.deviceinfo.UsbSettings;
 import com.android.settings.fuelgauge.PowerUsageSummary;
@@ -179,7 +178,9 @@ public class Settings extends PreferenceActivity
             R.id.print_settings,
             R.id.nfc_payment_settings,
             R.id.home_settings,
-            R.id.privacy_settings_cyanogenmod
+            R.id.privacy_settings_cyanogenmod,
+            R.id.supersu_settings,
+            R.id.superuser
     };
 
     private SharedPreferences mDevelopmentPreferences;
@@ -375,7 +376,8 @@ public class Settings extends PreferenceActivity
         com.android.settings.cyanogenmod.PrivacySettings.class.getName(),
         com.carbon.fibers.fragments.sb.QuickSettingsTiles.class.getName(),
         com.android.settings.carbon.QuietHours.class.getName(),
-        ThemeSettings.class.getName()
+        ThemeSettings.class.getName(),
+        com.android.settings.carbon.superuser.PolicyNativeFragment.class.getName()
     };
 
     @Override
@@ -646,11 +648,29 @@ public class Settings extends PreferenceActivity
                     if (adapter == null || !adapter.isEnabled()
                             || !getPackageManager().hasSystemFeature(
                                     PackageManager.FEATURE_NFC_HOST_CARD_EMULATION)) {
-                       target.remove(i);
-                       if (adapter == null) {
-                           Log.e(LOG_TAG, "NFC feature advertised but the default adapter is NULL!");
-                       }
+                       target.remove(i);                     
                     }
+                }
+            } else if (id == R.id.supersu_settings) {
+                // Embedding into Settings is supported from SuperSU v1.85 and up
+                boolean supported = false;
+                try {
+                    supported = (getPackageManager().getPackageInfo("eu.chainfire.supersu", 0).versionCode >= 185);
+                } catch (PackageManager.NameNotFoundException e) {
+                }
+                if (!supported) {
+                    //remove SuperSU header
+                    target.remove(i);
+                }
+            } else if (id == R.id.superuser) {
+                boolean supported = false;
+                try {
+                    supported = (getPackageManager().getPackageInfo("eu.chainfire.supersu", 0).versionCode >= 185);
+                } catch (PackageManager.NameNotFoundException e) {
+                }
+                if (supported) {
+                    //SuperSu is installed and embeddable, so remove SuperUser header
+                    target.remove(i);
                 }
             } else if (id == R.id.development_settings) {
                 if (!showDev) {
@@ -662,10 +682,6 @@ public class Settings extends PreferenceActivity
                 }
             } else if (id == R.id.account_add) {
                 if (um.hasUserRestriction(UserManager.DISALLOW_MODIFY_ACCOUNTS)) {
-                    target.remove(i);
-                }
-            } else if (id == R.id.superuser) {
-                if (!DevelopmentSettings.isRootForAppsEnabled()) {
                     target.remove(i);
                 }
             } else if (id == R.id.multi_sim_settings) {

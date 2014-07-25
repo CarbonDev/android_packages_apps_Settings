@@ -148,7 +148,7 @@
             android:permission="android.permission.REPORT_SUPERUSER" />
 
         <receiver
-            android:name=".cyanogenmod.superuser.PackageChangeReceiver" >
+            android:name="com.koushikdutta.superuser.PackageChangeReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
                 <data android:scheme="package" />
