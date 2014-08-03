@@ -21,8 +21,7 @@
         android:key="themepacks_settings"
         android:icon="@drawable/prd_ic_themepacks"
         android:title="@string/themepacks_settings_title">
-        <intent
-            android:action="android.intent.action.MAIN" >
+        <intent android:action="android.intent.action.MAIN" >
             <category android:name="cyanogenmod.intent.category.APP_THEMES" />
         </intent>
     </Preference>
@@ -33,8 +32,8 @@
         android:title="@string/styles_settings_title"
         android:icon="@drawable/prd_ic_style">
         <intent android:action="android.intent.action.MAIN" >
-             <category android:name="cyanogenmod.intent.category.APP_THEMES" />
-             <extra android:name="component_filter" android:value="mods_overlays"/>
+            <category android:name="cyanogenmod.intent.category.APP_THEMES" />
+            <extra android:name="component_filter" android:value="mods_overlays"/>
         </intent>
     </Preference>
 
@@ -44,8 +43,8 @@
         android:title="@string/icons_settings_title"
         android:icon="@drawable/prd_ic_icons">
         <intent android:action="android.intent.action.MAIN" >
-             <category android:name="cyanogenmod.intent.category.APP_THEMES" />
-             <extra android:name="component_filter" android:value="mods_icons"/>
+            <category android:name="cyanogenmod.intent.category.APP_THEMES" />
+            <extra android:name="component_filter" android:value="mods_icons"/>
         </intent>
     </Preference>
 
@@ -55,28 +54,28 @@
         android:title="@string/fonts_settings_title"
         android:icon="@drawable/prd_ic_fonts">
         <intent android:action="android.intent.action.MAIN" >
-             <category android:name="cyanogenmod.intent.category.APP_THEMES" />
-             <extra android:name="component_filter" android:value="mods_fonts"/>
+            <category android:name="cyanogenmod.intent.category.APP_THEMES" />
+            <extra android:name="component_filter" android:value="mods_fonts"/>
         </intent>
     </Preference>
 
-    <!-- Wallpaper
+    <!-- Wallpaper -->
     <Preference
         android:key="wallpaper_settings"
         android:title="@string/wallpaper_settings_title"
         android:icon="@drawable/prd_ic_wallpapers">
         <intent android:targetPackage="com.android.wallpapercropper"
                 android:targetClass="com.android.wallpapercropper.WallpaperPickerActivity" />
-    </Preference> -->
+    </Preference>
 
-    <!-- Lockscreen Wallpaper
+    <!-- Lockscreen Wallpaper -->
     <Preference
         android:key="lockscreen_wallpaper_settings"
         android:title="@string/lockscreen_wallpaper_settings_title"
         android:icon="@drawable/prd_ic_lockscreen_wallpapers">
         <intent android:targetPackage="com.android.wallpapercropper"
                 android:targetClass="com.android.wallpapercropper.LockWallpaperPickerActivity" />
-    </Preference> -->
+    </Preference>
 
     <!-- Boot Animations -->
     <Preference
@@ -84,8 +83,8 @@
         android:title="@string/bootanim_settings_title"
         android:icon="@drawable/prd_ic_boot">
         <intent android:action="android.intent.action.MAIN" >
-             <category android:name="cyanogenmod.intent.category.APP_THEMES" />
-             <extra android:name="component_filter" android:value="mods_bootanim"/>
+            <category android:name="cyanogenmod.intent.category.APP_THEMES" />
+            <extra android:name="component_filter" android:value="mods_bootanim"/>
         </intent>
     </Preference>
 
@@ -95,8 +94,8 @@
         android:title="@string/soundpack_settings_title"
         android:icon="@drawable/prd_ic_soundpacks">
         <intent android:action="android.intent.action.MAIN" >
-             <category android:name="cyanogenmod.intent.category.APP_THEMES" />
-             <extra android:name="component_filter"
+            <category android:name="cyanogenmod.intent.category.APP_THEMES" />
+            <extra android:name="component_filter"
                     android:value="mods_alarms,mods_ringtones,mods_notifications"/>
         </intent>
     </Preference>
