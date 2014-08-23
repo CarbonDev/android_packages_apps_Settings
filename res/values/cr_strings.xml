@@ -764,7 +764,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="gestures_double_spen_title_head">Double tap</string>
 
     <!-- Gestures Options -->
-    <string name="gestures_settings_header_title">Gestures</string>
     <string name="gestures_action_empty">No action</string>
     <string name="gestures_action_home">Home</string>
     <string name="gestures_action_back">Back</string>
