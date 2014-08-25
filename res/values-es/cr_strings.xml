@@ -15,7 +15,10 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- General strings -->
+    <!-- About Carbon string -->
+    <string name="about_carbon_title">Acerca de CarbonROM</string>
+	
+	<!-- General strings -->
     <string name="enabled">Habilitado</string>
     <string name="volume">Volumen</string>
 
@@ -31,6 +34,17 @@
     <string name="wifi_setting_priority_summary">Especificar la prioridad de las redes Wi-Fi</string>
     <!-- WiFi forget all networks -->
     <string name="wifi_menu_forget_all">Olvidar todas las redes</string>
+	<!-- Wi-Fi SSID string limits -->
+	<string name="wifi_ssid_input_limit">El nombre de SSID excede el tamaño máximo</string>
+    <!-- Wi-Fi P2P string limits -->
+    <string name="p2p_device_name_input_limit">EL nombre P2P excede el tamaño máximo</string>
+
+	<!--  Title for PreferenceScreen to change encryption password [CHAR LIMIT=22]  -->
+    <string name="change_crypt_password_title">Cambiar contraseña</string>
+    <!--  Summary for PreferenceScreen to change encryption password [CHAR LIMIT=45]  -->
+    <string name="change_crypt_password_summary">Cambiar contraseña usada para la encriptación del dispositivo</string>
+    <!-- Header on first screen of choose encryption password [CHAR LIMIT=30] -->
+    <string name="encryptionpassword_choose_your_password_header">Seleccionar seguridad de la contraseña</string>
 
     <string name="increasing_ring_title">Tono de llamada ascendente</string>
     <!-- Sound settings screen, the caption of the checkbox for making incoming calls increase in volume -->
@@ -47,6 +61,10 @@
     <string name="increasing_ring_interval_5seconds">5 segundos</string>
     <string name="increasing_ring_interval_10seconds">10 segundos</string>
 
+	<!-- Sound settings screen, setting check box label -->
+    <string name="camera_sounds_title">Sonido de disparo de cámara</string>
+    <string name="camera_sounds_summary">PRECAUCIÓN: Desabilita el sonido de disparo de la cámara si es ilegal en su zona</string>
+	
     <!-- Profiles settings -->
     <string name="profiles_settings_title">Perfiles</string>
     <string name="profiles_add">Añadir</string>
@@ -67,6 +85,7 @@
     <string name="profile_unknown_nfc_tag">Perfil desconocido</string>
     <string name="profile_add_nfc_text">La etiqueta NFC está vinculada a un perfile desconocido. Vincular esta etiqueta NFC a un perfil existente permitirá seleccionarlo en un futuro.</string>
     <string name="profile_select">Seleccionar perfil</string>
+	<string name="power_menu_expanded_desktop">Modo inmersivo</string>
 
     <!-- Add Profile -->
     <string name="add_profile_dialog_title">Crear nuevo perfil</string>
@@ -112,6 +131,8 @@
     <string name="profile_settings">Configuración de perfil</string>
     <string name="profile_trigger_connect">Al conectar</string>
     <string name="profile_trigger_disconnect">Al desconectar</string>
+	<string name="profile_trigger_a2dp_connect">Al conectar A2DP</string>
+    <string name="profile_trigger_a2dp_disconnect">Al desconectar A2DP</string>
     <string name="profile_trigger_notrigger">Sin lanzador</string>
 
     <!-- Profile Settings sound modes labels -->
@@ -124,6 +145,7 @@
 
     <!-- Sound settings screen, setting option name to pick ringtone (a list dialog comes up) -->
     <string name="soundtone_title">Tono de notificación</string>
+	<string name="soundtone_summary" translatable="false">""</string>
 
     <!-- Title for application group setting screen -->
     <string name="profile_appgroups_title">Grupos de aplicaciones</string>
@@ -170,6 +192,22 @@
     <string name="ring_mode_vibrate">Vibrar</string>
     <string name="ring_mode_mute">Silencio</string>
 
+	<!-- Volume Steps -->
+    <string name="volume_steps_title">Niveles de sonido</string>
+    <string name="volume_steps_alarm_title">Alarma</string>
+    <string name="volume_steps_dtmf_title">DTMF</string>
+    <string name="volume_steps_music_title">Música</string>
+    <string name="volume_steps_notification_title">Notificaciones</string>
+    <string name="volume_steps_ring_title">Tono</string>
+    <string name="volume_steps_system_title">Sistema</string>
+    <string name="volume_steps_voice_call_title">Llamada</string>
+    <string name="volume_steps_60">60</string>
+    <string name="volume_steps_45">45</string>
+    <string name="volume_steps_30">30</string>
+    <string name="volume_steps_15">15</string>
+    <string name="volume_steps_7">7</string>
+    <string name="volume_steps_5">5</string>
+	
     <!-- Volume panel style -->
     <string name="volume_overlay_title">Estilo panel de volumen</string>
     <string name="volume_overlay_single">Simple</string>
@@ -210,6 +248,10 @@
     <string name="adaptive_backlight_title">Brillo automático</string>
     <string name="adaptive_backlight_summary">El brillo de la pantalla se ajusta automáticamente y ayuda a ahorrar batería</string>
 
+	<!-- Color enhancement settings screen -->
+    <string name="color_enhancement_title">Calibración del color</string>
+    <string name="color_enhancement_summary">Cambiar el color dinamico de la pantalla</string>
+	
     <!-- Turn on display when power connected; turn off display when power disconnected -->
     <string name="wake_when_plugged_or_unplugged_title">Despertar al conectar</string>
     <string name="wake_when_plugged_or_unplugged_summary">Enciende la pantalla cuando se conecta o desconecta al cargador</string>
@@ -275,7 +317,7 @@
     <string name="auto_brightness_preview">Previsualizar</string>
     <string name="auto_brightness_preview_dialog_title">Previsulización de curva de brillo</string>
     <string name="auto_brightness_help_dialog_title">Ayuda</string>
-    <string name="auto_brightness_help_text"><b>Cómo se calcula el brillo?</b>
+    <string name="auto_brightness_help_text"><b>¿Cómo se calcula el brillo?</b>
 \n\n
 The brightness curve is calculated by performing a <i>cubic spline interpolation</i>
 on a given number of <i>control points</i>. It\'s not a \'bucket-type\' calculation where
@@ -310,7 +352,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="display_rotation_title">Rotación</string>
     <string name="display_rotation_disabled">Deshabilitada</string>
     <string name="display_rotation_unit">grados</string>
-    <string name="display_lockscreen_rotation_title">Rotar pantalla de bloqueo</string>
     <string name="display_rotation_category_title">Modos de rotación</string>
     <string name="display_rotation_0_title">0 grados</string>
     <string name="display_rotation_90_title">90 grados</string>
@@ -323,6 +364,12 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <string name="app_security_title">Seguridad de aplicaciones</string>
 
+	<!-- Keyguard allow rotation -->
+    <string name="lockscreen_rotation_title">Rotación de la pantalla de bloqueo</string>
+    <string name="lockscreen_rotation_portrait">Solo vertical</string>
+    <string name="lockscreen_rotation_landscape">Solo horizontal</string>
+    <string name="lockscreen_rotation_summary_extra">(la rotación depente)</string>
+	
     <!-- Setting checkbox title for root access -->
     <string name="root_access">Acceso root</string>
     <string name="root_access_warning_title">¿Permitir acceso root?</string>
@@ -330,7 +377,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="root_access_none">Deshabilitado</string>
     <string name="root_access_apps">Sólo aplicaciones</string>
     <string name="root_access_adb">Sólo ADB</string>
-    <string name="root_access_all">APlicaciones y ADB</string>
+    <string name="root_access_all">Aplicaciones y ADB</string>
 
     <string name="ok">Aceptar</string>
 
@@ -344,8 +391,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="quiet_hours_still">Deshabilitar vibraciones</string>
     <string name="quiet_hours_dim">Deshabilitar luz de notificación</string>
     <string name="quiet_hours_haptic">Deshabilitar "haptic feedback"</string>
-    <string name="quiet_hours_active_from">Activar desde</string>
-    <string name="quiet_hours_active_to">hasta</string>
+    <string name="quiet_hours_active_period">Activado desde <xliff:g id="start">%1$s</xliff:g> hasta <xliff:g id="end">%2$s</xliff:g></string>
 
     <!-- Ringer mute options -->
     <string name="quiet_hours_ringer_allow_all">Sonar para cualquier remitente</string>
@@ -362,11 +408,13 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="mod_version_default">Desconocida</string>
     <!-- About phone screen, build date of ROM -->
     <string name="build_date">Fecha de compilación</string>
+	<string name="build_date_default" translatable="false">01-01-2012-0000</string>
     <!-- About device screen, Cpu info -->
     <string name="cpu_info">CPU</string>
     <!-- About phone screen, Free memory info -->
     <string name="mem_info">Memoria</string>
     <!-- About phone screen, status item label -->
+	<string name="phone_service_state">Voz: <xliff:g id="voice_state">%1$s</xliff:g>, datos: <xliff:g id="data_state">%2$s</xliff:g></string>
 
     <!-- CARBON Settings  -->
     <!-- Settings main menu category heading. Interface (Launcher, Themes, System). [CHAR LIMIT=40] -->
@@ -375,61 +423,33 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="carbon_fibers_title">Carbon Fibers</string>
 
     <!-- Themes settings -->
+	<!-- Settings main menu entry -->
     <string name="themes_settings_title">Temas</string>
+	
+	<!-- The following are entries under the themes menu -->
+    <string name="themepacks_settings_title">Paquetes de temas</string>
+    <string name="styles_settings_title">Estilos</string>
+    <string name="icons_settings_title">Iconos</string>
+    <string name="fonts_settings_title">Fuentes</string>
+    <string name="wallpaper_settings_title">Fondos de pantalla</string>
+    <string name="lockscreen_wallpaper_settings_title">Fondos de pantalla de bloqueo</string>
+    <string name="bootanim_settings_title">Animaciones de arranque</string>
+    <string name="soundpack_settings_title">Paquetes de sonido</string>
 
     <!-- Performance settings -->
-    <string name="performance_settings_title">Rendimiento</string>
-
-    <!-- Performance Settings : Warning dialog -->
-    <string name="performance_settings_warning_title">Proceder con precaución</string>
-    <string name="performance_settings_warning">Estos ajustes están incluidos para experimentar. Cualquier cambio que se haga puede producir inestabilidad, errores en el software o fallos de hardware.\n\nPor favor, no enviar reportes de errores si se modifican los valores predeterminados.</string>
-
-    <!-- Performance Settings : Set on boot option -->
-    <string name="performance_set_on_boot">Establecer en el inicio</string>
-    <string name="performance_set_on_boot_summary">Restablecer valores en el inicio</string>
-
-    <!-- Performance Settings : Processor Settings -->
-    <!-- Performance Settings : Processor settings title -->
-    <string name="processor_title">Procesador</string>
-
-    <!-- Performance Settings : Processor settings sub items -->
-    <string name="cpu_cur_freq_title">Frecuencia CPU actual</string>
-    <string name="cpu_governors_title">Regulador CPU</string>
-    <string name="cpu_min_freq_title">Frecuencia CPU mínima</string>
-    <string name="cpu_max_freq_title">Frecuencia CPU máxima</string>
-
-    <!-- Performance Settings : I/O scheduler settings title -->
-    <string name="io_scheds_title">Planificador I/O</string>
-
-    <!-- Performance Settings : I/O scheduler settings sub items -->
-    <string name="io_sched_title">Planificador I/O</string>
-
-    <!-- Performance Settings : Performance profile settings -->
-    <string name="perf_profile_title">Perfil</string>
-
-    <!-- Memory Management -->
-    <string name="memory_management_title">Gestión de memoria</string>
-    <!-- KSM -->
-    <string name="pref_ksm_title">Kernel samepage merging</string>
-    <string name="pref_ksm_summary">KSM reduce el requerimiento de memoria física y mejora el rendimiento.</string>
-    <!-- Purgeable Assets -->
-    <string name="pref_purgeable_assets_title">Permitir purgado de activos</string>
-    <string name="pref_purgeable_assets_summary">Libera memoria cuando se necesita (se necesita reiniciar)</string>
-
-    <!-- Performance Settings : 16bpp Alpha -->
-    <string name="pref_use_16bpp_alpha_title">Transparencia 16bit</string>
-    <string name="pref_use_16bpp_alpha_summary">Mejor rendimiento de graicos pero peor calidad. Puede causar problemas en la visualización de los gráficos (se necesita reiniciar)</string>
-
-    <!-- Kill app long-press back -->
-    <string name="kill_app_longpress_back">Botón atrás cierra aplicación</string>
-    <string name="kill_app_longpress_back_summary">Cierra la aplicación en primer plano manteniendo pulsado el botón atrás</string>
+    <string name="performance_settings">Rendimiento</string>
 
     <!-- Advanced, Device specific (DeviceParts) settings  -->
     <string name="advanced_settings_title">Avanzado</string>
 
     <!-- Launches Dev Tools -->
     <string name="development_tools_title">Lanzar herramientas</string>
+	<!-- Whether to allow mock SMS -->
+	<string name="allow_mock_sms">Permitir SMS simulados</string>
 
+    <!-- Privacy Settings Header item -->
+    <string name="privacy_settings_cyanogenmod_title">Privacidad</string>
+	
     <!-- Privacy Guard -->
     <string name="privacy_guard_switch_label">Habilitar Privacy Guard</string>
     <string name="privacy_guard_dlg_title">¿Habilitar Privacy Guard?</string>
@@ -443,6 +463,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="privacy_guard_filter_does_not_match">No hay aplicaciones instaladas con permisos relevantes</string>
     <string name="privacy_guard_help_title">Ayuda</string>
     <string name="privacy_guard_reset_title">Restablecer</string>
+	<string name="privacy_guard_reset_text">¿Restablecer permisos?</string>
     <string name="privacy_guard_help_text">En esta pantalla se pueden seleccionar para qué aplicaciones estará activo Privacy Guard tocando en ellas. Las aplicaciones seleccionadas podrán acceder a los datos personales como contactos, mensajes o historial de llamadas. Tocando de forma prolongada una de ellas se abre la pantalla de detalles para esa aplicación.\n\nDe forma predeterminada, las aplicaciones de sistema no se muestran. Si quiere sque se muestren seleccione la opción correspondiente en el menú.</string>
     <string name="privacy_guard_manager_show_system_apps">Mostrar aplicaciones de sistema</string>
     <string name="privacy_guard_manager_filter_permissions">Filtro de permisos</string>
@@ -485,14 +506,24 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Android debugging over WiFi -->
     <string name="adb_over_network">ADB por red</string>
     <string name="adb_over_network_summary">Habilita la depuración TCP/IP a través de interfaces de red (redes Wi-Fi, USB). Esta configuración se restablece al reiniciar</string>
+	
     <!-- Warning for Adb over Network -->
     <string name="adb_over_network_warning">ATENCIÓN: Cuando ADB por red está habilitado el teléfono es vulnerable a intrusos conectados a la red, incluida la red GSM!\n\nSólo utilizar esta función cuando estemos conectados a redes de confianza.\n\n¿Sigue queriendo habilitar esta función?</string>
+	
+	<!-- Lockscreen quick unlock -->
+    <string name="lockscreen_quick_unlock_control_title">Desbloqueo rápido</string>
+    <string name="lockscreen_quick_unlock_control_summary">Desbloquear automáticamente cuando el PIN/contraseña correcto es Unlock automatically when the correct PIN/password is introducido</string>
+	
     <!-- Hostname setting -->
     <string name="device_hostname">Nombre del dispositivo</string>
 
     <!-- tap-to-wake -->
     <string name="double_tap_to_wake_title">Doble toque para despertar</string>
 
+	<!-- Proximity wake -->
+    <string name="proximity_wake_title">Prevenir encendidos de pantalla</string>
+    <string name="proximity_wake_summary">Comprobueba que el sensor de proximidad despierte la pantalla</string>
+	
     <!-- Font size sample text. This needs to be a very short string, as it is shown in
     multiple font sizes in a limited amount of space. -->
     <string name="font_size_sample">Muestra</string>
@@ -523,6 +554,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Lockscreen widget settings -->
     <string name="lockscreen_widgets_title">Widgets</string>
+	<string name="lockscreen_allow_all_title">Permitir todos los widgets</string>
+	<string name="lockscreen_allow_all_summary">Permitir widgets que nativamente no soporta su colocación de la pantalla de bloqueo</string>
+    <string name="lockscreen_allow_all_warning">Algunos widgets no pueden comportarse como se esperaba cuando se coloca sobre la pantalla de bloqueo. Otros widgets pueden exponer sus datos personales a cualquier persona que tenga acceso a su dispositivo. Por favor, ser conscientes de estas advertencias antes de continuar.</string>
     <string name="lockscreen_camera_widget_title">Habilitar widget de cámara</string>
     <string name="lockscreen_camera_widget_summary">Mostrar el widget seguro de cámara en la pantalla de bloqueo</string>
     <string name="lockscreen_maximize_widgets_title">Iniciar maximizado</string>
@@ -531,8 +565,32 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="lockscreen_disable_hints_summary">Deshabilita el resplandor en los bordes que rodean al paginador de widgets de la pantalla de bloqueo en modo vertical</string>
     <string name="lockscreen_use_widget_container_carousel_title">Habilitar carrusel de widgets</string>
     <string name="lockscreen_use_widget_container_carousel_summary">Usar animación de carrusel de widgets en modo vertical al desplazarse entre los widgets de la pantalla de bloqueo</string>
+	<string name="lockscreen_widget_frame_title">Desabilitar marcos</string>
+    <string name="lockscreen_widget_frame_summary">Desabilitar marcos de los widgets</string>
 
-    <!-- Sizes for pattern lockscreen -->
+    <!-- Shake sensitivity -->
+    <string name="shake_sensitivity_title">Sensibilidad de agitación</string>
+    <string name="shake_sensitivity_summary">Sensibilidad global de todas las preferencias de agitación</string>
+    <string name="shake_sensitivity_even_less_sensitive">Muy poca sensibilidad</string>
+    <string name="shake_sensitivity_less_sensitive">Menos sensible</string>
+    <string name="shake_sensitivity_more_sensitive">Más sensible</string>
+    <string name="shake_sensitivity_very_sensitive">Muy sensible</string>
+    <string name="shake_sensitivity_super_sensitive">Super sensible</string>
+    <string name="shake_sensitivity_ultra_sensitive">Ultra sensible</string>
+
+    <!-- Shake to secure -->
+    <string name="shake_to_secure_title">Agite pantalla de bloqueo para activar la seguridad</string>
+    <string name="shake_to_secure_summary">Seguridad quedará inhabilitada después de cada desbloqueo correcto</string>
+    <string name="shake_to_secure_dlg_title">Advertencia:</string>
+    <string name="shake_to_secure_dlg_message">Su dispositivo no estará seguro hasta que agite para permitir un cierre de seguridad temporal. Una vez seguro: Si el dispositivo está desbloqueado con éxito se convertirá en no seguro hasta agitar de nuevo.</string>
+    <string name="shake_secure_timeout_title">Volver automáticamente seguro</string>
+    <string name="shake_secure_timeout_disabled">Nunca asegure automáticamente</string>
+    <string name="shake_secure_timeout_1min">1 minutos después de la pantalla apagada</string>
+    <string name="shake_secure_timeout_5min">5 minutos después de la pantalla apagada</string>
+    <string name="shake_secure_timeout_10min">10 minutos después de la pantalla apagada</string>
+    <string name="shake_secure_timeout_30min">30 minutos después de la pantalla apagada</string>
+	
+	<!-- Sizes for pattern lockscreen -->
     <string name="lock_pattern_size_3">3x3</string>
     <string name="lock_pattern_size_4">4x4</string>
     <string name="lock_pattern_size_5">5x5</string>
@@ -559,9 +617,13 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="storage_rescan_media">Buscar ficheros multimedia en el volumen de almacenamiento</string>
     <string name="storage_rescan_media_complete">Búsqueda completada</string>
 
+	<!-- WhisperPush -->
+    <string name="whisperpush_title">WhisperPush</string>
+    <string name="whisperpush_summary">Gestina los ajustes de seguridad de los SMS</string>
+	
     <!-- Message of dialog confirming that user wants to restart their device with a new runtime -->
     <string name="custom_runtime_warning_title">Atención</string>
-    <string name="custom_runtime_warning_message">ART no está soportado por. Esta función está incluida solamente para uso experimental y puede causar inestabilidad, cierres inesperados, pérdida de datos y hasta que el sistema no arranque. Visitar &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducción a ART&lt;/a&gt; para más información.&lt;br/&gt;&lt;br/&gt;Por favor no envíe reportes de errores si utiliza ART.&lt;br/&gt;&lt;br/&gt;¿Reiniciar para cambiar de <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> a <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
+    <string name="custom_runtime_warning_message">ART no está soportado por CarbonRom. Esta función está incluida solamente para uso experimental y puede causar inestabilidad, cierres inesperados, pérdida de datos y hasta que el sistema no arranque. Visitar &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducción a ART&lt;/a&gt; para más información.&lt;br/&gt;&lt;br/&gt;Por favor no envíe reportes de errores si utiliza ART.&lt;br/&gt;&lt;br/&gt;¿Reiniciar para cambiar de <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> a <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
 
     <!-- Lockscreen pin shuffle -->
     <string name="lock_numpad_random_title">Cambiar el orden de los números del teclado de PIN</string>
@@ -570,7 +632,74 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="lock_numpad_random_always">Siempre</string>
     <string name="lock_numpad_random_on_request">Bajo demanda</string>
 
-    <!-- MediaScanner behavior on boot -->
+    <!-- Lock Gesture settings -->
+    <!-- Security & location settings screen, setting option name -->
+    <string name="lockgesture_change_lock_pattern_label">Cambiar gesto de desbloqueo</string>
+    <!-- Security & location settings screen, change unlock gesture screen instruction when the user chooses "Change unlock gesture".  We first ask the user toe nter the current pattern, and this is the message seen -->
+    <string name="lockgesture_change_lock_pin_label">Cambiar PIN de desbloqueo</string>
+    <!-- Security & location settings screen, change unlock gesture screen instruction when the user chooses "Change unlock gesture".  We first ask the user toe nter the current pattern, and this is the message seen -->
+    <string name="lockgesture_need_to_unlock">Confirma gesto de desbloqueo</string>
+    <!-- Do not translate. -->
+    <string name="lockgesture_need_to_unlock_footer" />
+    <!-- Security & location settings screen, change unlock gesture screen instruction if user draws incorrect pattern -->
+    <string name="lockgesture_need_to_unlock_wrong">Intentalo de nuevo:</string>
+    <!-- Do not translate. -->
+    <string name="lockgesture_need_to_unlock_wrong_footer" />
+    <!-- Security & location settings screen, change unlock gesture screen instruction on top of screen.  This si when they are supposed to draw a new unlock pattern (for example, if they are changing their unlock patterns)..-->
+    <string name="lockgesture_recording_intro_header">Dibuja un gesto de desbloqueo:</string>
+    <!-- Security & location settings screen, change unlock gesture screen hint on bottom of screen.  We are telling them to press the menu button to see more options or help. -->
+    <string name="lockgesture_recording_intro_footer">Pulsa el botón Menu para Ayuda.</string>
+    <!-- Security & location settings screen, change unlock gesture screen instruction on top of screen while drawing pattern -->
+    <string name="lockgesture_recording_inprogress">Quite el dedo cuando se acabe.</string>
+    <!-- Security & location settings screen, change unlock gesture screen message on top of screen after drawing pattern -->
+    <string name="lockgesture_pattern_entered_header">Gesto guardado.</string>
+    <!-- Security & location settings screen, change unlock gesture screen instruction on top of screen to confirm pattern -->
+    <string name="lockgesture_need_to_confirm">Dibuja el gesto otra vez para confirmar:</string>
+    <string name="lockgesture_pattern_confirmed_header">Tu nuevo gesto de desbloqueo:</string>
+    <!-- Security & location settings screen, change unlock gesture screen button, on bottom of screen.  After they draw a gesture and release their finger, we display the pattern so they remember.  When they are ready to draw it once again to confirm it, they press this button. -->
+    <string name="lockgesture_confirm_button_text">Acepto</string>
+    <!-- Security & location settings screen, change unlock gesture screen button, on bottom of screen.  After they draw a gesture and release their finger, we display the pattern so they remember.  If they are nto satisfied with this pattern, they click this button to redraw the pattern. -->
+    <string name="lockgesture_restart_button_text">Rehacer</string>
+    <!-- Security & location settings screen, change unlock gesture screen button, on bottom of screen. If they are supposed to enter their current gesture before being able to draw another one, and they screw up, they hit this button to try again -->
+    <string name="lockgesture_retry_button_text">Reintentar</string>
+    <!-- Security & location settings screen, change unlock gesture screen button, on bottom of screen. Once they draw a new gesture and confirm it by drawing it again, they press this button to exit -->
+    <string name="lockgesture_continue_button_text">Continuar</string>
+    <!-- Security & location settings screen, unlock screen activity title -->
+    <string name="lockgesture_settings_title">Desbloquear gesto</string>
+    <!-- Security & location settings screen, setting check box title if the unlock pattern MUST be drawn everytime they turn on the screen -->
+    <string name="lockgesture_settings_enable_title">Requiere gesto</string>
+    <!-- Security & location settings screen, setting summary for the checkbox "Require pattern" -->
+    <string name="lockgesture_settings_enable_summary">Tienes que dibujar un gesto para desbloquear</string>
+   <!-- Security & location settings screen, setting check box title. This setting controls whether a visible gesture is drawn as the user moves his finger around while drawing the unlock pattern.  If checked, this line is drawn.  If unchecked, there is nothing drawn so the user does not reveal his pattern while he unlocks the phone.-->
+    <string name="lockgesture_settings_enable_visible_pattern_title">Hacer el gesto visible</string>
+    <!-- Security & location settings screen, setting check box title. This controls whether the device locks immediately when the power button is pressed. [CHAR LIMIT=28]-->
+    <string name="lockgesture_settings_enable_power_button_instantly_locks">Bloqueo automático</string>
+    <!-- Security & location settings screen, setting option name when user has never set an unlock gesture -->
+    <string name="lockgesture_settings_choose_lock_pattern">Selecionar gesto de desbloqueo</string>
+    <!-- Security & location settings screen, setting option name when user has previously set an unlock gesture and wants to change to a new pattern -->
+    <string name="lockgesture_settings_change_lock_pattern">Cambiar gesto de desbloqueo</string>
+    <!-- Security & location settings screen, the help instructions (an animation) caption -->
+    <string name="lockgesture_settings_help_how_to_record">¿Cómo dibujar un gesto de desbloqueo?</string>
+    <!-- Security & location settings screen, change unlock gesture screen instruction on top of screen after too many incorrect attempts -->
+    <string name="lockgesture_too_many_failed_confirmation_attempts_header">Demasiados intentos incorrectos.</string>
+    <!-- Security & location settings screen, change unlock gesture screen countdown hint on bottom of screen after too many incorrect attempts -->
+    <string name="lockgesture_too_many_failed_confirmation_attempts_footer">Prueba dentro de <xliff:g id="number">%d</xliff:g> segundos.</string>
+    <!-- Toast shown if setting gesture was successful -->
+    <string name="lockpassword_gesture_set_toast">El gesto ha sido guardado</string>
+    <!-- Header on gesture confirm screen [CHAR LIMIT=30] -->
+    <string name="lockpassword_confirm_your_gesture_header">Confirma tu gesto</string>
+    <!-- Header on first screen of choose gesture flow [CHAR LIMIT=30] -->
+    <string name="lockpassword_choose_your_gesture_header">Dibuja tu gesto</string>
+
+    <!-- Title for preference that guides the user through creating an unlock gesture [CHAR LIMIT=22] -->
+    <string name="unlock_set_unlock_gesture_title">Gesto</string>
+    <!-- Title for preference that guides the user through creating an unlock gesture [CHAR LIMIT=45] -->
+    <string name="unlock_set_unlock_gesture_summary">Baja seguridad, experimental</string>
+
+    <!-- Summary for "Configure lockscreen" when security gesture is enabled [CHAR LIMIT=45] -->
+    <string name="unlock_set_unlock_mode_gesture">Gesto</string>
+	
+	<!-- MediaScanner behavior on boot -->
     <string name="media_scanner_on_boot_title">Búsqueda de ficheros multimedia al iniciar</string>
     <string name="media_scanner_on_boot_enabled">Buscar</string>
     <string name="media_scanner_on_boot_ask">Preguntar si buscar (notificación)</string>
@@ -649,11 +778,102 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Stylus gestures -->
     <string name="stylus_app_not_installed">%s no está instalada</string>
 
-    <!-- IME switcher notifcation -->
+    <!-- Advanced IME settings -->
+	<string name="title_keyboard_input">Advanced options</string>
     <string name="ime_switcher_notify">Notificación de selector</string>
     <string name="ime_switcher_notify_summary">Muestra una notificación de selección de método de entrada</string>
+	<string name="disable_fullscreen_keyboard_title">Desacctivar teclado a pantalla completa</string>
+    <string name="disable_fullscreen_keyboard_summary">El teclado nunca entrará en pantalla completa en modo horizontal</string>
+    <string name="keyboard_rotation_toggle_title">Rotación del teclado</string>
+    <string name="keyboard_rotation_toggle_summary">Forzar al teclado a rotar automáticamente cuando el teclado está visible</string>
+    <string name="keyboard_rotation_timeout_title">Tiempo de desactivación</string>
+    <string name="keyboard_rotation_timeout_summary">Desactivar sensor de autorotación durante<xliff:g id="rotate_timeout">%1$s</xliff:g> segundos después que es ocultado</string>
+    <string name="keyboard_rotation_dialog">Esta caracteristica fuerza a auto rotar cuando el teclado está visible.  No tiene efectos cuando ls autorotación está activado.</string>
+    <string name="show_enter_key_title">Ver tecla de Intro</string>
+    <string name="show_enter_key_summary">Forzar al teclado a mostrar el botón Intro en vez del emoticono</string>
 
     <!-- Title for the accessibility preference to home button to answers a call. [CHAR LIMIT=35] -->
-    <string name="accessibility_home_button_answers_call_prerefence_title">Botón inicio descuelga llamadas</string>
+    <string name="accessibility_home_button_answers_call_prerefence_title">Botón Inicio descuelga llamadas</string>
+
+	<!-- Toggle switch title for enabling battery saver connections. [CHAR LIMIT=32] -->
+    <string name="data_usage_enable_batterysaver">Ahorro de energía</string>
+
+    <!-- Themes -->
+    <string name="theme_settings_title">Dark Carbon</string>
+    <string name="theme_auto_mode_title">Intercambiar tema</string>
+    <string name="theme_auto_mode_off">Manual</string>
+    <string name="theme_auto_mode_lightsensor">En condiciones de baja luz</string>
+    <string name="theme_auto_mode_twilight">De día</string>
+    <string name="theme_auto_switch_mode_error">Automáticamente cuando las condiciones de luz varien. El modo manual no es posible.</string>
+	
+	<!-- Data Usage -->
+    <!-- Subtitle of dialog for editing data usage cycle reset date. [CHAR LIMIT=32] -->
+    <string name="data_usage_cycle_editor_subtitle_cm">Fecha de cada ciclo:</string>
+    <!-- Subtitle of dialog for editing data usage cycle length. [CHAR LIMIT=32] -->
+    <string name="data_usage_lengths_spinner_subtitle">Longitud de ciclo:</string>
+
+    <!-- Lock before unlock -->
+    <string name="lock_before_unlock_title">Mostrar deslizador antes del desbloqueo seguro</string>
+    <string name="lock_before_unlock_summary">Mostrar deslizador de pantalla de bloqueo antes del desbloqueo seguro</string>
+
+    <!-- Voice+ -->
+    <string name="voice_plus_title" translatable="false">Voice+</string>
+    <string name="voice_plus_summary">Permitir a todas las aplicaciones enviar SMS a través de Google Voice</string>
+	
+	<!-- Content description of the sync in progress icon for accessibility. [CHAR LIMIT=NONE] -->
+    <string name="accessibility_sync_in_progress">Sincronización en proceso.</string>
+
+    <!-- Set Subscription screen: label no sim -->
+    <string name="sub_no_sim">No SIM</string>
+    <string name="multi_sim_entry_format" translatable="false"><xliff:g id="operator">%1$s</xliff:g>-<xliff:g id="index">%2$d</xliff:g></string>
+
+    <!-- Main settings screen, Multi Sim settings title for item to go into the Multi settings -->
+    <string name="multi_sim_settings_title">Multi SIM</string>
+
+    <!-- Multi Sim settings group title -->
+    <string name="multi_sim_settings_group_summary">Selección por defecto de la SIM</string>
+
+    <!-- Multi Sim Settings screen, Voice box label -->
+    <string name="voice_title">Llamadas de voz</string>
+	
+	<!-- Multi Sim Settings screen, Data box label -->
+    <string name="data_title">Llamadas IP</string>
+
+    <!-- Multi Sim Settings screen, SMS box label -->
+    <string name="sms_title">Enviando SMS</string>
+
+    <!-- Priority subscription settings -->
+    <string name="priority_sub_title">Priority subscription</string>
+
+    <!-- Bluetooth accept all Filestypes -->
+    <string name="bluetooth_accept_all_files">Aceptar todo tipo de archivos</string>
+
+    <!-- Settings checkbox for updating recovery on boot -->
+    <string name="update_recovery_title">Actualizar recovery</string>
+    <string name="update_recovery_summary">Actualizar recovery cuando instalas actualizaciones del sistema</string>
+	
+	<!--Blacklist-->
+    <string name="blacklist_button_title">Lista negra</string>
+    <string name="floating_blacklist_label">Lista negra de Modo Flotante</string>
+    <string name="peek_blacklist_label">Lista negra de Peek</string>
+
+    <!-- App moving -->
+    <string name="app_moving_enable">Activar movimiento de las aplicaciones</string>
+    <string name="app_moving_disable">Desactivar movimiento de las aplicaciones</string>
+    <string name="app_moving_reboot_title">¿Reiniciar ahora?</string>
+    <string name="app_moving_reboot_enabled_desc">Movimiento de las aplicaciones activado correctamente.\n\nEl dispositivo necesita ser reiniciado para que surjan efectos los cambios.</string>
+    <string name="app_moving_reboot_disabled_desc">Movimiento de las aplicaciones desactivado correctamente.\n\nEl dispositivo necesita ser reiniciado para que surjan efectos los cambios.</string>
+    <string name="app_moving_reboot_now_button">Reiniciar ahora</string>
+    <string name="app_moving_reboot_later_button">Reiniciar después</string>
+	
+	<!-- Heads up -->
+    <string name="heads_up_switch_label">Activar notificaciones emergentes</string>
+
+    <string name="spam_added_title">Añadido <xliff:g id="time_since" example="5 minutes ago">%1$s</xliff:g></string>
+    <string name="spam_last_blocked_title">Último bloqueo <xliff:g id="time_since" example="5 minutes ago">%1$s</xliff:g> (total: <xliff:g id="count" example="2 times">%2$s</xliff:g>)</string>
+    <string name="block_notifications_title">Filtro de notificaciones</string>
+    <string name="block_notifications_summary">Gestionar filtros de notificaciones bloqueadas</string>
+    <!-- Keep the referenced menu string consistent with status_bar_notification_spam_item_title in frameworks/base/packages/SystemUI -->
+    <string name="no_filters_title">No hay filtros activos. Para poner filtros, realiza una pulsacción larga.</string>
 
 </resources>
