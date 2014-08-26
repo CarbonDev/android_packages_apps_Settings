@@ -1112,19 +1112,6 @@ public class Settings extends PreferenceActivity
             revert = true;
         }
 
-        // a temp hack while we prepare to switch
-        // to the new theme chooser.
-        if (header.id == R.id.themes_cyanogen) {
-            try {
-                Intent intent = new Intent();
-                intent.setClassName("com.tmobile.themechooser", "com.tmobile.themechooser.ThemeChooser");
-                startActivity(intent);
-                return;
-            } catch(ActivityNotFoundException e) {
-                 // Do nothing, we will launch the submenu
-            }
-        }
-
         super.onHeaderClick(header, position);
 
         if (revert && mLastHeader != null) {
