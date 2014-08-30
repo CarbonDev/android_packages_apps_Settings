@@ -360,7 +360,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Advanced reboot options -->
     <string name="advanced_reboot_title">Advanced reboot</string>
-    <string name="advanced_reboot_summary">Show entries for rebooting into recovery or bootloader</string>
+    <string name="advanced_reboot_summary">Show entries for rebooting into recovery, bootloader or performing a soft reboot</string>
 
     <string name="app_security_title">App security</string>
 
@@ -519,6 +519,10 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- tap-to-wake -->
     <string name="double_tap_to_wake_title">Double-tap to wake</string>
+
+    <!-- Proximity wake -->
+    <string name="proximity_wake_title">Prevent accidental wake-up</string>
+    <string name="proximity_wake_summary">Check the proximity sensor prior to waking up screen</string>
 
     <!-- Font size sample text. This needs to be a very short string, as it is shown in
     multiple font sizes in a limited amount of space. -->
@@ -864,4 +868,15 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Heads up -->
     <string name="heads_up_switch_label">Enable heads up notification</string>
+
+    <string name="spam_added_title">Added <xliff:g id="time_since" example="5 minutes ago">%1$s</xliff:g></string>
+    <string name="spam_last_blocked_title">Last blocked <xliff:g id="time_since" example="5 minutes ago">%1$s</xliff:g> (total: <xliff:g id="count" example="2 times">%2$s</xliff:g>)</string>
+    <string name="block_notifications_title">Filter notifications</string>
+    <string name="block_notifications_summary">Manage ignored notifications and filters</string>
+    <!-- Keep the referenced menu string consistent with status_bar_notification_spam_item_title in frameworks/base/packages/SystemUI -->
+    <string name="no_filters_title">No filters set. To filter a notification, long press it and choose \'Ignore messages like this\'.</string>
+
+    <!-- High touch sensitivity -->
+    <string name="high_touch_sensitivity_title">High touch sensitivity</string>
+    <string name="high_touch_sensitivity_summary">Increase touchscreen sensitivity so it can be used while wearing gloves</string>
 </resources>
