@@ -277,10 +277,21 @@
         android:icon="@drawable/ic_settings_development"
         android:title="@string/development_settings_title" />
 
+    <!-- SuperSU -->
+    <header
+        android:id="@+id/supersu_settings"
+        android:icon="@drawable/ic_settings_supersu"
+        android:title="@string/supersu_title">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="eu.chainfire.supersu"
+            android:targetClass="eu.chainfire.supersu.MainActivity" />
+    </header>
+
     <!-- Superuser -->
     <header
         android:id="@+id/superuser"
-        android:fragment="com.koushikdutta.superuser.PolicyNativeFragment"
+        android:fragment="com.android.settings.carbon.superuser.PolicyNativeFragment"
         android:icon="@drawable/ic_action_permission"
         android:title="@string/superuser" />
 
