@@ -418,7 +418,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Performance Settings : 16bpp Alpha -->
     <string name="pref_use_16bpp_alpha_title">Transparencia 16bit</string>
-    <string name="pref_use_16bpp_alpha_summary">Mejor rendimiento de graicos pero peor calidad. Puede causar problemas en la visualización de los gráficos (se necesita reiniciar)</string>
+    <string name="pref_use_16bpp_alpha_summary">Mejor rendimiento de gráficos pero peor calidad. Puede causar problemas en la visualización de los gráficos (se necesita reiniciar)</string>
 
     <!-- Kill app long-press back -->
     <string name="kill_app_longpress_back">Botón atrás cierra aplicación</string>
