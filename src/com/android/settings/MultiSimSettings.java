@@ -173,22 +173,9 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
         entriesPrompt = new CharSequence[MAX_SUBSCRIPTIONS + 1];
         entryValuesPrompt = new CharSequence[MAX_SUBSCRIPTIONS + 1];
         summariesPrompt = new CharSequence[MAX_SUBSCRIPTIONS + 1];
-        MSimTelephonyManager tm = MSimTelephonyManager.getDefault();
-        int i = 0;
-        for (i = 0; i < MAX_SUBSCRIPTIONS; i++) {
-            String operatorName = tm.getSimOperatorName(i);
-            String label;
-            if (tm.getSimState(i) == SIM_STATE_ABSENT || tm.getSimState(i) != SIM_STATE_READY ||
-                    operatorName == null || operatorName.length() == 0) {
-                label = getString(R.string.multi_sim_entry_format_no_carrier, i + 1);
-            } else {
-                label = getString(R.string.multi_sim_entry_format, operatorName, i + 1);
-            }
-            entries[i] = summaries[i] = label;
-            entriesPrompt[i] = summariesPrompt[i] = label;
-            entryValues[i] = Integer.toString(i);
-            entryValuesPrompt[i] = Integer.toString(i);
-        }
+
+        int i = updateSimNameEntries();
+
         entryValuesPrompt[i] = Integer.toString(i);
         entriesPrompt[i] = getResources().getString(R.string.prompt);
         summariesPrompt[i] = getResources().getString(R.string.prompt_user);
@@ -202,6 +189,18 @@ public class MultiSimSettings extends PreferenceActivity implements DialogInterf
         mIsForeground = true;
         registerForAirplaneMode();
         updateUi();
+    }
+
+    private int updateSimNameEntries()  {
+        int i = 0;
+        for (i = 0; i < MAX_SUBSCRIPTIONS; i++) {
+            String label = MSimTelephonyManager.getFormattedSimName(this, i);
+            entries[i] = summaries[i] = label;
+            entriesPrompt[i] = summariesPrompt[i] = label;
+            entryValues[i] = Integer.toString(i);
+            entryValuesPrompt[i] = Integer.toString(i);
+        }
+        return i;
     }
 
     /**
